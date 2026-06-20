@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>분석 글 — 만조</title>
+  <meta name="description" content="만조 차트 분석 상세 페이지" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F7F5F0; --bg-card: #FFFFFF; --bg-hero: #EEE9DF;
+  --text-primary: #1C1C2E; --text-secondary: #5A5A72; --text-muted: #9494A8;
+  --accent: #4A6FA5; --accent-hover: #3A5A90; --accent-light: #EBF0F9;
+  --gold: #B5914C; --gold-light: #F5EFE2; --border: #E5E0D8;
+  --tag-국내: #E8F4EE; --tag-국내-text: #2E7D52;
+  --tag-해외: #EBF0F9; --tag-해외-text: #2E5282;
+  --tag-지표: #FDF4E7; --tag-지표-text: #8A6020;
+  --radius: 12px; --shadow: 0 2px 12px rgba(28,28,46,0.07); --shadow-hover: 0 6px 24px rgba(28,28,46,0.12);
+  --font: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  --max-w: 1100px; --transition: 0.2s ease;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text-primary); line-height: 1.7; font-size: 16px; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(247,245,240,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { font-size: 18px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--text-secondary); font-weight: 500; transition: color var(--transition); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-cta { background: var(--accent); color: #fff !important; padding: 8px 18px; border-radius: 20px; font-size: 13px !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--accent-hover) !important; }
+.article-detail { padding: 56px 0 80px; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); margin-bottom: 36px; transition: color var(--transition); }
+.back-link:hover { color: var(--accent); }
+.article-header { margin-bottom: 36px; }
+.article-header h1 { font-size: clamp(22px,3.5vw,36px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.3; margin-bottom: 16px; }
+.article-meta { display: flex; gap: 16px; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; padding: 3px 10px; border-radius: 10px; margin-bottom: 16px; }
+.tag-국내 { background: #E8F4EE; color: #2E7D52; }
+.tag-해외 { background: #EBF0F9; color: #2E5282; }
+.tag-지표 { background: #FDF4E7; color: #8A6020; }
+.article-chart-placeholder { width: 100%; aspect-ratio: 16/7; background: var(--bg-hero); border: 1px solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--text-muted); font-size: 14px; margin-bottom: 40px; }
+.article-chart-placeholder .chart-icon { font-size: 48px; }
+.article-body { font-size: 17px; line-height: 1.9; color: var(--text-primary); max-width: 720px; }
+.article-body h3 { font-size: 20px; font-weight: 700; margin: 36px 0 12px; color: var(--text-primary); }
+.article-body p { margin-bottom: 20px; }
+.article-body ul { list-style: disc; padding-left: 24px; margin-bottom: 20px; }
+.article-body li { margin-bottom: 8px; }
+.article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 40px; }
+.article-tag-chip { font-size: 13px; color: var(--text-secondary); background: var(--bg-hero); border: 1px solid var(--border); padding: 4px 14px; border-radius: 20px; }
+.section-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-size: clamp(22px,3vw,30px); font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); }
+.section-header { margin-bottom: 24px; }
+.articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.article-card { background: #fff; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: box-shadow var(--transition), transform var(--transition); cursor: pointer; display: flex; flex-direction: column; }
+.article-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.article-card-img { width: 100%; aspect-ratio: 16/9; background: var(--bg-hero); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; padding: 24px; text-align: center; border-bottom: 1px solid var(--border); }
+.chart-icon { font-size: 32px; }
+.article-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.article-card h3 { font-size: 17px; font-weight: 700; line-height: 1.45; letter-spacing: -0.2px; margin-bottom: 10px; color: var(--text-primary); }
+.article-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; flex: 1; }
+.article-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+.article-date { font-size: 13px; color: var(--text-muted); }
+.read-more { font-size: 13px; font-weight: 600; color: var(--accent); }
+.btn-primary { padding: 13px 24px; background: var(--accent); color: #fff; border: none; border-radius: 28px; font-size: 15px; font-weight: 600; font-family: var(--font); cursor: pointer; transition: background var(--transition); white-space: nowrap; }
+.btn-primary:hover { background: var(--accent-hover); }
+.footer { background: var(--text-primary); color: rgba(255,255,255,0.5); padding: 40px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-size: 16px; font-weight: 700; color: #fff; }
+.footer-logo span { color: #7AA6D4; }
+.footer-copy { font-size: 13px; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; transition: color var(--transition); }
+.footer-links a:hover { color: #fff; }
+@media (max-width: 768px) {
+  .nav-links { gap: 16px; } .nav-links a:not(.nav-cta) { display: none; }
+  .footer-inner { flex-direction: column; text-align: center; } .footer-links { justify-content: center; }
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">만조<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#articles">분석 글</a></li>
+      <li><a href="archive.html">뉴스레터</a></li>
+      <li><a href="index.html#author">필자 소개</a></li>
+      <li><a href="index.html#subscribe" class="nav-cta">구독하기</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ARTICLE DETAIL -->
+<div class="article-detail">
+  <div class="container">
+    <a href="index.html" class="back-link">← 분석 글 목록으로</a>
+
+    <div id="article-content">
+      <!-- JS로 렌더링 -->
+    </div>
+
+    <!-- SUBSCRIBE CTA (inline) -->
+    <div style="margin-top: 60px; padding: 36px; background: var(--accent-light); border-radius: var(--radius); border: 1px solid var(--border);">
+      <p style="font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">Newsletter</p>
+      <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">이런 인사이트, 격주마다 받아보세요</h3>
+      <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 20px;">글로벌 지표와 차트 분석을 무료로 구독할 수 있습니다.</p>
+      <form id="article-subscribe-form" style="display:flex; gap:10px; flex-wrap:wrap; max-width:440px;">
+        <input type="email" id="article-email" placeholder="이메일 주소 입력"
+          style="flex:1; min-width:200px; padding:11px 18px; border:1.5px solid var(--border); border-radius:28px; font-size:14px; font-family:var(--font); outline:none;"
+          required />
+        <button type="submit" class="btn-primary" style="padding:11px 20px; font-size:14px;">구독 신청</button>
+      </form>
+      <div id="article-subscribe-done" style="display:none; align-items:center; gap:8px; color:var(--tag-국내-text); font-size:15px; font-weight:600; margin-top:12px;">
+        ✅ 구독 신청이 완료되었습니다!
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <div style="margin-top: 60px;">
+      <div class="section-header" style="margin-bottom:24px;">
+        <div class="section-tag">More</div>
+        <h2 class="section-title" style="font-size:22px;">다른 분석 글</h2>
+      </div>
+      <div class="articles-grid" id="related-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">만조<span>.</span></div>
+    <p class="footer-copy">© 2026 만조. 투자 판단은 본인의 책임입니다.</p>
+    <ul class="footer-links">
+      <li><a href="archive.html">뉴스레터 아카이브</a></li>
+      <li><a href="index.html#articles">분석 글</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const ARTICLES = [
+  { id: "1", title: "미국 장기금리 재상승, 증시는 어디로 가나", category: "해외", date: "2026-06-18", summary: "10년물 국채금리가 다시 4.5%를 돌파하며 성장주에 압박을 주고 있습니다.", body: `<p>미국 10년물 국채금리가 2026년 6월 기준 다시 4.5%를 상회하며 증시 전반에 부담을 주고 있습니다.</p><p>연초만 해도 시장은 연준이 상반기 중 금리를 내릴 것으로 기대했지만, 고용 지표가 예상을 웃도는 수준을 유지하면서 '고금리 장기화(Higher for Longer)' 시나리오가 다시 부상했습니다.</p><h3>섹터별 영향</h3><ul><li><strong>성장주(기술·바이오):</strong> 할인율 상승 → 미래 현금흐름 현재가치 하락. 멀티플 압축 가능성.</li><li><strong>금융주:</strong> 예대마진 확대 수혜. 단, 대출 부실 리스크도 동반 상승.</li><li><strong>유틸리티·리츠:</strong> 채권 대체재 성격으로 금리 상승 시 상대적 약세.</li></ul><h3>투자 시사점</h3><p>단기적으로는 현금흐름이 검증된 가치주·배당주 비중을 높이는 전략이 유효합니다. 기술주는 실적 시즌 결과를 확인한 뒤 선별적으로 접근하는 것이 합리적입니다.</p><p>장기 투자자라면 이 구간을 우량 성장주를 분할 매수할 기회로 바라볼 수 있습니다.</p>`, chartAlt: "미국 10년물 국채금리 추이 차트", tags: ["금리", "연준", "성장주"], author: "만조" },
+  { id: "2", title: "코스피 박스권 탈출 조건 세 가지", category: "국내", date: "2026-06-15", summary: "2,500~2,700 사이를 오가는 코스피. 상단 돌파를 위해 선행되어야 할 거시·수급·실적 조건을 정리합니다.", body: `<p>코스피는 2025년 하반기부터 2,500~2,700 박스권에 갇혀 있습니다.</p><h3>탈출 조건 1: 원/달러 환율 안정</h3><p>환율이 1,350원 이하로 안착해야 외국인 자금의 지속적 유입이 가능합니다.</p><h3>탈출 조건 2: 반도체 업황 본격 회복</h3><p>삼성전자·SK하이닉스 합산 시가총액이 코스피의 약 20%를 차지합니다. HBM 수요 확대와 메모리 가격 반등이 확인되어야 합니다.</p><h3>탈출 조건 3: 밸류업 프로그램 실효성 확인</h3><p>정부의 기업 밸류업 프로그램이 자사주 소각·배당 확대로 이어지는 사례가 누적되어야 PBR 0.8 미만 종목군의 재평가가 본격화됩니다.</p>`, chartAlt: "코스피 주간 차트", tags: ["코스피", "환율", "반도체"], author: "만조" },
+  { id: "3", title: "PCE·CPI 동시 둔화, 인플레이션 정말 잡혔나", category: "지표", date: "2026-06-10", summary: "5월 PCE와 CPI 모두 예상치를 하회했습니다. 숫자 너머에 있는 항목별 세부 데이터를 들여다봅니다.", body: `<p>2026년 5월 미국 PCE 물가지수는 전년 대비 2.4% 상승, CPI는 2.9%로 모두 예상치를 소폭 하회했습니다.</p><h3>둔화를 이끈 항목</h3><ul><li>에너지: 유가 하락으로 전월 대비 -1.2%</li><li>중고차: 공급 정상화로 가격 하락 지속</li></ul><h3>여전히 끈적한 항목</h3><ul><li>주거비(Shelter): 전년 대비 +5.1%, 여전히 상승세</li><li>서비스 물가(ex. 주거): +3.8%, 임금과 연동되어 쉽게 내려오지 않음</li></ul><h3>결론</h3><p>서비스·주거 물가의 점착성이 연준의 조기 금리 인하를 막는 핵심 변수입니다.</p>`, chartAlt: "미국 CPI·PCE 항목별 기여도 차트", tags: ["CPI", "PCE", "연준", "인플레이션"], author: "만조" },
+  { id: "4", title: "일본 엔화 약세 심화, 아시아 증시 파급 경로", category: "해외", date: "2026-06-05", summary: "달러/엔이 158엔을 돌파했습니다. 일본은행의 개입 한계와 아시아 이웃 증시에 미치는 영향을 분석합니다.", body: `<p>달러/엔 환율이 158엔을 돌파하며 2024년 이후 최고치를 경신했습니다.</p><h3>엔화 약세의 구조적 배경</h3><p>일본과 미국의 금리 차이(일본 0.5% vs 미국 5.25%)가 엔 캐리 트레이드의 동인입니다.</p><h3>아시아 증시 파급 경로</h3><ul><li><strong>한국:</strong> 원화 동반 약세 → 수입물가 상승 압력, 외국인 자금 유출 우려</li><li><strong>중국:</strong> 위안화 절하 경쟁 자제 의지 있으나 수출 경쟁력 우위 희석</li><li><strong>일본 수출주:</strong> 단기 실적 개선 수혜, 단 BOJ 긴축 가능성 리스크</li></ul>`, chartAlt: "달러/엔 환율 주간 차트", tags: ["엔화", "일본", "환율", "아시아"], author: "만조" },
+  { id: "5", title: "ISM 제조업 지수 50 회복, 경기 바닥 신호인가", category: "지표", date: "2026-06-01", summary: "6개월 만에 기준선 50을 회복한 ISM 제조업 지수. 경기 사이클 관점에서 이 숫자가 의미하는 것을 풀어봅니다.", body: `<p>2026년 5월 ISM 제조업 PMI가 50.2를 기록하며 6개월 만에 기준선 50을 상회했습니다.</p><h3>세부 항목 점검</h3><ul><li><strong>신규 주문:</strong> 51.6 → 수요 회복 신호</li><li><strong>생산:</strong> 50.9 → 소폭 확장</li><li><strong>고용:</strong> 48.1 → 여전히 수축 국면, 기업들의 채용 신중론 지속</li><li><strong>재고:</strong> 44.3 → 재고 축소, 향후 생산 증가 압력으로 이어질 수 있음</li></ul><h3>투자 시사점</h3><p>제조업 사이클 바닥 통과 기대가 산업재·소재 섹터에 우호적입니다.</p>`, chartAlt: "ISM 제조업 PMI 추이 차트", tags: ["ISM", "PMI", "제조업", "경기사이클"], author: "만조" },
+];
+</script>
+<script>
+  const STORAGE_KEY = 'manzo_subscribed';
+
+  function getArticleId() {
+    return new URLSearchParams(location.search).get('id');
+  }
+
+  function renderArticle(article) {
+    document.title = `${article.title} — 만조`;
+    document.getElementById('article-content').innerHTML = `
+      <div class="article-header">
+        <span class="tag tag-${article.category}">${article.category}</span>
+        <h1>${article.title}</h1>
+        <div class="article-meta">
+          <span>📅 ${article.date}</span>
+          <span>✍️ ${article.author}</span>
+          ${article.tags.map(t => `<span>#${t}</span>`).join('')}
+        </div>
+      </div>
+      <div class="article-chart-placeholder">
+        <div class="chart-icon">📊</div>
+        <div>${article.chartAlt}</div>
+        <div style="font-size:12px; margin-top:4px;">차트 이미지 준비 중</div>
+      </div>
+      <div class="article-body">${article.body}</div>
+      <div class="article-tags">
+        ${article.tags.map(t => `<span class="article-tag-chip">#${t}</span>`).join('')}
+      </div>
+    `;
+  }
+
+  function renderRelated(currentId) {
+    const related = ARTICLES.filter(a => a.id !== currentId).slice(0, 3);
+    document.getElementById('related-grid').innerHTML = related.map(a => `
+      <article class="article-card" onclick="location.href='article.html?id=${a.id}'">
+        <div class="article-card-img">
+          <div>
+            <div class="chart-icon">📈</div>
+            <div>${a.chartAlt}</div>
+          </div>
+        </div>
+        <div class="article-card-body">
+          <span class="tag tag-${a.category}">${a.category}</span>
+          <h3>${a.title}</h3>
+          <p>${a.summary}</p>
+          <div class="article-card-footer">
+            <span class="article-date">${a.date}</span>
+            <span class="read-more">자세히 읽기 →</span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function applySubscribeState() {
+    if (!localStorage.getItem(STORAGE_KEY)) return;
+    document.getElementById('article-subscribe-form').style.display = 'none';
+    const done = document.getElementById('article-subscribe-done');
+    done.style.display = 'flex';
+  }
+
+  document.getElementById('article-subscribe-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    localStorage.setItem(STORAGE_KEY, document.getElementById('article-email').value || 'subscribed');
+    applySubscribeState();
+  });
+
+  // Init
+  const id = getArticleId();
+  const article = ARTICLES.find(a => a.id === id);
+  if (article) {
+    renderArticle(article);
+    renderRelated(id);
+  } else {
+    document.getElementById('article-content').innerHTML = '<p>글을 찾을 수 없습니다. <a href="index.html">목록으로 돌아가기</a></p>';
+  }
+
+  applySubscribeState();
+</script>
+</body>
+</html>
