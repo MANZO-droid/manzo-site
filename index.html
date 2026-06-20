@@ -76,7 +76,8 @@ section { padding: 72px 0; }
 .hidden { display: none !important; }
 .author-section { background: var(--bg-hero); }
 .author-card { display: flex; gap: 32px; align-items: flex-start; background: #fff; border-radius: var(--radius); border: 1px solid var(--border); padding: 36px; max-width: 680px; }
-.author-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
+.author-avatar { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 3px solid var(--accent-light); }
+.author-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .author-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
 .author-role { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
 .author-bio { font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
@@ -179,7 +180,7 @@ section { padding: 72px 0; }
       <h2 class="section-title">필자 소개</h2>
     </div>
     <div class="author-card">
-      <div class="author-avatar">📊</div>
+      <div class="author-avatar"><img src="author.jpg" alt="만조" /></div>
       <div class="author-info">
         <h3>만조</h3>
         <p class="author-role">글로벌 경제 분석가 · 뉴스레터 운영자</p>
