@@ -61,8 +61,8 @@ section { padding: 72px 0; }
 .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
 .article-card { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: box-shadow var(--transition), transform var(--transition); cursor: pointer; display: flex; flex-direction: column; }
 .article-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
-.article-card-img { width: 100%; aspect-ratio: 16/9; background: var(--bg-hero); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; gap: 8px; padding: 24px; text-align: center; border-bottom: 1px solid var(--border); }
-.chart-icon { font-size: 32px; }
+.article-card-img { width: 100%; aspect-ratio: 16/9; background: var(--bg-hero); overflow: hidden; border-bottom: 1px solid var(--border); }
+.article-card-img svg { width: 100%; height: 100%; display: block; }
 .article-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
 .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; padding: 3px 10px; border-radius: 10px; margin-bottom: 12px; }
 .tag-국내 { background: var(--tag-국내); color: var(--tag-국내-text); }
@@ -276,18 +276,89 @@ const NEWSLETTERS = [
     applySubscribeState();
   });
 
+  // ---------- Chart generation ----------
+  const CHART_DATA = {
+    "1": { type:"line", color:"#4A6FA5", fill:"rgba(74,111,165,0.12)", label:"10Y UST Yield (%)",
+           points:[3.5,3.7,3.4,3.6,3.9,4.1,3.8,4.0,4.3,4.2,4.5,4.6], yMin:3.0, yMax:5.0,
+           xLabels:["Jan","Feb","Mar","Apr","May","Jun"] },
+    "2": { type:"line", color:"#2E7D52", fill:"rgba(46,125,82,0.08)", label:"KOSPI",
+           points:[2600,2650,2580,2700,2640,2520,2560,2650,2620,2700,2660,2540], yMin:2400, yMax:2800,
+           xLabels:["Jan","Feb","Mar","Apr","May","Jun"] },
+    "3": { type:"bar2", colorA:"#4A6FA5", colorB:"#B5914C", labelA:"CPI", labelB:"PCE", label:"YoY (%)",
+           pointsA:[8.5,7.1,6.5,5.0,4.0,3.4,3.0,2.9], pointsB:[7.0,6.3,5.8,4.6,3.8,3.0,2.6,2.4],
+           yMin:0, yMax:9, xLabels:["'23.1","'23.6","'23.12","'24.6","'24.12","'25.6","'25.12","'26.5"] },
+    "4": { type:"line", color:"#4A6FA5", fill:"rgba(74,111,165,0.12)", label:"USD/JPY",
+           points:[130,133,136,140,142,145,148,151,153,156,157,158], yMin:125, yMax:165,
+           xLabels:["Jan","Feb","Mar","Apr","May","Jun"] },
+    "5": { type:"line", color:"#B5914C", fill:"rgba(181,145,76,0.08)", label:"ISM Manufacturing PMI",
+           threshold:50, points:[52,49,47,46,48,49,47,48,49,49.5,50,50.2], yMin:44, yMax:54,
+           xLabels:["Jan","Feb","Mar","Apr","May","Jun"] },
+  };
+
+  function makeLineSVG(d, w, h) {
+    const pL=42, pR=20, pT=22, pB=30, cw=w-pL-pR, ch=h-pT-pB, n=d.points.length;
+    const px=i=>pL+(i/(n-1))*cw, py=v=>pT+ch-((v-d.yMin)/(d.yMax-d.yMin))*ch;
+    const pathD=d.points.map((v,i)=>`${i?'L':'M'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+    const fillD=`${pathD} L${px(n-1).toFixed(1)},${(pT+ch).toFixed(1)} L${pL},${(pT+ch).toFixed(1)} Z`;
+    const grid=[0.25,0.5,0.75].map(f=>{
+      const y=pT+ch*(1-f), val=(d.yMin+(d.yMax-d.yMin)*f).toFixed(1);
+      return `<line x1="${pL}" y1="${y.toFixed(1)}" x2="${w-pR}" y2="${y.toFixed(1)}" stroke="#ddd8ce" stroke-width="1"/>
+      <text x="${pL-4}" y="${(y+3.5).toFixed(1)}" text-anchor="end" font-size="9" fill="#9494A8">${val}</text>`;
+    }).join('');
+    const thr=d.threshold?`<line x1="${pL}" y1="${py(d.threshold).toFixed(1)}" x2="${w-pR}" y2="${py(d.threshold).toFixed(1)}" stroke="${d.color}" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+    <text x="${(w-pR+3)}" y="${(py(d.threshold)+4).toFixed(1)}" font-size="8" fill="${d.color}" font-weight="700">50</text>`:'';
+    const xlbls=d.xLabels.map((l,i)=>{
+      const idx=Math.round(i/(d.xLabels.length-1)*(n-1));
+      return `<text x="${px(idx).toFixed(1)}" y="${h-6}" text-anchor="middle" font-size="9" fill="#9494A8">${l}</text>`;
+    }).join('');
+    const last=d.points[n-1];
+    const dot=`<circle cx="${px(n-1).toFixed(1)}" cy="${py(last).toFixed(1)}" r="3" fill="${d.color}"/>`;
+    const lbl=`<text x="${pL}" y="${pT-6}" font-size="10" fill="#5A5A72" font-weight="600">${d.label}</text>`;
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <rect width="${w}" height="${h}" fill="#EEE9DF"/>
+      ${grid}${thr}
+      <path d="${fillD}" fill="${d.fill}"/>
+      <path d="${pathD}" fill="none" stroke="${d.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      ${dot}${xlbls}${lbl}
+    </svg>`;
+  }
+
+  function makeBarSVG(d, w, h) {
+    const pL=40, pR=16, pT=28, pB=30, cw=w-pL-pR, ch=h-pT-pB, n=d.pointsA.length;
+    const bgW=cw/n, bW=bgW*0.3, gap=bgW*0.04;
+    const bx=i=>pL+i*bgW+bgW*0.1, by=v=>pT+ch-((v-d.yMin)/(d.yMax-d.yMin))*ch, bh=v=>((v-d.yMin)/(d.yMax-d.yMin))*ch;
+    const barsA=d.pointsA.map((v,i)=>`<rect x="${bx(i).toFixed(1)}" y="${by(v).toFixed(1)}" width="${bW.toFixed(1)}" height="${bh(v).toFixed(1)}" fill="${d.colorA}" opacity="0.85" rx="2"/>`).join('');
+    const barsB=d.pointsB.map((v,i)=>`<rect x="${(bx(i)+bW+gap).toFixed(1)}" y="${by(v).toFixed(1)}" width="${bW.toFixed(1)}" height="${bh(v).toFixed(1)}" fill="${d.colorB}" opacity="0.85" rx="2"/>`).join('');
+    const grid=[0.25,0.5,0.75,1].map(f=>{
+      const y=pT+ch*(1-f), val=(d.yMin+(d.yMax-d.yMin)*f).toFixed(0);
+      return `<line x1="${pL}" y1="${y.toFixed(1)}" x2="${w-pR}" y2="${y.toFixed(1)}" stroke="#ddd8ce" stroke-width="1"/>
+      <text x="${pL-4}" y="${(y+3.5).toFixed(1)}" text-anchor="end" font-size="9" fill="#9494A8">${val}</text>`;
+    }).join('');
+    const xlbls=d.xLabels.map((l,i)=>`<text x="${(bx(i)+bW).toFixed(1)}" y="${h-6}" text-anchor="middle" font-size="8" fill="#9494A8">${l}</text>`).join('');
+    const legend=`<rect x="${pL}" y="${pT-18}" width="7" height="7" fill="${d.colorA}" rx="1"/>
+    <text x="${pL+10}" y="${pT-11}" font-size="9" fill="#5A5A72">${d.labelA}</text>
+    <rect x="${pL+36}" y="${pT-18}" width="7" height="7" fill="${d.colorB}" rx="1"/>
+    <text x="${pL+46}" y="${pT-11}" font-size="9" fill="#5A5A72">${d.labelB}</text>
+    <text x="${w-pR}" y="${pT-11}" text-anchor="end" font-size="9" fill="#5A5A72" font-weight="600">${d.label}</text>`;
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <rect width="${w}" height="${h}" fill="#EEE9DF"/>
+      ${grid}${barsA}${barsB}${xlbls}${legend}
+    </svg>`;
+  }
+
+  function getChartSVG(id, size) {
+    const d = CHART_DATA[id]; if (!d) return '';
+    const w = size==='detail' ? 700 : 400, h = size==='detail' ? 280 : 225;
+    return d.type==='bar2' ? makeBarSVG(d,w,h) : makeLineSVG(d,w,h);
+  }
+
   // ---------- Render articles ----------
   function renderArticles(filter) {
     const grid = document.getElementById('articles-grid');
     const list = filter === '전체' ? ARTICLES : ARTICLES.filter(a => a.category === filter);
     grid.innerHTML = list.map(a => `
       <article class="article-card" onclick="location.href='article.html?id=${a.id}'">
-        <div class="article-card-img">
-          <div>
-            <div class="chart-icon">📈</div>
-            <div>${a.chartAlt}</div>
-          </div>
-        </div>
+        <div class="article-card-img">${getChartSVG(a.id,'card')}</div>
         <div class="article-card-body">
           <span class="tag tag-${a.category}">${a.category}</span>
           <h3>${a.title}</h3>
