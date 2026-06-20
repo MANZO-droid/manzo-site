@@ -15,6 +15,7 @@
   --tag-국내: #E8F4EE; --tag-국내-text: #2E7D52;
   --tag-해외: #EBF0F9; --tag-해외-text: #2E5282;
   --tag-지표: #FDF4E7; --tag-지표-text: #8A6020;
+  --tag-volume: #FEF0F0; --tag-volume-text: #991B1B;
   --radius: 12px; --shadow: 0 2px 12px rgba(28,28,46,0.07); --shadow-hover: 0 6px 24px rgba(28,28,46,0.12);
   --font: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
   --max-w: 1100px; --transition: 0.2s ease;
@@ -44,6 +45,7 @@ ul { list-style: none; }
 .tag-국내 { background: #E8F4EE; color: #2E7D52; }
 .tag-해외 { background: #EBF0F9; color: #2E5282; }
 .tag-지표 { background: #FDF4E7; color: #8A6020; }
+.tag-거래대금-상위 { background: var(--tag-volume); color: var(--tag-volume-text); }
 .article-chart-placeholder { width: 100%; aspect-ratio: 16/7; background: var(--bg-hero); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 40px; }
 .article-chart-placeholder svg { width: 100%; height: 100%; display: block; }
 .article-body { font-size: 17px; line-height: 1.9; color: var(--text-primary); max-width: 720px; }
@@ -171,6 +173,18 @@ const ARTICLES = [
     topStock: { name:"현대차", code:"005380", price:268000, change:8000, changePct:3.08, tradeAmount:"1조 4,230억", intraday:[260000,261500,263200,264800,265500,266200,267000,268500,267800,268200,268000], briefing:"엔화 약세로 일본 완성차와의 가격 경쟁 부담이 커졌지만, 북미 시장 판매 호조와 전기차 라인업 강화 소식이 매수 재료로 작용했습니다. 270,000원 돌파 시 추가 상승 모멘텀이 확보되는 구간입니다." } },
   { id: "5", title: "ISM 제조업 지수 50 회복, 경기 바닥 신호인가", category: "지표", date: "2026-06-01", summary: "6개월 만에 기준선 50을 회복한 ISM 제조업 지수. 경기 사이클 관점에서 이 숫자가 의미하는 것을 풀어봅니다.", body: `<p>2026년 5월 ISM 제조업 PMI가 50.2를 기록하며 6개월 만에 기준선 50을 상회했습니다.</p><h3>세부 항목 점검</h3><ul><li><strong>신규 주문:</strong> 51.6 → 수요 회복 신호</li><li><strong>생산:</strong> 50.9 → 소폭 확장</li><li><strong>고용:</strong> 48.1 → 여전히 수축 국면, 기업들의 채용 신중론 지속</li><li><strong>재고:</strong> 44.3 → 재고 축소, 향후 생산 증가 압력으로 이어질 수 있음</li></ul><h3>투자 시사점</h3><p>제조업 사이클 바닥 통과 기대가 산업재·소재 섹터에 우호적입니다.</p>`, chartAlt: "ISM 제조업 PMI 추이 차트", tags: ["ISM", "PMI", "제조업", "경기사이클"], author: "만조",
     topStock: { name:"두산에너빌리티", code:"034020", price:28650, change:1350, changePct:4.95, tradeAmount:"1조 2,890억", intraday:[27300,27500,27800,28100,28400,28200,28600,28800,28700,28900,28650], briefing:"제조업 경기 회복 신호에 발전·에너지 설비 수요 증가 기대가 더해지며 거래가 급증했습니다. 원전 수출 모멘텀과 국내 노후 발전소 교체 수요가 중장기 성장 스토리를 뒷받침합니다. 30,000원 회복이 단기 핵심 변수입니다." } },
+  { id: "6", title: "SK하이닉스 (000660) — 거래대금 1위 캔들 분석", category: "거래대금 상위", date: "2026-06-18",
+    summary: "당일 거래대금 2조 1,340억으로 코스피 1위. -1.62% 하락 마감. 250일 일봉 캔들 패턴과 주요 지지·저항 구간을 분석합니다.",
+    body: `<p>2026년 6월 18일 SK하이닉스는 전일 대비 3,200원(-1.62%) 하락한 194,500원으로 마감하며 거래대금 2조 1,340억으로 코스피 전체 1위를 기록했습니다.</p><h3>주요 기술적 구간</h3><ul><li><strong>1차 지지:</strong> 190,000원 — 5월 저점 밀집 구간</li><li><strong>2차 지지:</strong> 182,000원 — 200일 이동평균선 근방</li><li><strong>1차 저항:</strong> 200,000원 — 심리적 저항 + 전고점</li><li><strong>2차 저항:</strong> 210,000원 — 4월 고점</li></ul><h3>거래량 해석</h3><p>기관의 대량 매도로 거래대금이 급증했습니다. 외국인은 소폭 순매수를 유지했으나 기관 매도 압력을 상쇄하기에는 부족했습니다.</p><h3>단기 시나리오</h3><p>190,000원 지지 확인 여부가 핵심입니다. 지지 성공 시 반등 시도 가능, 이탈 시 182,000원까지 추가 하락 열린 구간입니다. HBM 수요 뉴스 흐름을 함께 모니터링할 필요가 있습니다.</p>`,
+    chartAlt: "SK하이닉스 250일 캔들 차트", tags: ["SK하이닉스", "반도체", "캔들분석"], author: "만조" },
+  { id: "7", title: "삼성전자 (005930) — 거래대금 2위 캔들 분석", category: "거래대금 상위", date: "2026-06-18",
+    summary: "거래대금 1조 8,920억으로 코스피 2위. +1.55% 상승 마감. 외국인 순매수 재개 신호와 함께 250일 봉차트 흐름을 점검합니다.",
+    body: `<p>삼성전자는 6월 18일 전일 대비 1,200원(+1.55%) 상승한 78,400원으로 마감했습니다. 거래대금은 1조 8,920억으로 당일 코스피 2위를 기록했습니다.</p><h3>주요 기술적 구간</h3><ul><li><strong>1차 지지:</strong> 76,000원 — 20일 이동평균선</li><li><strong>2차 지지:</strong> 73,000원 — 5월 저점 지지선</li><li><strong>1차 저항:</strong> 79,000원 — 단기 저항</li><li><strong>2차 저항:</strong> 82,500원 — 2월 고점</li></ul><h3>수급 특이사항</h3><p>외국인이 사흘 만에 순매수로 전환하며 약 1,800억 원어치를 순매수했습니다. 달러 약세 기대와 HBM 신규 수주 기대감이 복합적으로 작용했습니다.</p><h3>단기 시나리오</h3><p>79,000원 돌파 여부가 단기 방향성의 핵심 변수입니다. 돌파 시 82,500원까지의 상승 경로가 열립니다. 금리 재상승 시 다시 76,000원 지지선 테스트 가능성을 유념해야 합니다.</p>`,
+    chartAlt: "삼성전자 250일 캔들 차트", tags: ["삼성전자", "반도체", "캔들분석"], author: "만조" },
+  { id: "8", title: "POSCO홀딩스 (004360) — 거래대금 3위 캔들 분석", category: "거래대금 상위", date: "2026-06-18",
+    summary: "거래대금 1조 5,670억으로 코스피 3위. +3.91% 급등 마감. 인플레 둔화 수혜 소재주 대장 종목의 기술적 위치를 점검합니다.",
+    body: `<p>POSCO홀딩스는 6월 18일 전일 대비 15,500원(+3.91%) 급등한 412,000원으로 마감하며 거래대금 1조 5,670억으로 당일 코스피 3위를 기록했습니다.</p><h3>주요 기술적 구간</h3><ul><li><strong>1차 지지:</strong> 395,000원 — 돌파 전 저항선(이제 지지)</li><li><strong>2차 지지:</strong> 380,000원 — 60일 이동평균선</li><li><strong>1차 저항:</strong> 420,000원 — 직전 고점 저항</li><li><strong>2차 저항:</strong> 440,000원 — 2025년 11월 고점</li></ul><h3>상승 배경</h3><p>미국 CPI·PCE 동시 둔화 발표에 따른 금리 인하 기대감이 소재·철강 섹터로 집중됐습니다. 리튬·망간 등 2차전지 소재 부문의 실적 개선 기대도 함께 부각됐습니다.</p><h3>단기 시나리오</h3><p>급등 이후 단기 차익 실현 매물이 나올 수 있어 395,000원 지지 여부를 확인하는 것이 중요합니다. 420,000원 돌파 시 추가 상승 흐름 지속 가능합니다.</p>`,
+    chartAlt: "POSCO홀딩스 250일 캔들 차트", tags: ["POSCO홀딩스", "철강", "소재", "캔들분석"], author: "만조" },
 ];
 </script>
 <script>
@@ -192,6 +206,9 @@ const ARTICLES = [
     "5": { type:"line", color:"#B5914C", fill:"rgba(181,145,76,0.08)", label:"ISM Manufacturing PMI",
            threshold:50, points:[52,49,47,46,48,49,47,48,49,49.5,50,50.2], yMin:44, yMax:54,
            xLabels:["Jan","Feb","Mar","Apr","May","Jun"] },
+    "6": { type:"candle", seed:60001, startPrice:172000, n:250, label:"SK하이닉스 (000660) 일봉 250일" },
+    "7": { type:"candle", seed:70001, startPrice:68500,  n:250, label:"삼성전자 (005930) 일봉 250일" },
+    "8": { type:"candle", seed:80001, startPrice:358000, n:250, label:"POSCO홀딩스 (004360) 일봉 250일" },
   };
 
   function makeLineSVG(d, w, h) {
@@ -229,9 +246,62 @@ const ARTICLES = [
     </svg>`;
   }
 
+  function seededRNG(seed) {
+    let s = seed >>> 0;
+    return () => { s = (Math.imul(1664525, s) + 1013904223) >>> 0; return s / 0xFFFFFFFF; };
+  }
+
+  function genOHLC(seed, startPrice, n) {
+    const rng = seededRNG(seed);
+    const data = []; let price = startPrice;
+    for (let i = 0; i < n; i++) {
+      const drift = (rng() - 0.485) * 0.028;
+      const vol = rng() * 0.012 + 0.006;
+      const open = price;
+      const close = price * (1 + drift);
+      const hiExtra = rng() * vol; const loExtra = rng() * vol;
+      const high = Math.max(open, close) * (1 + hiExtra);
+      const low  = Math.min(open, close) * (1 - loExtra);
+      data.push([open, high, low, close]);
+      price = close;
+    }
+    return data;
+  }
+
+  function makeCandleSVG(ohlc, w, h, label) {
+    const pL=56, pR=16, pT=22, pB=26, cw=w-pL-pR, ch=h-pT-pB, n=ohlc.length;
+    const slot=cw/n, bW=Math.max(1, slot*0.65);
+    const yMin=Math.min(...ohlc.map(c=>c[2]))*0.997, yMax=Math.max(...ohlc.map(c=>c[1]))*1.003;
+    const py=v=>pT+ch-((v-yMin)/(yMax-yMin))*ch, cx=i=>pL+(i+0.5)*slot;
+    const candles=ohlc.map((c,i)=>{
+      const [o,hi,lo,cl]=c, isUp=cl>=o;
+      const color=isUp?'#C0392B':'#2470B3', x=cx(i).toFixed(1);
+      const bTop=py(Math.max(o,cl)), bBot=py(Math.min(o,cl)), bH=Math.max(1,bBot-bTop);
+      return `<line x1="${x}" y1="${py(hi).toFixed(1)}" x2="${x}" y2="${py(lo).toFixed(1)}" stroke="${color}" stroke-width="0.8"/>
+      <rect x="${(cx(i)-bW/2).toFixed(1)}" y="${bTop.toFixed(1)}" width="${bW.toFixed(1)}" height="${bH.toFixed(1)}" fill="${color}"/>`;
+    }).join('');
+    const grid=[0,0.25,0.5,0.75,1].map(f=>{
+      const val=yMin+(yMax-yMin)*f, y=py(val);
+      return `<line x1="${pL}" y1="${y.toFixed(1)}" x2="${w-pR}" y2="${y.toFixed(1)}" stroke="#ddd8ce" stroke-width="0.8"/>
+      <text x="${pL-4}" y="${(y+3.5).toFixed(1)}" text-anchor="end" font-size="9" fill="#9494A8">${(val/1000).toFixed(0)}K</text>`;
+    }).join('');
+    const step=Math.ceil(n/6);
+    const xlbls=Array.from({length:7},(_,i)=>{const idx=Math.min(i*step,n-1);return `<text x="${cx(idx).toFixed(1)}" y="${h-5}" text-anchor="middle" font-size="9" fill="#9494A8">${idx+1}일</text>`;}).join('');
+    const lbl=label?`<text x="${pL}" y="${pT-6}" font-size="10" fill="#5A5A72" font-weight="600">${label}</text>`:'';
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <rect width="${w}" height="${h}" fill="#EEE9DF"/>
+      ${grid}${candles}${xlbls}${lbl}
+    </svg>`;
+  }
+
   function getChartSVG(id, size) {
     const d=CHART_DATA[id]; if(!d) return '';
     const w=size==='detail'?700:400, h=size==='detail'?280:225;
+    if (d.type === 'candle') {
+      const showN = size==='detail' ? d.n : Math.min(60, d.n);
+      const ohlc = genOHLC(d.seed, d.startPrice, d.n).slice(-showN);
+      return makeCandleSVG(ohlc, w, h, size==='detail' ? d.label : '');
+    }
     return d.type==='bar2' ? makeBarSVG(d,w,h) : makeLineSVG(d,w,h);
   }
 
@@ -287,7 +357,7 @@ const ARTICLES = [
       </div>` : '';
     document.getElementById('article-content').innerHTML = `
       <div class="article-header">
-        <span class="tag tag-${article.category}">${article.category}</span>
+        <span class="tag tag-${article.category.replace(/\s+/g,'-')}">${article.category}</span>
         <h1>${article.title}</h1>
         <div class="article-meta">
           <span>📅 ${article.date}</span>
@@ -310,7 +380,7 @@ const ARTICLES = [
       <article class="article-card" onclick="location.href='article.html?id=${a.id}'">
         <div class="article-card-img">${getChartSVG(a.id,'card')}</div>
         <div class="article-card-body">
-          <span class="tag tag-${a.category}">${a.category}</span>
+          <span class="tag tag-${a.category.replace(/\s+/g,'-')}">${a.category}</span>
           <h3>${a.title}</h3>
           <p>${a.summary}</p>
           <div class="article-card-footer">
