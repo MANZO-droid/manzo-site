@@ -1,26 +1,290 @@
 {
   "current": {
-    "report_date": "2026-06-22",
-    "range_label": "2026-06-19(금) 05:00 ~ 2026-06-22(월) 04:59 KST",
-    "message_count": 284,
+    "report_date": "2026-06-26",
+    "range_label": "2026-06-26(금) 05:00 ~ 2026-06-27(토) 04:59 KST",
+    "message_count": 295,
     "channel_count": 13,
     "items": [
-      {"rank": 1, "name": "삼성전자", "type": "종목", "mention": 39, "channel": 8, "score": 55, "link": "https://t.me/HanaResearch/19699"},
-      {"rank": 2, "name": "SK하이닉스", "type": "종목", "mention": 27, "channel": 6, "score": 39, "link": "https://t.me/moneythemestock/61269"},
-      {"rank": 3, "name": "한울반도체", "type": "종목", "mention": 14, "channel": 3, "score": 20, "link": "https://t.me/characteristicstock/81462"},
-      {"rank": 4, "name": "삼성전기", "type": "종목", "mention": 8, "channel": 4, "score": 16, "link": "https://t.me/valjuman/31089"},
-      {"rank": 5, "name": "SK스퀘어", "type": "종목", "mention": 8, "channel": 3, "score": 14, "link": "https://t.me/moneythemestock/61267"},
-      {"rank": 6, "name": "삼성물산", "type": "종목", "mention": 8, "channel": 3, "score": 14, "link": "https://t.me/moneythemestock/61270"},
-      {"rank": 7, "name": "인텔", "type": "종목", "mention": 6, "channel": 4, "score": 14, "link": "https://t.me/characteristicstock/81423"},
-      {"rank": 8, "name": "LG에너지솔루션", "type": "종목", "mention": 5, "channel": 4, "score": 13, "link": "https://t.me/HanaResearch/19700"},
-      {"rank": 9, "name": "씨피시스템", "type": "종목", "mention": 9, "channel": 2, "score": 13, "link": "https://t.me/characteristicstock/81444"},
-      {"rank": 10, "name": "강동씨앤엘", "type": "종목", "mention": 8, "channel": 2, "score": 12, "link": "https://t.me/moneythemestock/61238"},
-      {"rank": 11, "name": "제이앤티씨", "type": "종목", "mention": 8, "channel": 2, "score": 12, "link": "https://t.me/characteristicstock/81452"},
-      {"rank": 12, "name": "메리츠제2호스팩", "type": "종목", "mention": 6, "channel": 2, "score": 10, "link": "https://t.me/characteristicstock/81460"},
-      {"rank": 13, "name": "삼성SDI", "type": "종목", "mention": 4, "channel": 3, "score": 10, "link": "https://t.me/HanaResearch/19700"},
-      {"rank": 14, "name": "현대차", "type": "종목", "mention": 4, "channel": 3, "score": 10, "link": "https://t.me/moneythemestock/61276"},
-      {"rank": 15, "name": "보해양조", "type": "종목", "mention": 7, "channel": 1, "score": 9, "link": "https://t.me/moneythemestock/61238"}
+      {
+        "rank": 1,
+        "name": "삼성전자",
+        "type": "종목",
+        "mention": 42,
+        "channel": 10,
+        "score": 62,
+        "link": "https://t.me/moneythemestock/61579"
+      },
+      {
+        "rank": 2,
+        "name": "SK하이닉스",
+        "type": "종목",
+        "mention": 35,
+        "channel": 8,
+        "score": 51,
+        "link": "https://t.me/moneythemestock/61579"
+      },
+      {
+        "rank": 3,
+        "name": "마이크론",
+        "type": "종목",
+        "mention": 17,
+        "channel": 5,
+        "score": 27,
+        "link": "https://t.me/moneythemestock/61579"
+      },
+      {
+        "rank": 4,
+        "name": "마이크RON",
+        "type": "종목",
+        "mention": 9,
+        "channel": 4,
+        "score": 17,
+        "link": "https://t.me/moneythemestock/61575"
+      },
+      {
+        "rank": 5,
+        "name": "삼성물산",
+        "type": "종목",
+        "mention": 6,
+        "channel": 5,
+        "score": 16,
+        "link": "https://t.me/valjuman/31272"
+      },
+      {
+        "rank": 6,
+        "name": "SK스퀘어",
+        "type": "종목",
+        "mention": 7,
+        "channel": 4,
+        "score": 15,
+        "link": "https://t.me/moneythemestock/61562"
+      },
+      {
+        "rank": 7,
+        "name": "SK",
+        "type": "종목",
+        "mention": 4,
+        "channel": 3,
+        "score": 10,
+        "link": "https://t.me/valjuman/31272"
+      },
+      {
+        "rank": 8,
+        "name": "SK텔레콤",
+        "type": "종목",
+        "mention": 4,
+        "channel": 3,
+        "score": 10,
+        "link": "https://t.me/moneythemestock/61571"
+      },
+      {
+        "rank": 9,
+        "name": "남화토건",
+        "type": "종목",
+        "mention": 6,
+        "channel": 2,
+        "score": 10,
+        "link": "https://t.me/moneythemestock/61541"
+      },
+      {
+        "rank": 10,
+        "name": "삼성중공업",
+        "type": "종목",
+        "mention": 4,
+        "channel": 3,
+        "score": 10,
+        "link": "https://t.me/valjuman/31259"
+      },
+      {
+        "rank": 11,
+        "name": "신세계",
+        "type": "종목",
+        "mention": 4,
+        "channel": 3,
+        "score": 10,
+        "link": "https://t.me/kmj_retailcosmetics/7958"
+      },
+      {
+        "rank": 12,
+        "name": "삼성SDI",
+        "type": "종목",
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
+        "link": "https://t.me/HanaResearch/19738"
+      },
+      {
+        "rank": 13,
+        "name": "한미반도체",
+        "type": "종목",
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
+        "link": "https://t.me/valjuman/31259"
+      },
+      {
+        "rank": 14,
+        "name": "한투 인버스은선물 ETN",
+        "type": "종목",
+        "mention": 7,
+        "channel": 1,
+        "score": 9,
+        "link": "https://t.me/moneythemestock/61555"
+      },
+      {
+        "rank": 15,
+        "name": "다스코",
+        "type": "종목",
+        "mention": 4,
+        "channel": 2,
+        "score": 8,
+        "link": "https://t.me/moneythemestock/61555"
+      }
     ]
   },
-  "history": []
+  "history": [
+    {
+      "report_date": "2026-06-22",
+      "range_label": "2026-06-19(금) 05:00 ~ 2026-06-22(월) 04:59 KST",
+      "message_count": 284,
+      "channel_count": 13,
+      "items": [
+        {
+          "rank": 1,
+          "name": "삼성전자",
+          "type": "종목",
+          "mention": 39,
+          "channel": 8,
+          "score": 55,
+          "link": "https://t.me/HanaResearch/19699"
+        },
+        {
+          "rank": 2,
+          "name": "SK하이닉스",
+          "type": "종목",
+          "mention": 27,
+          "channel": 6,
+          "score": 39,
+          "link": "https://t.me/moneythemestock/61269"
+        },
+        {
+          "rank": 3,
+          "name": "한울반도체",
+          "type": "종목",
+          "mention": 14,
+          "channel": 3,
+          "score": 20,
+          "link": "https://t.me/characteristicstock/81462"
+        },
+        {
+          "rank": 4,
+          "name": "삼성전기",
+          "type": "종목",
+          "mention": 8,
+          "channel": 4,
+          "score": 16,
+          "link": "https://t.me/valjuman/31089"
+        },
+        {
+          "rank": 5,
+          "name": "SK스퀘어",
+          "type": "종목",
+          "mention": 8,
+          "channel": 3,
+          "score": 14,
+          "link": "https://t.me/moneythemestock/61267"
+        },
+        {
+          "rank": 6,
+          "name": "삼성물산",
+          "type": "종목",
+          "mention": 8,
+          "channel": 3,
+          "score": 14,
+          "link": "https://t.me/moneythemestock/61270"
+        },
+        {
+          "rank": 7,
+          "name": "인텔",
+          "type": "종목",
+          "mention": 6,
+          "channel": 4,
+          "score": 14,
+          "link": "https://t.me/characteristicstock/81423"
+        },
+        {
+          "rank": 8,
+          "name": "LG에너지솔루션",
+          "type": "종목",
+          "mention": 5,
+          "channel": 4,
+          "score": 13,
+          "link": "https://t.me/HanaResearch/19700"
+        },
+        {
+          "rank": 9,
+          "name": "씨피시스템",
+          "type": "종목",
+          "mention": 9,
+          "channel": 2,
+          "score": 13,
+          "link": "https://t.me/characteristicstock/81444"
+        },
+        {
+          "rank": 10,
+          "name": "강동씨앤엘",
+          "type": "종목",
+          "mention": 8,
+          "channel": 2,
+          "score": 12,
+          "link": "https://t.me/moneythemestock/61238"
+        },
+        {
+          "rank": 11,
+          "name": "제이앤티씨",
+          "type": "종목",
+          "mention": 8,
+          "channel": 2,
+          "score": 12,
+          "link": "https://t.me/characteristicstock/81452"
+        },
+        {
+          "rank": 12,
+          "name": "메리츠제2호스팩",
+          "type": "종목",
+          "mention": 6,
+          "channel": 2,
+          "score": 10,
+          "link": "https://t.me/characteristicstock/81460"
+        },
+        {
+          "rank": 13,
+          "name": "삼성SDI",
+          "type": "종목",
+          "mention": 4,
+          "channel": 3,
+          "score": 10,
+          "link": "https://t.me/HanaResearch/19700"
+        },
+        {
+          "rank": 14,
+          "name": "현대차",
+          "type": "종목",
+          "mention": 4,
+          "channel": 3,
+          "score": 10,
+          "link": "https://t.me/moneythemestock/61276"
+        },
+        {
+          "rank": 15,
+          "name": "보해양조",
+          "type": "종목",
+          "mention": 7,
+          "channel": 1,
+          "score": 9,
+          "link": "https://t.me/moneythemestock/61238"
+        }
+      ]
+    }
+  ]
 }
