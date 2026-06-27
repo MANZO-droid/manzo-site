@@ -120,6 +120,15 @@ section { padding: 72px 0; }
 .ms-num { font-size: 13px; color: var(--text-secondary); min-width: 24px; text-align: right; }
 .ms-score { font-weight: 700; color: var(--text-primary); }
 .ms-empty { text-align: center; padding: 48px; color: var(--text-muted); font-size: 15px; }
+.ms-history { margin-top: 56px; }
+.ms-history-title { font-size: 16px; font-weight: 700; color: var(--text-secondary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1.5px solid var(--border); }
+.ms-history-item { margin-bottom: 32px; }
+.ms-history-date { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.ms-history-date::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.ms-history-mini { display: flex; flex-wrap: wrap; gap: 8px; }
+.ms-chip { display: inline-flex; align-items: center; gap: 5px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 13px; color: var(--text-primary); }
+.ms-chip-rank { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.ms-chip-score { font-size: 11px; color: var(--accent); font-weight: 600; }
 .stock-badge { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; flex-wrap: wrap; }
 .stock-badge-label { color: var(--text-muted); font-size: 11px; }
 .stock-badge-name { font-weight: 700; color: var(--text-primary); }
@@ -235,6 +244,11 @@ section { padding: 72px 0; }
           <tr><td colspan="6" class="ms-empty">데이터를 불러오는 중입니다...</td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="ms-history" id="ms-history" style="display:none;">
+      <div class="ms-history-title">과거 리포트</div>
+      <div id="ms-history-list"></div>
     </div>
   </div>
 </section>
@@ -538,16 +552,9 @@ const NEWSLETTERS = [
   var currentDate = null;
   var POLL_INTERVAL = 10 * 60 * 1000; // 10분
 
-  function renderMarketScope(data) {
-    currentDate = data.report_date || null;
-    document.getElementById('ms-range').textContent = '수집 범위: ' + data.range_label;
-    document.getElementById('ms-msg').textContent = (data.message_count || 0).toLocaleString() + '개';
-    document.getElementById('ms-ch').textContent = (data.channel_count || 0) + '개';
-    document.getElementById('ms-date').textContent = data.report_date || '—';
-
-    var items = data.items || [];
-    if (!items.length) {
-      document.getElementById('ms-tbody').innerHTML =
+  function renderTable(items, tbodyId) {
+    if (!items || !items.length) {
+      document.getElementById(tbodyId).innerHTML =
         '<tr><td colspan="6" class="ms-empty">아직 데이터가 없습니다.</td></tr>';
       return;
     }
@@ -568,7 +575,35 @@ const NEWSLETTERS = [
         '<td style="text-align:right;" class="ms-score">' + r.score + '</td>' +
         '</tr>';
     }).join('');
-    document.getElementById('ms-tbody').innerHTML = html;
+    document.getElementById(tbodyId).innerHTML = html;
+  }
+
+  function renderHistory(history) {
+    if (!history || !history.length) return;
+    var el = document.getElementById('ms-history');
+    var list = document.getElementById('ms-history-list');
+    el.style.display = '';
+    list.innerHTML = history.map(function (h) {
+      var chips = (h.items || []).slice(0, 10).map(function (r) {
+        return '<span class="ms-chip"><span class="ms-chip-rank">' + r.rank + '</span>' +
+          r.name + '<span class="ms-chip-score">' + r.score + 'pt</span></span>';
+      }).join('');
+      return '<div class="ms-history-item">' +
+        '<div class="ms-history-date">' + (h.report_date || '') + ' &nbsp;' + (h.range_label || '') + '</div>' +
+        '<div class="ms-history-mini">' + chips + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function renderMarketScope(data) {
+    var current = data.current || data; // 구형 단일 구조 호환
+    currentDate = current.report_date || null;
+    document.getElementById('ms-range').textContent = '수집 범위: ' + (current.range_label || '');
+    document.getElementById('ms-msg').textContent = (current.message_count || 0).toLocaleString() + '개';
+    document.getElementById('ms-ch').textContent = (current.channel_count || 0) + '개';
+    document.getElementById('ms-date').textContent = current.report_date || '—';
+    renderTable(current.items, 'ms-tbody');
+    renderHistory(data.history);
   }
 
   function fetchData() {
