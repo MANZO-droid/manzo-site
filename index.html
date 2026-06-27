@@ -96,6 +96,30 @@ section { padding: 72px 0; }
 .btn-white:hover { opacity: 0.9; }
 .subscribe-done { display: none; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,0.15); border-radius: 28px; padding: 16px 28px; font-size: 16px; font-weight: 600; color: #fff; }
 .subscribe-done.show { display: flex; }
+.ms-section { background: var(--bg); }
+.ms-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+.ms-stats { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+.ms-stat { flex: 1; min-width: 120px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; }
+.ms-stat-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.ms-stat-val { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.ms-table-wrap { overflow-x: auto; }
+.ms-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ms-table th { padding: 10px 14px; text-align: left; font-size: 12px; font-weight: 600; color: var(--text-muted); border-bottom: 1.5px solid var(--border); white-space: nowrap; }
+.ms-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); vertical-align: middle; }
+.ms-table tr:last-child td { border-bottom: none; }
+.ms-table tr:hover td { background: var(--bg-hero); }
+.ms-rank { font-weight: 700; color: var(--text-muted); font-size: 13px; }
+.ms-rank.top { color: var(--accent); }
+.ms-name { font-weight: 600; }
+.ms-name a { color: var(--text-primary); }
+.ms-name a:hover { color: var(--accent); }
+.ms-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 8px; background: var(--accent-light); color: var(--accent); }
+.ms-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.ms-bar-bg { flex: 1; height: 6px; background: var(--bg-hero); border-radius: 3px; min-width: 60px; }
+.ms-bar-fill { height: 6px; border-radius: 3px; background: var(--accent); }
+.ms-num { font-size: 13px; color: var(--text-secondary); min-width: 24px; text-align: right; }
+.ms-score { font-weight: 700; color: var(--text-primary); }
+.ms-empty { text-align: center; padding: 48px; color: var(--text-muted); font-size: 15px; }
 .stock-badge { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; flex-wrap: wrap; }
 .stock-badge-label { color: var(--text-muted); font-size: 11px; }
 .stock-badge-name { font-weight: 700; color: var(--text-primary); }
@@ -133,6 +157,7 @@ section { padding: 72px 0; }
     <ul class="nav-links">
       <li><a href="#articles" class="active">분석 글</a></li>
       <li><a href="archive.html">뉴스레터</a></li>
+      <li><a href="#market-scope">마켓 스코프</a></li>
       <li><a href="#author">필자 소개</a></li>
       <li><a href="#subscribe" class="nav-cta">구독하기</a></li>
     </ul>
@@ -177,6 +202,40 @@ section { padding: 72px 0; }
     </div>
 
     <div class="articles-grid" id="articles-grid"></div>
+  </div>
+</section>
+
+<!-- MARKET SCOPE -->
+<section class="ms-section" id="market-scope">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Market Scope</div>
+      <h2 class="section-title">마켓 스코프</h2>
+      <p class="section-subtitle">텔레그램 채널·뉴스·증권사 리포트에서 가장 많이 언급된 종목과 이슈를 매일 포착합니다.</p>
+    </div>
+    <p class="ms-meta" id="ms-range">데이터 로딩 중...</p>
+    <div class="ms-stats">
+      <div class="ms-stat"><div class="ms-stat-label">수집 메시지</div><div class="ms-stat-val" id="ms-msg">—</div></div>
+      <div class="ms-stat"><div class="ms-stat-label">모니터링 채널</div><div class="ms-stat-val" id="ms-ch">—</div></div>
+      <div class="ms-stat"><div class="ms-stat-label">기준일</div><div class="ms-stat-val" id="ms-date">—</div></div>
+    </div>
+    <div class="ms-table-wrap">
+      <table class="ms-table">
+        <thead>
+          <tr>
+            <th style="width:48px;">순위</th>
+            <th>종목명</th>
+            <th style="width:60px;">유형</th>
+            <th style="width:160px;">언급 수</th>
+            <th style="width:60px; text-align:right;">채널</th>
+            <th style="width:60px; text-align:right;">점수</th>
+          </tr>
+        </thead>
+        <tbody id="ms-tbody">
+          <tr><td colspan="6" class="ms-empty">데이터를 불러오는 중입니다...</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -471,6 +530,55 @@ const NEWSLETTERS = [
   // ---------- Init ----------
   renderArticles('전체');
   applySubscribeState();
+</script>
+
+<script>
+// ---------- Market Scope ----------
+(function () {
+  function renderMarketScope(data) {
+    document.getElementById('ms-range').textContent = '수집 범위: ' + data.range_label;
+    document.getElementById('ms-msg').textContent = (data.message_count || 0).toLocaleString() + '개';
+    document.getElementById('ms-ch').textContent = (data.channel_count || 0) + '개';
+    document.getElementById('ms-date').textContent = data.report_date || '—';
+
+    var items = data.items || [];
+    if (!items.length) {
+      document.getElementById('ms-tbody').innerHTML =
+        '<tr><td colspan="6" class="ms-empty">아직 데이터가 없습니다.</td></tr>';
+      return;
+    }
+    var maxMention = items[0].mention || 1;
+    var html = items.map(function (r) {
+      var isTop = r.rank <= 3;
+      var pct = Math.round((r.mention / maxMention) * 100);
+      var rankClass = 'ms-rank' + (isTop ? ' top' : '');
+      var nameCell = r.link
+        ? '<a href="' + r.link + '" target="_blank" rel="noopener">' + r.name + '</a>'
+        : r.name;
+      return '<tr>' +
+        '<td class="' + rankClass + '">' + r.rank + '</td>' +
+        '<td class="ms-name">' + nameCell + '</td>' +
+        '<td><span class="ms-badge">' + (r.type || '종목') + '</span></td>' +
+        '<td><div class="ms-bar-wrap"><div class="ms-bar-bg"><div class="ms-bar-fill" style="width:' + pct + '%"></div></div><span class="ms-num">' + r.mention + '</span></div></td>' +
+        '<td style="text-align:right;">' + r.channel + '</td>' +
+        '<td style="text-align:right;" class="ms-score">' + r.score + '</td>' +
+        '</tr>';
+    }).join('');
+    document.getElementById('ms-tbody').innerHTML = html;
+  }
+
+  fetch('market-scope-data.json?v=' + Date.now())
+    .then(function (res) {
+      if (!res.ok) throw new Error('no data');
+      return res.json();
+    })
+    .then(renderMarketScope)
+    .catch(function () {
+      document.getElementById('ms-range').textContent = '데이터가 아직 준비되지 않았습니다. 파이프라인 실행 후 자동 업데이트됩니다.';
+      document.getElementById('ms-tbody').innerHTML =
+        '<tr><td colspan="6" class="ms-empty">데이터 없음 — 다음 리포트 생성 후 표시됩니다.</td></tr>';
+    });
+})();
 </script>
 </body>
 </html>
