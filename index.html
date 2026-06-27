@@ -535,7 +535,11 @@ const NEWSLETTERS = [
 <script>
 // ---------- Market Scope ----------
 (function () {
+  var currentDate = null;
+  var POLL_INTERVAL = 10 * 60 * 1000; // 10분
+
   function renderMarketScope(data) {
+    currentDate = data.report_date || null;
     document.getElementById('ms-range').textContent = '수집 범위: ' + data.range_label;
     document.getElementById('ms-msg').textContent = (data.message_count || 0).toLocaleString() + '개';
     document.getElementById('ms-ch').textContent = (data.channel_count || 0) + '개';
@@ -567,17 +571,35 @@ const NEWSLETTERS = [
     document.getElementById('ms-tbody').innerHTML = html;
   }
 
-  fetch('market-scope-data.json?v=' + Date.now())
-    .then(function (res) {
-      if (!res.ok) throw new Error('no data');
-      return res.json();
-    })
+  function fetchData() {
+    return fetch('market-scope-data.json?v=' + Date.now())
+      .then(function (res) {
+        if (!res.ok) throw new Error('no data');
+        return res.json();
+      });
+  }
+
+  function poll() {
+    fetchData()
+      .then(function (data) {
+        if (data.report_date && data.report_date !== currentDate) {
+          renderMarketScope(data);
+        }
+      })
+      .catch(function () {});
+  }
+
+  // 최초 로드
+  fetchData()
     .then(renderMarketScope)
     .catch(function () {
       document.getElementById('ms-range').textContent = '데이터가 아직 준비되지 않았습니다. 파이프라인 실행 후 자동 업데이트됩니다.';
       document.getElementById('ms-tbody').innerHTML =
         '<tr><td colspan="6" class="ms-empty">데이터 없음 — 다음 리포트 생성 후 표시됩니다.</td></tr>';
     });
+
+  // 10분마다 새 데이터 확인 후 변경 시에만 갱신
+  setInterval(poll, POLL_INTERVAL);
 })();
 </script>
 </body>
