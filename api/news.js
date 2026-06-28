@@ -11,9 +11,11 @@ module.exports = async (req, res) => {
 
   const rssUrl = decodeURIComponent(rawUrl);
 
+  const debug = req.query && req.query.debug === '1';
   try {
     const xml = await fetchWithRedirect(rssUrl, 3);
     const articles = parseRSS(xml);
+    if (debug) return res.json({ ok: true, articles, _raw: xml.slice(0, 800) });
     res.json({ ok: true, articles });
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
