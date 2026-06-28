@@ -123,17 +123,24 @@ function parseRSS(xml) {
   let m;
   while ((m = itemRe.exec(xml)) !== null && articles.length < 3) {
     const block = m[1];
-    const title = stripHtml(getTag(block, 'title'));
+    // 출처명 추출 (Google News RSS의 <source> 태그)
+    const source = getTag(block, 'source');
+    // 제목 끝 " - 출처명" 제거
+    let title = stripHtml(getTag(block, 'title'));
+    if (source) title = title.replace(new RegExp('\\s*-\\s*' + source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*$'), '').trim();
     const link =
       getTag(block, 'link') ||
       (block.match(/<link[^>]+href=["']([^"']+)["']/i) || [])[1] ||
       getTag(block, 'guid') ||
       '';
-    const summary = stripHtml(
+    // Google News description은 제목 반복 HTML이므로 실제 요약이 없으면 빈 문자열 처리
+    const rawSummary = stripHtml(
       getTag(block, 'description') ||
       getTag(block, 'content') ||
       getTag(block, 'summary') || ''
-    ).slice(0, 140);
+    );
+    const titleStart = title.replace(/\.\.\.$/,'').slice(0, 15);
+    const summary = (!rawSummary || rawSummary.startsWith(titleStart)) ? '' : rawSummary.slice(0, 140);
     const pubDate =
       getTag(block, 'pubDate') ||
       getTag(block, 'published') ||
