@@ -155,6 +155,24 @@ section { padding: 72px 0; }
 .ms-chip-rank { display: none; }
 .ms-chip-score { display: none; }
 .stock-badge { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; flex-wrap: wrap; }
+/* ── 뉴스 헤드라인 섹션 ── */
+.news-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 0; }
+.news-tabs { display: flex; gap: 8px; margin-bottom: 32px; }
+.news-tab { background: none; border: 1.5px solid var(--border); border-radius: 20px; padding: 7px 20px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text-muted); font-family: var(--font); transition: all 0.15s; }
+.news-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.news-source-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.news-source-header { padding: 12px 16px 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.news-source-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.news-source-name { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.news-source-loading { padding: 20px 16px; color: var(--text-muted); font-size: 13px; }
+.news-article { padding: 14px 16px; border-bottom: 1px solid var(--border); display: block; text-decoration: none; color: inherit; transition: background 0.12s; }
+.news-article:last-child { border-bottom: none; }
+.news-article:hover { background: #f7f5f0; }
+.news-article-title { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.45; margin-bottom: 5px; }
+.news-article-summary { font-size: 12px; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.news-article-date { font-size: 11px; color: #aaa; margin-top: 5px; }
+.news-error { padding: 16px; font-size: 12px; color: #aaa; }
 .stock-badge-label { color: var(--text-muted); font-size: 11px; }
 .stock-badge-name { font-weight: 700; color: var(--text-primary); }
 .stock-up { color: #C0392B; font-weight: 700; }
@@ -309,6 +327,23 @@ section { padding: 72px 0; }
       <div class="ms-history-title">과거 리포트</div>
       <div class="ms-history-list" id="ms-history-list"></div>
     </div>
+  </div>
+</section>
+
+<!-- NEWS HEADLINES -->
+<section class="news-section" id="news-headlines">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">News</div>
+      <h2 class="section-title">최신 경제 헤드라인</h2>
+      <p class="section-subtitle">주요 경제 신문의 최신 기사를 한눈에 확인하세요.</p>
+    </div>
+    <div class="news-tabs">
+      <button class="news-tab active" data-tab="kr" onclick="switchNewsTab('kr')">국내 언론</button>
+      <button class="news-tab" data-tab="intl" onclick="switchNewsTab('intl')">해외 언론</button>
+    </div>
+    <div id="news-grid-kr" class="news-grid"></div>
+    <div id="news-grid-intl" class="news-grid" style="display:none;"></div>
   </div>
 </section>
 
@@ -968,6 +1003,130 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     el.textContent = msg;
     el.style.display = 'block';
   }
+})();
+</script>
+
+<script>
+// ── 뉴스 헤드라인 ──
+(function () {
+  var PROXY = 'https://api.allorigins.win/get?url=';
+
+  var SOURCES_KR = [
+    { name: '한국경제', color: '#1565c0', rss: 'https://www.hankyung.com/feed/all-news' },
+    { name: '매일경제', color: '#c62828', rss: 'https://www.mk.co.kr/rss/30000001/' },
+    { name: '서울경제', color: '#2e7d32', rss: 'https://www.sedaily.com/RSS' },
+    { name: '머니투데이', color: '#6a1b9a', rss: 'https://news.mt.co.kr/mtRss/mtArticleRss.xml' },
+    { name: '이데일리', color: '#e65100', rss: 'https://www.edaily.co.kr/rss/rssFeeds.xml' },
+    { name: '헤럴드경제', color: '#00695c', rss: 'https://biz.heraldcorp.com/rss/' },
+    { name: '파이낸셜뉴스', color: '#4527a0', rss: 'https://www.fnnews.com/rss/fn_realnews_economy.xml' },
+    { name: '아시아경제', color: '#558b2f', rss: 'https://www.asiae.co.kr/rss/all.htm' },
+  ];
+
+  var SOURCES_INTL = [
+    { name: 'Wall Street Journal', color: '#000000', rss: 'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml' },
+    { name: 'Financial Times', color: '#c0392b', rss: 'https://www.ft.com/rss/home' },
+    { name: 'Bloomberg', color: '#1565c0', rss: 'https://feeds.bloomberg.com/markets/news.rss' },
+    { name: 'Forbes', color: '#c0392b', rss: 'https://www.forbes.com/real-time/feed2/' },
+    { name: "Barron's", color: '#2c3e50', rss: 'https://www.barrons.com/xml/rss/3_7510.xml' },
+    { name: "Investor's Business Daily", color: '#1a5276', rss: 'https://www.investors.com/category/market-trend/stock-market-today/feed/' },
+  ];
+
+  function stripHtml(html) {
+    return (html || '').replace(/<[^>]*>/g, '').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g,' ').trim();
+  }
+
+  function formatDate(str) {
+    if (!str) return '';
+    var d = new Date(str);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function fetchRSS(source) {
+    var url = PROXY + encodeURIComponent(source.rss);
+    return fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var parser = new DOMParser();
+        var xml = parser.parseFromString(data.contents, 'text/xml');
+        var items = Array.from(xml.querySelectorAll('item')).slice(0, 3);
+        return items.map(function (item) {
+          var linkEl = item.querySelector('link');
+          var link = linkEl ? (linkEl.textContent || linkEl.nextSibling && linkEl.nextSibling.nodeValue || '') : '';
+          if (!link) link = (item.querySelector('guid') || {}).textContent || '';
+          return {
+            title: stripHtml((item.querySelector('title') || {}).textContent || ''),
+            link: link.trim(),
+            summary: stripHtml((item.querySelector('description') || {}).textContent || '').slice(0, 140),
+            date: (item.querySelector('pubDate') || {}).textContent || '',
+          };
+        }).filter(function (a) { return a.title; });
+      });
+  }
+
+  function renderCard(source, articles) {
+    var articlesHtml = articles.length
+      ? articles.map(function (a) {
+          return '<a class="news-article" href="' + a.link + '" target="_blank" rel="noopener">' +
+            '<div class="news-article-title">' + a.title + '</div>' +
+            (a.summary ? '<div class="news-article-summary">' + a.summary + '</div>' : '') +
+            (a.date ? '<div class="news-article-date">' + formatDate(a.date) + '</div>' : '') +
+            '</a>';
+        }).join('')
+      : '<div class="news-error">기사를 불러오지 못했습니다.</div>';
+
+    return '<div class="news-source-card">' +
+      '<div class="news-source-header">' +
+        '<div class="news-source-dot" style="background:' + source.color + ';"></div>' +
+        '<span class="news-source-name">' + source.name + '</span>' +
+      '</div>' +
+      articlesHtml +
+      '</div>';
+  }
+
+  function loadSources(sources, gridId) {
+    var grid = document.getElementById(gridId);
+    // 로딩 플레이스홀더
+    grid.innerHTML = sources.map(function (s) {
+      return '<div class="news-source-card">' +
+        '<div class="news-source-header">' +
+          '<div class="news-source-dot" style="background:' + s.color + ';"></div>' +
+          '<span class="news-source-name">' + s.name + '</span>' +
+        '</div>' +
+        '<div class="news-source-loading">불러오는 중...</div>' +
+        '</div>';
+    }).join('');
+
+    sources.forEach(function (source, i) {
+      fetchRSS(source)
+        .then(function (articles) {
+          grid.children[i].outerHTML = renderCard(source, articles);
+        })
+        .catch(function () {
+          grid.children[i].outerHTML = renderCard(source, []);
+        });
+    });
+  }
+
+  window.switchNewsTab = function (tab) {
+    document.querySelectorAll('.news-tab').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.tab === tab);
+    });
+    document.getElementById('news-grid-kr').style.display = tab === 'kr' ? '' : 'none';
+    document.getElementById('news-grid-intl').style.display = tab === 'intl' ? '' : 'none';
+  };
+
+  // 국내 바로 로드, 해외는 탭 전환 시 처음 1회만 로드
+  loadSources(SOURCES_KR, 'news-grid-kr');
+  var intlLoaded = false;
+  var origSwitch = window.switchNewsTab;
+  window.switchNewsTab = function (tab) {
+    origSwitch(tab);
+    if (tab === 'intl' && !intlLoaded) {
+      intlLoaded = true;
+      loadSources(SOURCES_INTL, 'news-grid-intl');
+    }
+  };
 })();
 </script>
 
