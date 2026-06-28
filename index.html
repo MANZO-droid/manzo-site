@@ -1009,7 +1009,10 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
 <script>
 // ── 뉴스 헤드라인 ──
 (function () {
-  var RSS2JSON = 'https://api.rss2json.com/v1/api.json?count=3&rss_url=';
+  var PROXIES = [
+    function(u){ return 'https://corsproxy.io/?' + encodeURIComponent(u); },
+    function(u){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
+  ];
 
   var SOURCES_KR = [
     { name: '한국경제', color: '#1565c0', rss: 'https://www.hankyung.com/feed/all-news' },
@@ -1019,7 +1022,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     { name: '이데일리', color: '#e65100', rss: 'https://www.edaily.co.kr/rss/rssFeeds.xml' },
     { name: '헤럴드경제', color: '#00695c', rss: 'http://biz.heraldcorp.com/rss/' },
     { name: '파이낸셜뉴스', color: '#4527a0', rss: 'https://www.fnnews.com/rss/fn_realnews_economy.xml' },
-    { name: '아시아경제', color: '#558b2f', rss: 'https://cm.asiae.co.kr/section/rss/all.htm' },
+    { name: '아시아경제', color: '#558b2f', rss: 'https://www.asiae.co.kr/rss/all.htm' },
   ];
 
   var SOURCES_INTL = [
@@ -1032,7 +1035,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   ];
 
   function stripHtml(html) {
-    return (html || '').replace(/<[^>]*>/g, '').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g,' ').trim();
+    return (html || '').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g,' ').trim();
   }
 
   function formatDate(str) {
@@ -1042,21 +1045,50 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     return d.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
   }
 
-  function fetchRSS(source) {
-    var url = RSS2JSON + encodeURIComponent(source.rss);
-    return fetch(url)
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data.status !== 'ok' || !data.items) return [];
-        return data.items.slice(0, 3).map(function (item) {
-          return {
-            title: stripHtml(item.title || ''),
-            link: item.link || item.guid || '',
-            summary: stripHtml(item.description || item.content || '').slice(0, 140),
-            date: item.pubDate || '',
-          };
-        }).filter(function (a) { return a.title; });
+  function parseXML(text) {
+    var parser = new DOMParser();
+    var xml = parser.parseFromString(text, 'text/xml');
+    var items = Array.from(xml.querySelectorAll('item')).slice(0, 3);
+    return items.map(function(item) {
+      // <link> in RSS is often a text node after the tag, not a child
+      var link = '';
+      var linkEl = item.querySelector('link');
+      if (linkEl) {
+        link = linkEl.textContent.trim();
+        if (!link && linkEl.nextSibling) link = (linkEl.nextSibling.nodeValue || '').trim();
+      }
+      if (!link) {
+        var guid = item.querySelector('guid');
+        if (guid) link = guid.textContent.trim();
+      }
+      return {
+        title: stripHtml((item.querySelector('title') || {}).textContent || ''),
+        link: link,
+        summary: stripHtml((item.querySelector('description') || {}).textContent || '').slice(0, 140),
+        date: ((item.querySelector('pubDate') || {}).textContent || ''),
+      };
+    }).filter(function(a) { return a.title && a.link; });
+  }
+
+  function tryFetch(rssUrl, proxyIndex) {
+    if (proxyIndex >= PROXIES.length) return Promise.reject(new Error('all proxies failed'));
+    return fetch(PROXIES[proxyIndex](rssUrl))
+      .then(function(r) {
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.text();
+      })
+      .then(function(text) {
+        var articles = parseXML(text);
+        if (!articles.length) throw new Error('no items');
+        return articles;
+      })
+      .catch(function() {
+        return tryFetch(rssUrl, proxyIndex + 1);
       });
+  }
+
+  function fetchRSS(source) {
+    return tryFetch(source.rss, 0);
   }
 
   function renderCard(source, articles) {
