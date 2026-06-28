@@ -1,472 +1,127 @@
 {
   "current": {
-    "report_date": "2026-06-25",
-    "range_label": "2026-06-27(토) 05:00 ~ 2026-06-28(일) 04:59 KST",
-    "message_count": 285,
+    "report_date": "2026-06-29",
+    "range_label": "2026-06-26(금) 05:00 ~ 2026-06-29(월) 04:59 KST",
+    "message_count": 53,
     "channel_count": 13,
     "items": [
       {
         "rank": 1,
-        "name": "삼성전자",
+        "name": "SK하이닉스",
         "type": "종목",
-        "mention": 40,
-        "channel": 7,
-        "score": 54,
+        "mention": 11,
+        "channel": 4,
+        "score": 19,
         "articles": [
           {
-            "title": "삼성전자, 3년간 80조원 자사주 매입 계획  https://m.stock.naver.com/investme...",
-            "summary": "삼성전자, 3년간 80조원 자사주 매입 계획  https://m.stock.naver.com/investment/news/flashnews/020/0003729336  [관련 종목] [삼성전자](https://m.s...",
-            "url": "https://t.me/moneythemestock/61492"
+            "title": "SK하이닉스, 다음 달 나스닥 ADR 상장 예정  https://m.stock.naver.com/invest...",
+            "summary": "SK하이닉스, 다음 달 나스닥 ADR 상장 예정  https://m.stock.naver.com/investment/news/mainnews/025/0003533723  [관련 종목] [SK하이닉스](https://...",
+            "url": "https://t.me/moneythemestock/61704"
           },
           {
-            "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
-            "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
-            "url": "https://t.me/moneythemestock/61489"
+            "title": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난...",
+            "summary": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난주 시장 상황 ** · 지난주(6/22~26) 코스피는 사상 처음 한 주에 서킷브레이커가 두 차례 발동되는 ...",
+            "url": "https://t.me/valjuman/31317"
           },
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
+            "title": "주간 증시, 韓 수출입지표 및 美 고용보고서 발표에 주목  https://m.stock.naver.com/i...",
+            "summary": "주간 증시, 韓 수출입지표 및 美 고용보고서 발표에 주목  https://m.stock.naver.com/investment/news/flashnews/014/0005540640  [관련 종목] [삼성전자](http...",
+            "url": "https://t.me/moneythemestock/61698"
           },
           {
-            "title": "삼전닉스도 숫자로 오른건데.... 숫자 나오는 회사는 결국오름 이제 한달 이면 코스닥도 오를꺼라 생각중......",
-            "summary": "삼전닉스도 숫자로 오른건데.... 숫자 나오는 회사는 결국오름 이제 한달 이면 코스닥도 오를꺼라 생각중...숫자 나오는 회사 댓글주세요",
-            "url": "https://t.me/YeouidoStory2/114061"
+            "title": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJL...",
+            "summary": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJLKDn  반도체/소부장(Overweight): 스마트폰 수요 우려는 예견된 수순  ■ 데이터 포인트 및 주간...",
+            "url": "https://t.me/HanaResearch/19758"
           },
           {
-            "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
-            "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
-            "url": "https://t.me/moneythemestock/61470"
+            "title": "삼성전자·SK하이닉스 2분기 실적 기대치 상향 조정  https://m.stock.naver.com/inve...",
+            "summary": "삼성전자·SK하이닉스 2분기 실적 기대치 상향 조정  https://m.stock.naver.com/investment/news/mainnews/014/0005540522  [관련 종목] [삼성전자](https://...",
+            "url": "https://t.me/moneythemestock/61696"
           },
           {
-            "title": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/inve...",
-            "summary": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/investment/news/mainnews/008/0005376708  [관련 종목] [삼성물산](https://...",
-            "url": "https://t.me/moneythemestock/61469"
+            "title": "SK하이닉스, 연일 신고가 경신  https://m.stock.naver.com/investment/news...",
+            "summary": "SK하이닉스, 연일 신고가 경신  https://m.stock.naver.com/investment/news/mainnews/018/0006316970  [관련 종목] [SK하이닉스](https://m.stock.n...",
+            "url": "https://t.me/moneythemestock/61694"
           },
           {
-            "title": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/invest...",
-            "summary": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/investment/news/flashnews/009/0005698329  [관련 종목] [삼성전자](https://m...",
-            "url": "https://t.me/moneythemestock/61468"
+            "title": "금융당국, 단일종목 레버리지 규제 강화 검토함  https://m.stock.naver.com/investm...",
+            "summary": "금융당국, 단일종목 레버리지 규제 강화 검토함  https://m.stock.naver.com/investment/news/mainnews/018/0006317029  [관련 종목] [삼성전자](https://m.s...",
+            "url": "https://t.me/moneythemestock/61693"
           },
           {
-            "title": "셀레믹스, 100억원 규모 제3자배정 유상증자 결정  https://m.stock.naver.com/inve...",
-            "summary": "셀레믹스, 100억원 규모 제3자배정 유상증자 결정  https://m.stock.naver.com/investment/news/flashnews/277/0005780992  [관련 종목] [셀레믹스](https:/...",
-            "url": "https://t.me/moneythemestock/61464"
-          },
-          {
-            "title": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.c...",
-            "summary": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.com/investment/news/flashnews/018/0006314002  [관련 종목] [삼성전자](...",
-            "url": "https://t.me/moneythemestock/61460"
-          },
-          {
-            "title": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.k...",
-            "summary": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.kr/news/articleView.html?idxno=844922",
-            "url": "https://t.me/characteristicstock/81599"
-          },
-          {
-            "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
-            "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
-            "url": "https://t.me/valjuman/31213"
-          },
-          {
-            "title": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는...",
-            "summary": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는 29일 청와대 영빈관에서 열리는 '국토공간 대전환(지방균형국가)' 민관 합동회의를 계기로 호남권 전공정 팹...",
-            "url": "https://t.me/corevalue/45730"
-          },
-          {
-            "title": "삼성전자는 안간다고 하고  https://naver.me/x9VtpuPs",
-            "summary": "삼성전자는 안간다고 하고  https://naver.me/x9VtpuPs",
-            "url": "https://t.me/corevalue/45729"
-          },
-          {
-            "title": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장...",
-            "summary": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장, 영업이익의 단체교섭 대상 적정성에 의문 제기 ** · 관훈클럽 토론회에서 \"영업이익 자체가 노사 쟁의 대...",
-            "url": "https://t.me/valjuman/31211"
-          },
-          {
-            "title": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사...",
-            "summary": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사실상 확정 ** · 정부 고위 관계자 확인 — 삼성전자 호남권 반도체 투자 부지는 광주로 결정 · SK하이닉...",
-            "url": "https://t.me/valjuman/31210"
-          },
-          {
-            "title": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn....",
-            "summary": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn.co.kr/news/articleView.html?idxno=1713715  [특징주] 두산로보틱스, 정부 ...",
-            "url": "https://t.me/characteristicstock/81582"
-          },
-          {
-            "title": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20...",
-            "summary": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20260624000171",
-            "url": "https://t.me/characteristicstock/81581"
-          },
-          {
-            "title": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이...",
-            "summary": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이터 센터의 수요가 고대역폭 메모리(HBM)를 넘어 서버용 DRAM 및 스토리지 제품으로 확대됨에 따라 하반기...",
-            "url": "https://t.me/alphasignal_now/24239"
-          },
-          {
-            "title": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.co...",
-            "summary": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634353  [관련 종목] [삼성물산](h...",
-            "url": "https://t.me/moneythemestock/61436"
-          },
-          {
-            "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
-            "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
-            "url": "https://t.me/moneythemestock/61435"
-          },
-          {
-            "title": "노무라, 삼성전자 목표가 67만원 상향 및 2분기 실적 호조 전망  https://m.stock.naver....",
-            "summary": "노무라, 삼성전자 목표가 67만원 상향 및 2분기 실적 호조 전망  https://m.stock.naver.com/investment/news/flashnews/001/0016155519  [관련 종목] [삼성전자]...",
-            "url": "https://t.me/moneythemestock/61433"
-          },
-          {
-            "title": "삼성전자, 90조원 규모 자사주 매입 임박  https://m.stock.naver.com/investmen...",
-            "summary": "삼성전자, 90조원 규모 자사주 매입 임박  https://m.stock.naver.com/investment/news/flashnews/001/0016155300  [관련 종목] [삼성전자](https://m.st...",
-            "url": "https://t.me/moneythemestock/61421"
-          },
-          {
-            "title": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/n...",
-            "summary": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/news/view/1659250/?sc=Naver",
-            "url": "https://t.me/characteristicstock/81567"
-          },
-          {
-            "title": "**🎯삼성전자, 90조원 자사주 매입 임박…\"주주가치 제고 기대\" **  **✅ 특별경영성과급 지급에 따른 ...",
-            "summary": "**🎯삼성전자, 90조원 자사주 매입 임박…\"주주가치 제고 기대\" **  **✅ 특별경영성과급 지급에 따른 자사주 부족분 발생 ** · 노사 합의에 따라 영업이익 10.5%를 반도체 부문 성과급으로 지급 · 3년간 ...",
-            "url": "https://t.me/valjuman/31207"
-          },
-          {
-            "title": "삼성전자, 8%대 급반등하며 시총 1위 탈환  https://m.stock.naver.com/investme...",
-            "summary": "삼성전자, 8%대 급반등하며 시총 1위 탈환  https://m.stock.naver.com/investment/news/flashnews/014/0005538845  [관련 종목] [삼성전자](https://m.s...",
-            "url": "https://t.me/moneythemestock/61417"
-          },
-          {
-            "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
-            "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
-            "url": "https://t.me/characteristicstock/81564"
-          },
-          {
-            "title": "삼성전자, 4%대 상승 다시 시총 1위로 '엎치락 뒤치락' [특징주] https://www.edaily.co...",
-            "summary": "삼성전자, 4%대 상승 다시 시총 1위로 '엎치락 뒤치락' [특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03056966645485000  차AI헬스케어, 대규모...",
-            "url": "https://t.me/characteristicstock/81560"
-          },
-          {
-            "title": "펀더멘털 영향 없다는 증권가 리포트에…삼전닉스 동반 강세 https://www.mt.co.kr/stock/2...",
-            "summary": "펀더멘털 영향 없다는 증권가 리포트에…삼전닉스 동반 강세 https://www.mt.co.kr/stock/2026/06/24/2026062409074757815",
-            "url": "https://t.me/characteristicstock/81559"
-          },
-          {
-            "title": "[특징주] 삼기, 글로벌 로봇 기업 휴머노이드 프레임 개발 업체 선정 소... https://www.etod...",
-            "summary": "[특징주] 삼기, 글로벌 로봇 기업 휴머노이드 프레임 개발 업체 선정 소... https://www.etoday.co.kr/news/view/2596609",
-            "url": "https://t.me/characteristicstock/81558"
-          },
-          {
-            "title": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.c...",
-            "summary": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.com/investment/news/mainnews/009/0005697915  [관련 종목] [삼성전자](h...",
-            "url": "https://t.me/moneythemestock/61414"
-          },
-          {
-            "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
-            "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
-            "url": "https://t.me/moneythemestock/61410"
-          },
-          {
-            "title": "**🎯MLCC도 AI 수혜 본격화···증권가 \"가격 인상 국면 진입 **  **✅ AI 서버는 일반 서버 대...",
-            "summary": "**🎯MLCC도 AI 수혜 본격화···증권가 \"가격 인상 국면 진입 **  **✅ AI 서버는 일반 서버 대비 MLCC를 12배 이상 더 많이 소모한다 ** · 일반 서버 약 2,000개 vs AI 서버 약 2.5만...",
-            "url": "https://t.me/valjuman/31203"
-          },
-          {
-            "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼...",
-            "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼성전자·하이닉스 전남 반도체 클러스터 추진 보도로 지역 상권 확대 기대감에 수급 발생  · **엑스게이트**...",
-            "url": "https://t.me/valjuman/31202"
-          },
-          {
-            "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
-            "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
-            "url": "https://t.me/valjuman/31201"
-          },
-          {
-            "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
-            "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
-            "url": "https://t.me/YeouidoStory2/114013"
-          },
-          {
-            "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
-            "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
-            "url": "https://t.me/moneythemestock/61406"
-          },
-          {
-            "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
-            "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
-            "url": "https://t.me/bumsong2/24699"
+            "title": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주...",
+            "summary": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주 AI 기업 주가 하락, 반도체 수익성 추가 개선에 대한 의구심 큰 상황 💬게다가 OpenAI IPO 연기설...",
+            "url": "https://t.me/HANAStrategy/7536"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "SK하이닉스",
+        "name": "마이크론",
         "type": "종목",
-        "mention": 35,
-        "channel": 8,
-        "score": 51,
+        "mention": 8,
+        "channel": 4,
+        "score": 16,
         "articles": [
           {
-            "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
-            "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
-            "url": "https://t.me/moneythemestock/61489"
+            "title": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난...",
+            "summary": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난주 시장 상황 ** · 지난주(6/22~26) 코스피는 사상 처음 한 주에 서킷브레이커가 두 차례 발동되는 ...",
+            "url": "https://t.me/valjuman/31317"
           },
           {
-            "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 상장을 위한 유상증자(제3자배정) 결정 —...",
-            "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 상장을 위한 유상증자(제3자배정) 결정 — 최대 45.5조 원 조달** ** ▶️ 유상증자 개요** 이사회 결의일: 2026년 6월 24일 (사외이사...",
-            "url": "https://t.me/corevalue/45734"
+            "title": "신한투자증권, 7월 해외주식 톱픽에 마이크론·인텔 등 선정  https://m.stock.naver.com/...",
+            "summary": "신한투자증권, 7월 해외주식 톱픽에 마이크론·인텔 등 선정  https://m.stock.naver.com/investment/news/flashnews/277/0005782383  [관련 종목] [마이크론](htt...",
+            "url": "https://t.me/moneythemestock/61700"
           },
           {
-            "title": "SK하이닉스, 45조원 규모 ADR 발행 및 나스닥 상장  https://m.stock.naver.com/i...",
-            "summary": "SK하이닉스, 45조원 규모 ADR 발행 및 나스닥 상장  https://m.stock.naver.com/investment/news/flashnews/020/0003729196  [관련 종목] [SK하이닉스](ht...",
-            "url": "https://t.me/moneythemestock/61474"
+            "title": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJL...",
+            "summary": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJLKDn  반도체/소부장(Overweight): 스마트폰 수요 우려는 예견된 수순  ■ 데이터 포인트 및 주간...",
+            "url": "https://t.me/HanaResearch/19758"
           },
           {
-            "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
-            "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
-            "url": "https://t.me/moneythemestock/61470"
+            "title": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https:...",
+            "summary": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https://t.me/hana_us_stock   ★ [HANA US Weekly] AI 반도체 변동성 확대는 쏠림의...",
+            "url": "https://t.me/HanaResearch/19755"
           },
           {
-            "title": "🎯 **[단독]하이닉스 美 AI컴퍼니 본격 시동…SKT 보유 AI 지분 3억弗 인수 **  ✅**SK텔레콤 ...",
-            "summary": "🎯 **[단독]하이닉스 美 AI컴퍼니 본격 시동…SKT 보유 AI 지분 3억弗 인수 **  ✅**SK텔레콤 보유 글로벌 AI 기업 소수지분이 AI컴퍼니로 이전된다**  · 인수 대상은 퍼플렉시티·람다·펭귄 솔루션즈 ...",
-            "url": "https://t.me/valjuman/31223"
-          },
-          {
-            "title": "SK그룹, 美 AI 컴퍼니 하반기 출범 및 SKT AI 지분 인수  https://m.stock.naver....",
-            "summary": "SK그룹, 美 AI 컴퍼니 하반기 출범 및 SKT AI 지분 인수  https://m.stock.naver.com/investment/news/flashnews/011/0004634547  [관련 종목] [SK](h...",
-            "url": "https://t.me/moneythemestock/61466"
-          },
-          {
-            "title": "[속보] SK하이닉스 내달 10일 미국 ADR 상장 추진…최대 45조 유상증자 - 매일경제 https://w...",
-            "summary": "[속보] SK하이닉스 내달 10일 미국 ADR 상장 추진…최대 45조 유상증자 - 매일경제 https://www.mk.co.kr/news/business/12082057  **SK하이닉스의 미국주식예탁증서(ADR) ...",
-            "url": "https://t.me/moneythemestock/61463"
-          },
-          {
-            "title": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660...",
-            "summary": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660 보고서명: 주요사항보고서(유상증자결정)  보통주 : 17,790,000주(발행가격 : 2,555,000원)...",
-            "url": "https://t.me/bumsong2/24708"
-          },
-          {
-            "title": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660...",
-            "summary": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660 보고서명: 주요사항보고서(유상증자결정)  보통주 : 17,790,000주(발행가격 : 2,555,000원)...",
-            "url": "https://t.me/valjuman/31220"
-          },
-          {
-            "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 -신주 1,779만 주, ...",
-            "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 -신주 1,779만 주, 최대 45.5조 원 조달**  **▶️ ADR 발행 개요** 이사회 결의일: 2026년 6월 24일 (사외이...",
-            "url": "https://t.me/valjuman/31219"
-          },
-          {
-            "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주,...",
-            "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주, 최대 45.5조 원 조달**  ▶️ ADR 발행 개요 이사회 결의일: 2026년 6월 24일 (사외이사 6...",
-            "url": "https://t.me/ym_research/6231"
-          },
-          {
-            "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
-            "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
-            "url": "https://t.me/valjuman/31213"
-          },
-          {
-            "title": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는...",
-            "summary": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는 29일 청와대 영빈관에서 열리는 '국토공간 대전환(지방균형국가)' 민관 합동회의를 계기로 호남권 전공정 팹...",
-            "url": "https://t.me/corevalue/45730"
-          },
-          {
-            "title": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장...",
-            "summary": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장, 영업이익의 단체교섭 대상 적정성에 의문 제기 ** · 관훈클럽 토론회에서 \"영업이익 자체가 노사 쟁의 대...",
-            "url": "https://t.me/valjuman/31211"
-          },
-          {
-            "title": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사...",
-            "summary": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사실상 확정 ** · 정부 고위 관계자 확인 — 삼성전자 호남권 반도체 투자 부지는 광주로 결정 · SK하이닉...",
-            "url": "https://t.me/valjuman/31210"
-          },
-          {
-            "title": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20...",
-            "summary": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20260624000171",
-            "url": "https://t.me/characteristicstock/81581"
-          },
-          {
-            "title": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이...",
-            "summary": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이터 센터의 수요가 고대역폭 메모리(HBM)를 넘어 서버용 DRAM 및 스토리지 제품으로 확대됨에 따라 하반기...",
-            "url": "https://t.me/alphasignal_now/24239"
-          },
-          {
-            "title": "정부가 하이닉스 반도체 이천 공장 증설을 허용하지 않기로 한 데 대해 반발하는 의미에서다.  당시 정부가 폐...",
-            "summary": "정부가 하이닉스 반도체 이천 공장 증설을 허용하지 않기로 한 데 대해 반발하는 의미에서다.  당시 정부가 폐수를 통한 구리 배출을 이유로 하이닉스 공장 증설을 불허하자, 김 지사는 “하이닉스에서 연간 배출되는 구리의...",
-            "url": "https://t.me/corevalue/45726"
-          },
-          {
-            "title": "하이닉스 10주 보유 김문수, '100배 수익 중' 수익 이유 : 'HTS 로그인하고 매도 버튼도 누를 줄 ...",
-            "summary": "하이닉스 10주 보유 김문수, '100배 수익 중' 수익 이유 : 'HTS 로그인하고 매도 버튼도 누를 줄 몰라...'  https://n.news.naver.com/mnews/ranking/article/018/0...",
-            "url": "https://t.me/corevalue/45725"
-          },
-          {
-            "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
-            "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
-            "url": "https://t.me/moneythemestock/61435"
-          },
-          {
-            "title": "[특징주] 엑스게이트, 美 트럼프 양자컴퓨터 행정명령 서명…양자내성... https://www.financi...",
-            "summary": "[특징주] 엑스게이트, 美 트럼프 양자컴퓨터 행정명령 서명…양자내성... https://www.financialpost.co.kr/news/articleView.html?idxno=263740  \"조정은 매수 기회\"...",
-            "url": "https://t.me/characteristicstock/81571"
-          },
-          {
-            "title": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/n...",
-            "summary": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/news/view/1659250/?sc=Naver",
-            "url": "https://t.me/characteristicstock/81567"
-          },
-          {
-            "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
-            "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
-            "url": "https://t.me/characteristicstock/81564"
-          },
-          {
-            "title": "美 반도체주 급락에도 SK하이닉스·스퀘어 프리마켓 반등[특징주] https://www.newsway.co.k...",
-            "summary": "美 반도체주 급락에도 SK하이닉스·스퀘어 프리마켓 반등[특징주] https://www.newsway.co.kr/news/view?ud=2026062408315844779",
-            "url": "https://t.me/characteristicstock/81561"
-          },
-          {
-            "title": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.c...",
-            "summary": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.com/investment/news/mainnews/009/0005697915  [관련 종목] [삼성전자](h...",
-            "url": "https://t.me/moneythemestock/61414"
-          },
-          {
-            "title": "흥국증권, SK 목표주가 100만원으로 상향  https://m.stock.naver.com/investme...",
-            "summary": "흥국증권, SK 목표주가 100만원으로 상향  https://m.stock.naver.com/investment/news/flashnews/018/0006313468  [관련 종목] [SK](https://m.sto...",
-            "url": "https://t.me/moneythemestock/61411"
-          },
-          {
-            "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
-            "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
-            "url": "https://t.me/moneythemestock/61410"
-          },
-          {
-            "title": "**🎯 \"SK하이닉스 목표가 380만원 유지...하반기 실적 추정치 상향\"**   **✅ 메모리 수급 불균형...",
-            "summary": "**🎯 \"SK하이닉스 목표가 380만원 유지...하반기 실적 추정치 상향\"**   **✅ 메모리 수급 불균형이 구조적으로 심화되고 있다 ** · 6월 현재 고객사 메모리 수요 충족률 50% 수준에 불과 · 2027년...",
-            "url": "https://t.me/valjuman/31205"
-          },
-          {
-            "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼...",
-            "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼성전자·하이닉스 전남 반도체 클러스터 추진 보도로 지역 상권 확대 기대감에 수급 발생  · **엑스게이트**...",
-            "url": "https://t.me/valjuman/31202"
-          },
-          {
-            "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
-            "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
-            "url": "https://t.me/valjuman/31201"
-          },
-          {
-            "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
-            "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
-            "url": "https://t.me/YeouidoStory2/114013"
-          },
-          {
-            "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
-            "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
-            "url": "https://t.me/moneythemestock/61406"
-          },
-          {
-            "title": "KB증권, SK하이닉스 급락에 비중확대 기회 분석  https://m.stock.naver.com/inves...",
-            "summary": "KB증권, SK하이닉스 급락에 비중확대 기회 분석  https://m.stock.naver.com/investment/news/mainnews/014/0005538789  [관련 종목] [SK하이닉스](https:/...",
-            "url": "https://t.me/moneythemestock/61405"
-          },
-          {
-            "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
-            "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
-            "url": "https://t.me/bumsong2/24699"
+            "title": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주...",
+            "summary": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주 AI 기업 주가 하락, 반도체 수익성 추가 개선에 대한 의구심 큰 상황 💬게다가 OpenAI IPO 연기설...",
+            "url": "https://t.me/HANAStrategy/7536"
           }
         ]
       },
       {
         "rank": 3,
-        "name": "마이크론",
+        "name": "삼성전자",
         "type": "종목",
-        "mention": 16,
-        "channel": 6,
-        "score": 28,
+        "mention": 8,
+        "channel": 3,
+        "score": 14,
         "articles": [
           {
-            "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
-            "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
-            "url": "https://t.me/moneythemestock/61489"
+            "title": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난...",
+            "summary": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난주 시장 상황 ** · 지난주(6/22~26) 코스피는 사상 처음 한 주에 서킷브레이커가 두 차례 발동되는 ...",
+            "url": "https://t.me/valjuman/31317"
           },
           {
-            "title": "미국 증시, 이틀 연속 하락 후 혼조세  https://m.stock.naver.com/investment/...",
-            "summary": "미국 증시, 이틀 연속 하락 후 혼조세  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644715  [관련 종목] [마이크론 테크놀로지](https:/...",
-            "url": "https://t.me/moneythemestock/61485"
+            "title": "주간 증시, 韓 수출입지표 및 美 고용보고서 발표에 주목  https://m.stock.naver.com/i...",
+            "summary": "주간 증시, 韓 수출입지표 및 美 고용보고서 발표에 주목  https://m.stock.naver.com/investment/news/flashnews/014/0005540640  [관련 종목] [삼성전자](http...",
+            "url": "https://t.me/moneythemestock/61698"
           },
           {
-            "title": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver...",
-            "summary": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644470  [관련 종목] [마이크...",
-            "url": "https://t.me/moneythemestock/61481"
+            "title": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJL...",
+            "summary": "[하나증권 반도체 김록호]  Industry Research  자료 링크: https://vo.la/JeJLKDn  반도체/소부장(Overweight): 스마트폰 수요 우려는 예견된 수순  ■ 데이터 포인트 및 주간...",
+            "url": "https://t.me/HanaResearch/19758"
           },
           {
-            "title": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/invest...",
-            "summary": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/investment/news/flashnews/009/0005698329  [관련 종목] [삼성전자](https://m...",
-            "url": "https://t.me/moneythemestock/61468"
+            "title": "삼성전자·SK하이닉스 2분기 실적 기대치 상향 조정  https://m.stock.naver.com/inve...",
+            "summary": "삼성전자·SK하이닉스 2분기 실적 기대치 상향 조정  https://m.stock.naver.com/investment/news/mainnews/014/0005540522  [관련 종목] [삼성전자](https://...",
+            "url": "https://t.me/moneythemestock/61696"
           },
           {
-            "title": "🎯 **미국 주요 메모리 기업 Pre market   ✅ 마이크론 +4%  **🔍 **독립리서치 지엘리서치 ...",
-            "summary": "🎯 **미국 주요 메모리 기업 Pre market   ✅ 마이크론 +4%  **🔍 **독립리서치 지엘리서치 ****t.me/valjuman**",
-            "url": "https://t.me/valjuman/31224"
-          },
-          {
-            "title": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주...",
-            "summary": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주택매매 美) 1분기 경상수지 美) 주간 MBA 모기지 신청건수 美) 주간 원유재고 美) 5년 만기 국채 입찰...",
-            "url": "https://t.me/bumsong2/24705"
-          },
-          {
-            "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
-            "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
-            "url": "https://t.me/moneythemestock/61435"
-          },
-          {
-            "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
-            "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
-            "url": "https://t.me/moneythemestock/61410"
-          },
-          {
-            "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
-            "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
-            "url": "https://t.me/HanaResearch/19732"
-          },
-          {
-            "title": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.co...",
-            "summary": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.com/video/wall-street-ends-lower-ai-224633427.html?.tsrc=rss  ...",
-            "url": "https://t.me/moneythemestock/61408"
-          },
-          {
-            "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
-            "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
-            "url": "https://t.me/YeouidoStory2/114013"
-          },
-          {
-            "title": "우리시각 기준 내일 새벽 발표예정입니다. 반도체 관련주들이 급락하는 가운데 마이크론 실적에 관심이 더 집중될...",
-            "summary": "우리시각 기준 내일 새벽 발표예정입니다. 반도체 관련주들이 급락하는 가운데 마이크론 실적에 관심이 더 집중될거 같네요.",
-            "url": "https://t.me/balanceasset/29808"
-          },
-          {
-            "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
-            "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
-            "url": "https://t.me/valjuman/31198"
-          },
-          {
-            "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
-            "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
-            "url": "https://t.me/moneythemestock/61406"
-          },
-          {
-            "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
-            "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
-            "url": "https://t.me/bumsong2/24699"
-          },
-          {
-            "title": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/...",
-            "summary": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/3510202e-147f-3825-9cd7-6eef1801d532/stock-market-today%3A-n...",
-            "url": "https://t.me/moneythemestock/61404"
+            "title": "금융당국, 단일종목 레버리지 규제 강화 검토함  https://m.stock.naver.com/investm...",
+            "summary": "금융당국, 단일종목 레버리지 규제 강화 검토함  https://m.stock.naver.com/investment/news/mainnews/018/0006317029  [관련 종목] [삼성전자](https://m.s...",
+            "url": "https://t.me/moneythemestock/61693"
           }
         ]
       },
@@ -474,500 +129,1173 @@
         "rank": 4,
         "name": "금리 인상",
         "type": "이슈",
-        "mention": 7,
-        "channel": 5,
-        "score": 17,
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
         "articles": [
           {
-            "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주,...",
-            "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주, 최대 45.5조 원 조달**  ▶️ ADR 발행 개요 이사회 결의일: 2026년 6월 24일 (사외이사 6...",
-            "url": "https://t.me/ym_research/6231"
+            "title": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난...",
+            "summary": "**🎯 [주간 증시 전망 _ 7월 1주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 **  **✅ 지난주 시장 상황 ** · 지난주(6/22~26) 코스피는 사상 처음 한 주에 서킷브레이커가 두 차례 발동되는 ...",
+            "url": "https://t.me/valjuman/31317"
           },
           {
-            "title": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주...",
-            "summary": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주택매매 美) 1분기 경상수지 美) 주간 MBA 모기지 신청건수 美) 주간 원유재고 美) 5년 만기 국채 입찰...",
-            "url": "https://t.me/bumsong2/24705"
+            "title": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주...",
+            "summary": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주 AI 기업 주가 하락, 반도체 수익성 추가 개선에 대한 의구심 큰 상황 💬게다가 OpenAI IPO 연기설...",
+            "url": "https://t.me/HANAStrategy/7536"
           },
           {
-            "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
-            "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
-            "url": "https://t.me/HanaResearch/19732"
-          },
-          {
-            "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
-            "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
-            "url": "https://t.me/YeouidoStory2/114013"
-          },
-          {
-            "title": "* 하나증권 미래산업팀 * 스몰캡/로봇/AI (Analyst 한유건, 권태우, 박찬솔, 김다혜)  ★시지메드...",
-            "summary": "* 하나증권 미래산업팀 * 스몰캡/로봇/AI (Analyst 한유건, 권태우, 박찬솔, 김다혜)  ★시지메드텍(056090.KQ): IMM이 샤라웃한 동종진피 ECM CDMO 기업★  원문링크: https://bul...",
-            "url": "https://t.me/YeouidoStory2/114010"
-          },
-          {
-            "title": "별로 좋지 않은 상황에서 전쟁이 인플레이션을 추가 자극하며 연내 금리인상에 대한 우려가 점점더 커지는 상황입...",
-            "summary": "별로 좋지 않은 상황에서 전쟁이 인플레이션을 추가 자극하며 연내 금리인상에 대한 우려가 점점더 커지는 상황입니다.",
-            "url": "https://t.me/balanceasset/29806"
-          },
-          {
-            "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
-            "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
-            "url": "https://t.me/bumsong2/24699"
+            "title": "**[은행 Weekly/ 하나증권 최정욱, CFA ☎3771-3643]**   안녕하세요. 하나증권 최정욱입...",
+            "summary": "**[은행 Weekly/ 하나증권 최정욱, CFA ☎3771-3643]**   안녕하세요. 하나증권 최정욱입니다.  6월 마지막주 은행업종 주간동향 보내드립니다.   **★ 은행(Overweight): 7월 금리모멘...",
+            "url": "https://t.me/HanaResearch/19751"
           }
         ]
       },
       {
         "rank": 5,
-        "name": "삼성물산",
+        "name": "알파벳",
         "type": "종목",
-        "mention": 10,
-        "channel": 3,
-        "score": 16,
+        "mention": 2,
+        "channel": 1,
+        "score": 4,
         "articles": [
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
-          },
-          {
-            "title": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/inve...",
-            "summary": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/investment/news/mainnews/008/0005376708  [관련 종목] [삼성물산](https://...",
-            "url": "https://t.me/moneythemestock/61469"
-          },
-          {
-            "title": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.c...",
-            "summary": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.com/investment/news/flashnews/018/0006314002  [관련 종목] [삼성전자](...",
-            "url": "https://t.me/moneythemestock/61460"
-          },
-          {
-            "title": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.k...",
-            "summary": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.kr/news/articleView.html?idxno=844922",
-            "url": "https://t.me/characteristicstock/81599"
-          },
-          {
-            "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
-            "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
-            "url": "https://t.me/valjuman/31213"
-          },
-          {
-            "title": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn....",
-            "summary": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn.co.kr/news/articleView.html?idxno=1713715  [특징주] 두산로보틱스, 정부 ...",
-            "url": "https://t.me/characteristicstock/81582"
-          },
-          {
-            "title": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.co...",
-            "summary": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634353  [관련 종목] [삼성물산](h...",
-            "url": "https://t.me/moneythemestock/61436"
-          },
-          {
-            "title": "삼성물산, 10%대 반등 장중 50만원선 회복  https://m.stock.naver.com/investm...",
-            "summary": "삼성물산, 10%대 반등 장중 50만원선 회복  https://m.stock.naver.com/investment/news/flashnews/003/0014024138  [관련 종목] [삼성물산](https://m....",
-            "url": "https://t.me/moneythemestock/61423"
-          },
-          {
-            "title": "[특징주] 삼성물산,12%대 급등…장중 51만원 돌파 https://www.etoday.co.kr/news/...",
-            "summary": "[특징주] 삼성물산,12%대 급등…장중 51만원 돌파 https://www.etoday.co.kr/news/view/2596625",
-            "url": "https://t.me/characteristicstock/81563"
-          },
-          {
-            "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
-            "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
-            "url": "https://t.me/valjuman/31201"
+            "title": "인텔, 애플·구글 업고 주가 237% 급등 분석  https://m.stock.naver.com/invest...",
+            "summary": "인텔, 애플·구글 업고 주가 237% 급등 분석  https://m.stock.naver.com/investment/news/mainnews/015/0005303655  [관련 종목] [인텔](https://m.st...",
+            "url": "https://t.me/moneythemestock/61699"
           }
         ]
       },
       {
         "rank": 6,
-        "name": "보해양조",
+        "name": "엔비디아",
         "type": "종목",
-        "mention": 10,
-        "channel": 2,
-        "score": 14,
+        "mention": 2,
+        "channel": 1,
+        "score": 4,
         "articles": [
           {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61454"
+            "title": "호주 퍼머스 테크놀로지스, 엔비디아와 AI 인프라 접근권 계약 체결  https://m.stock.naver...",
+            "summary": "호주 퍼머스 테크놀로지스, 엔비디아와 AI 인프라 접근권 계약 체결  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2648199  [관련 종목] [엔비디...",
+            "url": "https://t.me/moneythemestock/61703"
           },
           {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61449"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61445"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61444"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61442"
-          },
-          {
-            "title": "보해양조, 투자경고에도 상한가 직행…5거래일 연속 급등[특징주] https://www.newsway.co.k...",
-            "summary": "보해양조, 투자경고에도 상한가 직행…5거래일 연속 급등[특징주] https://www.newsway.co.kr/news/view?ud=2026062410453302374",
-            "url": "https://t.me/characteristicstock/81583"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61438"
-          },
-          {
-            "title": "보해양조, 호남권 반도체 공장 유치 기대감에 상한가 기록  https://m.stock.naver.com/i...",
-            "summary": "보해양조, 호남권 반도체 공장 유치 기대감에 상한가 기록  https://m.stock.naver.com/investment/news/flashnews/018/0006313585  [관련 종목] [보해양조](http...",
-            "url": "https://t.me/moneythemestock/61429"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61416"
-          },
-          {
-            "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
-            "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
-            "url": "https://t.me/characteristicstock/81564"
+            "title": "서학개미, 스페이스X·AI 반도체 종목으로 투자 집중  https://m.stock.naver.com/inv...",
+            "summary": "서학개미, 스페이스X·AI 반도체 종목으로 투자 집중  https://m.stock.naver.com/investment/news/mainnews/014/0005540527  [관련 종목] [엔비디아](https:/...",
+            "url": "https://t.me/moneythemestock/61697"
           }
         ]
       },
       {
         "rank": 7,
-        "name": "엔비디아",
+        "name": "인텔",
         "type": "종목",
-        "mention": 9,
-        "channel": 2,
-        "score": 13,
+        "mention": 2,
+        "channel": 1,
+        "score": 4,
         "articles": [
           {
-            "title": "AI 칩 주식 반등, 엔비디아와 AMD 주도  https://finance.yahoo.com/technolo...",
-            "summary": "AI 칩 주식 반등, 엔비디아와 AMD 주도  https://finance.yahoo.com/technology/articles/ai-chip-stocks-stage-rebound-193427431.html?.tsr...",
-            "url": "https://t.me/moneythemestock/61491"
+            "title": "신한투자증권, 7월 해외주식 톱픽에 마이크론·인텔 등 선정  https://m.stock.naver.com/...",
+            "summary": "신한투자증권, 7월 해외주식 톱픽에 마이크론·인텔 등 선정  https://m.stock.naver.com/investment/news/flashnews/277/0005782383  [관련 종목] [마이크론](htt...",
+            "url": "https://t.me/moneythemestock/61700"
           },
           {
-            "title": "퀄컴, 스마트폰 의존 벗어나 AI 칩 시장 진출 전략 제시 예정  https://m.stock.naver.c...",
-            "summary": "퀄컴, 스마트폰 의존 벗어나 AI 칩 시장 진출 전략 제시 예정  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644835  [관련 종목] [퀄컴](h...",
-            "url": "https://t.me/moneythemestock/61487"
-          },
-          {
-            "title": "**🎯 OpenAI·브로드컴, 자체 AI 추론칩 공개**   · **OpenAI,** 엔비디아 의존도를 낮추...",
-            "summary": "**🎯 OpenAI·브로드컴, 자체 AI 추론칩 공개**   · **OpenAI,** 엔비디아 의존도를 낮추기 위해 **브로드컴과 전용 AI 추론칩 개발 발표**  · 브로드컴 CEO, 해당 칩이 AI 모델 운영비용...",
-            "url": "https://t.me/valjuman/31227"
-          },
-          {
-            "title": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver...",
-            "summary": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644470  [관련 종목] [마이크...",
-            "url": "https://t.me/moneythemestock/61481"
-          },
-          {
-            "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
-            "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
-            "url": "https://t.me/moneythemestock/61470"
-          },
-          {
-            "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
-            "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
-            "url": "https://t.me/moneythemestock/61410"
-          },
-          {
-            "title": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.co...",
-            "summary": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.com/video/wall-street-ends-lower-ai-224633427.html?.tsrc=rss  ...",
-            "url": "https://t.me/moneythemestock/61408"
-          },
-          {
-            "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
-            "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
-            "url": "https://t.me/valjuman/31198"
-          },
-          {
-            "title": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/...",
-            "summary": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/3510202e-147f-3825-9cd7-6eef1801d532/stock-market-today%3A-n...",
-            "url": "https://t.me/moneythemestock/61404"
+            "title": "인텔, 애플·구글 업고 주가 237% 급등 분석  https://m.stock.naver.com/invest...",
+            "summary": "인텔, 애플·구글 업고 주가 237% 급등 분석  https://m.stock.naver.com/investment/news/mainnews/015/0005303655  [관련 종목] [인텔](https://m.st...",
+            "url": "https://t.me/moneythemestock/61699"
           }
         ]
       },
       {
         "rank": 8,
-        "name": "로킷헬스케어",
+        "name": "현대차증권",
         "type": "종목",
-        "mention": 7,
-        "channel": 2,
-        "score": 11,
+        "mention": 2,
+        "channel": 1,
+        "score": 4,
         "articles": [
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61454"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61449"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61445"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61444"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61442"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61416"
+            "title": "현대차증권, 주주환원 이후 자본효율 관리 과제  https://m.stock.naver.com/investm...",
+            "summary": "현대차증권, 주주환원 이후 자본효율 관리 과제  https://m.stock.naver.com/investment/news/mainnews/293/0000086888  [관련 종목] [현대차증권](https://m....",
+            "url": "https://t.me/moneythemestock/61695"
           }
         ]
       },
       {
         "rank": 9,
-        "name": "알테오젠",
-        "type": "종목",
-        "mention": 5,
-        "channel": 3,
-        "score": 11,
+        "name": "2Q26 프리뷰: 기대치 부합. 주가는 다시 박스권 하단",
+        "type": "이슈",
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
         "articles": [
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
-          },
-          {
-            "title": "알테오젠, 추가 기술 이전 기대감에 11%대 급등  https://m.stock.naver.com/inves...",
-            "summary": "알테오젠, 추가 기술 이전 기대감에 11%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634456  [관련 종목] [알테오젠](https://...",
-            "url": "https://t.me/moneythemestock/61451"
-          },
-          {
-            "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
-            "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
-            "url": "https://t.me/valjuman/31213"
-          },
-          {
-            "title": "[특징주] 알테오젠, 추가 기술수출 기대감에 급등…10%대↑ https://www.ajunews.com/vi...",
-            "summary": "[특징주] 알테오젠, 추가 기술수출 기대감에 급등…10%대↑ https://www.ajunews.com/view/20260624134735903",
-            "url": "https://t.me/characteristicstock/81595"
-          },
-          {
-            "title": "[특징주] 알테오젠, 기술수출 기대감 속 장중 11%대 급등 https://www.yna.co.kr/view...",
-            "summary": "[특징주] 알테오젠, 기술수출 기대감 속 장중 11%대 급등 https://www.yna.co.kr/view/AKR20260624085200008?input=1195m",
-            "url": "https://t.me/characteristicstock/81584"
+            "title": "[하나증권 방산/기계/우주 채운샘]  현대로템  2Q26 프리뷰: 기대치 부합. 주가는 다시 박스권 하단  ...",
+            "summary": "[하나증권 방산/기계/우주 채운샘]  현대로템  2Q26 프리뷰: 기대치 부합. 주가는 다시 박스권 하단     □ 목표주가 283,000원, 투자의견 매수 유지  - 현대로템 목표주가 283,000원과 투자의견 매...",
+            "url": "https://t.me/HanaResearch/19752"
           }
         ]
       },
       {
         "rank": 10,
-        "name": "알파벳",
-        "type": "종목",
-        "mention": 6,
-        "channel": 2,
-        "score": 10,
+        "name": "AI 반도체 변동성 확대",
+        "type": "이슈",
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
         "articles": [
           {
-            "title": "구글, 핵심 AI 직원 2명 앤트로픽 이적 전망  https://m.stock.naver.com/invest...",
-            "summary": "구글, 핵심 AI 직원 2명 앤트로픽 이적 전망  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644842  [관련 종목] [알파벳](https://m...",
-            "url": "https://t.me/moneythemestock/61488"
-          },
-          {
-            "title": "알파벳, 다우존스 편입 예정 및 주가 6% 급락  https://beincrypto.com/alphabet-...",
-            "summary": "알파벳, 다우존스 편입 예정 및 주가 6% 급락  https://beincrypto.com/alphabet-joins-dow-jones-ai-talent-exodus/?.tsrc=rss  [관련 종목] [알파벳](h...",
-            "url": "https://t.me/moneythemestock/61462"
-          },
-          {
-            "title": "알파벳, 다우 지수 편입 및 버라이즌 대체 예정  https://m.stock.naver.com/invest...",
-            "summary": "알파벳, 다우 지수 편입 및 버라이즌 대체 예정  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2643535  [관련 종목] [알파벳](https://m...",
-            "url": "https://t.me/moneythemestock/61407"
-          },
-          {
-            "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
-            "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
-            "url": "https://t.me/valjuman/31198"
+            "title": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https:...",
+            "summary": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https://t.me/hana_us_stock   ★ [HANA US Weekly] AI 반도체 변동성 확대는 쏠림의...",
+            "url": "https://t.me/HanaResearch/19755"
           }
         ]
       },
       {
         "rank": 11,
-        "name": "남화토건",
-        "type": "종목",
-        "mention": 7,
+        "name": "AI 반도체 변동성 확대는 쏠림의 해소 과정",
+        "type": "기사",
+        "mention": 1,
         "channel": 1,
-        "score": 9,
+        "score": 3,
         "articles": [
           {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61454"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61449"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61445"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61444"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61442"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61438"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61416"
+            "title": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https:...",
+            "summary": "◈하나증권 해외주식분석◈  선진국 기업분석 강재구(T.02-3771-3386) *텔레그램 채널: https://t.me/hana_us_stock   ★ [HANA US Weekly] AI 반도체 변동성 확대는 쏠림의...",
+            "url": "https://t.me/HanaResearch/19755"
           }
         ]
       },
       {
         "rank": 12,
-        "name": "삼기에너지솔루션즈",
+        "name": "AMD",
         "type": "종목",
-        "mention": 7,
+        "mention": 1,
         "channel": 1,
-        "score": 9,
+        "score": 3,
         "articles": [
           {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61454"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
-            "url": "https://t.me/moneythemestock/61449"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61445"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61444"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61442"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61438"
-          },
-          {
-            "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
-            "url": "https://t.me/moneythemestock/61416"
+            "title": "서학개미, 스페이스X·AI 반도체 종목으로 투자 집중  https://m.stock.naver.com/inv...",
+            "summary": "서학개미, 스페이스X·AI 반도체 종목으로 투자 집중  https://m.stock.naver.com/investment/news/mainnews/014/0005540527  [관련 종목] [엔비디아](https:/...",
+            "url": "https://t.me/moneythemestock/61697"
           }
         ]
       },
       {
         "rank": 13,
-        "name": "삼익제약",
+        "name": "CXMT",
         "type": "종목",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
         "articles": [
           {
-            "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
-            "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
-            "url": "https://t.me/balanceasset/29819"
-          },
-          {
-            "title": "[특징주] 삼익제약 15%대 급등…장기지속형 주사제 특허 및 중장기 성장... https://www.wide...",
-            "summary": "[특징주] 삼익제약 15%대 급등…장기지속형 주사제 특허 및 중장기 성장... https://www.widedaily.com/news/articleView.html?idxno=296385",
-            "url": "https://t.me/characteristicstock/81593"
-          },
-          {
-            "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
-            "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
-            "url": "https://t.me/HanaResearch/19732"
+            "title": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주...",
+            "summary": "✔️ 퀀트 총평 💬글로벌 AI와 그 외 기업 간의 실적 격차 확대(마이크론 역대급 서프라이즈), 다만 지난주 AI 기업 주가 하락, 반도체 수익성 추가 개선에 대한 의구심 큰 상황 💬게다가 OpenAI IPO 연기설...",
+            "url": "https://t.me/HANAStrategy/7536"
           }
         ]
       },
       {
         "rank": 14,
-        "name": "올릭스",
-        "type": "종목",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "name": "Dubai의 상대적 약세와 윤활기유 수급 부족",
+        "type": "기사",
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
         "articles": [
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
-          },
-          {
-            "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
-            "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
-            "url": "https://t.me/balanceasset/29819"
-          },
-          {
-            "title": "[특징주] 올릭스 주가, 비만치료제 결과 기대감에 12%↑ http://www.newsdream.kr/new...",
-            "summary": "[특징주] 올릭스 주가, 비만치료제 결과 기대감에 12%↑ http://www.newsdream.kr/news/articleView.html?idxno=113537",
-            "url": "https://t.me/characteristicstock/81590"
+            "title": "[하나/에너지화학/윤재성] Weekly Monitor: Dubai의 상대적 약세와 윤활기유 Shortage ...",
+            "summary": "[하나/에너지화학/윤재성] Weekly Monitor: Dubai의 상대적 약세와 윤활기유 Shortage  ▶ 보고서: https://bit.ly/4vT3pnf   [총평] ▶ WTI 69.2$(-10%), Dub...",
+            "url": "https://t.me/HanaResearch/19756"
           }
         ]
       },
       {
         "rank": 15,
-        "name": "펩트론",
+        "name": "KB금융",
         "type": "종목",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
         "articles": [
           {
-            "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
-            "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
-            "url": "https://t.me/valjuman/31225"
-          },
-          {
-            "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
-            "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
-            "url": "https://t.me/balanceasset/29819"
-          },
-          {
-            "title": "펩트론, 스위스 디바이오팜과 차세대 ADC 공동연구 계약 체결  https://m.stock.naver.co...",
-            "summary": "펩트론, 스위스 디바이오팜과 차세대 ADC 공동연구 계약 체결  https://m.stock.naver.com/investment/news/flashnews/018/0006313714  [관련 종목] [펩트론](ht...",
-            "url": "https://t.me/moneythemestock/61439"
+            "title": "**[은행 Weekly/ 하나증권 최정욱, CFA ☎3771-3643]**   안녕하세요. 하나증권 최정욱입...",
+            "summary": "**[은행 Weekly/ 하나증권 최정욱, CFA ☎3771-3643]**   안녕하세요. 하나증권 최정욱입니다.  6월 마지막주 은행업종 주간동향 보내드립니다.   **★ 은행(Overweight): 7월 금리모멘...",
+            "url": "https://t.me/HanaResearch/19751"
           }
         ]
       }
     ]
   },
   "history": [
+    {
+      "report_date": "2026-06-25",
+      "range_label": "2026-06-27(토) 05:00 ~ 2026-06-28(일) 04:59 KST",
+      "message_count": 285,
+      "channel_count": 13,
+      "items": [
+        {
+          "rank": 1,
+          "name": "삼성전자",
+          "type": "종목",
+          "mention": 40,
+          "channel": 7,
+          "score": 54,
+          "articles": [
+            {
+              "title": "삼성전자, 3년간 80조원 자사주 매입 계획  https://m.stock.naver.com/investme...",
+              "summary": "삼성전자, 3년간 80조원 자사주 매입 계획  https://m.stock.naver.com/investment/news/flashnews/020/0003729336  [관련 종목] [삼성전자](https://m.s...",
+              "url": "https://t.me/moneythemestock/61492"
+            },
+            {
+              "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
+              "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
+              "url": "https://t.me/moneythemestock/61489"
+            },
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "삼전닉스도 숫자로 오른건데.... 숫자 나오는 회사는 결국오름 이제 한달 이면 코스닥도 오를꺼라 생각중......",
+              "summary": "삼전닉스도 숫자로 오른건데.... 숫자 나오는 회사는 결국오름 이제 한달 이면 코스닥도 오를꺼라 생각중...숫자 나오는 회사 댓글주세요",
+              "url": "https://t.me/YeouidoStory2/114061"
+            },
+            {
+              "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
+              "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
+              "url": "https://t.me/moneythemestock/61470"
+            },
+            {
+              "title": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/inve...",
+              "summary": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/investment/news/mainnews/008/0005376708  [관련 종목] [삼성물산](https://...",
+              "url": "https://t.me/moneythemestock/61469"
+            },
+            {
+              "title": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/invest...",
+              "summary": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/investment/news/flashnews/009/0005698329  [관련 종목] [삼성전자](https://m...",
+              "url": "https://t.me/moneythemestock/61468"
+            },
+            {
+              "title": "셀레믹스, 100억원 규모 제3자배정 유상증자 결정  https://m.stock.naver.com/inve...",
+              "summary": "셀레믹스, 100억원 규모 제3자배정 유상증자 결정  https://m.stock.naver.com/investment/news/flashnews/277/0005780992  [관련 종목] [셀레믹스](https:/...",
+              "url": "https://t.me/moneythemestock/61464"
+            },
+            {
+              "title": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.c...",
+              "summary": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.com/investment/news/flashnews/018/0006314002  [관련 종목] [삼성전자](...",
+              "url": "https://t.me/moneythemestock/61460"
+            },
+            {
+              "title": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.k...",
+              "summary": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.kr/news/articleView.html?idxno=844922",
+              "url": "https://t.me/characteristicstock/81599"
+            },
+            {
+              "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
+              "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
+              "url": "https://t.me/valjuman/31213"
+            },
+            {
+              "title": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는...",
+              "summary": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는 29일 청와대 영빈관에서 열리는 '국토공간 대전환(지방균형국가)' 민관 합동회의를 계기로 호남권 전공정 팹...",
+              "url": "https://t.me/corevalue/45730"
+            },
+            {
+              "title": "삼성전자는 안간다고 하고  https://naver.me/x9VtpuPs",
+              "summary": "삼성전자는 안간다고 하고  https://naver.me/x9VtpuPs",
+              "url": "https://t.me/corevalue/45729"
+            },
+            {
+              "title": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장...",
+              "summary": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장, 영업이익의 단체교섭 대상 적정성에 의문 제기 ** · 관훈클럽 토론회에서 \"영업이익 자체가 노사 쟁의 대...",
+              "url": "https://t.me/valjuman/31211"
+            },
+            {
+              "title": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사...",
+              "summary": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사실상 확정 ** · 정부 고위 관계자 확인 — 삼성전자 호남권 반도체 투자 부지는 광주로 결정 · SK하이닉...",
+              "url": "https://t.me/valjuman/31210"
+            },
+            {
+              "title": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn....",
+              "summary": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn.co.kr/news/articleView.html?idxno=1713715  [특징주] 두산로보틱스, 정부 ...",
+              "url": "https://t.me/characteristicstock/81582"
+            },
+            {
+              "title": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20...",
+              "summary": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20260624000171",
+              "url": "https://t.me/characteristicstock/81581"
+            },
+            {
+              "title": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이...",
+              "summary": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이터 센터의 수요가 고대역폭 메모리(HBM)를 넘어 서버용 DRAM 및 스토리지 제품으로 확대됨에 따라 하반기...",
+              "url": "https://t.me/alphasignal_now/24239"
+            },
+            {
+              "title": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.co...",
+              "summary": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634353  [관련 종목] [삼성물산](h...",
+              "url": "https://t.me/moneythemestock/61436"
+            },
+            {
+              "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
+              "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
+              "url": "https://t.me/moneythemestock/61435"
+            },
+            {
+              "title": "노무라, 삼성전자 목표가 67만원 상향 및 2분기 실적 호조 전망  https://m.stock.naver....",
+              "summary": "노무라, 삼성전자 목표가 67만원 상향 및 2분기 실적 호조 전망  https://m.stock.naver.com/investment/news/flashnews/001/0016155519  [관련 종목] [삼성전자]...",
+              "url": "https://t.me/moneythemestock/61433"
+            },
+            {
+              "title": "삼성전자, 90조원 규모 자사주 매입 임박  https://m.stock.naver.com/investmen...",
+              "summary": "삼성전자, 90조원 규모 자사주 매입 임박  https://m.stock.naver.com/investment/news/flashnews/001/0016155300  [관련 종목] [삼성전자](https://m.st...",
+              "url": "https://t.me/moneythemestock/61421"
+            },
+            {
+              "title": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/n...",
+              "summary": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/news/view/1659250/?sc=Naver",
+              "url": "https://t.me/characteristicstock/81567"
+            },
+            {
+              "title": "**🎯삼성전자, 90조원 자사주 매입 임박…\"주주가치 제고 기대\" **  **✅ 특별경영성과급 지급에 따른 ...",
+              "summary": "**🎯삼성전자, 90조원 자사주 매입 임박…\"주주가치 제고 기대\" **  **✅ 특별경영성과급 지급에 따른 자사주 부족분 발생 ** · 노사 합의에 따라 영업이익 10.5%를 반도체 부문 성과급으로 지급 · 3년간 ...",
+              "url": "https://t.me/valjuman/31207"
+            },
+            {
+              "title": "삼성전자, 8%대 급반등하며 시총 1위 탈환  https://m.stock.naver.com/investme...",
+              "summary": "삼성전자, 8%대 급반등하며 시총 1위 탈환  https://m.stock.naver.com/investment/news/flashnews/014/0005538845  [관련 종목] [삼성전자](https://m.s...",
+              "url": "https://t.me/moneythemestock/61417"
+            },
+            {
+              "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
+              "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
+              "url": "https://t.me/characteristicstock/81564"
+            },
+            {
+              "title": "삼성전자, 4%대 상승 다시 시총 1위로 '엎치락 뒤치락' [특징주] https://www.edaily.co...",
+              "summary": "삼성전자, 4%대 상승 다시 시총 1위로 '엎치락 뒤치락' [특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03056966645485000  차AI헬스케어, 대규모...",
+              "url": "https://t.me/characteristicstock/81560"
+            },
+            {
+              "title": "펀더멘털 영향 없다는 증권가 리포트에…삼전닉스 동반 강세 https://www.mt.co.kr/stock/2...",
+              "summary": "펀더멘털 영향 없다는 증권가 리포트에…삼전닉스 동반 강세 https://www.mt.co.kr/stock/2026/06/24/2026062409074757815",
+              "url": "https://t.me/characteristicstock/81559"
+            },
+            {
+              "title": "[특징주] 삼기, 글로벌 로봇 기업 휴머노이드 프레임 개발 업체 선정 소... https://www.etod...",
+              "summary": "[특징주] 삼기, 글로벌 로봇 기업 휴머노이드 프레임 개발 업체 선정 소... https://www.etoday.co.kr/news/view/2596609",
+              "url": "https://t.me/characteristicstock/81558"
+            },
+            {
+              "title": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.c...",
+              "summary": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.com/investment/news/mainnews/009/0005697915  [관련 종목] [삼성전자](h...",
+              "url": "https://t.me/moneythemestock/61414"
+            },
+            {
+              "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
+              "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
+              "url": "https://t.me/moneythemestock/61410"
+            },
+            {
+              "title": "**🎯MLCC도 AI 수혜 본격화···증권가 \"가격 인상 국면 진입 **  **✅ AI 서버는 일반 서버 대...",
+              "summary": "**🎯MLCC도 AI 수혜 본격화···증권가 \"가격 인상 국면 진입 **  **✅ AI 서버는 일반 서버 대비 MLCC를 12배 이상 더 많이 소모한다 ** · 일반 서버 약 2,000개 vs AI 서버 약 2.5만...",
+              "url": "https://t.me/valjuman/31203"
+            },
+            {
+              "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼...",
+              "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼성전자·하이닉스 전남 반도체 클러스터 추진 보도로 지역 상권 확대 기대감에 수급 발생  · **엑스게이트**...",
+              "url": "https://t.me/valjuman/31202"
+            },
+            {
+              "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
+              "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
+              "url": "https://t.me/valjuman/31201"
+            },
+            {
+              "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
+              "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
+              "url": "https://t.me/YeouidoStory2/114013"
+            },
+            {
+              "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
+              "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
+              "url": "https://t.me/moneythemestock/61406"
+            },
+            {
+              "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
+              "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
+              "url": "https://t.me/bumsong2/24699"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "SK하이닉스",
+          "type": "종목",
+          "mention": 35,
+          "channel": 8,
+          "score": 51,
+          "articles": [
+            {
+              "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
+              "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
+              "url": "https://t.me/moneythemestock/61489"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 상장을 위한 유상증자(제3자배정) 결정 —...",
+              "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 상장을 위한 유상증자(제3자배정) 결정 — 최대 45.5조 원 조달** ** ▶️ 유상증자 개요** 이사회 결의일: 2026년 6월 24일 (사외이사...",
+              "url": "https://t.me/corevalue/45734"
+            },
+            {
+              "title": "SK하이닉스, 45조원 규모 ADR 발행 및 나스닥 상장  https://m.stock.naver.com/i...",
+              "summary": "SK하이닉스, 45조원 규모 ADR 발행 및 나스닥 상장  https://m.stock.naver.com/investment/news/flashnews/020/0003729196  [관련 종목] [SK하이닉스](ht...",
+              "url": "https://t.me/moneythemestock/61474"
+            },
+            {
+              "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
+              "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
+              "url": "https://t.me/moneythemestock/61470"
+            },
+            {
+              "title": "🎯 **[단독]하이닉스 美 AI컴퍼니 본격 시동…SKT 보유 AI 지분 3억弗 인수 **  ✅**SK텔레콤 ...",
+              "summary": "🎯 **[단독]하이닉스 美 AI컴퍼니 본격 시동…SKT 보유 AI 지분 3억弗 인수 **  ✅**SK텔레콤 보유 글로벌 AI 기업 소수지분이 AI컴퍼니로 이전된다**  · 인수 대상은 퍼플렉시티·람다·펭귄 솔루션즈 ...",
+              "url": "https://t.me/valjuman/31223"
+            },
+            {
+              "title": "SK그룹, 美 AI 컴퍼니 하반기 출범 및 SKT AI 지분 인수  https://m.stock.naver....",
+              "summary": "SK그룹, 美 AI 컴퍼니 하반기 출범 및 SKT AI 지분 인수  https://m.stock.naver.com/investment/news/flashnews/011/0004634547  [관련 종목] [SK](h...",
+              "url": "https://t.me/moneythemestock/61466"
+            },
+            {
+              "title": "[속보] SK하이닉스 내달 10일 미국 ADR 상장 추진…최대 45조 유상증자 - 매일경제 https://w...",
+              "summary": "[속보] SK하이닉스 내달 10일 미국 ADR 상장 추진…최대 45조 유상증자 - 매일경제 https://www.mk.co.kr/news/business/12082057  **SK하이닉스의 미국주식예탁증서(ADR) ...",
+              "url": "https://t.me/moneythemestock/61463"
+            },
+            {
+              "title": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660...",
+              "summary": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660 보고서명: 주요사항보고서(유상증자결정)  보통주 : 17,790,000주(발행가격 : 2,555,000원)...",
+              "url": "https://t.me/bumsong2/24708"
+            },
+            {
+              "title": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660...",
+              "summary": "2026.06.24 16:53:39 기업명: SK하이닉스(시가총액: 1,838조 7,721억) A000660 보고서명: 주요사항보고서(유상증자결정)  보통주 : 17,790,000주(발행가격 : 2,555,000원)...",
+              "url": "https://t.me/valjuman/31220"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 -신주 1,779만 주, ...",
+              "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 -신주 1,779만 주, 최대 45.5조 원 조달**  **▶️ ADR 발행 개요** 이사회 결의일: 2026년 6월 24일 (사외이...",
+              "url": "https://t.me/valjuman/31219"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주,...",
+              "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주, 최대 45.5조 원 조달**  ▶️ ADR 발행 개요 이사회 결의일: 2026년 6월 24일 (사외이사 6...",
+              "url": "https://t.me/ym_research/6231"
+            },
+            {
+              "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
+              "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
+              "url": "https://t.me/valjuman/31213"
+            },
+            {
+              "title": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는...",
+              "summary": "삼성전자와 SK하이닉스가 광주·전남에 합산 500조 원 이상을 투입해 반도체 생산시설을 짓는다. 양사는 오는 29일 청와대 영빈관에서 열리는 '국토공간 대전환(지방균형국가)' 민관 합동회의를 계기로 호남권 전공정 팹...",
+              "url": "https://t.me/corevalue/45730"
+            },
+            {
+              "title": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장...",
+              "summary": "**🎯 김용범 \"삼성·하이닉스 영업이익, 노사협상 대상 맞나…새로운 룰 필요\"**   **✅ 김용범 정책실장, 영업이익의 단체교섭 대상 적정성에 의문 제기 ** · 관훈클럽 토론회에서 \"영업이익 자체가 노사 쟁의 대...",
+              "url": "https://t.me/valjuman/31211"
+            },
+            {
+              "title": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사...",
+              "summary": "**🎯 [단독] 삼성전자, 반도체 공장 건설 '전남 광주'로 확정**   **✅ 삼성전자 광주 투자 부지 사실상 확정 ** · 정부 고위 관계자 확인 — 삼성전자 호남권 반도체 투자 부지는 광주로 결정 · SK하이닉...",
+              "url": "https://t.me/valjuman/31210"
+            },
+            {
+              "title": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20...",
+              "summary": "[ET특징주] 하루만에 다시 '불기둥'… 삼전·하닉 동반 강세 https://www.etnews.com/20260624000171",
+              "url": "https://t.me/characteristicstock/81581"
+            },
+            {
+              "title": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이...",
+              "summary": "**삼성은 수요가 HBM을 넘어 확산됨에 따라 메모리 공급 계약을 추진하고 있습니다**  *​삼성전자는 데이터 센터의 수요가 고대역폭 메모리(HBM)를 넘어 서버용 DRAM 및 스토리지 제품으로 확대됨에 따라 하반기...",
+              "url": "https://t.me/alphasignal_now/24239"
+            },
+            {
+              "title": "정부가 하이닉스 반도체 이천 공장 증설을 허용하지 않기로 한 데 대해 반발하는 의미에서다.  당시 정부가 폐...",
+              "summary": "정부가 하이닉스 반도체 이천 공장 증설을 허용하지 않기로 한 데 대해 반발하는 의미에서다.  당시 정부가 폐수를 통한 구리 배출을 이유로 하이닉스 공장 증설을 불허하자, 김 지사는 “하이닉스에서 연간 배출되는 구리의...",
+              "url": "https://t.me/corevalue/45726"
+            },
+            {
+              "title": "하이닉스 10주 보유 김문수, '100배 수익 중' 수익 이유 : 'HTS 로그인하고 매도 버튼도 누를 줄 ...",
+              "summary": "하이닉스 10주 보유 김문수, '100배 수익 중' 수익 이유 : 'HTS 로그인하고 매도 버튼도 누를 줄 몰라...'  https://n.news.naver.com/mnews/ranking/article/018/0...",
+              "url": "https://t.me/corevalue/45725"
+            },
+            {
+              "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
+              "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
+              "url": "https://t.me/moneythemestock/61435"
+            },
+            {
+              "title": "[특징주] 엑스게이트, 美 트럼프 양자컴퓨터 행정명령 서명…양자내성... https://www.financi...",
+              "summary": "[특징주] 엑스게이트, 美 트럼프 양자컴퓨터 행정명령 서명…양자내성... https://www.financialpost.co.kr/news/articleView.html?idxno=263740  \"조정은 매수 기회\"...",
+              "url": "https://t.me/characteristicstock/81571"
+            },
+            {
+              "title": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/n...",
+              "summary": "삼전 8%·하이닉스 4%대↑…전날 급락 딛고 강세[특징주] https://www.dailian.co.kr/news/view/1659250/?sc=Naver",
+              "url": "https://t.me/characteristicstock/81567"
+            },
+            {
+              "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
+              "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
+              "url": "https://t.me/characteristicstock/81564"
+            },
+            {
+              "title": "美 반도체주 급락에도 SK하이닉스·스퀘어 프리마켓 반등[특징주] https://www.newsway.co.k...",
+              "summary": "美 반도체주 급락에도 SK하이닉스·스퀘어 프리마켓 반등[특징주] https://www.newsway.co.kr/news/view?ud=2026062408315844779",
+              "url": "https://t.me/characteristicstock/81561"
+            },
+            {
+              "title": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.c...",
+              "summary": "삼성전자·SK하이닉스 단일종목 레버리지 ETF 투자 경계감 확산  https://m.stock.naver.com/investment/news/mainnews/009/0005697915  [관련 종목] [삼성전자](h...",
+              "url": "https://t.me/moneythemestock/61414"
+            },
+            {
+              "title": "흥국증권, SK 목표주가 100만원으로 상향  https://m.stock.naver.com/investme...",
+              "summary": "흥국증권, SK 목표주가 100만원으로 상향  https://m.stock.naver.com/investment/news/flashnews/018/0006313468  [관련 종목] [SK](https://m.sto...",
+              "url": "https://t.me/moneythemestock/61411"
+            },
+            {
+              "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
+              "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
+              "url": "https://t.me/moneythemestock/61410"
+            },
+            {
+              "title": "**🎯 \"SK하이닉스 목표가 380만원 유지...하반기 실적 추정치 상향\"**   **✅ 메모리 수급 불균형...",
+              "summary": "**🎯 \"SK하이닉스 목표가 380만원 유지...하반기 실적 추정치 상향\"**   **✅ 메모리 수급 불균형이 구조적으로 심화되고 있다 ** · 6월 현재 고객사 메모리 수요 충족률 50% 수준에 불과 · 2027년...",
+              "url": "https://t.me/valjuman/31205"
+            },
+            {
+              "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼...",
+              "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 등락률 상위 분석**  · **광주신세계 **강세 - 삼성전자·하이닉스 전남 반도체 클러스터 추진 보도로 지역 상권 확대 기대감에 수급 발생  · **엑스게이트**...",
+              "url": "https://t.me/valjuman/31202"
+            },
+            {
+              "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
+              "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
+              "url": "https://t.me/valjuman/31201"
+            },
+            {
+              "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
+              "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
+              "url": "https://t.me/YeouidoStory2/114013"
+            },
+            {
+              "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
+              "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
+              "url": "https://t.me/moneythemestock/61406"
+            },
+            {
+              "title": "KB증권, SK하이닉스 급락에 비중확대 기회 분석  https://m.stock.naver.com/inves...",
+              "summary": "KB증권, SK하이닉스 급락에 비중확대 기회 분석  https://m.stock.naver.com/investment/news/mainnews/014/0005538789  [관련 종목] [SK하이닉스](https:/...",
+              "url": "https://t.me/moneythemestock/61405"
+            },
+            {
+              "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
+              "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
+              "url": "https://t.me/bumsong2/24699"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "마이크론",
+          "type": "종목",
+          "mention": 16,
+          "channel": 6,
+          "score": 28,
+          "articles": [
+            {
+              "title": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investmen...",
+              "summary": "코스피, 반도체주 저가 매수에 힘입어 반등  https://m.stock.naver.com/investment/news/flashnews/008/0005376773  [관련 종목] [삼성전자](https://m.st...",
+              "url": "https://t.me/moneythemestock/61489"
+            },
+            {
+              "title": "미국 증시, 이틀 연속 하락 후 혼조세  https://m.stock.naver.com/investment/...",
+              "summary": "미국 증시, 이틀 연속 하락 후 혼조세  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644715  [관련 종목] [마이크론 테크놀로지](https:/...",
+              "url": "https://t.me/moneythemestock/61485"
+            },
+            {
+              "title": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver...",
+              "summary": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644470  [관련 종목] [마이크...",
+              "url": "https://t.me/moneythemestock/61481"
+            },
+            {
+              "title": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/invest...",
+              "summary": "코스피 3% 반등, 삼성전자 자사주 매입 기대감  https://m.stock.naver.com/investment/news/flashnews/009/0005698329  [관련 종목] [삼성전자](https://m...",
+              "url": "https://t.me/moneythemestock/61468"
+            },
+            {
+              "title": "🎯 **미국 주요 메모리 기업 Pre market   ✅ 마이크론 +4%  **🔍 **독립리서치 지엘리서치 ...",
+              "summary": "🎯 **미국 주요 메모리 기업 Pre market   ✅ 마이크론 +4%  **🔍 **독립리서치 지엘리서치 ****t.me/valjuman**",
+              "url": "https://t.me/valjuman/31224"
+            },
+            {
+              "title": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주...",
+              "summary": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주택매매 美) 1분기 경상수지 美) 주간 MBA 모기지 신청건수 美) 주간 원유재고 美) 5년 만기 국채 입찰...",
+              "url": "https://t.me/bumsong2/24705"
+            },
+            {
+              "title": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com...",
+              "summary": "반도체 쇼크에 코스피 급락, 삼성전자·SK하이닉스 동반 하락  https://m.stock.naver.com/investment/news/mainnews/215/0001256411  [관련 종목] [삼성전자](htt...",
+              "url": "https://t.me/moneythemestock/61435"
+            },
+            {
+              "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
+              "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
+              "url": "https://t.me/moneythemestock/61410"
+            },
+            {
+              "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
+              "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
+              "url": "https://t.me/HanaResearch/19732"
+            },
+            {
+              "title": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.co...",
+              "summary": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.com/video/wall-street-ends-lower-ai-224633427.html?.tsrc=rss  ...",
+              "url": "https://t.me/moneythemestock/61408"
+            },
+            {
+              "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
+              "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
+              "url": "https://t.me/YeouidoStory2/114013"
+            },
+            {
+              "title": "우리시각 기준 내일 새벽 발표예정입니다. 반도체 관련주들이 급락하는 가운데 마이크론 실적에 관심이 더 집중될...",
+              "summary": "우리시각 기준 내일 새벽 발표예정입니다. 반도체 관련주들이 급락하는 가운데 마이크론 실적에 관심이 더 집중될거 같네요.",
+              "url": "https://t.me/balanceasset/29808"
+            },
+            {
+              "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
+              "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
+              "url": "https://t.me/valjuman/31198"
+            },
+            {
+              "title": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/...",
+              "summary": "마이크론 실적 발표, 삼성전자·SK하이닉스 주가 향방 결정  https://m.stock.naver.com/investment/news/mainnews/119/0003104017  [관련 종목] [삼성전자](http...",
+              "url": "https://t.me/moneythemestock/61406"
+            },
+            {
+              "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
+              "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
+              "url": "https://t.me/bumsong2/24699"
+            },
+            {
+              "title": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/...",
+              "summary": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/3510202e-147f-3825-9cd7-6eef1801d532/stock-market-today%3A-n...",
+              "url": "https://t.me/moneythemestock/61404"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "금리 인상",
+          "type": "이슈",
+          "mention": 7,
+          "channel": 5,
+          "score": 17,
+          "articles": [
+            {
+              "title": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주,...",
+              "summary": "[SK증권 반도체 한동희]  **SK하이닉스, 미국 나스닥 ADR 발행 공식 결정 — 신주 1,779만 주, 최대 45.5조 원 조달**  ▶️ ADR 발행 개요 이사회 결의일: 2026년 6월 24일 (사외이사 6...",
+              "url": "https://t.me/ym_research/6231"
+            },
+            {
+              "title": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주...",
+              "summary": "**📆2026년 06월 25일(목) 일정알림** 🔔  美) 마이크론테크놀로지 실적발표 ⚡️ 美) 5월 신규주택매매 美) 1분기 경상수지 美) 주간 MBA 모기지 신청건수 美) 주간 원유재고 美) 5년 만기 국채 입찰...",
+              "url": "https://t.me/bumsong2/24705"
+            },
+            {
+              "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
+              "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
+              "url": "https://t.me/HanaResearch/19732"
+            },
+            {
+              "title": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에...",
+              "summary": "**[NH/나정환] 한국 주식 코멘트 **[Web발신] [NH/나정환] 한국 주식 코멘트 ■ 높아진 변동성에 깊어진 조정, 그러나 추세는 유효  ▶ KOSPI 지수 10% 가까이 급락, 금리와 실적 경계에 차익실현 ...",
+              "url": "https://t.me/YeouidoStory2/114013"
+            },
+            {
+              "title": "* 하나증권 미래산업팀 * 스몰캡/로봇/AI (Analyst 한유건, 권태우, 박찬솔, 김다혜)  ★시지메드...",
+              "summary": "* 하나증권 미래산업팀 * 스몰캡/로봇/AI (Analyst 한유건, 권태우, 박찬솔, 김다혜)  ★시지메드텍(056090.KQ): IMM이 샤라웃한 동종진피 ECM CDMO 기업★  원문링크: https://bul...",
+              "url": "https://t.me/YeouidoStory2/114010"
+            },
+            {
+              "title": "별로 좋지 않은 상황에서 전쟁이 인플레이션을 추가 자극하며 연내 금리인상에 대한 우려가 점점더 커지는 상황입...",
+              "summary": "별로 좋지 않은 상황에서 전쟁이 인플레이션을 추가 자극하며 연내 금리인상에 대한 우려가 점점더 커지는 상황입니다.",
+              "url": "https://t.me/balanceasset/29806"
+            },
+            {
+              "title": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https:/...",
+              "summary": "**좋은 아침입니다☀️  **[** Morning Report(2026.06.24.수) **](https://vo.la/My3niwd) ** ☀️29PER 모닝 브리핑**  미국 증시는 연준의 금리 인상 우려와 약 ...",
+              "url": "https://t.me/bumsong2/24699"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "삼성물산",
+          "type": "종목",
+          "mention": 10,
+          "channel": 3,
+          "score": 16,
+          "articles": [
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/inve...",
+              "summary": "삼성물산, 삼성전자 지분 가치 재평가 기대감에 급등  https://m.stock.naver.com/investment/news/mainnews/008/0005376708  [관련 종목] [삼성물산](https://...",
+              "url": "https://t.me/moneythemestock/61469"
+            },
+            {
+              "title": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.c...",
+              "summary": "삼성전자 자사주 매입 기대감에 10% 급등하며 코스피 3% 반등  https://m.stock.naver.com/investment/news/flashnews/018/0006314002  [관련 종목] [삼성전자](...",
+              "url": "https://t.me/moneythemestock/61460"
+            },
+            {
+              "title": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.k...",
+              "summary": "[특징주] 삼성전자 지분가치·주주환원 기대에…삼성물산 8%↑ https://www.newsworks.co.kr/news/articleView.html?idxno=844922",
+              "url": "https://t.me/characteristicstock/81599"
+            },
+            {
+              "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
+              "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
+              "url": "https://t.me/valjuman/31213"
+            },
+            {
+              "title": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn....",
+              "summary": "[특징주] 삼성물산, 하루 만에 10%대 반등…삼성전자 지분가치 재평가 ... https://www.ebn.co.kr/news/articleView.html?idxno=1713715  [특징주] 두산로보틱스, 정부 ...",
+              "url": "https://t.me/characteristicstock/81582"
+            },
+            {
+              "title": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.co...",
+              "summary": "삼성물산, 삼성전자 지분가치 및 주주환원 기대에 13%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634353  [관련 종목] [삼성물산](h...",
+              "url": "https://t.me/moneythemestock/61436"
+            },
+            {
+              "title": "삼성물산, 10%대 반등 장중 50만원선 회복  https://m.stock.naver.com/investm...",
+              "summary": "삼성물산, 10%대 반등 장중 50만원선 회복  https://m.stock.naver.com/investment/news/flashnews/003/0014024138  [관련 종목] [삼성물산](https://m....",
+              "url": "https://t.me/moneythemestock/61423"
+            },
+            {
+              "title": "[특징주] 삼성물산,12%대 급등…장중 51만원 돌파 https://www.etoday.co.kr/news/...",
+              "summary": "[특징주] 삼성물산,12%대 급등…장중 51만원 돌파 https://www.etoday.co.kr/news/view/2596625",
+              "url": "https://t.me/characteristicstock/81563"
+            },
+            {
+              "title": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합,...",
+              "summary": "**🎯 6월 24일 (수) 장전 08:15 프리마켓 거래대금 상위 분석**  · **SK하이닉스** 강보합, **삼성전자** 약보합 - 23일 뉴욕 필라델피아 반도체지수 약세 불구 22일 하락분 일단은 어느 정도 만...",
+              "url": "https://t.me/valjuman/31201"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "보해양조",
+          "type": "종목",
+          "mention": 10,
+          "channel": 2,
+          "score": 14,
+          "articles": [
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61454"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61449"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61445"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61444"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61442"
+            },
+            {
+              "title": "보해양조, 투자경고에도 상한가 직행…5거래일 연속 급등[특징주] https://www.newsway.co.k...",
+              "summary": "보해양조, 투자경고에도 상한가 직행…5거래일 연속 급등[특징주] https://www.newsway.co.kr/news/view?ud=2026062410453302374",
+              "url": "https://t.me/characteristicstock/81583"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61438"
+            },
+            {
+              "title": "보해양조, 호남권 반도체 공장 유치 기대감에 상한가 기록  https://m.stock.naver.com/i...",
+              "summary": "보해양조, 호남권 반도체 공장 유치 기대감에 상한가 기록  https://m.stock.naver.com/investment/news/flashnews/018/0006313585  [관련 종목] [보해양조](http...",
+              "url": "https://t.me/moneythemestock/61429"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61416"
+            },
+            {
+              "title": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/v...",
+              "summary": "[특징주] 삼전·닉스, 7%·4%대 급반등…삼전, 시총 1위 탈환 https://www.yna.co.kr/view/AKR20260624040400008?input=1195m  보해양조가 반도체 수혜주?…투자경고 지정...",
+              "url": "https://t.me/characteristicstock/81564"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "엔비디아",
+          "type": "종목",
+          "mention": 9,
+          "channel": 2,
+          "score": 13,
+          "articles": [
+            {
+              "title": "AI 칩 주식 반등, 엔비디아와 AMD 주도  https://finance.yahoo.com/technolo...",
+              "summary": "AI 칩 주식 반등, 엔비디아와 AMD 주도  https://finance.yahoo.com/technology/articles/ai-chip-stocks-stage-rebound-193427431.html?.tsr...",
+              "url": "https://t.me/moneythemestock/61491"
+            },
+            {
+              "title": "퀄컴, 스마트폰 의존 벗어나 AI 칩 시장 진출 전략 제시 예정  https://m.stock.naver.c...",
+              "summary": "퀄컴, 스마트폰 의존 벗어나 AI 칩 시장 진출 전략 제시 예정  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644835  [관련 종목] [퀄컴](h...",
+              "url": "https://t.me/moneythemestock/61487"
+            },
+            {
+              "title": "**🎯 OpenAI·브로드컴, 자체 AI 추론칩 공개**   · **OpenAI,** 엔비디아 의존도를 낮추...",
+              "summary": "**🎯 OpenAI·브로드컴, 자체 AI 추론칩 공개**   · **OpenAI,** 엔비디아 의존도를 낮추기 위해 **브로드컴과 전용 AI 추론칩 개발 발표**  · 브로드컴 CEO, 해당 칩이 AI 모델 운영비용...",
+              "url": "https://t.me/valjuman/31227"
+            },
+            {
+              "title": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver...",
+              "summary": "기술주 반등에 따른 월가 상승 출발 전망, 마이크론 실적 발표 주목  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644470  [관련 종목] [마이크...",
+              "url": "https://t.me/moneythemestock/61481"
+            },
+            {
+              "title": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/ma...",
+              "summary": "기술주 매도세 후 회복 기대, 마이크론 실적 발표 예정  https://finance.yahoo.com/markets/stocks/articles/tech-eyes-recovery-selloff-moving-0854...",
+              "url": "https://t.me/moneythemestock/61470"
+            },
+            {
+              "title": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/...",
+              "summary": "뉴욕 증시, 기술주·반도체 섹터 폭풍우  https://m.stock.naver.com/investment/news/flashnews/215/0001256390  [관련 종목] [마이크론](https://m.stoc...",
+              "url": "https://t.me/moneythemestock/61410"
+            },
+            {
+              "title": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.co...",
+              "summary": "AI 지출 우려에 따른 월스트리트 하락 및 반도체·빅테크 급락  https://finance.yahoo.com/video/wall-street-ends-lower-ai-224633427.html?.tsrc=rss  ...",
+              "url": "https://t.me/moneythemestock/61408"
+            },
+            {
+              "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
+              "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
+              "url": "https://t.me/valjuman/31198"
+            },
+            {
+              "title": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/...",
+              "summary": "미 증시 나스닥 580포인트 급락, 주요 기술주 하락세  https://finance.yahoo.com/m/3510202e-147f-3825-9cd7-6eef1801d532/stock-market-today%3A-n...",
+              "url": "https://t.me/moneythemestock/61404"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "로킷헬스케어",
+          "type": "종목",
+          "mention": 7,
+          "channel": 2,
+          "score": 11,
+          "articles": [
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61454"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61449"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61445"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61444"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61442"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61416"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "알테오젠",
+          "type": "종목",
+          "mention": 5,
+          "channel": 3,
+          "score": 11,
+          "articles": [
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "알테오젠, 추가 기술 이전 기대감에 11%대 급등  https://m.stock.naver.com/inves...",
+              "summary": "알테오젠, 추가 기술 이전 기대감에 11%대 급등  https://m.stock.naver.com/investment/news/flashnews/011/0004634456  [관련 종목] [알테오젠](https://...",
+              "url": "https://t.me/moneythemestock/61451"
+            },
+            {
+              "title": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8...",
+              "summary": "**🎯6월 24일 (수) 14:00 장중 거래대금 상위 분석**  · 코스피, 전일 -9.99% 폭락 후 8,500선 회복 시도 장중 상승·하락을 반복하며 극심한 변동성 지속  **✅ 삼성그룹·SK그룹 혼조 ▲▼**...",
+              "url": "https://t.me/valjuman/31213"
+            },
+            {
+              "title": "[특징주] 알테오젠, 추가 기술수출 기대감에 급등…10%대↑ https://www.ajunews.com/vi...",
+              "summary": "[특징주] 알테오젠, 추가 기술수출 기대감에 급등…10%대↑ https://www.ajunews.com/view/20260624134735903",
+              "url": "https://t.me/characteristicstock/81595"
+            },
+            {
+              "title": "[특징주] 알테오젠, 기술수출 기대감 속 장중 11%대 급등 https://www.yna.co.kr/view...",
+              "summary": "[특징주] 알테오젠, 기술수출 기대감 속 장중 11%대 급등 https://www.yna.co.kr/view/AKR20260624085200008?input=1195m",
+              "url": "https://t.me/characteristicstock/81584"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "알파벳",
+          "type": "종목",
+          "mention": 6,
+          "channel": 2,
+          "score": 10,
+          "articles": [
+            {
+              "title": "구글, 핵심 AI 직원 2명 앤트로픽 이적 전망  https://m.stock.naver.com/invest...",
+              "summary": "구글, 핵심 AI 직원 2명 앤트로픽 이적 전망  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2644842  [관련 종목] [알파벳](https://m...",
+              "url": "https://t.me/moneythemestock/61488"
+            },
+            {
+              "title": "알파벳, 다우존스 편입 예정 및 주가 6% 급락  https://beincrypto.com/alphabet-...",
+              "summary": "알파벳, 다우존스 편입 예정 및 주가 6% 급락  https://beincrypto.com/alphabet-joins-dow-jones-ai-talent-exodus/?.tsrc=rss  [관련 종목] [알파벳](h...",
+              "url": "https://t.me/moneythemestock/61462"
+            },
+            {
+              "title": "알파벳, 다우 지수 편입 및 버라이즌 대체 예정  https://m.stock.naver.com/invest...",
+              "summary": "알파벳, 다우 지수 편입 및 버라이즌 대체 예정  https://m.stock.naver.com/investment/news/worldnews/fnGuide/2643535  [관련 종목] [알파벳](https://m...",
+              "url": "https://t.me/moneythemestock/61407"
+            },
+            {
+              "title": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(...",
+              "summary": "**🎯 뉴욕증시 주요주**  · 애플(-0.91%), MS(+1.80%), 엔비디아(-4.13%), 테슬라(-5.79%), 인텔(-6.14%), AMD(-5.76%), 알파벳A(-0.98%), 브로드컴(-3.06%)...",
+              "url": "https://t.me/valjuman/31198"
+            }
+          ]
+        },
+        {
+          "rank": 11,
+          "name": "남화토건",
+          "type": "종목",
+          "mention": 7,
+          "channel": 1,
+          "score": 9,
+          "articles": [
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61454"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61449"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61445"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61444"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61442"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61438"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61416"
+            }
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "삼기에너지솔루션즈",
+          "type": "종목",
+          "mention": 7,
+          "channel": 1,
+          "score": 9,
+          "articles": [
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 15:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61454"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 14:30 (KST) - 거래소: KRX / 시간: 정규장  1) [남화토건](https://m.stock.naver.com/domestic/stock/091590...",
+              "url": "https://t.me/moneythemestock/61449"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 13:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61445"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 12:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61444"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 11:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61442"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 10:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61438"
+            },
+            {
+              "title": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규...",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-06-24 09:30 (KST) - 거래소: KRX / 시간: 정규장  1) [노블엠앤비](https://m.stock.naver.com/domestic/stock/10652...",
+              "url": "https://t.me/moneythemestock/61416"
+            }
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "삼익제약",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
+              "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
+              "url": "https://t.me/balanceasset/29819"
+            },
+            {
+              "title": "[특징주] 삼익제약 15%대 급등…장기지속형 주사제 특허 및 중장기 성장... https://www.wide...",
+              "summary": "[특징주] 삼익제약 15%대 급등…장기지속형 주사제 특허 및 중장기 성장... https://www.widedaily.com/news/articleView.html?idxno=296385",
+              "url": "https://t.me/characteristicstock/81593"
+            },
+            {
+              "title": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://s...",
+              "summary": "[6월 24일 Hana Guru Eye] ▶ 하나증권 리서치센터 채널전략팀 ▶ 자료 링크: https://shorturl.at/ERlyS  오늘의 테마 [낙폭 과대] - 지난 23일 국내 증시 사이드카, 서킷브레이커...",
+              "url": "https://t.me/HanaResearch/19732"
+            }
+          ]
+        },
+        {
+          "rank": 14,
+          "name": "올릭스",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
+              "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
+              "url": "https://t.me/balanceasset/29819"
+            },
+            {
+              "title": "[특징주] 올릭스 주가, 비만치료제 결과 기대감에 12%↑ http://www.newsdream.kr/new...",
+              "summary": "[특징주] 올릭스 주가, 비만치료제 결과 기대감에 12%↑ http://www.newsdream.kr/news/articleView.html?idxno=113537",
+              "url": "https://t.me/characteristicstock/81590"
+            }
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "펩트론",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피...",
+              "summary": "**🎯 6월 24일 장마감 시황정리**   **✅ 코스피, 전일 폭락 딛고 8,471선 반등**  · 코스피 8,471.02(+3.26%) 마감 · 장중 8,577선까지 상승 후 8,080선까지 밀리며 극심한 변동성...",
+              "url": "https://t.me/valjuman/31225"
+            },
+            {
+              "title": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구...",
+              "summary": "30. 제이에스링크 (13.75%) : 제약바이오관련주, 시총1조2천억대, 헬스케어사업, IR을 통해서 영구자석 사업협황 및 해외 확장계획 발표 ⇨ 희토류관련주 부각   상승률TOP30 정리  지역관련주(호남, 충청...",
+              "url": "https://t.me/balanceasset/29819"
+            },
+            {
+              "title": "펩트론, 스위스 디바이오팜과 차세대 ADC 공동연구 계약 체결  https://m.stock.naver.co...",
+              "summary": "펩트론, 스위스 디바이오팜과 차세대 ADC 공동연구 계약 체결  https://m.stock.naver.com/investment/news/flashnews/018/0006313714  [관련 종목] [펩트론](ht...",
+              "url": "https://t.me/moneythemestock/61439"
+            }
+          ]
+        }
+      ]
+    },
     {
       "report_date": "2026-06-24",
       "range_label": "2026-06-27(토) 05:00 ~ 2026-06-28(일) 04:59 KST",
