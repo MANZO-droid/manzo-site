@@ -135,13 +135,25 @@ section { padding: 72px 0; }
 .ms-name-btn { background:none; border:none; cursor:pointer; font-size:14px; color:#4A6FA5; font-weight:600; text-decoration:underline; text-underline-offset:2px; font-family:var(--font); padding:0; }
 .ms-history { margin-top: 56px; }
 .ms-history-title { font-size: 16px; font-weight: 700; color: var(--text-secondary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1.5px solid var(--border); }
-.ms-history-item { margin-bottom: 32px; }
-.ms-history-date { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.ms-history-date::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.ms-history-mini { display: flex; flex-wrap: wrap; gap: 8px; }
-.ms-chip { display: inline-flex; align-items: center; gap: 5px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 13px; color: var(--text-primary); }
-.ms-chip-rank { font-size: 11px; font-weight: 700; color: var(--text-muted); }
-.ms-chip-score { font-size: 11px; color: var(--accent); font-weight: 600; }
+.ms-history-list { display: flex; flex-direction: column; gap: 10px; }
+.ms-history-btn { width: 100%; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: border-color 0.15s, box-shadow 0.15s; font-family: var(--font); }
+.ms-history-btn:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(74,111,165,0.12); }
+.ms-history-btn-date { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.ms-history-btn-range { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.ms-history-btn-arrow { font-size: 16px; color: var(--text-muted); }
+/* 히스토리 상세 모달 */
+.hist-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1001; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+.hist-modal-overlay.open { display: flex; }
+.hist-modal-box { background: #fff; border-radius: 20px; padding: 36px 32px; width: 100%; max-width: 780px; position: relative; margin: auto; }
+.hist-modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+.hist-modal-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.hist-modal-range { font-size: 12px; color: var(--text-muted); margin-bottom: 24px; }
+.hist-modal-stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.hist-modal-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; font-size: 13px; color: var(--text-muted); }
+.hist-modal-stat strong { display: block; font-size: 18px; font-weight: 700; color: var(--text-primary); margin-top: 2px; }
+.ms-chip { display: none; }
+.ms-chip-rank { display: none; }
+.ms-chip-score { display: none; }
 .stock-badge { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; flex-wrap: wrap; }
 .stock-badge-label { color: var(--text-muted); font-size: 11px; }
 .stock-badge-name { font-weight: 700; color: var(--text-primary); }
@@ -295,7 +307,7 @@ section { padding: 72px 0; }
 
     <div class="ms-history" id="ms-history" style="display:none;">
       <div class="ms-history-title">과거 리포트</div>
-      <div id="ms-history-list"></div>
+      <div class="ms-history-list" id="ms-history-list"></div>
     </div>
   </div>
 </section>
@@ -635,21 +647,58 @@ const NEWSLETTERS = [
     document.getElementById(tbodyId).innerHTML = html;
   }
 
+  // 히스토리 데이터 전역 저장
+  window._msHistoryStore = {};
+
   function renderHistory(history) {
     if (!history || !history.length) return;
     var el = document.getElementById('ms-history');
     var list = document.getElementById('ms-history-list');
     el.style.display = '';
-    list.innerHTML = history.map(function (h) {
-      var chips = (h.items || []).slice(0, 10).map(function (r) {
-        return '<span class="ms-chip"><span class="ms-chip-rank">' + r.rank + '</span>' +
-          r.name + '<span class="ms-chip-score">' + r.score + 'pt</span></span>';
-      }).join('');
-      return '<div class="ms-history-item">' +
-        '<div class="ms-history-date">' + (h.report_date || '') + ' &nbsp;' + (h.range_label || '') + '</div>' +
-        '<div class="ms-history-mini">' + chips + '</div>' +
-        '</div>';
+
+    // 날짜 내림차순 정렬 (최신이 위)
+    var sorted = history.slice().sort(function(a, b) {
+      return (b.report_date || '').localeCompare(a.report_date || '');
+    });
+
+    // 히스토리별 기사 데이터도 저장
+    sorted.forEach(function(h) {
+      window._msHistoryStore[h.report_date] = h;
+      (h.items || []).forEach(function(r) {
+        if (r.articles && r.articles.length) {
+          window._msArticleStore[r.name] = r.articles;
+        }
+      });
+    });
+
+    list.innerHTML = sorted.map(function(h) {
+      var safeDate = (h.report_date || '').replace(/"/g, '');
+      return '<button class="ms-history-btn" onclick="openHistoryModal(\'' + safeDate + '\')">' +
+        '<div>' +
+          '<div class="ms-history-btn-date">' + (h.report_date || '') + ' 리포트</div>' +
+          '<div class="ms-history-btn-range">' + (h.range_label || '') + '</div>' +
+        '</div>' +
+        '<span class="ms-history-btn-arrow">→</span>' +
+        '</button>';
     }).join('');
+  }
+
+  function openHistoryModal(reportDate) {
+    var h = window._msHistoryStore[reportDate];
+    if (!h) return;
+    document.getElementById('hist-modal-title').textContent = reportDate + ' 마켓 스코프';
+    document.getElementById('hist-modal-range').textContent = h.range_label || '';
+    document.getElementById('hist-modal-msg').textContent = (h.message_count || 0).toLocaleString() + '개';
+    document.getElementById('hist-modal-ch').textContent = (h.channel_count || 0) + '개';
+    document.getElementById('hist-modal-date').textContent = h.report_date || '—';
+    // 기사 데이터 저장
+    (h.items || []).forEach(function(r) {
+      if (r.articles && r.articles.length) {
+        window._msArticleStore[r.name] = r.articles;
+      }
+    });
+    renderTable(h.items || [], 'hist-modal-tbody');
+    document.getElementById('histModal').classList.add('open');
   }
 
   function renderMarketScope(data) {
@@ -694,6 +743,30 @@ const NEWSLETTERS = [
   setInterval(poll, POLL_INTERVAL);
 })();
 </script>
+
+<!-- ── 히스토리 상세 모달 ── -->
+<div class="hist-modal-overlay" id="histModal">
+  <div class="hist-modal-box">
+    <button class="hist-modal-close" onclick="document.getElementById('histModal').classList.remove('open')">✕</button>
+    <div class="hist-modal-title" id="hist-modal-title"></div>
+    <div class="hist-modal-range" id="hist-modal-range"></div>
+    <div class="hist-modal-stats">
+      <div class="hist-modal-stat">수집 메시지<strong id="hist-modal-msg">—</strong></div>
+      <div class="hist-modal-stat">모니터링 채널<strong id="hist-modal-ch">—</strong></div>
+      <div class="hist-modal-stat">기준일<strong id="hist-modal-date">—</strong></div>
+    </div>
+    <div class="ms-table-wrap">
+      <table class="ms-table">
+        <thead>
+          <tr>
+            <th>순위</th><th>종목명</th><th>유형</th><th>언급 수</th><th>채널</th><th>점수</th>
+          </tr>
+        </thead>
+        <tbody id="hist-modal-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <!-- ── 기사 목록 모달 ── -->
 <div class="art-modal-overlay" id="articleModal">
