@@ -37,7 +37,6 @@ function fetchWithRedirect(url, maxRedirects) {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36',
         'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-        'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.8',
       },
       timeout: 9000,
@@ -74,13 +73,11 @@ function fetchWithRedirect(url, maxRedirects) {
 
         if (enc === 'gzip') {
           zlib.gunzip(buf, (err, result) => {
-            if (err) return reject(err);
-            resolve(decode(result));
+            resolve(decode(err ? buf : result));
           });
         } else if (enc === 'deflate') {
           zlib.inflate(buf, (err, result) => {
-            if (err) return reject(err);
-            resolve(decode(result));
+            resolve(decode(err ? buf : result));
           });
         } else {
           resolve(decode(buf));
