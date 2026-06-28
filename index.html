@@ -1012,7 +1012,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   var API_BASE = '/api/news?url=';
 
   var SOURCES_KR = [
-    { name: '전자신문', color: '#1565c0', rss: 'https://rss.etnews.com/Section901.xml' },
+    { name: '한국경제', color: '#1565c0', rss: 'https://news.google.com/rss/search?q=site:hankyung.com+경제&hl=ko&gl=KR&ceid=KR:ko' },
     { name: '매일경제', color: '#c62828', rss: 'https://www.mk.co.kr/rss/30000001/' },
     { name: '헤럴드경제', color: '#00695c', rss: 'https://biz.heraldcorp.com/rss/google/economy' },
     { name: '파이낸셜뉴스', color: '#4527a0', rss: 'https://www.fnnews.com/rss/r20/fn_realnews_economy.xml' },
@@ -1026,7 +1026,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     { name: 'Bloomberg', color: '#1565c0', rss: 'https://feeds.bloomberg.com/markets/news.rss' },
     { name: 'Forbes', color: '#c0392b', rss: 'https://www.forbes.com/business/feed/' },
     { name: 'MarketWatch', color: '#2c3e50', rss: 'https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines' },
-    { name: 'CNBC Markets', color: '#1a5276', rss: 'https://www.cnbc.com/id/10001147/device/rss/rss.html' },
+    { name: "Investor's Business Daily", color: '#1a5276', rss: 'https://news.google.com/rss/search?q=investors.com+stock+market&hl=en-US&gl=US&ceid=US:en' },
   ];
 
   function stripHtml(html) {
