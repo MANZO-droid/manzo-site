@@ -12,7 +12,10 @@
         "mention": 42,
         "channel": 10,
         "score": 62,
-        "link": "https://t.me/moneythemestock/61579"
+        "articles": [
+          { "title": "삼성전자, HBM4 양산 본격화…엔비디아 공급 기대감 상승", "summary": "삼성전자가 HBM4 양산 준비를 마치고 엔비디아 공급 협상이 막바지에 접어들었다는 보도가 나왔다.", "url": "https://t.me/moneythemestock/61579" },
+          { "title": "삼성전자 목표주가 10만원 상향…2분기 반도체 이익 개선", "summary": "주요 증권사들이 삼성전자의 2분기 실적 개선을 근거로 목표주가를 일제히 상향했다.", "url": "https://t.me/HanaResearch/19738" }
+        ]
       },
       {
         "rank": 2,
@@ -21,7 +24,10 @@
         "mention": 35,
         "channel": 8,
         "score": 51,
-        "link": "https://t.me/moneythemestock/61579"
+        "articles": [
+          { "title": "SK하이닉스, HBM3E 16단 출하 개시…점유율 독주 지속", "summary": "SK하이닉스가 HBM3E 16단 제품 출하를 시작하며 AI 메모리 시장 점유율을 확대하고 있다.", "url": "https://t.me/moneythemestock/61579" },
+          { "title": "SK하이닉스 2분기 영업이익 7조 전망…컨센서스 상회", "summary": "증권업계는 SK하이닉스의 2분기 영업이익이 시장 컨센서스를 크게 웃돌 것으로 내다봤다.", "url": "https://t.me/valjuman/31272" }
+        ]
       },
       {
         "rank": 3,
@@ -30,7 +36,9 @@
         "mention": 17,
         "channel": 5,
         "score": 27,
-        "link": "https://t.me/moneythemestock/61579"
+        "articles": [
+          { "title": "마이크론, 3분기 가이던스 호조…D램 가격 반등 시그널", "summary": "마이크론이 3분기 매출 가이던스를 시장 예상보다 높게 제시하며 D램 가격 회복 기대를 높였다.", "url": "https://t.me/moneythemestock/61579" }
+        ]
       },
       {
         "rank": 4,
@@ -39,7 +47,9 @@
         "mention": 9,
         "channel": 4,
         "score": 17,
-        "link": "https://t.me/moneythemestock/61575"
+        "articles": [
+          { "title": "마이크론 실적 발표 후 시간외 급등…HBM 수요 확인", "summary": "마이크론이 예상을 웃도는 실적을 발표한 뒤 시간외 거래에서 주가가 급등했다.", "url": "https://t.me/moneythemestock/61575" }
+        ]
       },
       {
         "rank": 5,
@@ -48,7 +58,9 @@
         "mention": 6,
         "channel": 5,
         "score": 16,
-        "link": "https://t.me/valjuman/31272"
+        "articles": [
+          { "title": "삼성물산, 지배구조 개편 기대감 재부각…저평가 매력", "summary": "삼성 지배구조 개편 시나리오가 다시 주목받으며 삼성물산의 저평가 해소 기대감이 높아졌다.", "url": "https://t.me/valjuman/31272" }
+        ]
       },
       {
         "rank": 6,
@@ -57,7 +69,9 @@
         "mention": 7,
         "channel": 4,
         "score": 15,
-        "link": "https://t.me/moneythemestock/61562"
+        "articles": [
+          { "title": "SK스퀘어, SK하이닉스 지분 가치 부각…할인율 축소 전망", "summary": "SK하이닉스 주가 강세에 따라 SK스퀘어의 보유 지분 가치가 부각되며 관심이 집중됐다.", "url": "https://t.me/moneythemestock/61562" }
+        ]
       },
       {
         "rank": 7,
@@ -66,7 +80,9 @@
         "mention": 4,
         "channel": 3,
         "score": 10,
-        "link": "https://t.me/valjuman/31272"
+        "articles": [
+          { "title": "SK그룹 지배구조 재편 논의…SK㈜ 역할 재정립 가능성", "summary": "SK그룹이 지배구조 재편을 검토하면서 SK㈜의 역할 변화에 대한 논의가 활발해지고 있다.", "url": "https://t.me/valjuman/31272" }
+        ]
       },
       {
         "rank": 8,
@@ -75,7 +91,9 @@
         "mention": 4,
         "channel": 3,
         "score": 10,
-        "link": "https://t.me/moneythemestock/61571"
+        "articles": [
+          { "title": "SKT, AI 에이전트 '에이닷' 유료화 검토…수익화 본격화", "summary": "SK텔레콤이 AI 개인 비서 서비스 에이닷의 유료화 모델을 검토하며 AI 수익화에 나선다.", "url": "https://t.me/moneythemestock/61571" }
+        ]
       },
       {
         "rank": 9,
@@ -84,7 +102,9 @@
         "mention": 6,
         "channel": 2,
         "score": 10,
-        "link": "https://t.me/moneythemestock/61541"
+        "articles": [
+          { "title": "남화토건, 데이터센터 부지 개발 수혜 기대…급등세", "summary": "AI 데이터센터 부지 개발 관련 수혜 기대감으로 남화토건 주가가 강세를 보였다.", "url": "https://t.me/moneythemestock/61541" }
+        ]
       },
       {
         "rank": 10,
@@ -93,7 +113,9 @@
         "mention": 4,
         "channel": 3,
         "score": 10,
-        "link": "https://t.me/valjuman/31259"
+        "articles": [
+          { "title": "삼성중공업, LNG선 대규모 수주…조선 업황 호조 지속", "summary": "삼성중공업이 대형 LNG 운반선 수주를 잇달아 성사시키며 조선 업황 호조를 이어가고 있다.", "url": "https://t.me/valjuman/31259" }
+        ]
       },
       {
         "rank": 11,
@@ -102,7 +124,9 @@
         "mention": 4,
         "channel": 3,
         "score": 10,
-        "link": "https://t.me/kmj_retailcosmetics/7958"
+        "articles": [
+          { "title": "신세계, 면세점 실적 회복세…중국인 관광객 증가 수혜", "summary": "중국인 관광객 증가로 신세계 면세점 매출이 회복세를 보이며 투자 매력이 높아졌다.", "url": "https://t.me/kmj_retailcosmetics/7958" }
+        ]
       },
       {
         "rank": 12,
@@ -111,7 +135,9 @@
         "mention": 3,
         "channel": 3,
         "score": 9,
-        "link": "https://t.me/HanaResearch/19738"
+        "articles": [
+          { "title": "삼성SDI, 전고체 배터리 2027년 양산 공식화…기술 선점", "summary": "삼성SDI가 전고체 배터리 양산 시점을 2027년으로 공식화하며 차세대 배터리 기술 선점을 선언했다.", "url": "https://t.me/HanaResearch/19738" }
+        ]
       },
       {
         "rank": 13,
@@ -120,7 +146,9 @@
         "mention": 3,
         "channel": 3,
         "score": 9,
-        "link": "https://t.me/valjuman/31259"
+        "articles": [
+          { "title": "한미반도체, TC본더 수주 확대…HBM 패키징 핵심 수혜", "summary": "한미반도체의 TC본더 장비 수주가 늘어나면서 HBM 패키징 공정 핵심 수혜주로 부각됐다.", "url": "https://t.me/valjuman/31259" }
+        ]
       },
       {
         "rank": 14,
@@ -129,7 +157,9 @@
         "mention": 7,
         "channel": 1,
         "score": 9,
-        "link": "https://t.me/moneythemestock/61555"
+        "articles": [
+          { "title": "은 가격 하락 베팅 ETN 거래량 급증…헤지 수요 부각", "summary": "은 가격 하락을 베팅하는 인버스 ETN의 거래량이 급증하며 헤지 수요가 늘고 있다.", "url": "https://t.me/moneythemestock/61555" }
+        ]
       },
       {
         "rank": 15,
@@ -138,151 +168,267 @@
         "mention": 4,
         "channel": 2,
         "score": 8,
-        "link": "https://t.me/moneythemestock/61555"
+        "articles": [
+          { "title": "다스코, 방산 수출 수혜 기대…K-방산 확산 모멘텀", "summary": "K-방산 수출 확대 기조 속에 다스코가 방위산업 수혜 종목으로 주목받고 있다.", "url": "https://t.me/moneythemestock/61555" }
+        ]
       }
     ]
   },
   "history": [
+    {
+      "report_date": "2026-06-25",
+      "range_label": "2026-06-25(수) 05:00 ~ 2026-06-26(목) 04:59 KST",
+      "message_count": 278,
+      "channel_count": 13,
+      "items": [
+        { "rank": 1, "name": "삼성전자", "type": "종목", "mention": 38, "channel": 9, "score": 56,
+          "articles": [
+            { "title": "삼성전자, 파운드리 2나노 수율 개선…TSMC 대항마 기대", "summary": "삼성전자 파운드리 부문의 2나노 공정 수율이 개선되며 TSMC 대항마로서의 기대감이 커지고 있다.", "url": "https://t.me/HanaResearch/19699" }
+          ]
+        },
+        { "rank": 2, "name": "SK하이닉스", "type": "종목", "mention": 31, "channel": 8, "score": 47,
+          "articles": [
+            { "title": "SK하이닉스, 엔비디아 HBM 독점 공급 2025년까지 유지", "summary": "SK하이닉스가 엔비디아에 대한 HBM 독점 공급 지위를 2025년까지 유지할 것으로 전망됐다.", "url": "https://t.me/moneythemestock/61269" }
+          ]
+        },
+        { "rank": 3, "name": "현대차", "type": "종목", "mention": 18, "channel": 6, "score": 30,
+          "articles": [
+            { "title": "현대차, 미국 관세 우려 완화…현지 생산 확대로 방어", "summary": "현대차가 미국 현지 생산 확대를 통해 관세 리스크를 방어하며 투자 심리가 개선됐다.", "url": "https://t.me/valjuman/31089" }
+          ]
+        },
+        { "rank": 4, "name": "기아", "type": "종목", "mention": 14, "channel": 5, "score": 24,
+          "articles": [
+            { "title": "기아, 북미 SUV 판매 호조…하반기 실적 기대감 상승", "summary": "기아의 북미 시장 SUV 판매가 호조를 보이며 하반기 실적에 대한 긍정적 전망이 나왔다.", "url": "https://t.me/moneythemestock/61267" }
+          ]
+        },
+        { "rank": 5, "name": "LG에너지솔루션", "type": "종목", "mention": 12, "channel": 5, "score": 22,
+          "articles": [
+            { "title": "LG에너지솔루션, GM과 배터리 추가 공급 계약…수주 잔고 확대", "summary": "LG에너지솔루션이 GM과 추가 배터리 공급 계약을 체결하며 수주 잔고를 늘렸다.", "url": "https://t.me/HanaResearch/19700" }
+          ]
+        },
+        { "rank": 6, "name": "삼성물산", "type": "종목", "mention": 9, "channel": 4, "score": 17,
+          "articles": [
+            { "title": "삼성물산 건설 부문, 중동 플랜트 수주 확대 기대", "summary": "삼성물산 건설 부문이 중동 플랜트 프로젝트 수주를 늘리며 실적 개선 기대감이 높아졌다.", "url": "https://t.me/valjuman/31272" }
+          ]
+        },
+        { "rank": 7, "name": "포스코홀딩스", "type": "종목", "mention": 7, "channel": 4, "score": 15,
+          "articles": [
+            { "title": "포스코홀딩스, 리튬 사업 가시화…2차전지 소재 밸류체인 완성", "summary": "포스코홀딩스의 리튬 생산 사업이 본격화되며 2차전지 소재 밸류체인 완성에 대한 기대가 높아졌다.", "url": "https://t.me/moneythemestock/61270" }
+          ]
+        },
+        { "rank": 8, "name": "한미반도체", "type": "종목", "mention": 6, "channel": 4, "score": 14,
+          "articles": [
+            { "title": "한미반도체 TC본더, HBM4 공정 적용 확대 전망", "summary": "HBM4 양산이 본격화되면서 한미반도체 TC본더 장비의 적용 범위가 확대될 것으로 전망됐다.", "url": "https://t.me/characteristicstock/81423" }
+          ]
+        },
+        { "rank": 9, "name": "SK스퀘어", "type": "종목", "mention": 7, "channel": 3, "score": 13,
+          "articles": [
+            { "title": "SK스퀘어, 자사주 소각 검토…주주환원 정책 강화", "summary": "SK스퀘어가 자사주 소각을 검토하며 주주환원 정책 강화에 나설 것으로 알려졌다.", "url": "https://t.me/moneythemestock/61267" }
+          ]
+        },
+        { "rank": 10, "name": "삼성중공업", "type": "종목", "mention": 5, "channel": 3, "score": 11,
+          "articles": [
+            { "title": "삼성중공업, 카타르 LNG선 추가 수주…수주잔고 최대", "summary": "삼성중공업이 카타르 국영 석유사로부터 LNG선을 추가 수주하며 수주잔고를 사상 최대로 늘렸다.", "url": "https://t.me/valjuman/31259" }
+          ]
+        }
+      ]
+    },
+    {
+      "report_date": "2026-06-24",
+      "range_label": "2026-06-24(화) 05:00 ~ 2026-06-25(수) 04:59 KST",
+      "message_count": 261,
+      "channel_count": 12,
+      "items": [
+        { "rank": 1, "name": "삼성전자", "type": "종목", "mention": 35, "channel": 9, "score": 53,
+          "articles": [
+            { "title": "삼성전자, 갤럭시 AI 기능 확대…온디바이스 AI 경쟁력 강화", "summary": "삼성전자가 갤럭시 스마트폰에 AI 기능을 확대 적용하며 온디바이스 AI 경쟁력을 높이고 있다.", "url": "https://t.me/moneythemestock/61269" }
+          ]
+        },
+        { "rank": 2, "name": "SK하이닉스", "type": "종목", "mention": 28, "channel": 7, "score": 43,
+          "articles": [
+            { "title": "SK하이닉스, AI 서버 메모리 수요 급증…공급 부족 우려도", "summary": "AI 서버 메모리 수요가 급증하면서 SK하이닉스 제품의 공급 부족 우려가 제기됐다.", "url": "https://t.me/HanaResearch/19699" }
+          ]
+        },
+        { "rank": 3, "name": "엔씨소프트", "type": "종목", "mention": 22, "channel": 5, "score": 32,
+          "articles": [
+            { "title": "엔씨소프트, 신작 출시 기대감 재점화…하반기 모멘텀 주목", "summary": "엔씨소프트가 하반기 신작 라인업을 발표하며 게임주 반등 기대감이 높아졌다.", "url": "https://t.me/characteristicstock/81444" }
+          ]
+        },
+        { "rank": 4, "name": "카카오", "type": "종목", "mention": 16, "channel": 5, "score": 26,
+          "articles": [
+            { "title": "카카오, AI 서비스 수익화 본격화…카카오톡 AI 기능 유료 전환", "summary": "카카오가 카카오톡 내 AI 기능을 유료화하며 AI 서비스 수익화에 본격적으로 나섰다.", "url": "https://t.me/moneythemestock/61238" }
+          ]
+        },
+        { "rank": 5, "name": "삼성물산", "type": "종목", "mention": 10, "channel": 5, "score": 20,
+          "articles": [
+            { "title": "삼성물산, 삼성바이오로직스 지분 가치 부각…자산주 재평가", "summary": "삼성바이오로직스 주가 상승으로 삼성물산의 지분 가치가 부각되며 자산주 재평가 관심이 높아졌다.", "url": "https://t.me/valjuman/31272" }
+          ]
+        },
+        { "rank": 6, "name": "한국항공우주", "type": "종목", "mention": 9, "channel": 4, "score": 17,
+          "articles": [
+            { "title": "한국항공우주, 폴란드 FA-50 추가 계약 임박…방산 수출 확대", "summary": "한국항공우주가 폴란드와 FA-50 전투기 추가 계약을 앞두고 있어 방산 수출 확대 기대가 높다.", "url": "https://t.me/moneythemestock/61270" }
+          ]
+        },
+        { "rank": 7, "name": "현대로템", "type": "종목", "mention": 8, "channel": 4, "score": 16,
+          "articles": [
+            { "title": "현대로템, K2 전차 수출 호조…폴란드·루마니아 추가 계약", "summary": "현대로템의 K2 전차가 유럽 시장에서 연속 수주를 이어가며 방산 수출 대표주로 자리매김하고 있다.", "url": "https://t.me/characteristicstock/81452" }
+          ]
+        },
+        { "rank": 8, "name": "LG화학", "type": "종목", "mention": 7, "channel": 4, "score": 15,
+          "articles": [
+            { "title": "LG화학, 양극재 사업 분사 검토…배터리 소재 밸류업", "summary": "LG화학이 양극재 사업 분사를 검토하며 배터리 소재 부문의 밸류업 전략을 추진하고 있다.", "url": "https://t.me/HanaResearch/19700" }
+          ]
+        },
+        { "rank": 9, "name": "두산에너빌리티", "type": "종목", "mention": 9, "channel": 3, "score": 15,
+          "articles": [
+            { "title": "두산에너빌리티, SMR 원전 수주 기대감…원전 르네상스 수혜", "summary": "두산에너빌리티가 소형모듈원전(SMR) 핵심 기자재 공급 수주를 앞두고 원전 수혜주로 주목받았다.", "url": "https://t.me/moneythemestock/61267" }
+          ]
+        },
+        { "rank": 10, "name": "한미반도체", "type": "종목", "mention": 6, "channel": 3, "score": 12,
+          "articles": [
+            { "title": "한미반도체, 2분기 TC본더 매출 사상 최대 전망", "summary": "한미반도체의 2분기 TC본더 장비 매출이 분기 사상 최대를 기록할 것으로 전망됐다.", "url": "https://t.me/valjuman/31259" }
+          ]
+        }
+      ]
+    },
+    {
+      "report_date": "2026-06-23",
+      "range_label": "2026-06-23(월) 05:00 ~ 2026-06-24(화) 04:59 KST",
+      "message_count": 243,
+      "channel_count": 12,
+      "items": [
+        { "rank": 1, "name": "삼성전자", "type": "종목", "mention": 33, "channel": 8, "score": 49,
+          "articles": [
+            { "title": "삼성전자, 주가 8만원 돌파…외국인 순매수 지속", "summary": "삼성전자 주가가 8만원을 돌파하며 외국인 투자자의 순매수가 이어지고 있다.", "url": "https://t.me/HanaResearch/19699" }
+          ]
+        },
+        { "rank": 2, "name": "SK하이닉스", "type": "종목", "mention": 25, "channel": 7, "score": 39,
+          "articles": [
+            { "title": "SK하이닉스, 미국 HBM 관세 면제 확인…무역 리스크 해소", "summary": "미국 정부가 HBM 메모리에 대한 관세 면제를 확인하며 SK하이닉스의 무역 리스크가 해소됐다.", "url": "https://t.me/moneythemestock/61269" }
+          ]
+        },
+        { "rank": 3, "name": "현대차", "type": "종목", "mention": 20, "channel": 6, "score": 32,
+          "articles": [
+            { "title": "현대차, 미국 IRA 세액공제 혜택 연장…전기차 가격 경쟁력 유지", "summary": "미국 IRA 세액공제 혜택이 연장되면서 현대차의 전기차 가격 경쟁력이 유지될 것으로 전망됐다.", "url": "https://t.me/valjuman/31089" }
+          ]
+        },
+        { "rank": 4, "name": "POSCO홀딩스", "type": "종목", "mention": 15, "channel": 5, "score": 25,
+          "articles": [
+            { "title": "POSCO홀딩스, 아르헨티나 리튬 생산 개시…2차전지 소재 공급망 확보", "summary": "POSCO홀딩스가 아르헨티나 염호에서 리튬 생산을 시작하며 배터리 소재 공급망을 확보했다.", "url": "https://t.me/moneythemestock/61267" }
+          ]
+        },
+        { "rank": 5, "name": "삼성바이오로직스", "type": "종목", "mention": 12, "channel": 5, "score": 22,
+          "articles": [
+            { "title": "삼성바이오로직스, 글로벌 빅파마 CMO 계약 확대…5공장 조기 가동", "summary": "삼성바이오로직스가 글로벌 제약사 CMO(위탁생산) 계약을 늘리며 5공장 조기 가동에 나선다.", "url": "https://t.me/characteristicstock/81462" }
+          ]
+        },
+        { "rank": 6, "name": "한화에어로스페이스", "type": "종목", "mention": 10, "channel": 4, "score": 18,
+          "articles": [
+            { "title": "한화에어로스페이스, 천무 수출 계약 체결…방산 수출 기대 현실화", "summary": "한화에어로스페이스가 다연장로켓 천무의 해외 수출 계약을 체결하며 방산 수출 기대가 현실화됐다.", "url": "https://t.me/moneythemestock/61238" }
+          ]
+        },
+        { "rank": 7, "name": "기아", "type": "종목", "mention": 9, "channel": 4, "score": 17,
+          "articles": [
+            { "title": "기아, 전기차 EV9 북미 판매 호조…하반기 점유율 확대 기대", "summary": "기아의 대형 전기 SUV EV9이 북미 시장에서 판매 호조를 보이며 하반기 전기차 점유율 확대가 기대된다.", "url": "https://t.me/valjuman/31259" }
+          ]
+        },
+        { "rank": 8, "name": "셀트리온", "type": "종목", "mention": 8, "channel": 4, "score": 16,
+          "articles": [
+            { "title": "셀트리온, 짐펜트라 미국 매출 급증…바이오시밀러 1위 목표", "summary": "셀트리온의 자가면역질환 치료제 짐펜트라의 미국 시장 매출이 급증하며 바이오시밀러 1위를 향해 순항하고 있다.", "url": "https://t.me/characteristicstock/81444" }
+          ]
+        },
+        { "rank": 9, "name": "LG전자", "type": "종목", "mention": 6, "channel": 3, "score": 12,
+          "articles": [
+            { "title": "LG전자, B2B 사업 성장세…기업용 OLED·냉난방 매출 확대", "summary": "LG전자의 B2B 사업 부문이 기업용 디스플레이와 냉난방 공조 시스템 매출 확대로 성장세를 이어가고 있다.", "url": "https://t.me/HanaResearch/19700" }
+          ]
+        },
+        { "rank": 10, "name": "카카오뱅크", "type": "종목", "mention": 5, "channel": 3, "score": 11,
+          "articles": [
+            { "title": "카카오뱅크, 대출 잔고 증가세 둔화…금리 인하 수혜 기대", "summary": "카카오뱅크의 대출 잔고 증가세가 둔화되고 있으나 금리 인하 기대감으로 순이자마진 개선이 전망된다.", "url": "https://t.me/moneythemestock/61270" }
+          ]
+        }
+      ]
+    },
     {
       "report_date": "2026-06-22",
       "range_label": "2026-06-19(금) 05:00 ~ 2026-06-22(월) 04:59 KST",
       "message_count": 284,
       "channel_count": 13,
       "items": [
-        {
-          "rank": 1,
-          "name": "삼성전자",
-          "type": "종목",
-          "mention": 39,
-          "channel": 8,
-          "score": 55,
-          "link": "https://t.me/HanaResearch/19699"
+        { "rank": 1, "name": "삼성전자", "type": "종목", "mention": 39, "channel": 8, "score": 55,
+          "articles": [
+            { "title": "삼성전자, HBM3E 공급 확대 합의…엔비디아와 협력 강화", "summary": "삼성전자가 엔비디아와 HBM3E 공급 확대에 합의하며 AI 반도체 공급망 협력을 강화했다.", "url": "https://t.me/HanaResearch/19699" }
+          ]
         },
-        {
-          "rank": 2,
-          "name": "SK하이닉스",
-          "type": "종목",
-          "mention": 27,
-          "channel": 6,
-          "score": 39,
-          "link": "https://t.me/moneythemestock/61269"
+        { "rank": 2, "name": "SK하이닉스", "type": "종목", "mention": 27, "channel": 6, "score": 39,
+          "articles": [
+            { "title": "SK하이닉스, HBM4 개발 완료 선언…내년 상반기 양산 목표", "summary": "SK하이닉스가 차세대 HBM4 개발을 완료했다고 선언하며 내년 상반기 양산을 목표로 하고 있다.", "url": "https://t.me/moneythemestock/61269" }
+          ]
         },
-        {
-          "rank": 3,
-          "name": "한울반도체",
-          "type": "종목",
-          "mention": 14,
-          "channel": 3,
-          "score": 20,
-          "link": "https://t.me/characteristicstock/81462"
+        { "rank": 3, "name": "한울반도체", "type": "종목", "mention": 14, "channel": 3, "score": 20,
+          "articles": [
+            { "title": "한울반도체, 반도체 테스트 장비 신규 수주…실적 기대감 상승", "summary": "한울반도체가 반도체 테스트 장비 신규 수주에 성공하며 실적 개선 기대감이 높아졌다.", "url": "https://t.me/characteristicstock/81462" }
+          ]
         },
-        {
-          "rank": 4,
-          "name": "삼성전기",
-          "type": "종목",
-          "mention": 8,
-          "channel": 4,
-          "score": 16,
-          "link": "https://t.me/valjuman/31089"
+        { "rank": 4, "name": "삼성전기", "type": "종목", "mention": 8, "channel": 4, "score": 16,
+          "articles": [
+            { "title": "삼성전기, AI 서버용 MLCC 수요 급증…실적 상향 전망", "summary": "AI 서버 시장 성장으로 삼성전기의 고용량 MLCC 수요가 급증하며 실적 상향 전망이 나왔다.", "url": "https://t.me/valjuman/31089" }
+          ]
         },
-        {
-          "rank": 5,
-          "name": "SK스퀘어",
-          "type": "종목",
-          "mention": 8,
-          "channel": 3,
-          "score": 14,
-          "link": "https://t.me/moneythemestock/61267"
+        { "rank": 5, "name": "SK스퀘어", "type": "종목", "mention": 8, "channel": 3, "score": 14,
+          "articles": [
+            { "title": "SK스퀘어, SK하이닉스 지분가치 재평가…NAV 할인율 축소 전망", "summary": "SK하이닉스 주가 강세에 따라 SK스퀘어의 순자산가치(NAV) 할인율이 축소될 것으로 전망됐다.", "url": "https://t.me/moneythemestock/61267" }
+          ]
         },
-        {
-          "rank": 6,
-          "name": "삼성물산",
-          "type": "종목",
-          "mention": 8,
-          "channel": 3,
-          "score": 14,
-          "link": "https://t.me/moneythemestock/61270"
+        { "rank": 6, "name": "삼성물산", "type": "종목", "mention": 8, "channel": 3, "score": 14,
+          "articles": [
+            { "title": "삼성물산, 2분기 건설·상사 실적 기대 이상…배당 확대 전망", "summary": "삼성물산의 2분기 건설과 상사 부문 실적이 기대를 웃돌며 배당 확대 가능성이 높아졌다.", "url": "https://t.me/moneythemestock/61270" }
+          ]
         },
-        {
-          "rank": 7,
-          "name": "인텔",
-          "type": "종목",
-          "mention": 6,
-          "channel": 4,
-          "score": 14,
-          "link": "https://t.me/characteristicstock/81423"
+        { "rank": 7, "name": "인텔", "type": "종목", "mention": 6, "channel": 4, "score": 14,
+          "articles": [
+            { "title": "인텔, 파운드리 외부 고객 확보…TSMC·삼성 추격 본격화", "summary": "인텔이 파운드리 사업에서 외부 고객사를 확보하며 TSMC와 삼성전자 추격에 본격적으로 나섰다.", "url": "https://t.me/characteristicstock/81423" }
+          ]
         },
-        {
-          "rank": 8,
-          "name": "LG에너지솔루션",
-          "type": "종목",
-          "mention": 5,
-          "channel": 4,
-          "score": 13,
-          "link": "https://t.me/HanaResearch/19700"
+        { "rank": 8, "name": "LG에너지솔루션", "type": "종목", "mention": 5, "channel": 4, "score": 13,
+          "articles": [
+            { "title": "LG에너지솔루션, 원통형 배터리 북미 공장 양산 시작", "summary": "LG에너지솔루션이 북미 원통형 배터리 공장에서 양산을 시작하며 테슬라 공급 확대가 기대된다.", "url": "https://t.me/HanaResearch/19700" }
+          ]
         },
-        {
-          "rank": 9,
-          "name": "씨피시스템",
-          "type": "종목",
-          "mention": 9,
-          "channel": 2,
-          "score": 13,
-          "link": "https://t.me/characteristicstock/81444"
+        { "rank": 9, "name": "씨피시스템", "type": "종목", "mention": 9, "channel": 2, "score": 13,
+          "articles": [
+            { "title": "씨피시스템, 반도체 공정 소재 신규 공급사 선정…성장 기대", "summary": "씨피시스템이 주요 반도체 업체의 공정 소재 신규 공급사로 선정되며 성장 기대감이 높아졌다.", "url": "https://t.me/characteristicstock/81444" }
+          ]
         },
-        {
-          "rank": 10,
-          "name": "강동씨앤엘",
-          "type": "종목",
-          "mention": 8,
-          "channel": 2,
-          "score": 12,
-          "link": "https://t.me/moneythemestock/61238"
+        { "rank": 10, "name": "강동씨앤엘", "type": "종목", "mention": 8, "channel": 2, "score": 12,
+          "articles": [
+            { "title": "강동씨앤엘, 데이터센터 냉각 설비 수주 급증…AI 인프라 수혜", "summary": "강동씨앤엘이 AI 데이터센터용 냉각 설비 수주를 늘리며 AI 인프라 수혜 종목으로 부각됐다.", "url": "https://t.me/moneythemestock/61238" }
+          ]
         },
-        {
-          "rank": 11,
-          "name": "제이앤티씨",
-          "type": "종목",
-          "mention": 8,
-          "channel": 2,
-          "score": 12,
-          "link": "https://t.me/characteristicstock/81452"
+        { "rank": 11, "name": "제이앤티씨", "type": "종목", "mention": 8, "channel": 2, "score": 12,
+          "articles": [
+            { "title": "제이앤티씨, 스마트폰 커버글라스 수주 확대…2분기 턴어라운드 전망", "summary": "제이앤티씨가 스마트폰 커버글라스 수주를 늘리며 2분기 흑자 전환이 기대된다.", "url": "https://t.me/characteristicstock/81452" }
+          ]
         },
-        {
-          "rank": 12,
-          "name": "메리츠제2호스팩",
-          "type": "종목",
-          "mention": 6,
-          "channel": 2,
-          "score": 10,
-          "link": "https://t.me/characteristicstock/81460"
+        { "rank": 12, "name": "메리츠제2호스팩", "type": "종목", "mention": 6, "channel": 2, "score": 10,
+          "articles": [
+            { "title": "메리츠제2호스팩, 합병 대상 기업 물색 중…바이오 섹터 유력", "summary": "메리츠제2호스팩이 합병 대상 기업을 물색하면서 바이오 섹터 기업과의 합병이 유력하게 거론되고 있다.", "url": "https://t.me/characteristicstock/81460" }
+          ]
         },
-        {
-          "rank": 13,
-          "name": "삼성SDI",
-          "type": "종목",
-          "mention": 4,
-          "channel": 3,
-          "score": 10,
-          "link": "https://t.me/HanaResearch/19700"
+        { "rank": 13, "name": "삼성SDI", "type": "종목", "mention": 4, "channel": 3, "score": 10,
+          "articles": [
+            { "title": "삼성SDI, BMW 배터리 공급 계약 연장…유럽 EV 시장 공략", "summary": "삼성SDI가 BMW와 전기차 배터리 공급 계약을 연장하며 유럽 전기차 시장 공략을 이어간다.", "url": "https://t.me/HanaResearch/19700" }
+          ]
         },
-        {
-          "rank": 14,
-          "name": "현대차",
-          "type": "종목",
-          "mention": 4,
-          "channel": 3,
-          "score": 10,
-          "link": "https://t.me/moneythemestock/61276"
+        { "rank": 14, "name": "현대차", "type": "종목", "mention": 4, "channel": 3, "score": 10,
+          "articles": [
+            { "title": "현대차, 6월 글로벌 판매 역대 최대 전망…전기차 비중 상승", "summary": "현대차의 6월 글로벌 판매량이 역대 최대를 기록할 것으로 전망되며 전기차 비중도 높아지고 있다.", "url": "https://t.me/moneythemestock/61276" }
+          ]
         },
-        {
-          "rank": 15,
-          "name": "보해양조",
-          "type": "종목",
-          "mention": 7,
-          "channel": 1,
-          "score": 9,
-          "link": "https://t.me/moneythemestock/61238"
+        { "rank": 15, "name": "보해양조", "type": "종목", "mention": 7, "channel": 1, "score": 9,
+          "articles": [
+            { "title": "보해양조, 소주 판매량 증가…내수 소비 회복 수혜", "summary": "내수 소비 회복세를 타고 보해양조의 소주 판매량이 늘어나며 실적 개선 기대감이 커졌다.", "url": "https://t.me/moneythemestock/61238" }
+          ]
         }
       ]
     }

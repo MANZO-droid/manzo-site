@@ -120,6 +120,19 @@ section { padding: 72px 0; }
 .ms-num { font-size: 13px; color: var(--text-secondary); min-width: 24px; text-align: right; }
 .ms-score { font-weight: 700; color: var(--text-primary); }
 .ms-empty { text-align: center; padding: 48px; color: var(--text-muted); font-size: 15px; }
+/* 기사 모달 */
+.art-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center; }
+.art-modal-overlay.open { display:flex; }
+.art-modal-box { background:#fff; border-radius:16px; padding:32px 28px; width:100%; max-width:460px; max-height:80vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.2); position:relative; }
+.art-modal-title { font-size:18px; font-weight:700; margin-bottom:6px; }
+.art-modal-sub { font-size:13px; color:#9494A8; margin-bottom:20px; }
+.art-modal-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:20px; cursor:pointer; color:#9494A8; }
+.art-item { border:1px solid #E5E0D8; border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+.art-item-title { font-size:14px; font-weight:600; color:#1C1C2E; margin-bottom:4px; }
+.art-item-summary { font-size:13px; color:#5A5A72; margin-bottom:10px; line-height:1.5; }
+.art-item-link { display:inline-block; font-size:12px; font-weight:600; color:#4A6FA5; text-decoration:none; border:1px solid #4A6FA5; border-radius:6px; padding:4px 10px; }
+.art-item-link:hover { background:#4A6FA5; color:#fff; }
+.ms-name-btn { background:none; border:none; cursor:pointer; font-size:14px; color:#4A6FA5; font-weight:600; text-decoration:underline; text-underline-offset:2px; font-family:var(--font); padding:0; }
 .ms-history { margin-top: 56px; }
 .ms-history-title { font-size: 16px; font-weight: 700; color: var(--text-secondary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1.5px solid var(--border); }
 .ms-history-item { margin-bottom: 32px; }
@@ -586,19 +599,28 @@ const NEWSLETTERS = [
   var currentDate = null;
   var POLL_INTERVAL = 10 * 60 * 1000; // 10분
 
+  // 종목별 기사 데이터 전역 저장소
+  window._msArticleStore = window._msArticleStore || {};
+
   function renderTable(items, tbodyId) {
     if (!items || !items.length) {
       document.getElementById(tbodyId).innerHTML =
         '<tr><td colspan="6" class="ms-empty">아직 데이터가 없습니다.</td></tr>';
       return;
     }
+    // 기사 데이터 저장
+    items.forEach(function(r) {
+      if (r.articles && r.articles.length) {
+        window._msArticleStore[r.name] = r.articles;
+      }
+    });
     var maxMention = items[0].mention || 1;
     var html = items.map(function (r) {
       var isTop = r.rank <= 3;
       var pct = Math.round((r.mention / maxMention) * 100);
       var rankClass = 'ms-rank' + (isTop ? ' top' : '');
-      var nameCell = r.link
-        ? '<a href="' + r.link + '" target="_blank" rel="noopener">' + r.name + '</a>'
+      var nameCell = (r.articles && r.articles.length)
+        ? '<button class="ms-name-btn" onclick="openArticleModal(' + JSON.stringify(r.name).replace(/'/g,"&#39;") + ', this)">' + r.name + '</button>'
         : r.name;
       return '<tr>' +
         '<td class="' + rankClass + '">' + r.rank + '</td>' +
@@ -672,6 +694,16 @@ const NEWSLETTERS = [
 })();
 </script>
 
+<!-- ── 기사 목록 모달 ── -->
+<div class="art-modal-overlay" id="articleModal">
+  <div class="art-modal-box">
+    <button class="art-modal-close" onclick="document.getElementById('articleModal').classList.remove('open')">✕</button>
+    <div class="art-modal-title" id="art-modal-name"></div>
+    <div class="art-modal-sub" id="art-modal-sub">관련 리포트 · 기사</div>
+    <div id="art-modal-list"></div>
+  </div>
+</div>
+
 <!-- ── Supabase CDN ── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -714,6 +746,26 @@ const NEWSLETTERS = [
     <button class="modal-btn modal-btn-primary" onclick="handleSaveNickname()">저장하고 시작하기</button>
   </div>
 </div>
+
+<!-- ── 기사 모달 로직 ── -->
+<script>
+window.openArticleModal = function(name) {
+  var articles = (window._msArticleStore || {})[name] || [];
+  document.getElementById('art-modal-name').textContent = name;
+  document.getElementById('art-modal-sub').textContent = '관련 리포트 · 기사 ' + articles.length + '건';
+  document.getElementById('art-modal-list').innerHTML = articles.map(function(a) {
+    return '<div class="art-item">' +
+      '<div class="art-item-title">' + a.title + '</div>' +
+      '<div class="art-item-summary">' + a.summary + '</div>' +
+      '<a class="art-item-link" href="' + a.url + '" target="_blank" rel="noopener">원문 보기 →</a>' +
+      '</div>';
+  }).join('');
+  document.getElementById('articleModal').classList.add('open');
+};
+document.getElementById('articleModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+</script>
 
 <!-- ── 로그인 로직 ── -->
 <script>
