@@ -155,6 +155,37 @@ section { padding: 72px 0; }
   .subscribe-form { flex-direction: column; align-items: stretch; }
   .subscribe-form input { max-width: 100%; }
 }
+
+/* ── 로그인 모달 ── */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:999; align-items:center; justify-content:center; }
+.modal-overlay.open { display:flex; }
+.modal-box { background:#fff; border-radius:16px; padding:36px 32px; width:100%; max-width:380px; box-shadow:0 20px 60px rgba(0,0,0,0.2); position:relative; }
+.modal-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:20px; cursor:pointer; color:#9494A8; line-height:1; }
+.modal-close:hover { color:#1C1C2E; }
+.modal-title { font-size:20px; font-weight:700; margin-bottom:24px; text-align:center; color:#1C1C2E; }
+.modal-input-group { margin-bottom:14px; }
+.modal-input-group label { display:block; font-size:13px; font-weight:500; color:#5A5A72; margin-bottom:5px; }
+.modal-input-group input { width:100%; border:1.5px solid #E5E0D8; border-radius:8px; padding:10px 12px; font-size:14px; outline:none; transition:border 0.2s; font-family:var(--font); }
+.modal-input-group input:focus { border-color:#4A6FA5; }
+.modal-btn { width:100%; padding:11px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; border:none; margin-top:6px; transition:background 0.2s; font-family:var(--font); }
+.modal-btn-primary { background:#4A6FA5; color:#fff; }
+.modal-btn-primary:hover { background:#3A5A90; }
+.modal-btn-primary:disabled { opacity:0.6; cursor:not-allowed; }
+.modal-btn-google { background:#fff; color:#1C1C2E; border:1.5px solid #E5E0D8; display:flex; align-items:center; justify-content:center; gap:8px; margin-top:10px; }
+.modal-btn-google:hover { background:#F7F5F0; }
+.modal-divider { display:flex; align-items:center; gap:10px; margin:16px 0; color:#9494A8; font-size:12px; }
+.modal-divider::before, .modal-divider::after { content:''; flex:1; height:1px; background:#E5E0D8; }
+.modal-error { color:#dc2626; font-size:13px; margin-top:6px; margin-bottom:0; }
+.modal-footer { text-align:center; margin-top:20px; font-size:13px; color:#9494A8; }
+.modal-footer a { color:#4A6FA5; text-decoration:none; font-weight:600; }
+.modal-footer a:hover { text-decoration:underline; }
+/* 닉네임 설정 모달 */
+.modal-subtitle { font-size:13px; color:#5A5A72; text-align:center; margin-bottom:20px; margin-top:-16px; }
+/* 로그인 후 네비 */
+.nav-user { display:flex; align-items:center; gap:10px; }
+.nav-user-name { font-size:13px; font-weight:600; color:#4A6FA5; }
+.nav-user-logout { font-size:12px; color:#9494A8; cursor:pointer; background:none; border:none; font-family:var(--font); text-decoration:underline; }
+.nav-user-logout:hover { color:#1C1C2E; }
   </style>
 </head>
 <body>
@@ -169,7 +200,9 @@ section { padding: 72px 0; }
       <li><a href="#market-scope">마켓 스코프</a></li>
       <li><a href="#author">필자 소개</a></li>
       <li><a href="#subscribe" class="nav-cta">구독하기</a></li>
-      <li><a href="https://majo-newsletter.vercel.app/" class="nav-cta" style="background:#2563eb;">로그인</a></li>
+      <li id="nav-auth">
+        <button onclick="openLoginModal()" class="nav-cta" style="background:#2563eb;border:none;cursor:pointer;font-family:var(--font);">로그인</button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -638,5 +671,170 @@ const NEWSLETTERS = [
   setInterval(poll, POLL_INTERVAL);
 })();
 </script>
+
+<!-- ── Supabase CDN ── -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ── 로그인 모달 ── -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <p class="modal-title">로그인</p>
+    <div class="modal-input-group">
+      <label>이메일</label>
+      <input type="email" id="login-email" placeholder="example@email.com" />
+    </div>
+    <div class="modal-input-group">
+      <label>비밀번호</label>
+      <input type="password" id="login-pw" placeholder="비밀번호 입력" />
+    </div>
+    <p class="modal-error" id="login-error" style="display:none;"></p>
+    <button class="modal-btn modal-btn-primary" id="login-btn" onclick="handleLogin()">로그인</button>
+    <div class="modal-divider">또는</div>
+    <button class="modal-btn modal-btn-google" onclick="handleGoogleLogin()">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      구글 계정으로 로그인
+    </button>
+    <div class="modal-footer">
+      계정이 없으신가요? <a href="https://majo-newsletter.vercel.app/signup">회원가입</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── 닉네임 설정 모달 (구글 로그인 후) ── -->
+<div class="modal-overlay" id="nicknameModal">
+  <div class="modal-box">
+    <p class="modal-title">닉네임 설정</p>
+    <p class="modal-subtitle">구글 계정으로 가입하셨어요!<br>사용할 닉네임을 입력해주세요.</p>
+    <div class="modal-input-group">
+      <label>닉네임</label>
+      <input type="text" id="nickname-input" placeholder="사용할 닉네임 입력" />
+    </div>
+    <p class="modal-error" id="nickname-error" style="display:none;"></p>
+    <button class="modal-btn modal-btn-primary" onclick="handleSaveNickname()">저장하고 시작하기</button>
+  </div>
+</div>
+
+<!-- ── 로그인 로직 ── -->
+<script>
+(function () {
+  const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // ── 네비 업데이트 ──
+  function updateNav(user) {
+    var el = document.getElementById('nav-auth');
+    if (!el) return;
+    if (user) {
+      var nick = (user.user_metadata && user.user_metadata.nickname) || user.email.split('@')[0];
+      el.innerHTML =
+        '<div class="nav-user">' +
+        '<span class="nav-user-name">👤 ' + nick + '님</span>' +
+        '<button class="nav-user-logout" onclick="handleLogout()">로그아웃</button>' +
+        '</div>';
+    } else {
+      el.innerHTML = '<button onclick="openLoginModal()" class="nav-cta" style="background:#2563eb;border:none;cursor:pointer;font-family:var(--font);">로그인</button>';
+    }
+  }
+
+  // ── 페이지 로드 시 로그인 상태 확인 ──
+  sb.auth.getSession().then(function (res) {
+    var session = res.data.session;
+    if (session) {
+      var user = session.user;
+      var nick = user.user_metadata && user.user_metadata.nickname;
+      if (!nick) {
+        // 구글 로그인 후 닉네임 없는 경우
+        openNicknameModal();
+      } else {
+        updateNav(user);
+      }
+    }
+  });
+
+  // ── 모달 열기/닫기 ──
+  window.openLoginModal = function () {
+    document.getElementById('loginModal').classList.add('open');
+    document.getElementById('login-error').style.display = 'none';
+    document.getElementById('login-email').value = '';
+    document.getElementById('login-pw').value = '';
+  };
+  window.closeLoginModal = function () {
+    document.getElementById('loginModal').classList.remove('open');
+  };
+  function openNicknameModal() {
+    document.getElementById('loginModal').classList.remove('open');
+    document.getElementById('nicknameModal').classList.add('open');
+  }
+
+  // 모달 바깥 클릭 시 닫기
+  document.getElementById('loginModal').addEventListener('click', function (e) {
+    if (e.target === this) closeLoginModal();
+  });
+
+  // ── 이메일 로그인 ──
+  window.handleLogin = async function () {
+    var email = document.getElementById('login-email').value.trim();
+    var pw = document.getElementById('login-pw').value;
+    var errEl = document.getElementById('login-error');
+    var btn = document.getElementById('login-btn');
+
+    if (!email || !pw) { showError(errEl, '이메일과 비밀번호를 입력해주세요.'); return; }
+
+    btn.disabled = true; btn.textContent = '로그인 중...';
+    var res = await sb.auth.signInWithPassword({ email: email, password: pw });
+
+    if (res.error) {
+      showError(errEl, '이메일 또는 비밀번호를 확인해주세요.');
+      btn.disabled = false; btn.textContent = '로그인';
+    } else {
+      closeLoginModal();
+      updateNav(res.data.user);
+      btn.disabled = false; btn.textContent = '로그인';
+    }
+  };
+
+  // ── 구글 로그인 ──
+  window.handleGoogleLogin = async function () {
+    await sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.href }
+    });
+  };
+
+  // ── 닉네임 저장 ──
+  window.handleSaveNickname = async function () {
+    var nick = document.getElementById('nickname-input').value.trim();
+    var errEl = document.getElementById('nickname-error');
+    if (!nick) { showError(errEl, '닉네임을 입력해주세요.'); return; }
+
+    var res = await sb.auth.updateUser({ data: { nickname: nick } });
+    if (res.error) {
+      showError(errEl, '저장에 실패했어요. 다시 시도해주세요.');
+    } else {
+      document.getElementById('nicknameModal').classList.remove('open');
+      updateNav(res.data.user);
+    }
+  };
+
+  // ── 로그아웃 ──
+  window.handleLogout = async function () {
+    await sb.auth.signOut();
+    updateNav(null);
+  };
+
+  // ── Enter 키 로그인 ──
+  document.getElementById('login-pw').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+
+  function showError(el, msg) {
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+})();
+</script>
+
 </body>
 </html>
