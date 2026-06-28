@@ -683,7 +683,7 @@ const NEWSLETTERS = [
     }).join('');
   }
 
-  function openHistoryModal(reportDate) {
+  window.openHistoryModal = function(reportDate) {
     var h = window._msHistoryStore[reportDate];
     if (!h) return;
     document.getElementById('hist-modal-title').textContent = reportDate + ' 마켓 스코프';
@@ -691,7 +691,6 @@ const NEWSLETTERS = [
     document.getElementById('hist-modal-msg').textContent = (h.message_count || 0).toLocaleString() + '개';
     document.getElementById('hist-modal-ch').textContent = (h.channel_count || 0) + '개';
     document.getElementById('hist-modal-date').textContent = h.report_date || '—';
-    // 기사 데이터 저장
     (h.items || []).forEach(function(r) {
       if (r.articles && r.articles.length) {
         window._msArticleStore[r.name] = r.articles;
@@ -699,7 +698,7 @@ const NEWSLETTERS = [
     });
     renderTable(h.items || [], 'hist-modal-tbody');
     document.getElementById('histModal').classList.add('open');
-  }
+  };
 
   function renderMarketScope(data) {
     var current = data.current || data; // 구형 단일 구조 호환
