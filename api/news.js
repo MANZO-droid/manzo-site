@@ -1,15 +1,18 @@
 const https = require('https');
 const http = require('http');
+const zlib = require('zlib');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
-  const { url } = req.query;
-  if (!url) return res.status(400).json({ ok: false, error: 'url required' });
+  const rawUrl = (req.query && req.query.url) || '';
+  if (!rawUrl) return res.status(400).json({ ok: false, error: 'url required' });
+
+  const rssUrl = decodeURIComponent(rawUrl);
 
   try {
-    const xml = await fetchUrl(decodeURIComponent(url));
+    const xml = await fetchWithRedirect(rssUrl, 3);
     const articles = parseRSS(xml);
     res.json({ ok: true, articles });
   } catch (e) {
@@ -17,39 +20,92 @@ module.exports = async (req, res) => {
   }
 };
 
-function fetchUrl(url) {
+function fetchWithRedirect(url, maxRedirects) {
   return new Promise((resolve, reject) => {
-    const client = url.startsWith('https') ? https : http;
-    const req = client.get(url, {
+    if (maxRedirects <= 0) return reject(new Error('too many redirects'));
+
+    let parsed;
+    try { parsed = new URL(url); } catch (e) { return reject(new Error('invalid url: ' + url)); }
+
+    const client = parsed.protocol === 'https:' ? https : http;
+
+    const options = {
+      hostname: parsed.hostname,
+      port: parsed.port || (parsed.protocol === 'https:' ? 443 : 80),
+      path: parsed.pathname + parsed.search,
+      method: 'GET',
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36',
         'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.8',
       },
-      timeout: 10000,
-    }, (r) => {
-      // 리다이렉트 처리
+      timeout: 9000,
+    };
+
+    const req = client.request(options, (r) => {
+      // 리다이렉트 처리 (절대/상대 URL 모두 지원)
       if (r.statusCode >= 300 && r.statusCode < 400 && r.headers.location) {
-        return fetchUrl(r.headers.location).then(resolve).catch(reject);
+        let loc = r.headers.location;
+        if (!loc.startsWith('http')) {
+          loc = parsed.protocol + '//' + parsed.hostname + (loc.startsWith('/') ? '' : '/') + loc;
+        }
+        r.resume();
+        return fetchWithRedirect(loc, maxRedirects - 1).then(resolve).catch(reject);
       }
-      let data = '';
-      r.setEncoding('utf8');
-      r.on('data', (c) => { data += c; });
-      r.on('end', () => resolve(data));
+
+      const chunks = [];
+      r.on('data', (c) => chunks.push(c));
+      r.on('end', () => {
+        const buf = Buffer.concat(chunks);
+        const enc = r.headers['content-encoding'] || '';
+
+        const decode = (b) => {
+          // EUC-KR 감지 후 디코딩
+          const str = b.toString('utf8');
+          if (str.includes('euc-kr') || str.includes('EUC-KR')) {
+            try {
+              const td = new TextDecoder('euc-kr');
+              return td.decode(b);
+            } catch (e) { return str; }
+          }
+          return str;
+        };
+
+        if (enc === 'gzip') {
+          zlib.gunzip(buf, (err, result) => {
+            if (err) return reject(err);
+            resolve(decode(result));
+          });
+        } else if (enc === 'deflate') {
+          zlib.inflate(buf, (err, result) => {
+            if (err) return reject(err);
+            resolve(decode(result));
+          });
+        } else {
+          resolve(decode(buf));
+        }
+      });
     });
+
     req.on('error', reject);
     req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+    req.end();
   });
 }
 
 function getTag(block, tag) {
-  // CDATA
-  var m = block.match(new RegExp('<' + tag + '[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>', 'i'));
+  // CDATA 처리
+  var re1 = new RegExp('<' + tag + '[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>', 'i');
+  var m = block.match(re1);
   if (m) return m[1].trim();
   // 일반 텍스트
-  m = block.match(new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'i'));
+  var re2 = new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)<\\/' + tag + '>', 'i');
+  m = block.match(re2);
   if (m) return m[1].trim();
-  // RSS <link /> 다음 텍스트 노드 패턴
-  m = block.match(new RegExp('<' + tag + '\\s*/>([^<]+)', 'i'));
+  // self-closing 뒤 텍스트 (일부 RSS 링크 형식)
+  var re3 = new RegExp('<' + tag + '\\s*/?>\\s*([^<\\s][^<]*)', 'i');
+  m = block.match(re3);
   if (m) return m[1].trim();
   return '';
 }
@@ -64,15 +120,28 @@ function stripHtml(html) {
 }
 
 function parseRSS(xml) {
-  var articles = [];
-  var itemRe = /<item[\s>]([\s\S]*?)<\/item>/gi;
-  var m;
+  const articles = [];
+  // RSS <item> 또는 Atom <entry> 지원
+  const itemRe = /<(?:item|entry)[>\s]([\s\S]*?)<\/(?:item|entry)>/gi;
+  let m;
   while ((m = itemRe.exec(xml)) !== null && articles.length < 3) {
-    var block = m[1];
-    var title = stripHtml(getTag(block, 'title'));
-    var link = getTag(block, 'link') || getTag(block, 'guid') || getTag(block, 'origLink');
-    var summary = stripHtml(getTag(block, 'description') || getTag(block, 'content:encoded') || '').slice(0, 140);
-    var pubDate = getTag(block, 'pubDate') || getTag(block, 'dc:date') || '';
+    const block = m[1];
+    const title = stripHtml(getTag(block, 'title'));
+    const link =
+      getTag(block, 'link') ||
+      (block.match(/<link[^>]+href=["']([^"']+)["']/i) || [])[1] ||
+      getTag(block, 'guid') ||
+      '';
+    const summary = stripHtml(
+      getTag(block, 'description') ||
+      getTag(block, 'content') ||
+      getTag(block, 'summary') || ''
+    ).slice(0, 140);
+    const pubDate =
+      getTag(block, 'pubDate') ||
+      getTag(block, 'published') ||
+      getTag(block, 'dc:date') || '';
+
     if (title && link) articles.push({ title, link, summary, pubDate });
   }
   return articles;
