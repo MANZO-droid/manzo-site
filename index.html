@@ -619,8 +619,9 @@ const NEWSLETTERS = [
       var isTop = r.rank <= 3;
       var pct = Math.round((r.mention / maxMention) * 100);
       var rankClass = 'ms-rank' + (isTop ? ' top' : '');
+      var safeName = r.name.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
       var nameCell = (r.articles && r.articles.length)
-        ? '<button class="ms-name-btn" onclick="openArticleModal(' + JSON.stringify(r.name).replace(/'/g,"&#39;") + ', this)">' + r.name + '</button>'
+        ? '<button class="ms-name-btn" data-msname="' + safeName + '">' + r.name + '</button>'
         : r.name;
       return '<tr>' +
         '<td class="' + rankClass + '">' + r.rank + '</td>' +
@@ -749,7 +750,7 @@ const NEWSLETTERS = [
 
 <!-- ── 기사 모달 로직 ── -->
 <script>
-window.openArticleModal = function(name) {
+function openArticleModal(name) {
   var articles = (window._msArticleStore || {})[name] || [];
   document.getElementById('art-modal-name').textContent = name;
   document.getElementById('art-modal-sub').textContent = '관련 리포트 · 기사 ' + articles.length + '건';
@@ -761,7 +762,17 @@ window.openArticleModal = function(name) {
       '</div>';
   }).join('');
   document.getElementById('articleModal').classList.add('open');
-};
+}
+
+// 이벤트 위임: 테이블 내 종목명 버튼 클릭 처리
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.ms-name-btn');
+  if (btn) {
+    var name = btn.getAttribute('data-msname');
+    if (name) openArticleModal(name);
+  }
+});
+
 document.getElementById('articleModal').addEventListener('click', function(e) {
   if (e.target === this) this.classList.remove('open');
 });
