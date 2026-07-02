@@ -195,6 +195,13 @@ section { padding: 72px 0; }
 .sa-modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-muted); line-height: 1; }
 .sa-modal-close:hover { color: var(--text-primary); }
 .sa-modal-chart { width: 100%; height: 240px; margin: 16px 0; }
+.sa-section-title { margin: 20px 0 10px; font-size: 14px; color: var(--text-muted); font-weight: 600; }
+.sa-analysis-block { display: flex; gap: 12px; padding: 14px 16px; border-radius: 10px; margin-bottom: 10px; }
+.sa-rise-block { background: rgba(192,57,43,0.06); border-left: 3px solid #C0392B; }
+.sa-chart-block { background: rgba(36,112,179,0.06); border-left: 3px solid #2470B3; }
+.sa-analysis-icon { font-size: 18px; flex-shrink: 0; padding-top: 2px; }
+.sa-analysis-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
+.sa-analysis-text { font-size: 13px; line-height: 1.75; color: var(--text-primary); margin: 0; }
 .sa-modal-fin { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin: 16px 0; }
 .sa-modal-fin-item { background: var(--bg-hero); border-radius: 8px; padding: 12px 14px; }
 .sa-modal-fin-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
@@ -924,8 +931,16 @@ const NEWSLETTERS = [
       { label: '매출 증가율', val: fin.revenueGrowth != null ? fin.revenueGrowth+'%' : '-' },
     ];
     const finHtml = fin.period ? `<div class="sa-modal-fin">${finItems.map(f=>`<div class="sa-modal-fin-item"><div class="sa-modal-fin-label">${f.label}</div><div class="sa-modal-fin-val">${f.val}</div></div>`).join('')}</div>` : '';
-    const newsHtml = (s.news && s.news.length) ? `<h4 style="margin:20px 0 10px;font-size:14px;color:var(--text-muted)">최근 뉴스</h4>
+    const newsHtml = (s.news && s.news.length) ? `<h4 class="sa-section-title">최근 뉴스</h4>
       <ul class="sa-news-list">${s.news.map(n=>`<li><a href="${n.link}" target="_blank" rel="noopener">${n.title}</a><span style="color:#aaa;font-size:11px;margin-left:6px">${(n.pubDate||'').slice(0,16)}</span></li>`).join('')}</ul>` : '';
+    const riseHtml = s.riseReason ? `<div class="sa-analysis-block sa-rise-block">
+      <div class="sa-analysis-icon">📈</div>
+      <div><div class="sa-analysis-label">오늘 상승 이유</div><p class="sa-analysis-text">${s.riseReason}</p></div>
+    </div>` : '';
+    const chartAnalHtml = s.chartAnalysis ? `<div class="sa-analysis-block sa-chart-block">
+      <div class="sa-analysis-icon">📊</div>
+      <div><div class="sa-analysis-label">차트 분석</div><p class="sa-analysis-text">${s.chartAnalysis}</p></div>
+    </div>` : '';
     document.getElementById('sa-modal-content').innerHTML = `
       <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
         <h2 style="font-size:22px;font-weight:800">${s.name} <span style="font-size:14px;color:var(--text-muted)">${s.ticker}</span></h2>
@@ -933,6 +948,8 @@ const NEWSLETTERS = [
         <span class="${changeClass}" style="font-size:16px">${changeStr}</span>
       </div>
       <div style="font-size:12px;color:var(--text-muted);margin:4px 0 16px">거래대금 ${fmtTrade(s.tradeAmount)} | 52주 고가 ${fmtPrice(s.w52High)} | 52주 저가 ${fmtPrice(s.w52Low)}</div>
+      ${riseHtml}
+      ${chartAnalHtml}
       <div class="sa-modal-chart">${chartSvg}</div>
       ${finHtml}
       ${newsHtml}
