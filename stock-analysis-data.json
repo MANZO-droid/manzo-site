@@ -2022,7 +2022,7 @@
             "revenue": 183603826584,
             "operatingProfit": 11098394286,
             "operatingMargin": 6.0,
-            "revenueGrowth": null
+            "revenueGrowth": 92.5
           },
           "news": []
         },
@@ -4039,7 +4039,13 @@
               "volume": 2133827
             }
           ],
-          "financials": {},
+          "financials": {
+            "period": "2026년 Q3",
+            "revenue": 84646164618,
+            "operatingProfit": 1638104907,
+            "operatingMargin": 1.9,
+            "revenueGrowth": -25.8
+          },
           "news": []
         },
         {
@@ -6060,7 +6066,7 @@
             "revenue": 5056155115,
             "operatingProfit": -495648918,
             "operatingMargin": -9.8,
-            "revenueGrowth": null
+            "revenueGrowth": -31.1
           },
           "news": []
         },
@@ -8082,7 +8088,7 @@
             "revenue": 895795359601,
             "operatingProfit": 120402536595,
             "operatingMargin": 13.4,
-            "revenueGrowth": null
+            "revenueGrowth": 10.4
           },
           "news": []
         },
@@ -10104,7 +10110,7 @@
             "revenue": 14135858891,
             "operatingProfit": -3818606191,
             "operatingMargin": -27.0,
-            "revenueGrowth": null
+            "revenueGrowth": -12.3
           },
           "news": []
         },
@@ -12126,7 +12132,7 @@
             "revenue": 467216300289,
             "operatingProfit": 10450391108,
             "operatingMargin": 2.2,
-            "revenueGrowth": null
+            "revenueGrowth": -0.0
           },
           "news": []
         },
@@ -14148,7 +14154,7 @@
             "revenue": 48055892629,
             "operatingProfit": -2149729161,
             "operatingMargin": -4.5,
-            "revenueGrowth": null
+            "revenueGrowth": 59.3
           },
           "news": []
         },
@@ -16165,7 +16171,13 @@
               "volume": 5069171
             }
           ],
-          "financials": {},
+          "financials": {
+            "period": "2026년 Q3",
+            "revenue": 670713971399,
+            "operatingProfit": 40792019622,
+            "operatingMargin": 6.1,
+            "revenueGrowth": 0.3
+          },
           "news": []
         },
         {
@@ -18186,7 +18198,7 @@
             "revenue": 1289035358793,
             "operatingProfit": 193656795514,
             "operatingMargin": 15.0,
-            "revenueGrowth": null
+            "revenueGrowth": 4.2
           },
           "news": []
         },
@@ -20208,7 +20220,7 @@
             "revenue": 205190786521,
             "operatingProfit": 16405923442,
             "operatingMargin": 8.0,
-            "revenueGrowth": null
+            "revenueGrowth": 33.0
           },
           "news": []
         }
@@ -20355,7 +20367,7 @@
           "naverUrl": "https://finance.naver.com/item/main.naver?code=105560"
         }
       ],
-      "updatedAt": "2026-07-02 22:18"
+      "updatedAt": "2026-07-02 22:25"
     }
   }
 }
