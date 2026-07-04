@@ -8,6 +8,8 @@
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#4A6FA5" />
   <link rel="apple-touch-icon" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -300,6 +302,9 @@ section { padding: 72px 0; }
       <li><a href="#subscribe" class="nav-cta">구독하기</a></li>
       <li id="nav-auth">
         <button onclick="openLoginModal()" class="nav-cta" style="background:#2563eb;border:none;cursor:pointer;font-family:var(--font);">로그인</button>
+      </li>
+      <li id="owner-sub-item" style="display:none;">
+        <button id="owner-sub-btn" onclick="subscribeAsOwner()" class="nav-cta" style="background:#B5914C;border:none;cursor:pointer;font-family:var(--font);">운영자 알림 켜기</button>
       </li>
     </ul>
   </div>
@@ -1170,7 +1175,11 @@ const NEWSLETTERS = [
 <div class="modal-overlay" id="loginModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeLoginModal()">✕</button>
-    <p class="modal-title">로그인</p>
+    <p class="modal-title" id="login-modal-title">로그인</p>
+    <div class="modal-input-group" id="signup-nickname-group" style="display:none;">
+      <label>닉네임</label>
+      <input type="text" id="login-nickname" placeholder="사용할 닉네임 입력" />
+    </div>
     <div class="modal-input-group">
       <label>이메일</label>
       <input type="email" id="login-email" placeholder="example@email.com" />
@@ -1180,14 +1189,14 @@ const NEWSLETTERS = [
       <input type="password" id="login-pw" placeholder="비밀번호 입력" />
     </div>
     <p class="modal-error" id="login-error" style="display:none;"></p>
-    <button class="modal-btn modal-btn-primary" id="login-btn" onclick="handleLogin()">로그인</button>
+    <button class="modal-btn modal-btn-primary" id="login-btn" onclick="handleAuthSubmit()">로그인</button>
     <div class="modal-divider">또는</div>
     <button class="modal-btn modal-btn-google" onclick="handleGoogleLogin()">
       <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
       구글 계정으로 로그인
     </button>
-    <div class="modal-footer">
-      계정이 없으신가요? <a href="https://majo-newsletter.vercel.app/signup">회원가입</a>
+    <div class="modal-footer" id="login-modal-footer">
+      계정이 없으신가요? <a href="#" onclick="switchAuthMode('signup'); return false;">회원가입</a>
     </div>
   </div>
 </div>
@@ -1242,6 +1251,9 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
   const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  // 푸시 발송 서명용 공개키. 이름 그대로 "공개"키라 브라우저에 노출돼도 안전함 (비밀키는 서버 환경변수에만 있음)
+  const VAPID_PUBLIC_KEY = 'BAgvcxMt5U0bB7Jv96ge_LKv5tvdc3UhN_J6PH9k3fLRM-c05Anzhj3d8J4p5ToZsMykUQIKrKdqZST41nPDyrg';
+  var authMode = 'login';
 
   // ── 네비 업데이트 ──
   function updateNav(user) {
@@ -1276,10 +1288,12 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
 
   // ── 모달 열기/닫기 ──
   window.openLoginModal = function () {
+    switchAuthMode('login');
     document.getElementById('loginModal').classList.add('open');
     document.getElementById('login-error').style.display = 'none';
     document.getElementById('login-email').value = '';
     document.getElementById('login-pw').value = '';
+    document.getElementById('login-nickname').value = '';
   };
   window.closeLoginModal = function () {
     document.getElementById('loginModal').classList.remove('open');
@@ -1288,6 +1302,31 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     document.getElementById('loginModal').classList.remove('open');
     document.getElementById('nicknameModal').classList.add('open');
   }
+
+  // ── 로그인 ↔ 회원가입 모드 전환 ──
+  window.switchAuthMode = function (mode) {
+    authMode = mode;
+    document.getElementById('login-error').style.display = 'none';
+    var nickGroup = document.getElementById('signup-nickname-group');
+    var title = document.getElementById('login-modal-title');
+    var btn = document.getElementById('login-btn');
+    var footer = document.getElementById('login-modal-footer');
+    if (mode === 'signup') {
+      nickGroup.style.display = '';
+      title.textContent = '회원가입';
+      btn.textContent = '회원가입';
+      footer.innerHTML = '이미 계정이 있으신가요? <a href="#" onclick="switchAuthMode(\'login\'); return false;">로그인</a>';
+    } else {
+      nickGroup.style.display = 'none';
+      title.textContent = '로그인';
+      btn.textContent = '로그인';
+      footer.innerHTML = '계정이 없으신가요? <a href="#" onclick="switchAuthMode(\'signup\'); return false;">회원가입</a>';
+    }
+  };
+
+  window.handleAuthSubmit = function () {
+    return authMode === 'signup' ? handleSignup() : handleLogin();
+  };
 
   // 모달 바깥 클릭 시 닫기
   document.getElementById('loginModal').addEventListener('click', function (e) {
@@ -1316,6 +1355,35 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     }
   };
 
+  // ── 이메일 회원가입 ──
+  window.handleSignup = async function () {
+    var email = document.getElementById('login-email').value.trim();
+    var pw = document.getElementById('login-pw').value;
+    var nickname = document.getElementById('login-nickname').value.trim();
+    var errEl = document.getElementById('login-error');
+    var btn = document.getElementById('login-btn');
+
+    if (!email || !pw) { showError(errEl, '이메일과 비밀번호를 입력해주세요.'); return; }
+    if (pw.length < 6) { showError(errEl, '비밀번호는 6자 이상이어야 해요.'); return; }
+
+    btn.disabled = true; btn.textContent = '가입 중...';
+    var res = await sb.auth.signUp({
+      email: email,
+      password: pw,
+      options: { data: { nickname: nickname || email.split('@')[0] } }
+    });
+
+    if (res.error) {
+      showError(errEl, res.error.message.indexOf('already') !== -1 ? '이미 가입된 이메일이에요.' : '가입에 실패했어요. 다시 시도해주세요.');
+      btn.disabled = false; btn.textContent = '회원가입';
+    } else {
+      closeLoginModal();
+      updateNav(res.data.user);
+      btn.disabled = false; btn.textContent = '회원가입';
+      subscribeAndNotify(nickname || email.split('@')[0]);
+    }
+  };
+
   // ── 구글 로그인 ──
   window.handleGoogleLogin = async function () {
     await sb.auth.signInWithOAuth({
@@ -1324,7 +1392,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     });
   };
 
-  // ── 닉네임 저장 ──
+  // ── 닉네임 저장 (구글로 처음 가입한 경우 여기서 가입이 완료됨) ──
   window.handleSaveNickname = async function () {
     var nick = document.getElementById('nickname-input').value.trim();
     var errEl = document.getElementById('nickname-error');
@@ -1336,8 +1404,74 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     } else {
       document.getElementById('nicknameModal').classList.remove('open');
       updateNav(res.data.user);
+      subscribeAndNotify(nick);
     }
   };
+
+  // ── 푸시 구독 저장 + 가입 알림 요청 ──
+  function urlBase64ToUint8Array(base64String) {
+    var padding = '='.repeat((4 - base64String.length % 4) % 4);
+    var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    var rawData = atob(base64);
+    var outputArray = new Uint8Array(rawData.length);
+    for (var i = 0; i < rawData.length; ++i) outputArray[i] = rawData.charCodeAt(i);
+    return outputArray;
+  }
+
+  async function subscribeAndNotify(nickname) {
+    var memberSubscription = null;
+    try {
+      if ('serviceWorker' in navigator && 'PushManager' in window) {
+        var permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          var reg = await navigator.serviceWorker.ready;
+          var sub = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+          });
+          memberSubscription = sub.toJSON();
+          await sb.from('push_subscriptions').insert({
+            endpoint: memberSubscription.endpoint,
+            p256dh: memberSubscription.keys.p256dh,
+            auth: memberSubscription.keys.auth,
+            is_owner: false
+          });
+        }
+      }
+    } catch (e) {
+      // 알림은 부가 기능이라 여기서 실패해도 회원가입 자체는 이미 끝난 상태
+    }
+
+    fetch('/api/notify-signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nickname: nickname, memberSubscription: memberSubscription })
+    }).catch(function () {});
+  }
+
+  // ── 운영자 알림 켜기 (?owner=1 로 접속했을 때만 버튼 노출) ──
+  window.subscribeAsOwner = async function () {
+    var permission = await Notification.requestPermission();
+    if (permission !== 'granted') { alert('브라우저 알림 권한을 허용해주세요.'); return; }
+    var reg = await navigator.serviceWorker.ready;
+    var sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+    });
+    var j = sub.toJSON();
+    await sb.from('push_subscriptions').insert({
+      endpoint: j.endpoint,
+      p256dh: j.keys.p256dh,
+      auth: j.keys.auth,
+      is_owner: true
+    });
+    alert('운영자 알림이 켜졌습니다. 이 브라우저로 새 회원 가입 알림을 받아요.');
+  };
+
+  if (window.location.search.indexOf('owner=1') !== -1) {
+    var ownerItem = document.getElementById('owner-sub-item');
+    if (ownerItem) ownerItem.style.display = '';
+  }
 
   // ── 로그아웃 ──
   window.handleLogout = async function () {
@@ -1345,9 +1479,9 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     updateNav(null);
   };
 
-  // ── Enter 키 로그인 ──
+  // ── Enter 키 제출 ──
   document.getElementById('login-pw').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') handleLogin();
+    if (e.key === 'Enter') handleAuthSubmit();
   });
 
   function showError(el, msg) {
