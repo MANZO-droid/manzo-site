@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>만조 — 차트 분석 아카이브 & 뉴스레터</title>
   <meta name="description" content="데이터로 읽는 세계 경제, 당신의 다음 투자를 위한 통찰. 글로벌 경제 차트 분석과 뉴스레터." />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#4A6FA5" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1464,6 +1467,14 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     }
   };
 })();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
 </script>
 
 </body>

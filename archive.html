@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>뉴스레터 아카이브 — 만조</title>
   <meta name="description" content="만조 뉴스레터 지난 호 아카이브" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#4A6FA5" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -179,6 +182,14 @@ const NEWSLETTERS = [
 
   renderArchive();
   applySubscribeState();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
