@@ -1,10 +1,12 @@
 const webpush = require('web-push');
 
 const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
+// index.html의 VAPID_PUBLIC_KEY 상수와 반드시 같은 값이어야 함 (공개키라 여기 하드코딩해도 안전)
+const VAPID_PUBLIC_KEY = 'BAgvcxMt5U0bB7Jv96ge_LKv5tvdc3UhN_J6PH9k3fLRM-c05Anzhj3d8J4p5ToZsMykUQIKrKdqZST41nPDyrg';
 
 webpush.setVapidDetails(
   process.env.VAPID_SUBJECT || 'mailto:hahaa127@gmail.com',
-  process.env.VAPID_PUBLIC_KEY,
+  VAPID_PUBLIC_KEY,
   process.env.VAPID_PRIVATE_KEY
 );
 
