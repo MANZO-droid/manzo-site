@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
     if (memberSubscription) {
       const welcomePayload = JSON.stringify({
         title: '만조에 오신 것을 환영해요',
-        body: '가입이 완료됐어요. 새 리포트가 올라오면 알려드릴게요.',
+        body: '1만 조원 부자가 되는 첫 걸음! 만조Investment 가입을 서울 남부지역 주민을 대표하여 온몸으로 축하드립니다. ^^/\n회원 가입 특전으로 만조그룹회장과 1:1 자산 컨설팅 2시간 이용권을 드렸습니다. 만조님께 원하시는 시간으로 신청해 부탁드립니다.',
       });
       await webpush.sendNotification(memberSubscription, welcomePayload).catch(() => {});
     }
