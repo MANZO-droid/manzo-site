@@ -1215,7 +1215,7 @@ const NEWSLETTERS = [
   </div>
 </div>
 
-<!-- ── 가입 축하 전체 문구 모달 (푸시 알림 클릭 시 ?welcome=1로 접속하면 열림) ── -->
+<!-- ── 가입 축하 전체 문구 모달 (회원가입 완료 직후 그 자리에서 바로 열림) ── -->
 <div class="modal-overlay" id="welcomeModal">
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('welcomeModal').classList.remove('open')">✕</button>
@@ -1225,17 +1225,15 @@ const NEWSLETTERS = [
 </div>
 
 <script>
-// 푸시 알림은 글자 수 제한 때문에 짧게만 오므로, 전체 축하 문구는 여기서 보여준다.
-// api/notify-signup.js의 welcomePayload와 이 문구가 같은 내용이어야 함.
-(function () {
-  if (window.location.search.indexOf('welcome=1') === -1) return;
+// 신규 회원 본인에게는 푸시 대신 가입 화면에서 바로 이 팝업을 띄운다.
+window.showWelcomeModal = function () {
   var FULL_WELCOME_TEXT = '1만 조원 부자가 되는 첫 걸음! 만조Investment 가입을 서울 남부지역 주민을 대표하여 온몸으로 축하드립니다. ^^/\n회원 가입 특전으로 만조그룹회장과 1:1 자산 컨설팅 2시간 이용권을 드렸습니다. 만조님께 원하시는 시간으로 신청해 부탁드립니다.';
   document.getElementById('welcome-modal-text').textContent = FULL_WELCOME_TEXT;
   document.getElementById('welcomeModal').classList.add('open');
-  document.getElementById('welcomeModal').addEventListener('click', function (e) {
-    if (e.target === this) this.classList.remove('open');
-  });
-})();
+};
+document.getElementById('welcomeModal').addEventListener('click', function (e) {
+  if (e.target === this) this.classList.remove('open');
+});
 </script>
 
 <!-- ── 기사 모달 로직 ── -->
@@ -1403,7 +1401,8 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
       closeLoginModal();
       updateNav(res.data.user);
       btn.disabled = false; btn.textContent = '회원가입';
-      subscribeAndNotify(nickname || email.split('@')[0]);
+      showWelcomeModal();
+      notifyOwnerOfSignup(nickname || email.split('@')[0]);
     }
   };
 
@@ -1427,11 +1426,12 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     } else {
       document.getElementById('nicknameModal').classList.remove('open');
       updateNav(res.data.user);
-      subscribeAndNotify(nick);
+      showWelcomeModal();
+      notifyOwnerOfSignup(nick);
     }
   };
 
-  // ── 푸시 구독 저장 + 가입 알림 요청 ──
+  // ── 신규 회원 본인은 팝업으로 안내하고(showWelcomeModal), 운영자에게만 푸시 알림 요청 ──
   function urlBase64ToUint8Array(base64String) {
     var padding = '='.repeat((4 - base64String.length % 4) % 4);
     var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -1441,34 +1441,11 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     return outputArray;
   }
 
-  async function subscribeAndNotify(nickname) {
-    var memberSubscription = null;
-    try {
-      if ('serviceWorker' in navigator && 'PushManager' in window) {
-        var permission = await Notification.requestPermission();
-        if (permission === 'granted') {
-          var reg = await navigator.serviceWorker.ready;
-          var sub = await reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-          });
-          memberSubscription = sub.toJSON();
-          await sb.from('push_subscriptions').insert({
-            endpoint: memberSubscription.endpoint,
-            p256dh: memberSubscription.keys.p256dh,
-            auth: memberSubscription.keys.auth,
-            is_owner: false
-          });
-        }
-      }
-    } catch (e) {
-      // 알림은 부가 기능이라 여기서 실패해도 회원가입 자체는 이미 끝난 상태
-    }
-
+  function notifyOwnerOfSignup(nickname) {
     fetch('/api/notify-signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nickname: nickname, memberSubscription: memberSubscription })
+      body: JSON.stringify({ nickname: nickname })
     }).catch(function () {});
   }
 

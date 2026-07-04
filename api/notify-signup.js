@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'POST only' });
 
-  const { nickname, memberSubscription } = req.body || {};
+  const { nickname } = req.body || {};
 
   try {
     const ownerRows = await fetchOwnerSubscriptions();
@@ -25,14 +25,6 @@ module.exports = async (req, res) => {
     await Promise.allSettled(
       ownerRows.map((row) => webpush.sendNotification(toPushSubscription(row), ownerPayload))
     );
-
-    if (memberSubscription) {
-      const welcomePayload = JSON.stringify({
-        body: '가입 축하 혜택이 도착했어요! 눌러서 확인해보세요 🎁',
-        url: '/index.html?welcome=1',
-      });
-      await webpush.sendNotification(memberSubscription, welcomePayload).catch(() => {});
-    }
 
     res.json({ ok: true });
   } catch (e) {
