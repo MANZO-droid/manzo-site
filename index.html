@@ -1215,6 +1215,29 @@ const NEWSLETTERS = [
   </div>
 </div>
 
+<!-- ── 가입 축하 전체 문구 모달 (푸시 알림 클릭 시 ?welcome=1로 접속하면 열림) ── -->
+<div class="modal-overlay" id="welcomeModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('welcomeModal').classList.remove('open')">✕</button>
+    <p class="modal-title">🎉 가입을 축하합니다!</p>
+    <p id="welcome-modal-text" style="white-space:pre-line; line-height:1.7; color:#5A5A72; font-size:14px;"></p>
+  </div>
+</div>
+
+<script>
+// 푸시 알림은 글자 수 제한 때문에 짧게만 오므로, 전체 축하 문구는 여기서 보여준다.
+// api/notify-signup.js의 welcomePayload와 이 문구가 같은 내용이어야 함.
+(function () {
+  if (window.location.search.indexOf('welcome=1') === -1) return;
+  var FULL_WELCOME_TEXT = '1만 조원 부자가 되는 첫 걸음! 만조Investment 가입을 서울 남부지역 주민을 대표하여 온몸으로 축하드립니다. ^^/\n회원 가입 특전으로 만조그룹회장과 1:1 자산 컨설팅 2시간 이용권을 드렸습니다. 만조님께 원하시는 시간으로 신청해 부탁드립니다.';
+  document.getElementById('welcome-modal-text').textContent = FULL_WELCOME_TEXT;
+  document.getElementById('welcomeModal').classList.add('open');
+  document.getElementById('welcomeModal').addEventListener('click', function (e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+})();
+</script>
+
 <!-- ── 기사 모달 로직 ── -->
 <script>
 function openArticleModal(name) {
