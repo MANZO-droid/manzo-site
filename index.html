@@ -354,7 +354,8 @@ section { padding: 72px 0; }
     <div class="section-header">
       <div class="section-tag">Volume</div>
       <h2 class="section-title">거래대금 상위 10위</h2>
-      <p class="section-subtitle">당일 거래대금 상위 종목의 수급 동향을 확인합니다. (종목명 클릭 시 네이버 증권으로 이동)</p>
+      <p class="section-subtitle">거래대금 상위 종목의 수급 동향을 확인합니다. (종목명 클릭 시 네이버 증권으로 이동)</p>
+      <p id="vol-date-badge" style="margin:4px 0 0;font-size:12px;font-weight:600;color:var(--accent);"></p>
     </div>
     <div class="vol-table-wrap">
       <table class="vol-table" id="vol-table">
@@ -852,6 +853,11 @@ const NEWSLETTERS = [
   // ---------- 거래대금 테이블 렌더 ----------
   function renderVolumeTable(dateData) {
     const tbody = document.getElementById('vol-tbody');
+    const badge = document.getElementById('vol-date-badge');
+    if (badge) {
+      const d = window._saCurrentDate || '';
+      badge.textContent = d ? '📅 ' + d.replace(/-/g, '.') + ' 기준' : '';
+    }
     if (!dateData || !dateData.volumeStocks || !dateData.volumeStocks.length) {
       tbody.innerHTML = '<tr><td colspan="8" class="ms-empty">데이터가 없습니다.</td></tr>';
       return;
