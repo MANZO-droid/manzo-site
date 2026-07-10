@@ -420,6 +420,15 @@ section { padding: 72px 0; }
       </table>
     </div>
 
+    <div id="ms-history-toggle-wrap" style="display:none; margin-top:32px; text-align:center;">
+      <button id="ms-history-toggle-btn" style="
+        background:var(--bg-card); border:1.5px solid var(--border); border-radius:10px;
+        padding:10px 28px; font-size:14px; font-weight:600; color:var(--accent);
+        cursor:pointer; font-family:var(--font); transition:border-color 0.15s, box-shadow 0.15s;">
+        📂 과거 리포트 보기
+      </button>
+    </div>
+
     <div class="ms-history" id="ms-history" style="display:none;">
       <div class="ms-history-title">과거 리포트</div>
       <div class="ms-history-list" id="ms-history-list"></div>
@@ -1051,7 +1060,16 @@ const NEWSLETTERS = [
     if (!history || !history.length) return;
     var el = document.getElementById('ms-history');
     var list = document.getElementById('ms-history-list');
-    el.style.display = '';
+    // 목록만 채우고 숨김 유지 — 버튼에 직접 클릭 이벤트 연결
+    var toggleWrap = document.getElementById('ms-history-toggle-wrap');
+    var btn = document.getElementById('ms-history-toggle-btn');
+    toggleWrap.style.display = '';
+    btn.onclick = function() {
+      var open = el.style.display !== 'none';
+      el.style.display  = open ? 'none' : '';
+      btn.textContent   = open ? '📂 과거 리포트 보기' : '📂 과거 리포트 닫기';
+      if (!open) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     // 날짜 내림차순 정렬 (최신이 위)
     var sorted = history.slice().sort(function(a, b) {
