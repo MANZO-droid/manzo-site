@@ -76052,7 +76052,150 @@
           "chartAnalysis": "광주신세계는 중기적으로 6월 말 급등 후 7월 초 조정을 거쳤으나, 금일 29.82% 상승하며 50,500원에 마감, 단기적으로 강력한 상승 추세 전환을 보여주고 있습니다. 주요 지지선은 34,000~35,000원 구간이었으며, 최근 조정 시 37,000~38,000원 선에서 지지받은 후 반등했습니다. 단기 저항은 50,000원 초반대를 돌파한 상태로, 직전 고점인 59,600원이 다음 저항선으로 예상됩니다. 6월 중순까지 낮은 거래량을 유지하다 급등 시 폭발적인 거래량이 동반되었고, 조정 구간에서는 거래량이 감소했으나 금일 상한가에 준하는 상승률과 함께 다시 대규모 거래량이 유입되어 강한 매수세를 입증했습니다. 현재 극심한 단기 강세 모멘텀을 보이며 일봉상 상단에 위치하고 있어 추가 상승 기대감이 높지만, 단기간 급등으로 인한 변동성 확대 및 직전 고점 돌파 여부에 대한 경계가 필요합니다. 따라서 신규 진입자는 조정을 기다리거나 보수적인 접근이 바람직하며, 보유자는 전고점 부근에서 차익 실현을 고려하거나 트레일링 스톱을 활용하여 리스크 관리가 필요해 보입니다."
         }
       ],
-      "updatedAt": "2026-07-08T23:19:51.211121"
+      "updatedAt": "2026-07-08T23:19:51.211121",
+      "date": "2026-07-06",
+      "volumeStocks": [
+        {
+          "rank": 1,
+          "ticker": "000660",
+          "name": "SK하이닉스",
+          "close": 2221000,
+          "changePct": 1.6,
+          "tradeAmount": 9242564732000,
+          "investors": {
+            "individual": 1359516299000,
+            "institution": -1298003483000,
+            "foreign": -61512816000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=000660"
+        },
+        {
+          "rank": 2,
+          "ticker": "005930",
+          "name": "삼성전자",
+          "close": 290250,
+          "changePct": 4.41,
+          "tradeAmount": 4920342670250,
+          "investors": {
+            "individual": 581585244750,
+            "institution": 4302375750,
+            "foreign": -585887620500
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=005930"
+        },
+        {
+          "rank": 3,
+          "ticker": "009150",
+          "name": "삼성전기",
+          "close": 1589000,
+          "changePct": 6.43,
+          "tradeAmount": 1241552721000,
+          "investors": {
+            "individual": 321960002000,
+            "institution": -164642646000,
+            "foreign": -157317356000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=009150"
+        },
+        {
+          "rank": 4,
+          "ticker": "402340",
+          "name": "SK스퀘어",
+          "close": 1414000,
+          "changePct": 6.56,
+          "tradeAmount": 1065432792500,
+          "investors": {
+            "individual": 140411614000,
+            "institution": -39010846000,
+            "foreign": -101400768000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=402340"
+        },
+        {
+          "rank": 5,
+          "ticker": "002990",
+          "name": "금호건설",
+          "close": 17480,
+          "changePct": 0.98,
+          "tradeAmount": 383090118940,
+          "investors": {
+            "individual": -219793520,
+            "institution": -1695560,
+            "foreign": 221489080
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=002990"
+        },
+        {
+          "rank": 6,
+          "ticker": "105560",
+          "name": "KB금융",
+          "close": 185700,
+          "changePct": 8.34,
+          "tradeAmount": 353022319750,
+          "investors": {
+            "individual": -6272017500,
+            "institution": 57120577200,
+            "foreign": -50848559700
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=105560"
+        },
+        {
+          "rank": 7,
+          "ticker": "353200",
+          "name": "대덕전자",
+          "close": 120900,
+          "changePct": 7.95,
+          "tradeAmount": 276845130350,
+          "investors": {
+            "individual": -3569572500,
+            "institution": -28404125100,
+            "foreign": 31973697600
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=353200"
+        },
+        {
+          "rank": 8,
+          "ticker": "011070",
+          "name": "LG이노텍",
+          "close": 738000,
+          "changePct": -0.4,
+          "tradeAmount": 272452945000,
+          "investors": {
+            "individual": 5205852000,
+            "institution": -4794786000,
+            "foreign": -411066000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=011070"
+        },
+        {
+          "rank": 9,
+          "ticker": "005380",
+          "name": "현대차",
+          "close": 462500,
+          "changePct": 3.82,
+          "tradeAmount": 266257183500,
+          "investors": {
+            "individual": -17814112500,
+            "institution": 24849200000,
+            "foreign": -7035087500
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=005380"
+        },
+        {
+          "rank": 10,
+          "ticker": "032830",
+          "name": "삼성생명",
+          "close": 342000,
+          "changePct": 4.91,
+          "tradeAmount": 239856393750,
+          "investors": {
+            "individual": -4080402000,
+            "institution": 13146138000,
+            "foreign": -9065736000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=032830"
+        }
+      ]
     }
   }
 }
