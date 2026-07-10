@@ -96462,6 +96462,152 @@
         }
       ],
       "updatedAt": "2026-07-10T18:04:49.887292"
+    },
+    "2026-07-10": {
+      "date": "2026-07-10",
+      "volumeStocks": [
+        {
+          "rank": 1,
+          "ticker": "000660",
+          "name": "SK하이닉스",
+          "close": 2180000,
+          "changePct": -0.27,
+          "tradeAmount": 10732251998500,
+          "investors": {
+            "individual": 1230937000000,
+            "institution": 445140740000,
+            "foreign": -1676077740000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=000660"
+        },
+        {
+          "rank": 2,
+          "ticker": "005930",
+          "name": "삼성전자",
+          "close": 285000,
+          "changePct": 2.52,
+          "tradeAmount": 5816051148000,
+          "investors": {
+            "individual": -837823050000,
+            "institution": 659417325000,
+            "foreign": 178405725000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=005930"
+        },
+        {
+          "rank": 3,
+          "ticker": "009150",
+          "name": "삼성전기",
+          "close": 1584000,
+          "changePct": 6.1,
+          "tradeAmount": 1392755757000,
+          "investors": {
+            "individual": 22046112000,
+            "institution": -170737776000,
+            "foreign": 148691664000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=009150"
+        },
+        {
+          "rank": 4,
+          "ticker": "402340",
+          "name": "SK스퀘어",
+          "close": 1409000,
+          "changePct": 6.18,
+          "tradeAmount": 1231579730500,
+          "investors": {
+            "individual": -37503353000,
+            "institution": -70037163000,
+            "foreign": 107540516000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=402340"
+        },
+        {
+          "rank": 5,
+          "ticker": "002990",
+          "name": "금호건설",
+          "close": 16820,
+          "changePct": -2.83,
+          "tradeAmount": 406321606145,
+          "investors": {
+            "individual": 2125644320,
+            "institution": -1071955420,
+            "foreign": -1053688900
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=002990"
+        },
+        {
+          "rank": 6,
+          "ticker": "105560",
+          "name": "KB금융",
+          "close": 184400,
+          "changePct": 7.58,
+          "tradeAmount": 398563437900,
+          "investors": {
+            "individual": -63633120800,
+            "institution": 32139076000,
+            "foreign": 31494044800
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=105560"
+        },
+        {
+          "rank": 7,
+          "ticker": "011070",
+          "name": "LG이노텍",
+          "close": 742000,
+          "changePct": 0.13,
+          "tradeAmount": 328444795000,
+          "investors": {
+            "individual": 59233860000,
+            "institution": -108333484000,
+            "foreign": 49099624000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=011070"
+        },
+        {
+          "rank": 8,
+          "ticker": "353200",
+          "name": "대덕전자",
+          "close": 120900,
+          "changePct": 7.95,
+          "tradeAmount": 307689679100,
+          "investors": {
+            "individual": 32372304900,
+            "institution": 82793045400,
+            "foreign": -115165350300
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=353200"
+        },
+        {
+          "rank": 9,
+          "ticker": "005380",
+          "name": "현대차",
+          "close": 457500,
+          "changePct": 2.69,
+          "tradeAmount": 301566095700,
+          "investors": {
+            "individual": -49685872500,
+            "institution": -12666345000,
+            "foreign": 62352217500
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=005380"
+        },
+        {
+          "rank": 10,
+          "ticker": "012450",
+          "name": "한화에어로스페이스",
+          "close": 967000,
+          "changePct": 1.47,
+          "tradeAmount": 280250561620,
+          "investors": {
+            "individual": -1084974000,
+            "institution": -25147802000,
+            "foreign": 26232776000
+          },
+          "naverUrl": "https://finance.naver.com/item/main.naver?code=012450"
+        }
+      ],
+      "updatedAt": "2026-07-10T19:08:52.301149"
     }
   }
 }
