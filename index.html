@@ -926,8 +926,12 @@ const NEWSLETTERS = [
     const hhmm = kst.getUTCHours() * 100 + kst.getUTCMinutes();
     const dayOfWeek = kst.getUTCDay();
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-    // 주말 또는 오후 3시 30분 이전 → 가장 최근 날짜 중 이전 거래일
-    if (isWeekend || hhmm < 1530) {
+    // 주말 → 가장 최근 날짜 (금요일 데이터)
+    if (isWeekend) {
+      return data.latestDate || dates[dates.length - 1];
+    }
+    // 평일 오후 3시 30분 이전 → 이전 거래일 (당일 장 미종료)
+    if (hhmm < 1530) {
       return dates.length >= 2 ? dates[dates.length - 2] : dates[dates.length - 1];
     }
     return data.latestDate || dates[dates.length - 1];
