@@ -1,6 +1,8 @@
 // 홈 화면 설치와 최소한의 오프라인 대비를 위한 서비스 워커.
 // 뉴스/마켓 데이터(JSON, api/*)는 매번 최신 값을 받아야 하므로 여기서 캐시하지 않는다.
-const CACHE_NAME = 'manzo-shell-v4';
+// 페이지(HTML)는 "네트워크 우선, 실패 시에만 캐시"로 동작해야 새로 배포한 내용이
+// 바로 반영된다. (예전에는 캐시를 먼저 보여주는 방식이라 새 배포가 반영 안 되는 문제가 있었음)
+const CACHE_NAME = 'manzo-shell-v5';
 const SHELL_ASSETS = ['/', '/index.html', '/archive.html', '/article.html', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', (event) => {
@@ -25,7 +27,13 @@ self.addEventListener('fetch', (event) => {
   if (!isShellPage) return;
 
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((res) => {
+        const resClone = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
+        return res;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
 
