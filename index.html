@@ -1006,10 +1006,24 @@ const NEWSLETTERS = [
   window.selectSADate = selectSADate;
 
   // ---------- 데이터 로드 ----------
+  // 상승률(gainers)은 DB(/api/top-gainers)에서, 거래대금 등은 기존 JSON에서 읽어 병합.
+  // DB 조회가 실패하면 기존 JSON만으로 동작(안전 폴백).
   function loadStockAnalysis() {
-    fetch('/stock-analysis-data.json?t=' + Date.now())
-      .then(r => r.json())
-      .then(data => {
+    Promise.all([
+      fetch('/stock-analysis-data.json?t=' + Date.now()).then(r => r.json()).catch(() => ({ dates: {} })),
+      fetch('/api/top-gainers?t=' + Date.now()).then(r => (r.ok ? r.json() : null)).catch(() => null),
+    ])
+      .then(([jsonData, dbData]) => {
+        const data = (jsonData && typeof jsonData === 'object') ? jsonData : { dates: {} };
+        data.dates = data.dates || {};
+        // DB에 상승률 데이터가 있으면 해당 날짜의 gainers를 DB 값으로 대체(원천 = DB)
+        if (dbData && dbData.dates) {
+          Object.keys(dbData.dates).forEach(d => {
+            if (!data.dates[d]) data.dates[d] = { date: d, gainers: [], volumeStocks: [] };
+            data.dates[d].gainers = dbData.dates[d].gainers || [];
+          });
+          if (dbData.latestDate) data.latestDate = dbData.latestDate;
+        }
         window._saData = data;
         const activeDate = autoSelectDate(data);
         window._saCurrentDate = activeDate;

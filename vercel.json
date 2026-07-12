@@ -1,0 +1,14 @@
+{
+  "regions": ["icn1"],
+  "crons": [
+    {
+      "path": "/api/cron-update-gainers",
+      "schedule": "0 7 * * *"
+    }
+  ],
+  "functions": {
+    "api/cron-update-gainers.js": {
+      "maxDuration": 60
+    }
+  }
+}
