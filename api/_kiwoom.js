@@ -31,6 +31,17 @@ function pick(row, keys) {
   return null;
 }
 
+// 이 서버(Vercel 함수)가 외부로 나갈 때 쓰는 IP 확인 (키움 IP 등록 진단용)
+async function getOutboundIp() {
+  try {
+    const r = await fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(4000) });
+    const d = await r.json();
+    return d.ip;
+  } catch (e) {
+    return '(확인 실패: ' + e.message + ')';
+  }
+}
+
 async function getToken() {
   const res = await fetch(HOST + '/oauth2/token', {
     method: 'POST',
@@ -43,6 +54,11 @@ async function getToken() {
   });
   const data = await res.json();
   if (!res.ok || !data.token) {
+    // 지정단말기/IP 인증 에러(8050 등)일 때 진단을 돕기 위해 현재 아웃바운드 IP를 함께 표시
+    if (String(data.return_msg || '').includes('지정단말기') || data.return_code === 3) {
+      const ip = await getOutboundIp();
+      throw new Error('키움 토큰 발급 실패(지정단말기): ' + JSON.stringify(data) + ' | 현재 서버 아웃바운드 IP: ' + ip);
+    }
     throw new Error('키움 토큰 발급 실패: ' + JSON.stringify(data));
   }
   return data.token;
