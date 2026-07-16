@@ -915,7 +915,7 @@ const NEWSLETTERS = [
   // ---------- 날짜 탭 ----------
   function buildDateTabs(dates, activeDate) {
     const container = document.getElementById('sa-date-tabs');
-    const sorted = Object.keys(dates).sort().reverse();
+    const sorted = Object.keys(dates).filter(d => new Date(d).getDay() !== 0).sort().reverse();
     container.innerHTML = sorted.map(d => {
       const label = d.slice(5).replace('-', '/');
       return `<button class="sa-date-tab${d===activeDate?' active':''}" onclick="selectSADate('${d}')">${label}</button>`;
