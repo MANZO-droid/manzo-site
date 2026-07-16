@@ -163,7 +163,8 @@ section { padding: 72px 0; }
 /* ── 상승률/거래대금 분석 섹션 ── */
 .sa-date-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
 .sa-date-label { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
-.sa-date-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.sa-date-tabs { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+.sa-date-tabs::-webkit-scrollbar { display: none; }
 .sa-date-tab { padding: 6px 16px; border-radius: 16px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: all .15s; }
 .sa-date-tab:hover { border-color: var(--accent); color: var(--accent); }
 .sa-date-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -914,7 +915,7 @@ const NEWSLETTERS = [
   // ---------- 날짜 탭 ----------
   function buildDateTabs(dates, activeDate) {
     const container = document.getElementById('sa-date-tabs');
-    const sorted = Object.keys(dates).sort().reverse().slice(0, 7);
+    const sorted = Object.keys(dates).sort().reverse();
     container.innerHTML = sorted.map(d => {
       const label = d.slice(5).replace('-', '/');
       return `<button class="sa-date-tab${d===activeDate?' active':''}" onclick="selectSADate('${d}')">${label}</button>`;
