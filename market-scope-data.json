@@ -1,248 +1,491 @@
 {
   "current": {
-    "report_date": "2026-07-13",
-    "range_label": "2026-07-12(일) 05:00 ~ 2026-07-13(월) 21:50 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
-    "message_count": 53,
-    "channel_count": 23,
+    "report_date": "2026-07-16",
+    "range_label": "2026-07-15(수) 05:00 ~ 2026-07-16(목) 22:24 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
+    "message_count": 43,
+    "channel_count": 24,
     "items": [
       {
         "rank": 1,
-        "name": "미·이란 충돌 및 호르무즈 해협 리스크(유가 급등)",
+        "name": "반도체 업황 둔화 우려 급락 (코어위브 헤지·CXMT IPO 공포)",
         "type": "이슈",
-        "mention": 11,
-        "channel": 9,
-        "score": 29,
+        "mention": 8,
+        "channel": 8,
+        "score": 24,
         "articles": [
           {
-            "title": "호르무즈 해협 충돌에 유가 4% 폭등…글로벌 증시는 일제히 '털썩'",
-            "summary": "미국-이란 충돌 격화로 호르무즈 해협 통항이 위협받으며 국제유가가 4%대 폭등, 글로벌 증시 동반 하락",
-            "url": "https://biz.heraldcorp.com/article/10807184"
+            "title": "中 CXMT 14조 실탄·AI 투자 둔화 우려…삼성전자·SK하이닉스 하루 만에 급락",
+            "summary": "중국 CXMT의 대규모 자금조달과 AI 투자 둔화 우려가 겹치며 삼성전자·SK하이닉스가 하루 만에 급락했다는 분석",
+            "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716647"
           },
           {
-            "title": "美-이란 충돌 격화, 코스피·코스닥 급락⋯연쇄 매도 사이드카",
-            "summary": "미국과 이란의 군사 충돌이 격화되며 국내 증시에 매도 사이드카가 잇달아 발동",
-            "url": "https://www.etoday.co.kr/news/view/2601573"
+            "title": "마이크론 8% 급락… 중국 반도체 CXMT IPO에 메모리 시장 판도 흔들리나",
+            "summary": "미국 마이크론 주가가 8% 넘게 급락하며 메모리 반도체 투자심리가 위축됐다는 내용",
+            "url": "https://www.g-enews.com/article/Securities/2026/07/202607160713483964e250e8e188_1"
           },
           {
-            "title": "다시 막힌 호르무즈…정부 \"7~8월 원유 100% 이상 확보\"",
-            "summary": "호르무즈 해협 봉쇄 우려에 정부가 단기 원유 수급 대책을 발표",
-            "url": "https://www.newstomato.com/ReadNews.aspx?no=1306985"
+            "title": "ASML 가이던스 또 상향에도 반도체 급락···CXMT·코어위브 '사이클 공포'",
+            "summary": "코어위브의 메모리 장기공급계약 헤지 검토 소식과 CXMT발 공급과잉 우려가 반도체 사이클 공포로 번졌다는 분석",
+            "url": "https://www.jabon.co.kr/news/articleView.html?idxno=4978"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "코스피 급락 (검은 월요일)",
+        "name": "애국테마주 (모나미·형지엘리트·에넥스 등)",
         "type": "이슈",
-        "mention": 12,
-        "channel": 7,
-        "score": 26,
+        "mention": 8,
+        "channel": 6,
+        "score": 20,
         "articles": [
           {
-            "title": "[마감시황] '검은 월요일' 코스피 9% 급락, 6806.93 마감",
-            "summary": "코스피가 669.01포인트(8.95%) 급락한 6806.93으로 마감, 두 달여 만에 7000선 붕괴",
-            "url": "https://www.newspim.com/news/view/20260713000993"
+            "title": "[급등락주 짚어보기] 애국테마주 수급 쏠림…형지엘리트ㆍ모나리자ㆍ에넥스 등 '上'",
+            "summary": "온라인 커뮤니티발 애국테마주 매수세가 형지엘리트·모나리자·에넥스 등의 상한가를 이끌었다는 내용",
+            "url": "https://www.etoday.co.kr/news/view/2604651"
           },
           {
-            "title": "반도체 투매에 7000선 반납한 '검은 월요일'…코스피 4월 말 이후 '최저'[종합]",
-            "summary": "반도체 대형주 투매 속 코스피가 7000선을 내주며 4월 말 이후 최저 수준으로 하락",
-            "url": "https://www.etoday.co.kr/news/view/2603195"
+            "title": "[특징주] \"상폐 막자\" 주주들 뭉쳤다...'애국주' 모나미, 장 초반 23%대 급등",
+            "summary": "코스피 상장유지 시가총액 기준 상향으로 상장폐지 우려가 제기된 모나미가 개인 매수세에 급등",
+            "url": "https://www.etoday.co.kr/news/view/2602361"
           },
           {
-            "title": "'단 17거래일만' 구천피서 육천피로…코스피, 날개 없는 추락",
-            "summary": "불과 17거래일 만에 9000선에서 6000선대로 주저앉은 코스피의 급격한 조정 상황을 분석",
-            "url": "https://biz.heraldcorp.com/article/10807336"
+            "title": "\"모나미·에넥스 상한가…'애국주' 열풍, 다음 후보는 어디?\"",
+            "summary": "모나미·에넥스 등이 상한가를 기록하며 애국주 열풍이 이어지는 가운데 다음 수혜주에 관심 집중",
+            "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716562"
           }
         ]
       },
       {
         "rank": 3,
-        "name": "SK하이닉스",
-        "type": "종목",
-        "mention": 8,
-        "channel": 4,
+        "name": "코스피 6%대 급락 및 매도 사이드카 발동",
+        "type": "이슈",
+        "mention": 6,
+        "channel": 5,
         "score": 16,
         "articles": [
           {
-            "title": "반도체주 '우두둑'…SK하이닉스 15.4%·삼성전자 10.7% 폭락(종합2보)",
-            "summary": "SK하이닉스가 15.37% 급락한 184만5000원에 마감하며 반도체 대형주 동반 폭락",
-            "url": "https://www.fnnews.com/news/202607131601490888"
+            "title": "[마감시황] 코스피, '반도체 악재'에 6% 급락…7000선 반납",
+            "summary": "코스피가 전 거래일보다 6.38% 급락한 6820.60에 마감하며 7000선을 다시 반납",
+            "url": "https://www.newspim.com/news/view/20260716001003"
           },
           {
-            "title": "SK하이닉스 15% 급락 직격탄… '검은 월요일' 코스피 6800대 추락",
-            "summary": "SK하이닉스 실적 기대치 하향 조정 소식이 코스피 급락의 직접적 계기가 됐다는 분석",
-            "url": "https://www.hankookilbo.com/news/article/A2026071316470003411"
+            "title": "어제는 매수 사이드카, 오늘은 매도 사이드카…춤추는 증시(종합)",
+            "summary": "전날 매수 사이드카가 발동된 지 하루 만에 매도 사이드카가 발동되며 극심한 변동성 장세가 이어짐",
+            "url": "https://www.fnnews.com/news/202607161041008863"
           },
           {
-            "title": "맥 못 추는 삼전닉스, 7천피 '와르르'…외인·기관 무섭게 팔아 치운다",
-            "summary": "삼성전자·SK하이닉스에 대한 외국인·기관의 강도 높은 매도세가 지수 하락을 주도",
-            "url": "https://www.mt.co.kr/stock/2026/07/13/2026071312371640603"
+            "title": "[속보] 코스닥, 매도 사이드카 발동…올해 9번째",
+            "summary": "코스닥 시장에서도 매도 사이드카가 발동되며 올해 들어 9번째 발동 기록",
+            "url": "https://www.mt.co.kr/stock/2026/07/16/2026071609425696776"
           }
         ]
       },
       {
         "rank": 4,
-        "name": "삼성전자",
+        "name": "SK하이닉스",
         "type": "종목",
-        "mention": 5,
+        "mention": 4,
         "channel": 4,
-        "score": 13,
+        "score": 12,
         "articles": [
           {
-            "title": "삼성전자 주가, 오늘 왜 폭락했나?",
-            "summary": "삼성전자가 10.70% 급락한 배경으로 반도체 업황 우려와 지정학적 리스크를 지목",
-            "url": "https://kr.investing.com/news/stock-market-news/article-93CH-2013075"
+            "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
+            "summary": "SK하이닉스가 장중 10% 넘게 급락하며 반도체 투톱이 동반 추락",
+            "url": "https://biz.sbs.co.kr/article/20000322882"
           },
           {
-            "title": "반도체주 또 휘청…SK하이닉스 8%·삼성전자 4% 급락(종합)",
-            "summary": "장중 반도체 대형주가 동반 약세를 보이며 낙폭을 키워간 상황을 정리",
-            "url": "https://www.fnnews.com/news/202607131050242447"
+            "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
+            "summary": "SK하이닉스 ADR이 9% 가까이 급락하며 국내 개장 전부터 하락 압력을 예고",
+            "url": "https://www.news1.kr/finance/general-stock/6229910"
           },
           {
-            "title": "'삼전·닉스' 무너지자 코스피 7000 붕괴...하루에 669P 증발",
-            "summary": "삼성전자와 SK하이닉스의 동반 급락이 코스피 지수 급락을 견인했다는 분석",
-            "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003251075&PAGE_CD=ET001&BLCK_NO=1&CMPT_CD=T0016"
+            "title": "SK하이닉스 주가가 오늘 급락한 이유는?",
+            "summary": "간밤 미국 반도체주 급락과 모건스탠리의 데이터센터 축소 관련 보고서가 하락 원인으로 지목됨",
+            "url": "https://kr.investing.com/news/stock-market-news/article-93CH-1992134"
           }
         ]
       },
       {
         "rank": 5,
-        "name": "레버리지 ETF 반대매매 악순환",
-        "type": "이슈",
+        "name": "한미반도체",
+        "type": "종목",
         "mention": 4,
         "channel": 4,
         "score": 12,
         "articles": [
           {
-            "title": "9·11급 충격 올해만 6번… 레버리지 ETF에 코스피 브레이크 비명",
-            "summary": "단일종목 레버리지 ETF의 기계적 매도가 올해 들어 여섯 번째 급락 충격을 키웠다는 분석",
-            "url": "https://www.hankookilbo.com/news/article/A2026071212410001197"
+            "title": "[특징주] 한미반도체, HBM 훈풍에 '깜짝 실적'…26%대 급등",
+            "summary": "한미반도체가 역대 최대 분기 실적을 발표하며 26%대 급등",
+            "url": "https://v.daum.net/v/20260715103351011"
           },
           {
-            "title": "단일종목 레버리지 일제히 신저가…16종 시가총액 10조원 밑으로(종합)",
-            "summary": "삼성전자·SK하이닉스 레버리지 ETF 16종이 일제히 신저가를 기록하며 시가총액이 급감",
-            "url": "https://www.fnnews.com/news/202607131609568387"
+            "title": "[특징주] 한미반도체, 역대 최대 분기 실적에 26% '급등'",
+            "summary": "2분기 매출 2511억원, 영업이익률 51.9%로 분기 기준 처음 50%를 돌파했다는 내용",
+            "url": "https://www.newspim.com/news/view/20260715000408"
           },
           {
-            "title": "[ETF 시황] 반도체 급락에 인버스 '강세', 자금은 레버리지 베팅",
-            "summary": "반도체 급락 속 인버스 ETF는 강세를 보였지만 개인 자금은 여전히 레버리지 상품으로 유입",
-            "url": "https://www.newspim.com/news/view/20260713001033"
+            "title": "한미반도체 19% 급등…2분기 호실적에 강세[특징주]",
+            "summary": "HBM용 TC 본더·MSVP 장비 수요 확대가 실적 성장을 견인했다는 분석",
+            "url": "https://www.edaily.co.kr/News/Read?newsId=03201286645514848&mediaCodeNo=257"
           }
         ]
       },
       {
         "rank": 6,
-        "name": "레메디 코스닥 상장",
-        "type": "종목",
+        "name": "코스피 6%대 급등 마감 (美 CPI 둔화·반도체 랠리, 7/15)",
+        "type": "이슈",
         "mention": 4,
-        "channel": 4,
-        "score": 12,
+        "channel": 3,
+        "score": 10,
         "articles": [
           {
-            "title": "[특징주] 레메디, 코스닥 상장 첫날 30%대 강세",
-            "summary": "저선량 X-ray 기술기업 레메디가 코스닥 상장 첫날 공모가 대비 30%대 강세를 나타냄",
-            "url": "https://www.ajunews.com/view/20260713092649063"
+            "title": "[마감시황] 美 물가 둔화에 외국인·기관 '사자'...코스피 7284.41",
+            "summary": "미국 6월 CPI가 예상치를 밑돌며 외국인·기관 매수세가 유입, 코스피가 6.24% 급등 마감",
+            "url": "https://www.newspim.com/news/view/20260715001123"
           },
           {
-            "title": "'저선량·초소형 X-ray 솔루션' 레메디, 코스닥 데뷔[오늘 상장]",
-            "summary": "의료용 핸드헬드 X-ray 등을 개발하는 레메디가 코스닥 시장에 데뷔",
-            "url": "https://www.edaily.co.kr/News/Read?newsId=02082806645514192&mediaCodeNo=257"
+            "title": "[마감 시황] 코스피, 6.24% 폭등하며 7,284.41 마감",
+            "summary": "코스피가 427.58포인트(6.24%) 오른 7284.41에 마감하며 7000선을 회복",
+            "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=273112"
           },
           {
-            "title": "[특징주] 레메디, 코스닥 상장 첫날 +44%대 급등",
-            "summary": "레메디 주가가 상장 첫날 공모가 대비 최대 44%대까지 급등",
-            "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1273949"
+            "title": "코스피, 6% 상승해 7000피 탈환…반도체 투자심리 살아나나",
+            "summary": "반도체 대형주 반등에 힘입어 코스피가 6% 상승하며 7000선을 다시 넘어섬",
+            "url": "https://www.khan.co.kr/article/202607151720001/"
           }
         ]
       },
       {
         "rank": 7,
-        "name": "외국인·기관 쌍끌이 순매도",
-        "type": "이슈",
+        "name": "삼성전자",
+        "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "외국인·기관 '쌍끌이 매도' 코스피 3.9% 급락…SK하이닉스 200만원선 붕괴",
-            "summary": "외국인과 기관의 동시 매도세로 SK하이닉스 주가가 200만 원선 아래로 내려앉음",
-            "url": "https://www.ddaily.co.kr/page/view/2026071310311662833"
+            "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
+            "summary": "삼성전자도 장중 7%대 급락하며 반도체 투톱이 동반 하락",
+            "url": "https://biz.sbs.co.kr/article/20000322882"
           },
           {
-            "title": "코스피, '외국인·기관' 동반 매도에 8% 급락…서킷브레이커 발동",
-            "summary": "외국인 2조2350억원, 기관 5727억원 순매도가 겹치며 서킷브레이커까지 발동",
-            "url": "https://www.newspim.com/news/view/20260713000765"
+            "title": "[속보]코스피, 4.45% 내린 6960.50 출발…코스닥 1.94%↓",
+            "summary": "삼성전자 등 반도체 대형주 약세 속 코스피가 4%대 급락 출발",
+            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03034006645515176"
           },
           {
-            "title": "外人·기관 팔자에 7000피 '와르르'…삼전닉스 10% 이상 '뚝'",
-            "summary": "외국인·기관의 매도 물량이 삼성전자·SK하이닉스를 동반 10%대 급락시켰다는 분석",
-            "url": "https://www.sedaily.com/article/20067122"
+            "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
+            "summary": "삼성전자가 전장보다 7%대 급락하며 거래 중",
+            "url": "https://www.news1.kr/finance/general-stock/6229910"
           }
         ]
       },
       {
         "rank": 8,
-        "name": "원달러 환율 급락",
-        "type": "이슈",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
-        "articles": [
-          {
-            "title": "[마감 시황] 코스피, 7,200선 붕괴 조짐…환율은 29.7원 폭락한 1,498.5원에 거래 종료",
-            "summary": "증시 폭락 속에서도 원-달러 환율은 오히려 급락하며 두 달여 만에 1500원선을 하회",
-            "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=272692"
-          },
-          {
-            "title": "[환율마감] 원·달러 급락 두달만 빅피겨(1500원) 하회, 외인·SK하이닉스·한일공조",
-            "summary": "외국인의 국내 주식 매수를 위한 원화 환전 수요가 환율 하방 압력으로 작용",
-            "url": "https://www.etoday.co.kr/news/view/2601670"
-          },
-          {
-            "title": "[환율 전망] 당국의 고환율 참교육",
-            "summary": "당국의 환율 안정 조치와 시장 개입 가능성을 다룬 환율 전망 분석",
-            "url": "https://kbthink.com/investment/fx/daily/260713.html"
-          }
-        ]
-      },
-      {
-        "rank": 9,
-        "name": "코스닥 지수 급락",
-        "type": "이슈",
+        "name": "삼성전기",
+        "type": "종목",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "코스닥, 4%대 급락…10개월 만에 800선 밑으로",
-            "summary": "코스닥 지수가 4.55% 급락한 799.36으로 마감하며 10개월 만에 800선을 하회",
-            "url": "https://www.hankyung.com/article/2026070825976"
+            "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
+            "summary": "기판 업황 회복 기대감에 삼성전기 주가가 12%대 급등",
+            "url": "https://newneek.co/@saltylife/article/40936"
           },
           {
-            "title": "코스피, 한때 6% 내려 7000선도 위협…코스닥도 하락 전환",
-            "summary": "코스피 급락과 함께 코스닥 지수도 하락 전환하며 동반 약세를 나타냄",
-            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03119286645514192"
+            "title": "[인싸잇] [26.7.15 증시 인싸잇] 반도체 훈풍에 코스피 6% 급등… 7200선 회복",
+            "summary": "반도체 훈풍 속 삼성전기 등 반도체 소재·부품주가 동반 강세",
+            "url": "https://mediawatch.kr/news/article.html?no=260385"
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "name": "SK스퀘어",
+        "type": "종목",
+        "mention": 2,
+        "channel": 2,
+        "score": 6,
+        "articles": [
+          {
+            "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
+            "summary": "SK하이닉스 지분 보유 수혜주로 부각된 SK스퀘어가 16% 넘게 급등",
+            "url": "https://newneek.co/@saltylife/article/40936"
+          },
+          {
+            "title": "[개장시황] 코스피, 반도체株 강세에 7000선 회복…SK하이닉스 10% 급등",
+            "summary": "반도체주 강세 속 SK스퀘어 등 관련주가 동반 상승하며 코스피 7000선을 회복",
+            "url": "https://www.ajunews.com/view/20260715085833502"
           }
         ]
       },
       {
         "rank": 10,
-        "name": "한울소재과학",
+        "name": "HLB",
         "type": "종목",
-        "mention": 1,
-        "channel": 1,
-        "score": 3,
+        "mention": 2,
+        "channel": 2,
+        "score": 6,
         "articles": [
           {
-            "title": "[증시 오늘(13일) 주요 특징주] \"개별 재료에 쏠린 수급\"…양대 지수 하락속 인허가·상장 모멘텀株만 활짝",
-            "summary": "자회사 제이케이머트리얼즈의 반도체 소재 공정 인허가 통보 소식에 한울소재과학이 장 초반 급등",
-            "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=82012"
+            "title": "[급등락주 짚어보기] HLB그룹주 무더기 상한가…한미반도체·애국테마주도 급등",
+            "summary": "HLB그룹주가 간암 신약 리보세라닙 관련 우려 해소로 무더기 상한가를 기록",
+            "url": "https://www.etoday.co.kr/news/view/2604194"
+          },
+          {
+            "title": "[속보] HLB 주가 상한가 직행…그룹주도 동반 급등, 최근 큰 변동폭 보이기도",
+            "summary": "HLB 주가가 상한가로 직행하며 그룹주 전반이 동반 급등",
+            "url": "https://www.cbci.co.kr/news/articleView.html?idxno=589265"
           }
         ]
       }
     ]
   },
   "history": [
+    {
+      "report_date": "2026-07-13",
+      "range_label": "2026-07-12(일) 05:00 ~ 2026-07-13(월) 21:50 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
+      "message_count": 53,
+      "channel_count": 23,
+      "items": [
+        {
+          "rank": 1,
+          "name": "미·이란 충돌 및 호르무즈 해협 리스크(유가 급등)",
+          "type": "이슈",
+          "mention": 11,
+          "channel": 9,
+          "score": 29,
+          "articles": [
+            {
+              "title": "호르무즈 해협 충돌에 유가 4% 폭등…글로벌 증시는 일제히 '털썩'",
+              "summary": "미국-이란 충돌 격화로 호르무즈 해협 통항이 위협받으며 국제유가가 4%대 폭등, 글로벌 증시 동반 하락",
+              "url": "https://biz.heraldcorp.com/article/10807184"
+            },
+            {
+              "title": "美-이란 충돌 격화, 코스피·코스닥 급락⋯연쇄 매도 사이드카",
+              "summary": "미국과 이란의 군사 충돌이 격화되며 국내 증시에 매도 사이드카가 잇달아 발동",
+              "url": "https://www.etoday.co.kr/news/view/2601573"
+            },
+            {
+              "title": "다시 막힌 호르무즈…정부 \"7~8월 원유 100% 이상 확보\"",
+              "summary": "호르무즈 해협 봉쇄 우려에 정부가 단기 원유 수급 대책을 발표",
+              "url": "https://www.newstomato.com/ReadNews.aspx?no=1306985"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "코스피 급락 (검은 월요일)",
+          "type": "이슈",
+          "mention": 12,
+          "channel": 7,
+          "score": 26,
+          "articles": [
+            {
+              "title": "[마감시황] '검은 월요일' 코스피 9% 급락, 6806.93 마감",
+              "summary": "코스피가 669.01포인트(8.95%) 급락한 6806.93으로 마감, 두 달여 만에 7000선 붕괴",
+              "url": "https://www.newspim.com/news/view/20260713000993"
+            },
+            {
+              "title": "반도체 투매에 7000선 반납한 '검은 월요일'…코스피 4월 말 이후 '최저'[종합]",
+              "summary": "반도체 대형주 투매 속 코스피가 7000선을 내주며 4월 말 이후 최저 수준으로 하락",
+              "url": "https://www.etoday.co.kr/news/view/2603195"
+            },
+            {
+              "title": "'단 17거래일만' 구천피서 육천피로…코스피, 날개 없는 추락",
+              "summary": "불과 17거래일 만에 9000선에서 6000선대로 주저앉은 코스피의 급격한 조정 상황을 분석",
+              "url": "https://biz.heraldcorp.com/article/10807336"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "SK하이닉스",
+          "type": "종목",
+          "mention": 8,
+          "channel": 4,
+          "score": 16,
+          "articles": [
+            {
+              "title": "반도체주 '우두둑'…SK하이닉스 15.4%·삼성전자 10.7% 폭락(종합2보)",
+              "summary": "SK하이닉스가 15.37% 급락한 184만5000원에 마감하며 반도체 대형주 동반 폭락",
+              "url": "https://www.fnnews.com/news/202607131601490888"
+            },
+            {
+              "title": "SK하이닉스 15% 급락 직격탄… '검은 월요일' 코스피 6800대 추락",
+              "summary": "SK하이닉스 실적 기대치 하향 조정 소식이 코스피 급락의 직접적 계기가 됐다는 분석",
+              "url": "https://www.hankookilbo.com/news/article/A2026071316470003411"
+            },
+            {
+              "title": "맥 못 추는 삼전닉스, 7천피 '와르르'…외인·기관 무섭게 팔아 치운다",
+              "summary": "삼성전자·SK하이닉스에 대한 외국인·기관의 강도 높은 매도세가 지수 하락을 주도",
+              "url": "https://www.mt.co.kr/stock/2026/07/13/2026071312371640603"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "삼성전자",
+          "type": "종목",
+          "mention": 5,
+          "channel": 4,
+          "score": 13,
+          "articles": [
+            {
+              "title": "삼성전자 주가, 오늘 왜 폭락했나?",
+              "summary": "삼성전자가 10.70% 급락한 배경으로 반도체 업황 우려와 지정학적 리스크를 지목",
+              "url": "https://kr.investing.com/news/stock-market-news/article-93CH-2013075"
+            },
+            {
+              "title": "반도체주 또 휘청…SK하이닉스 8%·삼성전자 4% 급락(종합)",
+              "summary": "장중 반도체 대형주가 동반 약세를 보이며 낙폭을 키워간 상황을 정리",
+              "url": "https://www.fnnews.com/news/202607131050242447"
+            },
+            {
+              "title": "'삼전·닉스' 무너지자 코스피 7000 붕괴...하루에 669P 증발",
+              "summary": "삼성전자와 SK하이닉스의 동반 급락이 코스피 지수 급락을 견인했다는 분석",
+              "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003251075&PAGE_CD=ET001&BLCK_NO=1&CMPT_CD=T0016"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "레버리지 ETF 반대매매 악순환",
+          "type": "이슈",
+          "mention": 4,
+          "channel": 4,
+          "score": 12,
+          "articles": [
+            {
+              "title": "9·11급 충격 올해만 6번… 레버리지 ETF에 코스피 브레이크 비명",
+              "summary": "단일종목 레버리지 ETF의 기계적 매도가 올해 들어 여섯 번째 급락 충격을 키웠다는 분석",
+              "url": "https://www.hankookilbo.com/news/article/A2026071212410001197"
+            },
+            {
+              "title": "단일종목 레버리지 일제히 신저가…16종 시가총액 10조원 밑으로(종합)",
+              "summary": "삼성전자·SK하이닉스 레버리지 ETF 16종이 일제히 신저가를 기록하며 시가총액이 급감",
+              "url": "https://www.fnnews.com/news/202607131609568387"
+            },
+            {
+              "title": "[ETF 시황] 반도체 급락에 인버스 '강세', 자금은 레버리지 베팅",
+              "summary": "반도체 급락 속 인버스 ETF는 강세를 보였지만 개인 자금은 여전히 레버리지 상품으로 유입",
+              "url": "https://www.newspim.com/news/view/20260713001033"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "레메디 코스닥 상장",
+          "type": "종목",
+          "mention": 4,
+          "channel": 4,
+          "score": 12,
+          "articles": [
+            {
+              "title": "[특징주] 레메디, 코스닥 상장 첫날 30%대 강세",
+              "summary": "저선량 X-ray 기술기업 레메디가 코스닥 상장 첫날 공모가 대비 30%대 강세를 나타냄",
+              "url": "https://www.ajunews.com/view/20260713092649063"
+            },
+            {
+              "title": "'저선량·초소형 X-ray 솔루션' 레메디, 코스닥 데뷔[오늘 상장]",
+              "summary": "의료용 핸드헬드 X-ray 등을 개발하는 레메디가 코스닥 시장에 데뷔",
+              "url": "https://www.edaily.co.kr/News/Read?newsId=02082806645514192&mediaCodeNo=257"
+            },
+            {
+              "title": "[특징주] 레메디, 코스닥 상장 첫날 +44%대 급등",
+              "summary": "레메디 주가가 상장 첫날 공모가 대비 최대 44%대까지 급등",
+              "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1273949"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "외국인·기관 쌍끌이 순매도",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "외국인·기관 '쌍끌이 매도' 코스피 3.9% 급락…SK하이닉스 200만원선 붕괴",
+              "summary": "외국인과 기관의 동시 매도세로 SK하이닉스 주가가 200만 원선 아래로 내려앉음",
+              "url": "https://www.ddaily.co.kr/page/view/2026071310311662833"
+            },
+            {
+              "title": "코스피, '외국인·기관' 동반 매도에 8% 급락…서킷브레이커 발동",
+              "summary": "외국인 2조2350억원, 기관 5727억원 순매도가 겹치며 서킷브레이커까지 발동",
+              "url": "https://www.newspim.com/news/view/20260713000765"
+            },
+            {
+              "title": "外人·기관 팔자에 7000피 '와르르'…삼전닉스 10% 이상 '뚝'",
+              "summary": "외국인·기관의 매도 물량이 삼성전자·SK하이닉스를 동반 10%대 급락시켰다는 분석",
+              "url": "https://www.sedaily.com/article/20067122"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "원달러 환율 급락",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "[마감 시황] 코스피, 7,200선 붕괴 조짐…환율은 29.7원 폭락한 1,498.5원에 거래 종료",
+              "summary": "증시 폭락 속에서도 원-달러 환율은 오히려 급락하며 두 달여 만에 1500원선을 하회",
+              "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=272692"
+            },
+            {
+              "title": "[환율마감] 원·달러 급락 두달만 빅피겨(1500원) 하회, 외인·SK하이닉스·한일공조",
+              "summary": "외국인의 국내 주식 매수를 위한 원화 환전 수요가 환율 하방 압력으로 작용",
+              "url": "https://www.etoday.co.kr/news/view/2601670"
+            },
+            {
+              "title": "[환율 전망] 당국의 고환율 참교육",
+              "summary": "당국의 환율 안정 조치와 시장 개입 가능성을 다룬 환율 전망 분석",
+              "url": "https://kbthink.com/investment/fx/daily/260713.html"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "코스닥 지수 급락",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "코스닥, 4%대 급락…10개월 만에 800선 밑으로",
+              "summary": "코스닥 지수가 4.55% 급락한 799.36으로 마감하며 10개월 만에 800선을 하회",
+              "url": "https://www.hankyung.com/article/2026070825976"
+            },
+            {
+              "title": "코스피, 한때 6% 내려 7000선도 위협…코스닥도 하락 전환",
+              "summary": "코스피 급락과 함께 코스닥 지수도 하락 전환하며 동반 약세를 나타냄",
+              "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03119286645514192"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "한울소재과학",
+          "type": "종목",
+          "mention": 1,
+          "channel": 1,
+          "score": 3,
+          "articles": [
+            {
+              "title": "[증시 오늘(13일) 주요 특징주] \"개별 재료에 쏠린 수급\"…양대 지수 하락속 인허가·상장 모멘텀株만 활짝",
+              "summary": "자회사 제이케이머트리얼즈의 반도체 소재 공정 인허가 통보 소식에 한울소재과학이 장 초반 급등",
+              "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=82012"
+            }
+          ]
+        }
+      ]
+    },
     {
       "report_date": "2026-07-10",
       "range_label": "2026-07-09(목) 05:00 ~ 2026-07-10(금) 04:59 KST",
