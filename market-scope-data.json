@@ -1,42 +1,92 @@
 {
   "current": {
-    "report_date": "2026-07-16",
-    "range_label": "2026-07-15(수) 05:00 ~ 2026-07-16(목) 22:24 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
-    "message_count": 43,
-    "channel_count": 24,
+    "report_date": "2026-07-17",
+    "range_label": "2026-07-16(목) 05:00 ~ 2026-07-17(금) 04:59 KST (예정된 새벽 5시 실행이 지연되어 오전 뉴스까지 일부 반영)",
+    "message_count": 37,
+    "channel_count": 21,
     "items": [
       {
         "rank": 1,
-        "name": "반도체 업황 둔화 우려 급락 (코어위브 헤지·CXMT IPO 공포)",
+        "name": "코스피·코스닥 6%대 급락 및 매도 사이드카 발동 (반도체 쇼크)",
         "type": "이슈",
-        "mention": 8,
-        "channel": 8,
-        "score": 24,
+        "mention": 16,
+        "channel": 12,
+        "score": 40,
         "articles": [
           {
-            "title": "中 CXMT 14조 실탄·AI 투자 둔화 우려…삼성전자·SK하이닉스 하루 만에 급락",
-            "summary": "중국 CXMT의 대규모 자금조달과 AI 투자 둔화 우려가 겹치며 삼성전자·SK하이닉스가 하루 만에 급락했다는 분석",
-            "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716647"
+            "title": "개인 3.7조 매수에도 7000선 내줘…코스피 6%대 급락 마감",
+            "summary": "코스피가 전 거래일 대비 6.37% 급락한 6820.60에 마감했고 코스닥도 4.53% 내리며 코스피·코스닥 매도 사이드카가 잇따라 발동됐다는 내용",
+            "url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04660886645515176"
           },
           {
-            "title": "마이크론 8% 급락… 중국 반도체 CXMT IPO에 메모리 시장 판도 흔들리나",
-            "summary": "미국 마이크론 주가가 8% 넘게 급락하며 메모리 반도체 투자심리가 위축됐다는 내용",
-            "url": "https://www.g-enews.com/article/Securities/2026/07/202607160713483964e250e8e188_1"
+            "title": "외인ㆍ기관 '팔자'에 코스피 6.4% 급락해 6800선 마감⋯삼전 8%ㆍSK하닉 12%↓",
+            "summary": "외국인·기관의 동반 매도세에 코스피가 6.4% 급락했고 삼성전자·SK하이닉스가 각각 8%, 12% 안팎 하락했다는 내용",
+            "url": "https://www.etoday.co.kr/news/view/2604591"
           },
           {
-            "title": "ASML 가이던스 또 상향에도 반도체 급락···CXMT·코어위브 '사이클 공포'",
-            "summary": "코어위브의 메모리 장기공급계약 헤지 검토 소식과 CXMT발 공급과잉 우려가 반도체 사이클 공포로 번졌다는 분석",
-            "url": "https://www.jabon.co.kr/news/articleView.html?idxno=4978"
+            "title": "[마감시황] 코스피, '반도체 악재'에 6% 급락…7000선 반납",
+            "summary": "반도체 업황 우려가 재부각되며 코스피가 6% 급락, 7000선을 다시 반납했다는 내용",
+            "url": "https://www.newspim.com/news/view/20260716001003"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "애국테마주 (모나미·형지엘리트·에넥스 등)",
+        "name": "단일종목 레버리지 ETF 규제 강화 (기본예탁금 3000만원)",
         "type": "이슈",
-        "mention": 8,
-        "channel": 6,
-        "score": 20,
+        "mention": 6,
+        "channel": 5,
+        "score": 16,
+        "articles": [
+          {
+            "title": "단일종목 레버리지 신규 출시 중단…예탁금 3000만원·20주씩 매매",
+            "summary": "금융당국이 단일종목 레버리지 상품의 기본예탁금을 3000만원 전액 현금으로 상향하고 신규 상장을 잠정 중단한다는 내용",
+            "url": "https://biz.heraldcorp.com/article/10811517?sec=002"
+          },
+          {
+            "title": "단일종목 레버리지 투자 문턱 높인다…추가 매수 때 예탁금 3000만원",
+            "summary": "단일종목 레버리지 상품 추가 매수 시 예탁금 요건이 1000만원에서 3000만원으로 강화된다는 내용",
+            "url": "https://www.fnnews.com/news/202607161633030338"
+          },
+          {
+            "title": "\"현금 3000만원 있어야\"…문턱 확 높인 단일종목 레버리지, 통할까",
+            "summary": "롤러코스터 장세 속 단일종목 레버리지 투자 문턱을 높인 금융당국 대책이 실효를 거둘지 짚어보는 내용",
+            "url": "https://www.hankookilbo.com/news/article/A2026071618020005492"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "TSMC 2분기 실적 발표 후 AI 반도체주 차익실현 (뉴욕증시 반도체 급락 여파)",
+        "type": "이슈",
+        "mention": 5,
+        "channel": 5,
+        "score": 15,
+        "articles": [
+          {
+            "title": "[아시아 특징주] TSMC 2분기 이익, 기대치 큰 폭 초과…AI 수요 열기 재확인",
+            "summary": "TSMC의 2분기 순이익이 시장 기대치를 크게 웃돌며 AI 반도체 수요 열기를 재확인시켰다는 내용",
+            "url": "https://www.newspim.com/news/view/20260716000882"
+          },
+          {
+            "title": "[美특징주]TSMC, AI 수요에 2분기 순익 77% 급증…주가는 4%↓",
+            "summary": "TSMC 순이익이 77% 급증하는 호실적에도 차익실현 매물에 주가는 4% 하락했다는 내용",
+            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=05674406645515176"
+          },
+          {
+            "title": "뉴욕증시, 반도체 추락속 혼조 마감…다우 최고치·나스닥 1%↓(종합)",
+            "summary": "TSMC 실적 발표 이후 반도체주에 차익실현 매물이 쏟아지며 나스닥이 1.47% 하락 마감했다는 내용",
+            "url": "https://www.fnnews.com/news/202607170547135326"
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "애국테마주 (모나미·형지엘리트·에넥스·한성기업 등)",
+        "type": "이슈",
+        "mention": 5,
+        "channel": 4,
+        "score": 13,
         "articles": [
           {
             "title": "[급등락주 짚어보기] 애국테마주 수급 쏠림…형지엘리트ㆍ모나리자ㆍ에넥스 등 '上'",
@@ -44,205 +94,308 @@
             "url": "https://www.etoday.co.kr/news/view/2604651"
           },
           {
-            "title": "[특징주] \"상폐 막자\" 주주들 뭉쳤다...'애국주' 모나미, 장 초반 23%대 급등",
-            "summary": "코스피 상장유지 시가총액 기준 상향으로 상장폐지 우려가 제기된 모나미가 개인 매수세에 급등",
-            "url": "https://www.etoday.co.kr/news/view/2602361"
+            "title": "애국주 열풍으로 겨우 살아난 모나미·에넥스, 실적 개선으로 이어질까",
+            "summary": "개인투자자의 응원 투자로 급등한 모나미·에넥스가 실제 실적 개선으로 이어질지 짚어보는 내용",
+            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04618246645515176"
           },
           {
-            "title": "\"모나미·에넥스 상한가…'애국주' 열풍, 다음 후보는 어디?\"",
-            "summary": "모나미·에넥스 등이 상한가를 기록하며 애국주 열풍이 이어지는 가운데 다음 수혜주에 관심 집중",
-            "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716562"
-          }
-        ]
-      },
-      {
-        "rank": 3,
-        "name": "코스피 6%대 급락 및 매도 사이드카 발동",
-        "type": "이슈",
-        "mention": 6,
-        "channel": 5,
-        "score": 16,
-        "articles": [
-          {
-            "title": "[마감시황] 코스피, '반도체 악재'에 6% 급락…7000선 반납",
-            "summary": "코스피가 전 거래일보다 6.38% 급락한 6820.60에 마감하며 7000선을 다시 반납",
-            "url": "https://www.newspim.com/news/view/20260716001003"
-          },
-          {
-            "title": "어제는 매수 사이드카, 오늘은 매도 사이드카…춤추는 증시(종합)",
-            "summary": "전날 매수 사이드카가 발동된 지 하루 만에 매도 사이드카가 발동되며 극심한 변동성 장세가 이어짐",
-            "url": "https://www.fnnews.com/news/202607161041008863"
-          },
-          {
-            "title": "[속보] 코스닥, 매도 사이드카 발동…올해 9번째",
-            "summary": "코스닥 시장에서도 매도 사이드카가 발동되며 올해 들어 9번째 발동 기록",
-            "url": "https://www.mt.co.kr/stock/2026/07/16/2026071609425696776"
-          }
-        ]
-      },
-      {
-        "rank": 4,
-        "name": "SK하이닉스",
-        "type": "종목",
-        "mention": 4,
-        "channel": 4,
-        "score": 12,
-        "articles": [
-          {
-            "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
-            "summary": "SK하이닉스가 장중 10% 넘게 급락하며 반도체 투톱이 동반 추락",
-            "url": "https://biz.sbs.co.kr/article/20000322882"
-          },
-          {
-            "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
-            "summary": "SK하이닉스 ADR이 9% 가까이 급락하며 국내 개장 전부터 하락 압력을 예고",
-            "url": "https://www.news1.kr/finance/general-stock/6229910"
-          },
-          {
-            "title": "SK하이닉스 주가가 오늘 급락한 이유는?",
-            "summary": "간밤 미국 반도체주 급락과 모건스탠리의 데이터센터 축소 관련 보고서가 하락 원인으로 지목됨",
-            "url": "https://kr.investing.com/news/stock-market-news/article-93CH-1992134"
+            "title": "[특징주]\"애국기업 살리자\"…개미들 응원투자에 한성기업·모나미 연일'급등세'",
+            "summary": "개인 투자자들의 응원 투자에 힘입어 한성기업·모나미가 연일 급등세를 이어가고 있다는 내용",
+            "url": "https://www.namdonews.com/news/articleView.html?idxno=916719"
           }
         ]
       },
       {
         "rank": 5,
-        "name": "한미반도체",
-        "type": "종목",
-        "mention": 4,
-        "channel": 4,
-        "score": 12,
-        "articles": [
-          {
-            "title": "[특징주] 한미반도체, HBM 훈풍에 '깜짝 실적'…26%대 급등",
-            "summary": "한미반도체가 역대 최대 분기 실적을 발표하며 26%대 급등",
-            "url": "https://v.daum.net/v/20260715103351011"
-          },
-          {
-            "title": "[특징주] 한미반도체, 역대 최대 분기 실적에 26% '급등'",
-            "summary": "2분기 매출 2511억원, 영업이익률 51.9%로 분기 기준 처음 50%를 돌파했다는 내용",
-            "url": "https://www.newspim.com/news/view/20260715000408"
-          },
-          {
-            "title": "한미반도체 19% 급등…2분기 호실적에 강세[특징주]",
-            "summary": "HBM용 TC 본더·MSVP 장비 수요 확대가 실적 성장을 견인했다는 분석",
-            "url": "https://www.edaily.co.kr/News/Read?newsId=03201286645514848&mediaCodeNo=257"
-          }
-        ]
-      },
-      {
-        "rank": 6,
-        "name": "코스피 6%대 급등 마감 (美 CPI 둔화·반도체 랠리, 7/15)",
+        "name": "반도체 밸류체인 관련주(SK스퀘어·삼성전기·한미반도체 등) 동반 급락",
         "type": "이슈",
-        "mention": 4,
-        "channel": 3,
-        "score": 10,
-        "articles": [
-          {
-            "title": "[마감시황] 美 물가 둔화에 외국인·기관 '사자'...코스피 7284.41",
-            "summary": "미국 6월 CPI가 예상치를 밑돌며 외국인·기관 매수세가 유입, 코스피가 6.24% 급등 마감",
-            "url": "https://www.newspim.com/news/view/20260715001123"
-          },
-          {
-            "title": "[마감 시황] 코스피, 6.24% 폭등하며 7,284.41 마감",
-            "summary": "코스피가 427.58포인트(6.24%) 오른 7284.41에 마감하며 7000선을 회복",
-            "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=273112"
-          },
-          {
-            "title": "코스피, 6% 상승해 7000피 탈환…반도체 투자심리 살아나나",
-            "summary": "반도체 대형주 반등에 힘입어 코스피가 6% 상승하며 7000선을 다시 넘어섬",
-            "url": "https://www.khan.co.kr/article/202607151720001/"
-          }
-        ]
-      },
-      {
-        "rank": 7,
-        "name": "삼성전자",
-        "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
-            "summary": "삼성전자도 장중 7%대 급락하며 반도체 투톱이 동반 하락",
-            "url": "https://biz.sbs.co.kr/article/20000322882"
+            "title": "삼전닉스부터 삼성전기까지 'S7' 동반 하락…SK스퀘어 9%↓",
+            "summary": "삼성전자·SK하이닉스뿐 아니라 삼성전기·SK스퀘어 등 반도체 관련 대장주들이 동반 하락했다는 내용",
+            "url": "https://news.nate.com/view/20260716n07037?mid=n1101"
           },
           {
-            "title": "[속보]코스피, 4.45% 내린 6960.50 출발…코스닥 1.94%↓",
-            "summary": "삼성전자 등 반도체 대형주 약세 속 코스피가 4%대 급락 출발",
-            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03034006645515176"
+            "title": "사흘만에 도로 '180만닉스·25만전자' 됐다…코스피 -7% '와르르'",
+            "summary": "시가총액 상위 반도체 관련주들이 나란히 10% 안팎 하락하며 사흘 전 수준으로 되돌아갔다는 내용",
+            "url": "https://www.seoul.co.kr/news/economy/securities/2026/07/16/20260716500039"
           },
           {
-            "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
-            "summary": "삼성전자가 전장보다 7%대 급락하며 거래 중",
-            "url": "https://www.news1.kr/finance/general-stock/6229910"
+            "title": "[마켓라이브] 반도체株 급락 충격 지속...오후 3시 TSMC 실적이 변수 [오후 2시 시황]",
+            "summary": "한미반도체 등 반도체 장비주까지 낙폭이 확산되며 TSMC 실적 발표가 시장의 변수로 꼽혔다는 내용",
+            "url": "https://www.hankyung.com/article/202607168415i"
           }
         ]
       },
       {
-        "rank": 8,
-        "name": "삼성전기",
-        "type": "종목",
+        "rank": 6,
+        "name": "한국은행 기준금리 인상 (2.50%→2.75%, 3년 6개월 만)",
+        "type": "이슈",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
-            "summary": "기판 업황 회복 기대감에 삼성전기 주가가 12%대 급등",
-            "url": "https://newneek.co/@saltylife/article/40936"
+            "title": "한은 금통위, 3년 6개월 만에 '금리 인상 모드'로⋯고물가 등 영향 [7월 금통위]",
+            "summary": "한국은행 금융통화위원회가 3년 6개월 만에 기준금리를 2.50%에서 2.75%로 인상했다는 내용",
+            "url": "https://www.etoday.co.kr/news/view/2604388"
           },
           {
-            "title": "[인싸잇] [26.7.15 증시 인싸잇] 반도체 훈풍에 코스피 6% 급등… 7200선 회복",
-            "summary": "반도체 훈풍 속 삼성전기 등 반도체 소재·부품주가 동반 강세",
-            "url": "https://mediawatch.kr/news/article.html?no=260385"
-          }
-        ]
-      },
-      {
-        "rank": 9,
-        "name": "SK스퀘어",
-        "type": "종목",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
-        "articles": [
-          {
-            "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
-            "summary": "SK하이닉스 지분 보유 수혜주로 부각된 SK스퀘어가 16% 넘게 급등",
-            "url": "https://newneek.co/@saltylife/article/40936"
-          },
-          {
-            "title": "[개장시황] 코스피, 반도체株 강세에 7000선 회복…SK하이닉스 10% 급등",
-            "summary": "반도체주 강세 속 SK스퀘어 등 관련주가 동반 상승하며 코스피 7000선을 회복",
-            "url": "https://www.ajunews.com/view/20260715085833502"
-          }
-        ]
-      },
-      {
-        "rank": 10,
-        "name": "HLB",
-        "type": "종목",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
-        "articles": [
-          {
-            "title": "[급등락주 짚어보기] HLB그룹주 무더기 상한가…한미반도체·애국테마주도 급등",
-            "summary": "HLB그룹주가 간암 신약 리보세라닙 관련 우려 해소로 무더기 상한가를 기록",
-            "url": "https://www.etoday.co.kr/news/view/2604194"
-          },
-          {
-            "title": "[속보] HLB 주가 상한가 직행…그룹주도 동반 급등, 최근 큰 변동폭 보이기도",
-            "summary": "HLB 주가가 상한가로 직행하며 그룹주 전반이 동반 급등",
-            "url": "https://www.cbci.co.kr/news/articleView.html?idxno=589265"
+            "title": "한국은행 금리인상, 기준금리 2.75%로…주식 시장에 주는 영향은?",
+            "summary": "한국은행의 기준금리 인상이 국내 주식시장에 미칠 영향을 분석한 내용",
+            "url": "https://www.ebc.com/kr/forex/304100.html"
           }
         ]
       }
     ]
   },
   "history": [
+    {
+      "report_date": "2026-07-16",
+      "range_label": "2026-07-15(수) 05:00 ~ 2026-07-16(목) 22:24 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
+      "message_count": 43,
+      "channel_count": 24,
+      "items": [
+        {
+          "rank": 1,
+          "name": "반도체 업황 둔화 우려 급락 (코어위브 헤지·CXMT IPO 공포)",
+          "type": "이슈",
+          "mention": 8,
+          "channel": 8,
+          "score": 24,
+          "articles": [
+            {
+              "title": "中 CXMT 14조 실탄·AI 투자 둔화 우려…삼성전자·SK하이닉스 하루 만에 급락",
+              "summary": "중국 CXMT의 대규모 자금조달과 AI 투자 둔화 우려가 겹치며 삼성전자·SK하이닉스가 하루 만에 급락했다는 분석",
+              "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716647"
+            },
+            {
+              "title": "마이크론 8% 급락… 중국 반도체 CXMT IPO에 메모리 시장 판도 흔들리나",
+              "summary": "미국 마이크론 주가가 8% 넘게 급락하며 메모리 반도체 투자심리가 위축됐다는 내용",
+              "url": "https://www.g-enews.com/article/Securities/2026/07/202607160713483964e250e8e188_1"
+            },
+            {
+              "title": "ASML 가이던스 또 상향에도 반도체 급락···CXMT·코어위브 '사이클 공포'",
+              "summary": "코어위브의 메모리 장기공급계약 헤지 검토 소식과 CXMT발 공급과잉 우려가 반도체 사이클 공포로 번졌다는 분석",
+              "url": "https://www.jabon.co.kr/news/articleView.html?idxno=4978"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "애국테마주 (모나미·형지엘리트·에넥스 등)",
+          "type": "이슈",
+          "mention": 8,
+          "channel": 6,
+          "score": 20,
+          "articles": [
+            {
+              "title": "[급등락주 짚어보기] 애국테마주 수급 쏠림…형지엘리트ㆍ모나리자ㆍ에넥스 등 '上'",
+              "summary": "온라인 커뮤니티발 애국테마주 매수세가 형지엘리트·모나리자·에넥스 등의 상한가를 이끌었다는 내용",
+              "url": "https://www.etoday.co.kr/news/view/2604651"
+            },
+            {
+              "title": "[특징주] \"상폐 막자\" 주주들 뭉쳤다...'애국주' 모나미, 장 초반 23%대 급등",
+              "summary": "코스피 상장유지 시가총액 기준 상향으로 상장폐지 우려가 제기된 모나미가 개인 매수세에 급등",
+              "url": "https://www.etoday.co.kr/news/view/2602361"
+            },
+            {
+              "title": "\"모나미·에넥스 상한가…'애국주' 열풍, 다음 후보는 어디?\"",
+              "summary": "모나미·에넥스 등이 상한가를 기록하며 애국주 열풍이 이어지는 가운데 다음 수혜주에 관심 집중",
+              "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1716562"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "코스피 6%대 급락 및 매도 사이드카 발동",
+          "type": "이슈",
+          "mention": 6,
+          "channel": 5,
+          "score": 16,
+          "articles": [
+            {
+              "title": "[마감시황] 코스피, '반도체 악재'에 6% 급락…7000선 반납",
+              "summary": "코스피가 전 거래일보다 6.38% 급락한 6820.60에 마감하며 7000선을 다시 반납",
+              "url": "https://www.newspim.com/news/view/20260716001003"
+            },
+            {
+              "title": "어제는 매수 사이드카, 오늘은 매도 사이드카…춤추는 증시(종합)",
+              "summary": "전날 매수 사이드카가 발동된 지 하루 만에 매도 사이드카가 발동되며 극심한 변동성 장세가 이어짐",
+              "url": "https://www.fnnews.com/news/202607161041008863"
+            },
+            {
+              "title": "[속보] 코스닥, 매도 사이드카 발동…올해 9번째",
+              "summary": "코스닥 시장에서도 매도 사이드카가 발동되며 올해 들어 9번째 발동 기록",
+              "url": "https://www.mt.co.kr/stock/2026/07/16/2026071609425696776"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "SK하이닉스",
+          "type": "종목",
+          "mention": 4,
+          "channel": 4,
+          "score": 12,
+          "articles": [
+            {
+              "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
+              "summary": "SK하이닉스가 장중 10% 넘게 급락하며 반도체 투톱이 동반 추락",
+              "url": "https://biz.sbs.co.kr/article/20000322882"
+            },
+            {
+              "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
+              "summary": "SK하이닉스 ADR이 9% 가까이 급락하며 국내 개장 전부터 하락 압력을 예고",
+              "url": "https://www.news1.kr/finance/general-stock/6229910"
+            },
+            {
+              "title": "SK하이닉스 주가가 오늘 급락한 이유는?",
+              "summary": "간밤 미국 반도체주 급락과 모건스탠리의 데이터센터 축소 관련 보고서가 하락 원인으로 지목됨",
+              "url": "https://kr.investing.com/news/stock-market-news/article-93CH-1992134"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "한미반도체",
+          "type": "종목",
+          "mention": 4,
+          "channel": 4,
+          "score": 12,
+          "articles": [
+            {
+              "title": "[특징주] 한미반도체, HBM 훈풍에 '깜짝 실적'…26%대 급등",
+              "summary": "한미반도체가 역대 최대 분기 실적을 발표하며 26%대 급등",
+              "url": "https://v.daum.net/v/20260715103351011"
+            },
+            {
+              "title": "[특징주] 한미반도체, 역대 최대 분기 실적에 26% '급등'",
+              "summary": "2분기 매출 2511억원, 영업이익률 51.9%로 분기 기준 처음 50%를 돌파했다는 내용",
+              "url": "https://www.newspim.com/news/view/20260715000408"
+            },
+            {
+              "title": "한미반도체 19% 급등…2분기 호실적에 강세[특징주]",
+              "summary": "HBM용 TC 본더·MSVP 장비 수요 확대가 실적 성장을 견인했다는 분석",
+              "url": "https://www.edaily.co.kr/News/Read?newsId=03201286645514848&mediaCodeNo=257"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "코스피 6%대 급등 마감 (美 CPI 둔화·반도체 랠리, 7/15)",
+          "type": "이슈",
+          "mention": 4,
+          "channel": 3,
+          "score": 10,
+          "articles": [
+            {
+              "title": "[마감시황] 美 물가 둔화에 외국인·기관 '사자'...코스피 7284.41",
+              "summary": "미국 6월 CPI가 예상치를 밑돌며 외국인·기관 매수세가 유입, 코스피가 6.24% 급등 마감",
+              "url": "https://www.newspim.com/news/view/20260715001123"
+            },
+            {
+              "title": "[마감 시황] 코스피, 6.24% 폭등하며 7,284.41 마감",
+              "summary": "코스피가 427.58포인트(6.24%) 오른 7284.41에 마감하며 7000선을 회복",
+              "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=273112"
+            },
+            {
+              "title": "코스피, 6% 상승해 7000피 탈환…반도체 투자심리 살아나나",
+              "summary": "반도체 대형주 반등에 힘입어 코스피가 6% 상승하며 7000선을 다시 넘어섬",
+              "url": "https://www.khan.co.kr/article/202607151720001/"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "삼성전자",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "반도체 '투톱' 또 추락…SK하이닉스 -10%대",
+              "summary": "삼성전자도 장중 7%대 급락하며 반도체 투톱이 동반 하락",
+              "url": "https://biz.sbs.co.kr/article/20000322882"
+            },
+            {
+              "title": "[속보]코스피, 4.45% 내린 6960.50 출발…코스닥 1.94%↓",
+              "summary": "삼성전자 등 반도체 대형주 약세 속 코스피가 4%대 급락 출발",
+              "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03034006645515176"
+            },
+            {
+              "title": "SK하닉 ADR -9% '충격'…삼성전자 -7%, SK하이닉스 -10% 급락[핫종목]",
+              "summary": "삼성전자가 전장보다 7%대 급락하며 거래 중",
+              "url": "https://www.news1.kr/finance/general-stock/6229910"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "삼성전기",
+          "type": "종목",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
+              "summary": "기판 업황 회복 기대감에 삼성전기 주가가 12%대 급등",
+              "url": "https://newneek.co/@saltylife/article/40936"
+            },
+            {
+              "title": "[인싸잇] [26.7.15 증시 인싸잇] 반도체 훈풍에 코스피 6% 급등… 7200선 회복",
+              "summary": "반도체 훈풍 속 삼성전기 등 반도체 소재·부품주가 동반 강세",
+              "url": "https://mediawatch.kr/news/article.html?no=260385"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "SK스퀘어",
+          "type": "종목",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "삼성전자∙SK하이닉스 다음은 삼성전기∙SK스퀘어? 주가 폭등 이유와 투자법 완전 정리",
+              "summary": "SK하이닉스 지분 보유 수혜주로 부각된 SK스퀘어가 16% 넘게 급등",
+              "url": "https://newneek.co/@saltylife/article/40936"
+            },
+            {
+              "title": "[개장시황] 코스피, 반도체株 강세에 7000선 회복…SK하이닉스 10% 급등",
+              "summary": "반도체주 강세 속 SK스퀘어 등 관련주가 동반 상승하며 코스피 7000선을 회복",
+              "url": "https://www.ajunews.com/view/20260715085833502"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "HLB",
+          "type": "종목",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "[급등락주 짚어보기] HLB그룹주 무더기 상한가…한미반도체·애국테마주도 급등",
+              "summary": "HLB그룹주가 간암 신약 리보세라닙 관련 우려 해소로 무더기 상한가를 기록",
+              "url": "https://www.etoday.co.kr/news/view/2604194"
+            },
+            {
+              "title": "[속보] HLB 주가 상한가 직행…그룹주도 동반 급등, 최근 큰 변동폭 보이기도",
+              "summary": "HLB 주가가 상한가로 직행하며 그룹주 전반이 동반 급등",
+              "url": "https://www.cbci.co.kr/news/articleView.html?idxno=589265"
+            }
+          ]
+        }
+      ]
+    },
     {
       "report_date": "2026-07-13",
       "range_label": "2026-07-12(일) 05:00 ~ 2026-07-13(월) 21:50 KST (예정된 새벽 5시 실행이 지연되어 당일 장마감 뉴스까지 반영)",
