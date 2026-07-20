@@ -32,6 +32,9 @@ import google.generativeai as genai
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JSON_PATH = os.path.join(ROOT, "market-scope-data.json")
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from krx_calendar import is_trading_day  # noqa: E402
+
 CHANNELS = [
     "moneythemestock", "valjuman", "characteristicstock", "YeouidoStory2",
     "corevalue", "HanaResearch", "bumsong2", "balanceasset", "alphasignal_now",
@@ -254,11 +257,20 @@ def main():
     ap.add_argument("--to", dest="date_to", help="종료 날짜 (YYYY-MM-DD)")
     args = ap.parse_args()
 
+    # "오늘"(인자 없이 자동 실행)인 경우, GEMINI API를 호출하기 전에 먼저
+    # KRX 개장일 여부부터 확인해 불필요한 초기화/API 키 요구를 피한다.
+    if not args.date and not (args.date_from and args.date_to):
+        today = datetime.now().strftime("%Y-%m-%d")
+        if not is_trading_day(today):
+            print(f"[skip] {today}는 KRX 개장일이 아닙니다. 마켓 스코프 리포트를 생성하지 않습니다.")
+            return
+
     load_env()
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
     gemini_model = genai.GenerativeModel("gemini-2.5-flash")
 
     if args.date_from and args.date_to:
+        # 명시적 기간 백필(--from/--to)은 개장일 여부와 무관하게 항상 실행한다.
         d0 = datetime.strptime(args.date_from, "%Y-%m-%d")
         d1 = datetime.strptime(args.date_to, "%Y-%m-%d")
         dates = []
@@ -266,8 +278,12 @@ def main():
         while d <= d1:
             dates.append(d.strftime("%Y-%m-%d"))
             d += timedelta(days=1)
+    elif args.date:
+        # 명시적 단일 날짜(--date)도 항상 실행(수동 백필용).
+        dates = [args.date]
     else:
-        dates = [args.date or datetime.now().strftime("%Y-%m-%d")]
+        # 위에서 이미 개장일 확인을 마쳤으므로 여기서는 바로 오늘 날짜를 사용한다.
+        dates = [datetime.now().strftime("%Y-%m-%d")]
 
     with open(JSON_PATH, encoding="utf-8") as f:
         data = json.load(f)
