@@ -259,8 +259,13 @@ def main():
 
     # "오늘"(인자 없이 자동 실행)인 경우, GEMINI API를 호출하기 전에 먼저
     # KRX 개장일 여부부터 확인해 불필요한 초기화/API 키 요구를 피한다.
+    # ⚠ datetime.now()는 실행 서버의 로컬시간(UTC, GitHub Actions 러너 기준)을
+    #   반환하므로 반드시 KST로 변환해서 날짜를 계산해야 한다. 예전 실행 환경
+    #   (Cowork 스케줄 작업)은 로컬 PC가 이미 KST라 문제가 없었지만, GitHub
+    #   Actions(UTC)로 옮기면서 이 부분을 KST 기준으로 고치지 않으면 매일
+    #   05:00 KST 실행 시각(=20:00 UTC 전날)에 날짜가 하루 어긋나는 버그가 생긴다.
     if not args.date and not (args.date_from and args.date_to):
-        today = datetime.now().strftime("%Y-%m-%d")
+        today = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")
         if not is_trading_day(today):
             print(f"[skip] {today}는 KRX 개장일이 아닙니다. 마켓 스코프 리포트를 생성하지 않습니다.")
             return
@@ -283,7 +288,8 @@ def main():
         dates = [args.date]
     else:
         # 위에서 이미 개장일 확인을 마쳤으므로 여기서는 바로 오늘 날짜를 사용한다.
-        dates = [datetime.now().strftime("%Y-%m-%d")]
+        # (마찬가지로 KST 기준 - 위 today 계산과 동일한 이유)
+        dates = [datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")]
 
     with open(JSON_PATH, encoding="utf-8") as f:
         data = json.load(f)
