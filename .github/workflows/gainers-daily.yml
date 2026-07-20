@@ -1,0 +1,63 @@
+name: "상승률 상위 10위 자동 수집"
+
+# 기존에는 이 파이프라인이 사용자 PC의 Windows 작업 스케줄러(평일/토요일 오후 4시,
+# scripts/collect_gainers.py 참고)로만 돌아갔습니다. PC가 꺼져 있거나 스케줄러가
+# 멈추면 며칠씩 데이터가 갱신되지 않는 문제가 있어(AUTOMATION_NOTES.md 참고),
+# 이 워크플로우를 클라우드(GitHub Actions)에서 매일 실행되도록 추가합니다.
+#
+# scripts/collect_gainers.py를 인자 없이 실행하면 내부적으로
+# scripts/krx_calendar.py(get_weekly_report_trigger)가 오늘이 KRX 개장일인지,
+# 그리고 daily/weekly 중 어떤 모드로 발행해야 하는지를 자동으로 판단합니다
+# (평일 개장일=daily, 토요일 또는 금요일 휴장/연휴 시작일=weekly, 그 외=skip).
+# 그래서 이 워크플로우는 요일 조건 없이 "평일~토요일"에 매일 호출하고,
+# 실제 실행 여부/모드 판단은 스크립트에게 맡깁니다.
+#
+# 필요한 GitHub Secrets (Settings → Secrets and variables → Actions에서 등록):
+#   - GEMINI_API_KEY : Google Gemini API 키 (사람이 직접 등록해야 함 - 이 워크플로우
+#                      파일만으로는 자동으로 채워지지 않습니다)
+
+on:
+  schedule:
+    # 매일 07:00 UTC = 16:00 KST, 월~토(cron 요일: 0=일 ... 6=토 → 1-6 = 월~토)
+    # 일요일은 KRX가 항상 휴장이므로 제외.
+    - cron: "0 7 * * 1-6"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect-gainers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 의존성 설치
+        run: |
+          pip install requests beautifulsoup4 google-genai
+
+      - name: 상승률 상위 10위 수집 (거래일 캘린더 자동 판단)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/collect_gainers.py
+
+      - name: 변경사항 커밋 및 푸시
+        # 참고: scripts/collect_gainers.py 내부의 git_push()가 이미 commit+push를
+        # 시도합니다(기존 로컬/PC 실행 방식과의 호환을 위해 그대로 둠). 이 스텝은
+        # 그 내부 push가 어떤 이유로든 실패했을 때를 위한 안전망이며, 이미 반영된
+        # 경우(diff 없음)는 조용히 스킵됩니다.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stock-analysis-data.json
+          git diff --cached --quiet || git commit -m "data: 상승률 상위 10위 자동 업데이트 ($(date -u +%Y-%m-%d))"
+          git push
