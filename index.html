@@ -169,6 +169,27 @@ section { padding: 72px 0; }
 .sa-date-tab:hover { border-color: var(--accent); color: var(--accent); }
 .sa-date-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .sa-loading { padding: 40px; text-align: center; color: var(--text-muted); font-size: 14px; }
+/* ── 날짜 선택 달력(월간 캘린더 팝오버) ── */
+.cal-trigger-btn { border: 1.5px solid var(--border); background: #fff; border-radius: 50%; width: 32px; height: 32px; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all .15s; flex-shrink: 0; }
+.cal-trigger-btn:hover { border-color: var(--accent); }
+.cal-popover-overlay { display: none; position: fixed; inset: 0; background: rgba(28,28,46,.45); z-index: 2100; align-items: center; justify-content: center; padding: 20px; }
+.cal-popover-box { background: var(--bg-card); border-radius: 16px; padding: 20px 22px 14px; width: 100%; max-width: 320px; box-shadow: 0 12px 40px rgba(0,0,0,.28); }
+.cal-popover-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-popover-title { font-size: 15px; font-weight: 800; color: var(--text-primary); }
+.cal-nav-btn { background: none; border: none; font-size: 20px; color: var(--text-secondary); cursor: pointer; padding: 2px 8px; line-height: 1; border-radius: 6px; }
+.cal-nav-btn:hover { color: var(--accent); background: var(--bg-hero); }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.cal-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-day { aspect-ratio: 1; border: none; background: none; border-radius: 50%; font-size: 12.5px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+.cal-day-empty { cursor: default; }
+.cal-day-muted { color: var(--text-muted); cursor: not-allowed; }
+.cal-day-has-data { background: var(--text-primary); color: #fff; font-weight: 700; }
+.cal-day-has-data:hover { background: var(--accent); }
+.cal-day-today { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); font-weight: 800; }
+.cal-day-today.cal-day-has-data { background: var(--accent); color: #fff; box-shadow: none; }
+.cal-popover-footer { text-align: right; margin-top: 8px; }
+.cal-popover-footer a { font-size: 12.5px; color: var(--text-muted); text-decoration: none; cursor: pointer; }
+.cal-popover-footer a:hover { color: var(--text-primary); }
 .sa-rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 800; margin-right: 6px; flex-shrink: 0; }
 .sa-price-row { display: flex; align-items: baseline; gap: 8px; margin: 8px 0 4px; }
 .sa-price { font-size: 20px; font-weight: 800; color: var(--text-primary); }
@@ -342,6 +363,7 @@ section { padding: 72px 0; }
     <div class="sa-date-bar" id="sa-date-bar">
       <span class="sa-date-label">날짜 선택</span>
       <div class="sa-date-tabs" id="sa-date-tabs"></div>
+      <button type="button" class="cal-trigger-btn" onclick="openDateCalendar('gainers')" title="달력에서 날짜 선택" aria-label="달력에서 날짜 선택">📅</button>
     </div>
     <div class="articles-grid" id="articles-grid">
       <div class="sa-loading">데이터를 불러오는 중입니다...</div>
@@ -357,6 +379,10 @@ section { padding: 72px 0; }
       <h2 class="section-title">거래대금 상위 10위</h2>
       <p class="section-subtitle">거래대금 상위 종목의 수급 동향을 확인합니다. (종목명 클릭 시 네이버 증권으로 이동)</p>
       <p id="vol-date-badge" style="display:inline-block;margin:8px 0 0;padding:5px 14px;font-size:13px;font-weight:700;color:#fff;background:var(--accent);border-radius:16px;"></p>
+    </div>
+    <div class="sa-date-bar" id="vol-date-bar">
+      <span class="sa-date-label">날짜 선택</span>
+      <button type="button" class="cal-trigger-btn" onclick="openDateCalendar('volume')" title="달력에서 날짜 선택" aria-label="달력에서 날짜 선택">📅</button>
     </div>
     <div style="display:flex;justify-content:flex-end;margin:0 0 6px;">
       <span style="font-size:11.5px;font-weight:600;color:var(--text-muted);background:var(--bg-hero);padding:3px 10px;border-radius:10px;">순매수 금액 단위: 억원 KRW</span>
@@ -389,6 +415,24 @@ section { padding: 72px 0; }
   <div class="sa-modal-box">
     <button class="sa-modal-close" onclick="document.getElementById('sa-modal').style.display='none'">✕</button>
     <div id="sa-modal-content"></div>
+  </div>
+</div>
+
+<!-- DATE CALENDAR POPOVER (당일 상승률 / 거래대금 공용) -->
+<div class="cal-popover-overlay" id="cal-popover" onclick="if(event.target===this) closeDateCalendar()">
+  <div class="cal-popover-box">
+    <div class="cal-popover-header">
+      <button type="button" class="cal-nav-btn" onclick="calNavigate(-1)" aria-label="이전 달">‹</button>
+      <span class="cal-popover-title" id="cal-popover-title"></span>
+      <button type="button" class="cal-nav-btn" onclick="calNavigate(1)" aria-label="다음 달">›</button>
+    </div>
+    <div class="cal-weekdays">
+      <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+    </div>
+    <div class="cal-days-grid" id="cal-days-grid"></div>
+    <div class="cal-popover-footer">
+      <a onclick="closeDateCalendar()">닫기</a>
+    </div>
   </div>
 </div>
 
@@ -815,7 +859,8 @@ const NEWSLETTERS = [
 
   // ---------- 상승률 카드 렌더 ----------
   window._saData = null;
-  window._saCurrentDate = null;
+  window._saCurrentDate = null;   // "당일 상승률 상위 10위" 섹션이 보고 있는 날짜
+  window._volCurrentDate = null;  // "거래대금 상위 10위" 섹션이 보고 있는 날짜 (독립적)
 
   function renderGainerCards(dateData) {
     const grid = document.getElementById('articles-grid');
@@ -866,7 +911,7 @@ const NEWSLETTERS = [
     const tbody = document.getElementById('vol-tbody');
     const badge = document.getElementById('vol-date-badge');
     if (badge) {
-      const d = window._saCurrentDate || '';
+      const d = window._volCurrentDate || '';
       badge.textContent = d ? '📅 ' + d.replace(/-/g, '.') + ' 기준' : '';
     }
     if (!dateData || !dateData.volumeStocks || !dateData.volumeStocks.length) {
@@ -929,13 +974,25 @@ const NEWSLETTERS = [
     });
     const dateData = window._saData && window._saData.dates && window._saData.dates[dateKey];
     renderGainerCards(dateData);
+    closeDateCalendar();
+  }
+
+  // 거래대금 섹션 전용 날짜 선택 (상승률 섹션과 완전히 독립된 상태)
+  function selectVolDate(dateKey) {
+    window._volCurrentDate = dateKey;
+    const dateData = window._saData && window._saData.dates && window._saData.dates[dateKey];
     renderVolumeTable(dateData);
+    closeDateCalendar();
   }
 
   // ---------- 자동 날짜 결정 (3:30 PM KST 기준) ----------
-  function autoSelectDate(data) {
-    const dates = Object.keys(data.dates || {}).sort();
+  // dateKeys: 이 섹션에서 선택 가능한 날짜 목록, latestDate: 이 섹션의 "최신" 날짜
+  // (상승률 섹션은 DB latestDate 우선, 거래대금 섹션은 volumeStocks가 실제로
+  //  채워진 마지막 날짜를 사용 - 두 섹션의 latest 날짜는 서로 다를 수 있다)
+  function autoSelectDate(dateKeys, latestDate) {
+    const dates = (dateKeys || []).slice().sort();
     if (!dates.length) return null;
+    const fallbackLatest = (latestDate && dates.indexOf(latestDate) !== -1) ? latestDate : dates[dates.length - 1];
     const now = new Date();
     const kst = new Date(now.getTime() + 9*60*60*1000);
     const hhmm = kst.getUTCHours() * 100 + kst.getUTCMinutes();
@@ -943,14 +1000,100 @@ const NEWSLETTERS = [
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     // 주말 → 가장 최근 날짜 (금요일 데이터)
     if (isWeekend) {
-      return data.latestDate || dates[dates.length - 1];
+      return fallbackLatest;
     }
     // 평일 오후 3시 30분 이전 → 이전 거래일 (당일 장 미종료)
     if (hhmm < 1530) {
+      const idx = dates.indexOf(fallbackLatest);
+      if (idx > 0) return dates[idx - 1];
       return dates.length >= 2 ? dates[dates.length - 2] : dates[dates.length - 1];
     }
-    return data.latestDate || dates[dates.length - 1];
+    return fallbackLatest;
   }
+
+  // ---------- 날짜 선택 달력(월간 캘린더 팝오버) ----------
+  // Task 2/3: 가로 스크롤 날짜 탭 대신/추가로, 스크린샷과 유사한 월간 캘린더에서
+  // 날짜를 선택할 수 있게 한다. 상승률('gainers')·거래대금('volume') 두 섹션에서
+  // 공용으로 쓰는 컴포넌트이며, kind에 따라 "데이터가 있는 날짜" 판정 기준과
+  // 클릭 시 호출할 선택 함수가 달라진다.
+  function calDataDateSet(kind) {
+    const data = window._saData;
+    const set = new Set();
+    if (!data || !data.dates) return set;
+    Object.keys(data.dates).forEach(d => {
+      const entry = data.dates[d] || {};
+      const list = kind === 'volume' ? entry.volumeStocks : entry.gainers;
+      if (list && list.length) set.add(d);
+    });
+    return set;
+  }
+
+  function openDateCalendar(kind) {
+    const dateSet = calDataDateSet(kind);
+    const current = kind === 'volume' ? window._volCurrentDate : window._saCurrentDate;
+    const sortedDates = Array.from(dateSet).sort();
+    const base = (current && dateSet.has(current)) ? current : sortedDates[sortedDates.length - 1];
+    const baseDate = base ? new Date(base + 'T00:00:00') : new Date();
+    window._calState = { kind, year: baseDate.getFullYear(), month: baseDate.getMonth(), dateSet };
+    renderCalPopover();
+    document.getElementById('cal-popover').style.display = 'flex';
+  }
+
+  function calNavigate(delta) {
+    const st = window._calState;
+    if (!st) return;
+    st.month += delta;
+    if (st.month < 0) { st.month = 11; st.year -= 1; }
+    else if (st.month > 11) { st.month = 0; st.year += 1; }
+    renderCalPopover();
+  }
+
+  function renderCalPopover() {
+    const st = window._calState;
+    if (!st) return;
+    const titleEl = document.getElementById('cal-popover-title');
+    if (titleEl) titleEl.textContent = `${st.year}년 ${st.month + 1}월`;
+
+    const grid = document.getElementById('cal-days-grid');
+    if (!grid) return;
+    const firstDay = new Date(st.year, st.month, 1);
+    const startWeekday = firstDay.getDay(); // 0=일 ... 6=토
+    const daysInMonth = new Date(st.year, st.month + 1, 0).getDate();
+    const todayKst = new Date(new Date().getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+    let html = '';
+    for (let i = 0; i < startWeekday; i++) {
+      html += '<span class="cal-day cal-day-empty"></span>';
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const mm = String(st.month + 1).padStart(2, '0');
+      const dd = String(day).padStart(2, '0');
+      const dateKey = `${st.year}-${mm}-${dd}`;
+      const hasData = st.dateSet.has(dateKey);
+      const isToday = dateKey === todayKst;
+      const cls = ['cal-day'];
+      if (hasData) cls.push('cal-day-has-data');
+      else cls.push('cal-day-muted');
+      if (isToday) cls.push('cal-day-today');
+      const handler = st.kind === 'volume' ? 'selectVolDate' : 'selectSADate';
+      if (hasData) {
+        html += `<button type="button" class="${cls.join(' ')}" onclick="${handler}('${dateKey}')">${day}</button>`;
+      } else {
+        html += `<button type="button" class="${cls.join(' ')}" disabled>${day}</button>`;
+      }
+    }
+    grid.innerHTML = html;
+  }
+
+  function closeDateCalendar() {
+    const el = document.getElementById('cal-popover');
+    if (el) el.style.display = 'none';
+  }
+
+  window.openDateCalendar = openDateCalendar;
+  window.calNavigate = calNavigate;
+  window.closeDateCalendar = closeDateCalendar;
+  window.selectVolDate = selectVolDate;
 
   // ---------- 모달 ----------
   function openSAModal(idx) {
@@ -1017,21 +1160,40 @@ const NEWSLETTERS = [
       .then(([jsonData, dbData]) => {
         const data = (jsonData && typeof jsonData === 'object') ? jsonData : { dates: {} };
         data.dates = data.dates || {};
-        // DB에 상승률 데이터가 있으면 해당 날짜의 gainers를 DB 값으로 대체(원천 = DB)
+
+        // DB에 상승률 데이터가 있으면 해당 날짜의 gainers를 DB 값으로 대체(원천 = DB).
+        //
+        // ⚠ 예전 버그: 여기서 dbData.latestDate를 data.latestDate에 그대로 덮어써서,
+        //   "거래대금 상위 10위" 표까지 DB의 최신 날짜(gainers 전용, volumeStocks가
+        //   전혀 없는 날짜일 수 있음)를 기준으로 렌더링하려다 "데이터가 없습니다"가
+        //   뜨는 문제가 있었다. 이제는 두 섹션의 "최신 날짜"를 완전히 분리해서
+        //   추적한다: latestGainersDate(DB 우선) vs latestVolumeDate(JSON 파일에서
+        //   volumeStocks가 실제로 채워진 마지막 날짜, DB와 무관하게 독립 계산).
+        let latestGainersDate = null;
         if (dbData && dbData.dates) {
           Object.keys(dbData.dates).forEach(d => {
             if (!data.dates[d]) data.dates[d] = { date: d, gainers: [], volumeStocks: [] };
             data.dates[d].gainers = dbData.dates[d].gainers || [];
           });
-          if (dbData.latestDate) data.latestDate = dbData.latestDate;
+          if (dbData.latestDate) latestGainersDate = dbData.latestDate;
         }
+        if (!latestGainersDate) latestGainersDate = data.latestDate || null;
+
+        const allDateKeys = Object.keys(data.dates);
+        const volumeDateKeys = allDateKeys.filter(d => (data.dates[d].volumeStocks || []).length > 0);
+        const latestVolumeDate = volumeDateKeys.length ? volumeDateKeys.sort()[volumeDateKeys.length - 1] : null;
+
         window._saData = data;
-        const activeDate = autoSelectDate(data);
-        window._saCurrentDate = activeDate;
-        buildDateTabs(data.dates, activeDate);
-        const dateData = data.dates && data.dates[activeDate];
-        renderGainerCards(dateData);
-        renderVolumeTable(dateData);
+
+        const gainersActiveDate = autoSelectDate(allDateKeys, latestGainersDate);
+        const volActiveDate = autoSelectDate(volumeDateKeys.length ? volumeDateKeys : allDateKeys, latestVolumeDate);
+
+        window._saCurrentDate = gainersActiveDate;
+        window._volCurrentDate = volActiveDate;
+
+        buildDateTabs(data.dates, gainersActiveDate);
+        renderGainerCards(data.dates && data.dates[gainersActiveDate]);
+        renderVolumeTable(data.dates && data.dates[volActiveDate]);
       })
       .catch(() => {
         document.getElementById('articles-grid').innerHTML =
