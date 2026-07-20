@@ -10,13 +10,18 @@
   5) stock-analysis-data.json 갱신 → git push → Vercel 자동 배포
 
 사용법:
-  python scripts/collect_gainers.py               # 오늘 날짜 자동 판단
-  python scripts/collect_gainers.py --date 2026-07-17
-  python scripts/collect_gainers.py --mode weekly  # 주간 리포트 (토요일용)
+  python scripts/collect_gainers.py               # 인자 없이 실행 = 무인 자동 실행
+                                                    #   krx_calendar.get_weekly_report_trigger()로
+                                                    #   오늘 발행 여부와 daily/weekly 모드를 자동 결정.
+                                                    #   (개장일 아니면 아무것도 안 하고 종료)
+  python scripts/collect_gainers.py --date 2026-07-17          # 수동 지정(구버전 방식, 캘린더 미고려)
+  python scripts/collect_gainers.py --mode weekly               # 주간 리포트 강제 실행(수동)
 
-자동화 (Windows 작업 스케줄러):
-  평일 오후 4시: python collect_gainers.py --mode daily
-  토요일 오후 4시: python collect_gainers.py --mode weekly
+자동화:
+  - GitHub Actions(.github/workflows/gainers-daily.yml)에서 인자 없이 매일 호출 →
+    krx_calendar 기준으로 daily/weekly/스킵을 자동 결정 (Task 1 참고, AUTOMATION_NOTES.md).
+  - 기존 Windows 작업 스케줄러(평일 4시 daily / 토요일 4시 weekly, 인자로 모드 강제)는
+    GitHub Actions 전환 후 중복 실행 방지를 위해 비활성화 권장.
 
 필요 환경변수 (.env.local):
   GEMINI_API_KEY
@@ -33,6 +38,9 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JSON_PATH = os.path.join(ROOT, "stock-analysis-data.json")
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from krx_calendar import is_trading_day, get_weekly_report_trigger  # noqa: E402
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Accept-Language": "ko-KR,ko;q=0.9",
@@ -566,34 +574,61 @@ def main():
     client = genai.Client(api_key=api_key)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--date", help="리포트 날짜 (기본: 오늘, YYYY-MM-DD)")
-    parser.add_argument("--mode", choices=["daily", "weekly", "auto"], default="auto",
-                        help="daily=당일, weekly=주간, auto=요일 자동 판단 (기본)")
+    parser.add_argument("--date", default=None, help="리포트 날짜 (기본: 오늘, YYYY-MM-DD)")
+    parser.add_argument("--mode", choices=["daily", "weekly", "auto"], default=None,
+                        help="daily=당일, weekly=주간, auto=요일만으로 판단(구버전 방식). "
+                             "생략 시(무인/자동 실행) KRX 거래일 캘린더(krx_calendar)로 "
+                             "오늘 발행 여부·daily/weekly 모드를 자동 결정한다.")
     args = parser.parse_args()
 
-    now_kst = datetime.now(KST)
-    date_str = args.date or now_kst.strftime("%Y-%m-%d")
-    weekday = datetime.strptime(date_str, "%Y-%m-%d").weekday()  # 0=월, 6=일
+    # --date/--mode를 둘 다 명시하지 않은 경우 = 무인 자동 실행(예: GitHub Actions
+    # 크론)으로 간주하고, KRX 거래일 캘린더 기준으로 "오늘 실행 여부"와
+    # "daily/weekly 모드"를 자동으로 결정한다. (Task 1 요구사항)
+    # --date 또는 --mode를 명시하면(수동 실행/백필) 기존 동작을 그대로 유지한다.
+    unattended = args.date is None and args.mode is None
 
-    mode = args.mode
-    if mode == "auto":
-        mode = "weekly" if weekday == 5 else "daily"  # 토요일=주간
+    week_start = week_end = None
+
+    if unattended:
+        date_str = datetime.now(KST).strftime("%Y-%m-%d")
+        trigger = get_weekly_report_trigger(date_str)
+        if not trigger["shouldRun"]:
+            print(f"[skip] {date_str}: KRX 거래일 캘린더 기준 오늘은 발행일이 아닙니다 "
+                  f"(mode={trigger['mode']}). 개장일이 아니거나, 주간 리포트 발행 트리거일이 "
+                  f"아직 아닙니다.")
+            return
+        mode = trigger["mode"]
+        weekday = datetime.strptime(date_str, "%Y-%m-%d").weekday()
+        if mode == "weekly":
+            week_start, week_end = trigger["weekStart"], trigger["weekEnd"]
+            print(f"[자동 판단] {date_str} → weekly 모드 (주간 구간 {week_start} ~ {week_end})")
+        else:
+            print(f"[자동 판단] {date_str} → daily 모드")
+    else:
+        date_str = args.date or datetime.now(KST).strftime("%Y-%m-%d")
+        weekday = datetime.strptime(date_str, "%Y-%m-%d").weekday()  # 0=월, 6=일
+
+        mode = args.mode or "auto"
+        if mode == "auto":
+            mode = "weekly" if weekday == 5 else "daily"  # 토요일=주간 (구버전 단순 판단)
+
+        if mode == "weekly":
+            # 주간: 해당 주의 월~금 (구버전 방식 - 캘린더 미고려, 하위호환용)
+            dt = datetime.strptime(date_str, "%Y-%m-%d")
+            mon = dt - timedelta(days=dt.weekday())
+            fri = mon + timedelta(days=4)
+            week_start, week_end = mon.strftime("%Y-%m-%d"), fri.strftime("%Y-%m-%d")
 
     with open(JSON_PATH, encoding="utf-8") as f:
         data = json.load(f)
 
     if mode == "daily":
-        if weekday >= 5:
+        if not unattended and weekday >= 5:
             print(f"[skip] {date_str}은 주말입니다. --mode daily 강제 실행이 아니면 건너뜁니다.")
             return
         entry = run_daily(client, date_str)
     else:
-        # 주간: 해당 주의 월~금
-        dt = datetime.strptime(date_str, "%Y-%m-%d")
-        mon = dt - timedelta(days=dt.weekday())
-        fri = mon + timedelta(days=4)
-        entry = run_weekly(client, date_str,
-                           mon.strftime("%Y-%m-%d"), fri.strftime("%Y-%m-%d"))
+        entry = run_weekly(client, date_str, week_start, week_end)
 
     data["dates"][date_str] = entry
     data["latestDate"] = max(data["dates"].keys())
