@@ -1,1037 +1,1177 @@
 {
   "current": {
-    "report_date": "2026-07-21",
-    "range_label": "2026-07-20(월) 05:00 ~ 2026-07-21(화) 04:59 KST",
-    "message_count": 220,
+    "report_date": "2026-07-22",
+    "range_label": "2026-07-21(화) 05:00 ~ 2026-07-22(수) 04:59 KST",
+    "message_count": 330,
     "channel_count": 13,
     "items": [
       {
         "rank": 1,
-        "name": "반도체/AI 업황 및 투자",
-        "type": "이슈",
-        "mention": 30,
-        "channel": 8,
-        "score": 46,
+        "name": "삼성전자",
+        "type": "종목",
+        "mention": 29,
+        "channel": 9,
+        "score": 47,
         "articles": [
           {
-            "title": "高성장기대 반도체용 STS강관 시장…세아·이렘 \"레퍼런스가 곧 경쟁력\"",
-            "summary": "高성장기대 반도체용 STS강관 시장…세아·이렘 \"레퍼런스가 곧 경쟁력\" https://m.snmnews.com/news/articleView.html?idxno=572200",
-            "url": "https://t.me/YeouidoStory2/115004"
+            "title": "[SK증권 반도체 한동희, 손 건]",
+            "summary": "[SK증권 반도체 한동희, 손 건] 2026.07.21 주요 뉴스 구글, 제미나이 모델을 하드웨어에 내장하는 '프로즌 v2' 칩 2028년 배포 목표, 기존 TPU 대비 6~10배 효율 AI 컴퓨팅 용량 부족으로 구글 클라우드가 외부 고객 계약을 거절하는 상황에 대응하기 위한 것으로, TPU를 대체하는 것이 아닌 별도 추론 전용 칩으로 개발 중 https://buly.kr/CWwZaHR AM",
+            "url": "https://t.me/YeouidoStory2/115044"
           },
           {
-            "title": "'데이터센터 철강' 올해분 다 팔려…AI·로봇 올라탄 철강·화학",
-            "summary": "'데이터센터 철강' 올해분 다 팔려…AI·로봇 올라탄 철강·화학 https://www.mt.co.kr/industry/2026/07/20/2026071512242442355",
-            "url": "https://t.me/YeouidoStory2/115008"
+            "title": "삼성전자, 대표이사 직속 'RX사업추진실' 신설...로봇사업 '가속페달'",
+            "summary": "삼성전자, 대표이사 직속 'RX사업추진실' 신설...로봇사업 '가속페달' https://www.thebigdata.co.kr/view.php?ud=20260721091224654bbceadc3c9_23",
+            "url": "https://t.me/YeouidoStory2/115065"
           },
           {
-            "title": "코스모신소재, AI·전장 수요 폭증에 MLCC 이형필름 생산라인 풀가동",
-            "summary": "코스모신소재, AI·전장 수요 폭증에 MLCC 이형필름 생산라인 풀가동 https://www.mtnews.net/news/articleView.html?idxno=25360",
-            "url": "https://t.me/YeouidoStory2/115011"
+            "title": "레인보우 인수한 삼성전자, 2년만에 ‘로봇팀’ 꾸린다",
+            "summary": "레인보우 인수한 삼성전자, 2년만에 ‘로봇팀’ 꾸린다 https://www.asiatime.co.kr//article/20260721500093?sicode=01",
+            "url": "https://t.me/YeouidoStory2/115070"
           },
           {
-            "title": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속”",
-            "summary": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속” https://n.news.naver.com/mnews/article/011/0004643078?sid=104",
-            "url": "https://t.me/YeouidoStory2/115012"
+            "title": "[SK증권 반도체 한동희]",
+            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 (7/19) LTA의 본질과 효과: 공급을 잠그는 ",
+            "url": "https://t.me/YeouidoStory2/115086"
           },
           {
-            "title": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정",
-            "summary": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 https://n.news.naver.com/mnews/article/215/0001259251?rc=N&ntype=RANKING&sid=105",
-            "url": "https://t.me/YeouidoStory2/115020"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "엔비디아, 베라 CPU 및 루빈 GPU 4만여 개로 일본 국가 AI 팩토리 구축",
-            "summary": "엔비디아, 베라 CPU 및 루빈 GPU 4만여 개로 일본 국가 AI 팩토리 구축 https://www.inven.co.kr/webzine/news/?news=318671",
-            "url": "https://t.me/YeouidoStory2/115024"
+            "title": "삼성·SK하이닉스, CXL 3.2로 AI 메모리 새 계층 연다 — 삼성 연내 양산 목표",
+            "summary": "삼성·SK하이닉스, CXL 3.2로 AI 메모리 새 계층 연다 — 삼성 연내 양산 목표 * HBM·DDR 한계가 CXL을 부른다 - AI 워크로드에서 HBM·DDR이 용량 한계에 근접하자 주요 메모리 업체들이 신기술로 전환 중 - HBM·DDR은 GPU·CPU에 직접 연결돼야 해 용량 확장에 제약 — 반면 CXL은 별도 메모리 계층으로 GPU·CPU 추가 없이 저비용 증설 가능 - 삼성전자·",
+            "url": "https://t.me/alphasignal_now/24297"
           },
           {
-            "title": "새만금 AI밸리 인재도 지역서 육성…현대차, 전북대에 첨단산업 계약학과 추진",
-            "summary": "새만금 AI밸리 인재도 지역서 육성…현대차, 전북대에 첨단산업 계약학과 추진 https://n.news.naver.com/mnews/article/016/0002672412?sid=101",
-            "url": "https://t.me/YeouidoStory2/115032"
+            "title": "2026년 7월 21일 (화)",
+            "summary": "2026년 7월 21일 (화) <주요이슈점검> * 뉴욕증시, 7/20(현지시간) 美·이란 충돌에 따른 전쟁 장기화 우려 등에 하락… 다우 -307.16(-0.59%) 51,839.26, 나스닥 -12.17(-0.05%) 25,508.07, S&P500 7,443.28(-0.19%), 필라델피아반도체 11,743.85(+0.60%) * 국제유가($,배럴), 美-이란 무력 충돌 격화 등에 상승.",
+            "url": "https://t.me/balanceasset/30192"
           },
           {
-            "title": "든알리바바, 신형 AI 모델 'Qwen3.8 Max' 공개 — \"앤트로픽 Fable 5에 이어 세계 2위 성능\" 주장, 중국 AI 추격 가속",
-            "summary": "든알리바바, 신형 AI 모델 'Qwen3.8 Max' 공개 — \"앤트로픽 Fable 5에 이어 세계 2위 성능\" 주장, 중국 AI 추격 가속 * Qwen3.8 Max 프리뷰 공개 - 알리바바, 플래그십 LLM Qwen3.8 Max 프리뷰 버전을 X를 통해 발표 — 파라미터 2.4조개 규모임 - 자사 코딩 플랫폼에서 이용 가능하며, 조만간 오픈웨이트로 공개해 개발자가 다운로드·수정할 수 있게 ",
-            "url": "https://t.me/alphasignal_now/24294"
+            "title": "7월 21일 화요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, 금융투자, 외국인,",
+            "summary": "7월 21일 화요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, 금융투자, 외국인, 120일선, 트럼프, 국가비상사태 https://youtube.com/live/mCrh14_onUo?feature=share",
+            "url": "https://t.me/balanceasset/30203"
           },
           {
-            "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
-            "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
-            "url": "https://t.me/alphasignal_now/24295"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "제헌절 연휴 후 다시 시작되는 한주입니다. 연휴기간 뉴스들은 그리 우호적이진 않네요. 반도체관련주들이 약세를 면치 못하고 있는데 이번주 빅테크 실적 발표 후 AI관련 투자 계획에 관심이 집중되는 한",
-            "summary": "제헌절 연휴 후 다시 시작되는 한주입니다. 연휴기간 뉴스들은 그리 우호적이진 않네요. 반도체관련주들이 약세를 면치 못하고 있는데 이번주 빅테크 실적 발표 후 AI관련 투자 계획에 관심이 집중되는 한주입니다.",
-            "url": "https://t.me/balanceasset/30173"
+            "title": "삼성전자 신용등급 전망 ‘긍정적‘으로 상향",
+            "summary": "삼성전자 신용등급 전망 ‘긍정적‘으로 상향 - 신용평가사 S&P 글로벌 21일 - 삼전 신용 전망 안정적→긍정적 발표 - 신용등급은 AA-(장기) / A-1+(단기) 유지 - “삼성은 메모리 시장 호황기 가장 큰 수혜 입을 회사” - HBM·파운드리 시장 점유율 확대 힘입어 향후 2년 매우 건실 https://www.spglobal.com/ratings/en/regulatory/article",
+            "url": "https://t.me/bumsong2/25238"
           },
           {
-            "title": "제2의 딥시크 사태로 불리우는 문샷AI의  kimi K3의 흥행이 연휴간 가장 큰 이슈중의 하나였습니다. 저가형 AI들의 반란이 나오면 나올수록 AI기업들은 승자독식구조를 위해 더욱더 투자속도를 빠",
-            "summary": "제2의 딥시크 사태로 불리우는 문샷AI의  kimi K3의 흥행이 연휴간 가장 큰 이슈중의 하나였습니다. 저가형 AI들의 반란이 나오면 나올수록 AI기업들은 승자독식구조를 위해 더욱더 투자속도를 빠르게 늘리지 않을까? 싶긴합니다.",
-            "url": "https://t.me/balanceasset/30175"
+            "title": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑",
+            "summary": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑ https://www.yna.co.kr/view/AKR20260721041700008?input=1195m",
+            "url": "https://t.me/characteristicstock/82426"
           },
           {
-            "title": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\"",
-            "summary": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\" https://www.newspim.com/news/view/20260720000610",
-            "url": "https://t.me/characteristicstock/82403"
+            "title": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환",
+            "summary": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환 https://www.g-enews.com/view.php?ud=20260721095058637144093b5d4e_1 가비아, 7% 급등…자진상폐 공개매수가 도달 https://www.mt.co.kr/stock/2026/07/21/2026072110033886701",
+            "url": "https://t.me/characteristicstock/82433"
           },
           {
-            "title": "[특징주] 피에스케이, 12% 급락…반도체 피크아웃 공포",
-            "summary": "[특징주] 피에스케이, 12% 급락…반도체 피크아웃 공포 https://www.etoday.co.kr/news/view/2605199",
-            "url": "https://t.me/characteristicstock/82405"
+            "title": "[특징주] 외국인 '삼성전자·좋은사람들', 기관 'HMM·코오롱'",
+            "summary": "[특징주] 외국인 '삼성전자·좋은사람들', 기관 'HMM·코오롱' https://www.newstnt.com/news/articleView.html?idxno=710970",
+            "url": "https://t.me/characteristicstock/82453"
           },
           {
-            "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
-            "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
-            "url": "https://t.me/corevalue/46111"
+            "title": "[SK증권 반도체 한동희]",
+            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 (7/19) LTA의 본질과 효과: 공급을 잠그는 ",
+            "url": "https://t.me/corevalue/46152"
           },
           {
-            "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
-            "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
-            "url": "https://t.me/corevalue/46117"
+            "title": "삼성전자/SK하이닉스 연초 이후 금융투자 누적 순매수",
+            "summary": "삼성전자/SK하이닉스 연초 이후 금융투자 누적 순매수 단일종목 레버리지 ETF 출시 이후 삼성전자 1230만주, SK하이닉스 72만주 추가 증가",
+            "url": "https://t.me/corevalue/46155"
           },
           {
-            "title": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토",
-            "summary": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토 뉴스: https://money.udn.com/money/story/5612/9637858?from=edn_maintab_cate ☀️ 채널: https://t.me/kiwoom_semibat .",
-            "url": "https://t.me/corevalue/46124"
+            "title": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령",
+            "summary": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령 https://m.stock.naver.com/investment/news/flashnews/003/0014077179 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | Microsoft | Alphabet",
+            "url": "https://t.me/moneythemestock/62576"
           },
           {
-            "title": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토  뉴",
-            "summary": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토  뉴스: https://money.udn.com/money/story/5612/9637858?from=edn_maintab_cate ☀️ 채널: https://t.me/kiwoom_semibat  .",
-            "url": "https://t.me/corevalue/46125"
+            "title": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망",
+            "summary": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망 https://m.stock.naver.com/investment/news/flashnews/029/0003037977 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62592"
           },
           {
-            "title": "* 서버 DRAM (64GB) 현물가 폭등 관련",
-            "summary": "* 서버 DRAM (64GB) 현물가 폭등 관련 - 전일 발간된 보고서의 핵심 차트 (현물가 vs 고정가 해석) - 서버 DRAM 현물가는 7월 중순부터 급격한 상승세로 전환 중 (서버 DRAM 현물가는 DRAMeXchange 등에 트래킹되지 않는 데이터) - 사우디 등 소버린AI 프로젝트 및 새로운 AIDC 테스트 수요량이 확대되며, 현재 샘플 보낼 물량도 부족한 상황 - 이에 현물가는 3",
-            "url": "https://t.me/corevalue/46126"
+            "title": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승",
+            "summary": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승 https://m.stock.naver.com/investment/news/flashnews/629/0000517723 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA",
+            "url": "https://t.me/moneythemestock/62605"
           },
           {
-            "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
-            "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
-            "url": "https://t.me/moneythemestock/62539"
+            "title": "삼성전자 사장단, 장기성과 자사주 수령",
+            "summary": "삼성전자 사장단, 장기성과 자사주 수령 https://m.stock.naver.com/investment/news/flashnews/277/0005792669 [관련 종목] 삼성전자",
+            "url": "https://t.me/moneythemestock/62612"
           },
           {
-            "title": "동양, 주식병합 완료 및 거래 재개, AI 데이터센터 신사업 추진",
-            "summary": "동양, 주식병합 완료 및 거래 재개, AI 데이터센터 신사업 추진 https://m.stock.naver.com/investment/news/flashnews/018/0006332809 [관련 종목] 동양",
-            "url": "https://t.me/moneythemestock/62540"
+            "title": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시",
+            "summary": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시 https://m.stock.naver.com/investment/news/flashnews/008/0005388929 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62616"
           },
           {
-            "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
-            "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62543"
+            "title": "💾",
+            "summary": "💾 [단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다 ✅ HBM보다 DDR5·LPDDR5X 양산 확대에 집중한다 · HBM 기술은 선두업체 대비 2~4년 격차…구체적 양산 일정 미제시 · IPO로 46억달러 조달해 생산라인 증설·공정 전환·R&D 추진 · DDR5는 서버·PC, LPDDR5X는 스마트폰·AI PC 수요 공략 ✅ 중국 수입 대체가 범용 D램 공급과",
+            "url": "https://t.me/valjuman/31964"
           },
           {
-            "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
-            "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62545"
+            "title": "💾",
+            "summary": "💾 [단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다 ✅ HBM보다 DDR5·LPDDR5X 양산 확대에 집중한다  · HBM 기술은 선두업체 대비 2~4년 격차…구체적 양산 일정 미제시  · IPO로 46억달러 조달해 생산라인 증설·공정 전환·R&D 추진  · DDR5는 서버·PC, LPDDR5X는 스마트폰·AI PC 수요 공략 ✅ 중국 수입 대체가 범용 D램 ",
+            "url": "https://t.me/valjuman/31966"
           },
           {
-            "title": "라온피플, 생성형 AI·골프센서 사업 확대로 성장 본격화",
-            "summary": "라온피플, 생성형 AI·골프센서 사업 확대로 성장 본격화 https://m.stock.naver.com/investment/news/flashnews/018/0006332932 [관련 종목] 라온피플",
-            "url": "https://t.me/moneythemestock/62550"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 (화) 장전 08:37 프리마켓 거래대금 상위 분석 · SK하이닉스 · 삼성전자 · 삼성전기 등 반도체주 강세 - 간밤 뉴욕증시는 반도체주 낙폭과대 매수로 반등 - SOX +0.6%, 엔비디아 등 주요 반도체주 회복세 영향 · HLB · HLB제약 · 삼천당제약 등 바이오주 강세 - HLB이노베이션의 자회사가 CLDN6 표적 고형암 CAR-T 전임상 착수 - 삼천당제약은 경구",
+            "url": "https://t.me/valjuman/31967"
           },
           {
-            "title": "테크윙, 107억 규모 반도체 검사장비 공급계약 체결",
-            "summary": "테크윙, 107억 규모 반도체 검사장비 공급계약 체결 https://m.stock.naver.com/investment/news/flashnews/018/0006333022 [관련 종목] 테크윙",
-            "url": "https://t.me/moneythemestock/62554"
+            "title": "💰",
+            "summary": "💰 李대통령 \"레버리지 ETF 조치 과감히…낙폭 보완대책도 정부 몫\" ✅ 정부가 기존 보완책보다 강한 대응을 예고했다 · 이재명 대통령, 단일종목 2배 레버리지 ETF 보완책의 신속한 마련 지시 · 기존 대책의 실효성 부족 지적…투자한도·예탁금·상품구조 추가 규제 가능성 · 급락 시 ETF 리밸런싱이 현물 매도를 증폭한다는 투자자 불만을 정책에 반영 ✅ 환율 안정 효과와 시장 변동성 확대가 ",
+            "url": "https://t.me/valjuman/31979"
           },
           {
-            "title": "삼성전기, MLCC·FCBGA 공급 부족 장기화로 반등 전망",
-            "summary": "삼성전기, MLCC·FCBGA 공급 부족 장기화로 반등 전망 https://m.stock.naver.com/investment/news/mainnews/018/0006332775 [관련 종목] 삼성전기",
-            "url": "https://t.me/moneythemestock/62564"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 (화) 12:10 거래대금 상위 분석 · 전일 급락 이후 미국 반도체주 저가매수와 원·달러 부담 완화로 반도체 대형주 중심 반등 ✅ 반도체·전자 대형주 혼조 ▲▼ · 낙폭과대 매수 유입 속 대형주는 강세, 반도체 장비주는 혼조 📌 SK하이닉스(1, 상승), 삼성전자(2, 상승), 삼성전기(3, 상승) SK스퀘어(5, 상승), LG전자(10, 상승) ✅ 바이오 개별주 혼조▲▼ ",
+            "url": "https://t.me/valjuman/31980"
           },
           {
-            "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
-            "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
-            "url": "https://t.me/moneythemestock/62565"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감 · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스닥",
+            "url": "https://t.me/valjuman/31991"
           },
           {
-            "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
-            "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
-            "url": "https://t.me/moneythemestock/62571"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감  · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스",
+            "url": "https://t.me/valjuman/31992"
           },
           {
-            "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
-            "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
-            "url": "https://t.me/moneythemestock/62573"
+            "title": "🏦",
+            "summary": "🏦 다음달 규제 앞두고 단일종목 레버리지 ETF 거래 증가 ✅ 규제 발표 이후에도 단기 매매 증가 · 20일 삼성전자·하이닉스 레버리지·인버스 ETF 16종 거래량 9억 7,834만주 · 규제 발표 전인 15일 대비 4.4% 증가, 상장 이후 네 번째로 많은 규모 · 거래대금도 12조 3,264억원, 발표 당일보다 1.3% 증가 ✅ 규제 내용 & 그간의 레버리지 ETF 추이 · 기본예탁금 1",
+            "url": "https://t.me/valjuman/31993"
           },
           {
-            "title": "외인 매수세에 반도체 투톱 양전 및 낙폭 축소, 그러나 하락종목 수가 2,100개 넘는 장세",
-            "summary": "외인 매수세에 반도체 투톱 양전 및 낙폭 축소, 그러나 하락종목 수가 2,100개 넘는 장세",
-            "url": "https://t.me/valuefinder/27073"
-          },
-          {
-            "title": "* 서버 DRAM (64GB) 현물가 폭등 관련",
-            "summary": "* 서버 DRAM (64GB) 현물가 폭등 관련 - 전일 발간된 보고서의 핵심 차트 (현물가 vs 고정가 해석) - 서버 DRAM 현물가는 7월 중순부터 급격한 상승세로 전환 중 (서버 DRAM 현물가는 DRAMeXchange 등에 트래킹되지 않는 데이터) - 사우디 등 소버린AI 프로젝트 및 새로운 AIDC 테스트 수요량이 확대되며, 현재 샘플 보낼 물량도 부족한 상황 - 이에 현물가는 3",
-            "url": "https://t.me/ym_research/6273"
+            "title": "✅",
+            "summary": "✅ [단독] 삼성·현대차그룹 '로봇동맹' - 로봇개 軍 배치…최대 1000대 - 삼성, 대표직속 로봇조직 신설 삼성그룹과 현대자동차그룹의 ‘로봇 동맹’이 첫 결실을 거뒀다. 삼성전자의 로봇 자회사 레인보우로보틱스와 현대로템이 함께 개발한 4족 보행 로봇(로봇개)을 하반기 군에 납품하기로 했다. 두 그룹이 미래 먹거리인 피지컬 인공지능(AI)으로 동맹 범위를 넓힌 첫 사례다. 21일 업계에 따",
+            "url": "https://t.me/valuefinder/27098"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "삼성전자",
+        "name": "SK하이닉스",
         "type": "종목",
-        "mention": 22,
-        "channel": 7,
-        "score": 36,
+        "mention": 27,
+        "channel": 8,
+        "score": 43,
         "articles": [
           {
-            "title": "[하나증권 유통/화장품 박종대]",
-            "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 백화점, 첫번째 모멘텀을 뒤로 하며(26.07.20) 1. 백화점 모멘텀 세가지, 자산효과/소득효과/외국인 인바운드 현황 분석 - 백화점 판매 신장률이 1분기에 이어 2분기에도 견조한 증가세를 지속하고 있음. 2분기 백화점 기존점 성장률(이하 관리기준)은 신세계/현대/롯데가 각각 YoY 26%, 16%, 15%",
-            "url": "https://t.me/HanaResearch/19946"
+            "title": "[SK증권 반도체 한동희, 손 건]",
+            "summary": "[SK증권 반도체 한동희, 손 건] 2026.07.21 주요 뉴스 구글, 제미나이 모델을 하드웨어에 내장하는 '프로즌 v2' 칩 2028년 배포 목표, 기존 TPU 대비 6~10배 효율 AI 컴퓨팅 용량 부족으로 구글 클라우드가 외부 고객 계약을 거절하는 상황에 대응하기 위한 것으로, TPU를 대체하는 것이 아닌 별도 추론 전용 칩으로 개발 중 https://buly.kr/CWwZaHR AM",
+            "url": "https://t.me/YeouidoStory2/115044"
           },
           {
-            "title": "[Web발신]",
-            "summary": "[Web발신] 안녕하십니까 유진투자증권 허재환입니다 =반도체 고점론= * 한달간 국내 반도체주도 급락했지만, 마이크론(-30%)/샌디스크(-40.4%), 일본 키오시아(-52%) 등 상반기 주도주의 추세가 심하게 훼손되었습니다. * 중국 창신메모리 상장, 레버리지 ETF 쏠림, 뉴욕주 데이터센터 신규 허가 유보, 중국 문샷의 Kimi K3 등 요인들도 있겠지만, 문제의 핵심은 반도체 이익이 ",
-            "url": "https://t.me/YeouidoStory2/114992"
-          },
-          {
-            "title": "📮",
-            "summary": "📮 [메리츠증권 전기전자/IT부품 양승수] 샘씨엔에스(252990) : 흐름이 꺾이지 않는다 ▶ 2Q26 Preview: 탑라인 성장과 수익성 방어를 동시에 - 2Q26 별도 실적은 매출액 297억원(+58.5% YoY), 영업이익 86억원(+150.3% YoY, OPM 29.1%)으로, 영업이익 기준 시장 컨센서스(81억원)를 6.6% 상회할 전망 - DRAM향 매출은 국내 프로브카드 업체",
-            "url": "https://t.me/YeouidoStory2/114993"
-          },
-          {
-            "title": "삼성전자, 4:3 비율 '와이드폴드'를 폴더블 라인업 최다 생산 모델로 배정 — 애플 폴더블 참전으로 4:3 전환 가속 전망",
-            "summary": "삼성전자, 4:3 비율 '와이드폴드'를 폴더블 라인업 최다 생산 모델로 배정 — 애플 폴더블 참전으로 4:3 전환 가속 전망 * 갤럭시 Z 폴드8(와이드폴드) 생산 계획 - ETNews에 따르면 삼성은 Z 폴드8용 디스플레이 패널 약 280만대 생산 계획 — Z 폴드8 울트라 200만대, Z 플립 150만대 대비 최대 물량임 - ZDNet 6월 보도 당시 와이드폴드 목표는 150~200만대 ",
-            "url": "https://t.me/alphasignal_now/24293"
-          },
-          {
-            "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
-            "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
-            "url": "https://t.me/alphasignal_now/24295"
-          },
-          {
-            "title": "2026년 7월 20일 (월)",
-            "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
-            "url": "https://t.me/balanceasset/30171"
-          },
-          {
-            "title": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY,",
-            "summary": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY, 콜옵션 https://youtube.com/live/g7_K91ChJvk?feature=share",
-            "url": "https://t.me/balanceasset/30181"
+            "title": "삼성·SK하이닉스, DDR5 마진 HBM 수준 육박함에 따라 DDR5 생산 우선시",
+            "summary": "삼성·SK하이닉스, DDR5 마진 HBM 수준 육박함에 따라 DDR5 생산 우선시 https://www.digitimes.com/news/a20260720VL213/samsung-hbm-sk-hynix-ddr5-dram.html?chid=10",
+            "url": "https://t.me/YeouidoStory2/115072"
           },
           {
             "title": "[SK증권 반도체 한동희]",
-            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
-            "url": "https://t.me/corevalue/46109"
+            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 (7/19) LTA의 본질과 효과: 공급을 잠그는 ",
+            "url": "https://t.me/YeouidoStory2/115086"
           },
           {
-            "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
-            "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
-            "url": "https://t.me/corevalue/46111"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
-            "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
-            "url": "https://t.me/corevalue/46117"
+            "title": "삼성·SK하이닉스, CXL 3.2로 AI 메모리 새 계층 연다 — 삼성 연내 양산 목표",
+            "summary": "삼성·SK하이닉스, CXL 3.2로 AI 메모리 새 계층 연다 — 삼성 연내 양산 목표 * HBM·DDR 한계가 CXL을 부른다 - AI 워크로드에서 HBM·DDR이 용량 한계에 근접하자 주요 메모리 업체들이 신기술로 전환 중 - HBM·DDR은 GPU·CPU에 직접 연결돼야 해 용량 확장에 제약 — 반면 CXL은 별도 메모리 계층으로 GPU·CPU 추가 없이 저비용 증설 가능 - 삼성전자·",
+            "url": "https://t.me/alphasignal_now/24297"
           },
           {
-            "title": "JP모건은",
-            "summary": "JP모건은 반도체 섹터에 대한 투자 의견을 '비중확대(Overweight)'로 유지하며, 최근의 주가 조정을 \"매력적인 전술적 매수 기회\"라고 평가 최근 AI 매도세를 반도체 반등의 발판으로 보는 이유 최근 AI 관련 주식들은 힘든 시기를 보냈습니다. 메모리 반도체 기업들의 영향이 큰 한국의 코스피(KOSPI)는 최근 고점 대비 25% 하락했고, 필라델피아 반도체 지수(SOX)는 20% 밀렸",
-            "url": "https://t.me/corevalue/46130"
+            "title": "2026년 7월 21일 (화)",
+            "summary": "2026년 7월 21일 (화) <주요이슈점검> * 뉴욕증시, 7/20(현지시간) 美·이란 충돌에 따른 전쟁 장기화 우려 등에 하락… 다우 -307.16(-0.59%) 51,839.26, 나스닥 -12.17(-0.05%) 25,508.07, S&P500 7,443.28(-0.19%), 필라델피아반도체 11,743.85(+0.60%) * 국제유가($,배럴), 美-이란 무력 충돌 격화 등에 상승.",
+            "url": "https://t.me/balanceasset/30192"
           },
           {
-            "title": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정",
-            "summary": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정 https://m.stock.naver.com/investment/news/flashnews/417/0001152100 [관련 종목] 삼성전자 | KB금융 | 현대차 | 기아 | SK하이닉스",
-            "url": "https://t.me/moneythemestock/62536"
+            "title": "7월 21일 화요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, 금융투자, 외국인,",
+            "summary": "7월 21일 화요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, 금융투자, 외국인, 120일선, 트럼프, 국가비상사태 https://youtube.com/live/mCrh14_onUo?feature=share",
+            "url": "https://t.me/balanceasset/30203"
           },
           {
-            "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
-            "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
-            "url": "https://t.me/moneythemestock/62539"
+            "title": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑",
+            "summary": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑ https://www.yna.co.kr/view/AKR20260721041700008?input=1195m",
+            "url": "https://t.me/characteristicstock/82426"
           },
           {
-            "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
-            "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62543"
+            "title": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환",
+            "summary": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환 https://www.g-enews.com/view.php?ud=20260721095058637144093b5d4e_1 가비아, 7% 급등…자진상폐 공개매수가 도달 https://www.mt.co.kr/stock/2026/07/21/2026072110033886701",
+            "url": "https://t.me/characteristicstock/82433"
           },
           {
-            "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
-            "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
-            "url": "https://t.me/moneythemestock/62544"
+            "title": "[SK증권 반도체 한동희]",
+            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 (7/19) LTA의 본질과 효과: 공급을 잠그는 ",
+            "url": "https://t.me/corevalue/46152"
           },
           {
-            "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
-            "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62545"
+            "title": "삼성전자/SK하이닉스 연초 이후 금융투자 누적 순매수",
+            "summary": "삼성전자/SK하이닉스 연초 이후 금융투자 누적 순매수 단일종목 레버리지 ETF 출시 이후 삼성전자 1230만주, SK하이닉스 72만주 추가 증가",
+            "url": "https://t.me/corevalue/46155"
           },
           {
-            "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
-            "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
-            "url": "https://t.me/moneythemestock/62565"
+            "title": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령",
+            "summary": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령 https://m.stock.naver.com/investment/news/flashnews/003/0014077179 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | Microsoft | Alphabet",
+            "url": "https://t.me/moneythemestock/62576"
           },
           {
-            "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
-            "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
-            "url": "https://t.me/moneythemestock/62571"
+            "title": "SK하이닉스 ADR 하락 마감, 본주 보합권 등락",
+            "summary": "SK하이닉스 ADR 하락 마감, 본주 보합권 등락 https://m.stock.naver.com/investment/news/flashnews/629/0000517493 [관련 종목] SK하이닉스",
+            "url": "https://t.me/moneythemestock/62589"
           },
           {
-            "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
-            "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
-            "url": "https://t.me/moneythemestock/62573"
+            "title": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망",
+            "summary": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망 https://m.stock.naver.com/investment/news/flashnews/029/0003037977 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62592"
           },
           {
-            "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
-            "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
-            "url": "https://t.me/moneythemestock/62574"
+            "title": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승",
+            "summary": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승 https://m.stock.naver.com/investment/news/flashnews/629/0000517723 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA",
+            "url": "https://t.me/moneythemestock/62605"
+          },
+          {
+            "title": "SK하이닉스, ADR 자금 원화 환전으로 환율 급락",
+            "summary": "SK하이닉스, ADR 자금 원화 환전으로 환율 급락 https://m.stock.naver.com/investment/news/flashnews/005/0001862351 [관련 종목] SK하이닉스",
+            "url": "https://t.me/moneythemestock/62615"
+          },
+          {
+            "title": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시",
+            "summary": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시 https://m.stock.naver.com/investment/news/flashnews/008/0005388929 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62616"
           },
           {
             "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
-            "url": "https://t.me/valjuman/31932"
+            "summary": "🎯 뉴욕증시 주요주 · 애플(-2.14%), MS(+2.15%), 엔비디아(+0.23%), 테슬라(-2.96%), 인텔(+2.13%), AMD(+1.58%), 알파벳A(+1.51%), SK하이닉스(-1.86%), 마이크론(+1.94%), 샌디스크(+2.67%), 메타(-0.02%), 아마존(+1.12%), TSMC(+0.99%), 브로드컴(+1.98%), 퀄컴(-0.85%), 오라클(-3.9",
+            "url": "https://t.me/valjuman/31962"
+          },
+          {
+            "title": "💾",
+            "summary": "💾 [단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다 ✅ HBM보다 DDR5·LPDDR5X 양산 확대에 집중한다 · HBM 기술은 선두업체 대비 2~4년 격차…구체적 양산 일정 미제시 · IPO로 46억달러 조달해 생산라인 증설·공정 전환·R&D 추진 · DDR5는 서버·PC, LPDDR5X는 스마트폰·AI PC 수요 공략 ✅ 중국 수입 대체가 범용 D램 공급과",
+            "url": "https://t.me/valjuman/31964"
+          },
+          {
+            "title": "💾",
+            "summary": "💾 [단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다 ✅ HBM보다 DDR5·LPDDR5X 양산 확대에 집중한다  · HBM 기술은 선두업체 대비 2~4년 격차…구체적 양산 일정 미제시  · IPO로 46억달러 조달해 생산라인 증설·공정 전환·R&D 추진  · DDR5는 서버·PC, LPDDR5X는 스마트폰·AI PC 수요 공략 ✅ 중국 수입 대체가 범용 D램 ",
+            "url": "https://t.me/valjuman/31966"
           },
           {
             "title": "🎯",
-            "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
-            "url": "https://t.me/valjuman/31953"
+            "summary": "🎯 7월 21일 (화) 장전 08:37 프리마켓 거래대금 상위 분석 · SK하이닉스 · 삼성전자 · 삼성전기 등 반도체주 강세 - 간밤 뉴욕증시는 반도체주 낙폭과대 매수로 반등 - SOX +0.6%, 엔비디아 등 주요 반도체주 회복세 영향 · HLB · HLB제약 · 삼천당제약 등 바이오주 강세 - HLB이노베이션의 자회사가 CLDN6 표적 고형암 CAR-T 전임상 착수 - 삼천당제약은 경구",
+            "url": "https://t.me/valjuman/31967"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 20260721 (화) DAILY BRIEF LIVE ✅ 미국 주식 주요 뉴스 · 뉴욕증시, 중동 리스크에 하락 https://bloomingbit.io/feed/news/116644 · 트럼프 새 관세 임박 https://www.mt.co.kr/amp/economy/2026/07/20/2026072015165320349 · 후티 반군, 사우디에 홍해 봉쇄 선언 https://www.wo",
+            "url": "https://t.me/valjuman/31972"
+          },
+          {
+            "title": "💰",
+            "summary": "💰 李대통령 \"레버리지 ETF 조치 과감히…낙폭 보완대책도 정부 몫\" ✅ 정부가 기존 보완책보다 강한 대응을 예고했다 · 이재명 대통령, 단일종목 2배 레버리지 ETF 보완책의 신속한 마련 지시 · 기존 대책의 실효성 부족 지적…투자한도·예탁금·상품구조 추가 규제 가능성 · 급락 시 ETF 리밸런싱이 현물 매도를 증폭한다는 투자자 불만을 정책에 반영 ✅ 환율 안정 효과와 시장 변동성 확대가 ",
+            "url": "https://t.me/valjuman/31979"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 7월 21일 (화) 12:10 거래대금 상위 분석 · 전일 급락 이후 미국 반도체주 저가매수와 원·달러 부담 완화로 반도체 대형주 중심 반등 ✅ 반도체·전자 대형주 혼조 ▲▼ · 낙폭과대 매수 유입 속 대형주는 강세, 반도체 장비주는 혼조 📌 SK하이닉스(1, 상승), 삼성전자(2, 상승), 삼성전기(3, 상승) SK스퀘어(5, 상승), LG전자(10, 상승) ✅ 바이오 개별주 혼조▲▼ ",
+            "url": "https://t.me/valjuman/31980"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감 · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스닥",
+            "url": "https://t.me/valjuman/31991"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감  · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스",
+            "url": "https://t.me/valjuman/31992"
+          },
+          {
+            "title": "[단독] SK하이닉스의 승부수…인텔 美오하이오 공장 산다",
+            "summary": "[단독] SK하이닉스의 승부수…인텔 美오하이오 공장 산다 https://n.news.naver.com/mnews/article/025/0003539221",
+            "url": "https://t.me/ym_research/6284"
           }
         ]
       },
       {
         "rank": 3,
-        "name": "SK하이닉스",
-        "type": "종목",
-        "mention": 21,
-        "channel": 6,
-        "score": 33,
+        "name": "AI/반도체 업황 및 투자",
+        "type": "이슈",
+        "mention": 31,
+        "channel": 4,
+        "score": 39,
         "articles": [
           {
-            "title": "[하나증권 유통/화장품 박종대]",
-            "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 백화점, 첫번째 모멘텀을 뒤로 하며(26.07.20) 1. 백화점 모멘텀 세가지, 자산효과/소득효과/외국인 인바운드 현황 분석 - 백화점 판매 신장률이 1분기에 이어 2분기에도 견조한 증가세를 지속하고 있음. 2분기 백화점 기존점 성장률(이하 관리기준)은 신세계/현대/롯데가 각각 YoY 26%, 16%, 15%",
-            "url": "https://t.me/HanaResearch/19946"
+            "title": "[SK증권 반도체 한동희, 손 건]",
+            "summary": "[SK증권 반도체 한동희, 손 건] 2026.07.21 주요 뉴스 구글, 제미나이 모델을 하드웨어에 내장하는 '프로즌 v2' 칩 2028년 배포 목표, 기존 TPU 대비 6~10배 효율 AI 컴퓨팅 용량 부족으로 구글 클라우드가 외부 고객 계약을 거절하는 상황에 대응하기 위한 것으로, TPU를 대체하는 것이 아닌 별도 추론 전용 칩으로 개발 중 https://buly.kr/CWwZaHR AM",
+            "url": "https://t.me/YeouidoStory2/115044"
           },
           {
-            "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
-            "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
-            "url": "https://t.me/alphasignal_now/24295"
+            "title": "[SK증권 반도체 소부장 이동주]",
+            "summary": "[SK증권 반도체 소부장 이동주] 코미코 (매수 유지, TP 10만원 유지) 재점화 ▶️ 2Q26 Preview 매출액 1,760억원(QoQ +12%, YoY +21%), 영업이익 277억원(QoQ +35%, YoY -8%) 추정 일부 해외 법인(피닉스, 대련, 황강 등) 가동 전으로 고정비 반영. 그럼에도 QoQ 큰 폭의 증익 시현 예상 국내 메모리 고객사 대응의 안성 법인 가동률 90% ",
+            "url": "https://t.me/YeouidoStory2/115045"
           },
           {
-            "title": "2026년 7월 20일 (월)",
-            "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
-            "url": "https://t.me/balanceasset/30171"
+            "title": "[SK증권 반도체 소부장 이동주]",
+            "summary": "[SK증권 반도체 소부장 이동주] 솔브레인 (매수 유지, TP 50만원 유지) 순서를 기다릴 뿐 ▶️ 2Q26 Preview 매출액 2,767억원(QoQ +5%, YoY +21%), 영업이익 462억원(QoQ +3%, YoY +129%) // 컨센서스 부합 전망 반도체 식각액 중심 가동률 상승세 2Q26에도 지속 원재료 무수 불산 가격 상승분 2Q26 온기 반영 → 수익성 소폭 하락할 수 있",
+            "url": "https://t.me/YeouidoStory2/115046"
           },
           {
-            "title": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY,",
-            "summary": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY, 콜옵션 https://youtube.com/live/g7_K91ChJvk?feature=share",
-            "url": "https://t.me/balanceasset/30181"
+            "title": "[한투증권 정호윤] 정부가 밀어주는 AI 데이터센터 사업",
+            "summary": "[한투증권 정호윤] 정부가 밀어주는 AI 데이터센터 사업 - 인공지능 데이터센터 산업 진흥에 관한 특별법 . 인공지능 데이터센터 신속 구축 및 지원을 골자로 한 특별법이 6월 제정 및 공포되어 2027년 3월부터 시행될 예정 . 법안에는 AI DC의 신속한 구축 및 운영 활성화를 국가와 지자체가 지원하고 데이터센터 사업자의 원활한 사업 운영을 위해 과기부 장관에게 일원화된 창구를 통해 관련 ",
+            "url": "https://t.me/YeouidoStory2/115051"
+          },
+          {
+            "title": "[단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다",
+            "summary": "[단독] CXMT 증권신고서 해부…30% 싼 D램으로 삼성·하이닉스 물량 뺏는다 https://www.newspim.com/news/view/20260720001033",
+            "url": "https://t.me/YeouidoStory2/115054"
+          },
+          {
+            "title": "반도체 수퍼사이클 발목 잡는 3가지 ‘변수’… 데이터센터 투자 차질·IT 수요 위축·생산 증설",
+            "summary": "반도체 수퍼사이클 발목 잡는 3가지 ‘변수’… 데이터센터 투자 차질·IT 수요 위축·생산 증설 https://n.news.naver.com/mnews/article/366/0001180225?sid=105",
+            "url": "https://t.me/YeouidoStory2/115055"
+          },
+          {
+            "title": "[대신증권 박장욱][Industry Report] AI 인터커넥트 대전환",
+            "summary": "[대신증권 박장욱][Industry Report] AI 인터커넥트 대전환 병목은 광으로 모이고, 이제 곧 빛의 시대가 열린다. AI 인프라의 병목은 연산→메모리→GPU 간 인터커넥트로 이동하고 있다. Tensor Parallelism, Expert Parallelism과 MoE의 All-to-All 통신 확대로 GPU 간 데이터 이동량이 구조적으로 증가하는 반면, 구리 인터커넥트는 거리·전력",
+            "url": "https://t.me/YeouidoStory2/115056"
+          },
+          {
+            "title": "中 알리바바. 2.4조 파라미터 AI 모델 '큐웬3.8맥스' 공개",
+            "summary": "中 알리바바. 2.4조 파라미터 AI 모델 '큐웬3.8맥스' 공개 https://n.news.naver.com/mnews/article/421/0009069701?sid=101",
+            "url": "https://t.me/YeouidoStory2/115067"
+          },
+          {
+            "title": "모건스탠리 \"메모리株 조정은 매수 기회\"",
+            "summary": "모건스탠리 \"메모리株 조정은 매수 기회\" https://n.news.naver.com/mnews/article/014/0005550542?sid=101",
+            "url": "https://t.me/YeouidoStory2/115068"
+          },
+          {
+            "title": "삼성·SK하이닉스, DDR5 마진 HBM 수준 육박함에 따라 DDR5 생산 우선시",
+            "summary": "삼성·SK하이닉스, DDR5 마진 HBM 수준 육박함에 따라 DDR5 생산 우선시 https://www.digitimes.com/news/a20260720VL213/samsung-hbm-sk-hynix-ddr5-dram.html?chid=10",
+            "url": "https://t.me/YeouidoStory2/115072"
+          },
+          {
+            "title": "글로벌 헬스케어 AI 시장, 2034년 1조달러 돌파 전망",
+            "summary": "글로벌 헬스케어 AI 시장, 2034년 1조달러 돌파 전망 https://www.mdtoday.co.kr/news/articleView.html?idxno=605381",
+            "url": "https://t.me/YeouidoStory2/115076"
           },
           {
             "title": "[SK증권 반도체 한동희]",
-            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
-            "url": "https://t.me/corevalue/46109"
+            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 (7/19) LTA의 본질과 효과: 공급을 잠그는 ",
+            "url": "https://t.me/YeouidoStory2/115086"
           },
           {
-            "title": "DS투자증권 반도체 Analyst 이수림",
-            "summary": "DS투자증권 반도체 Analyst 이수림 [반도체] 공급 과잉이 우려되시나요? 1. `35년까지 중장기 수급 분석: Capex의 당위성은 충분하다 - DRAM 시장은 26년에 이어 27년에도 심각한 공급부족이 지속될 전망 - 26년 AI용 DRAM이 전체 DRAM bit 수요의 12%를 차지하며 35년까지 약 40% 수준으로 확대된다고 가정할 때 전체 DRAM bit 수요는 35년까지 연평균",
-            "url": "https://t.me/corevalue/46110"
+            "title": "AI 시대 승부처는 전력 인프라… 각국 SMR·ESS 경쟁 본격화",
+            "summary": "AI 시대 승부처는 전력 인프라… 각국 SMR·ESS 경쟁 본격화 https://www.skyedaily.com/news/news_view.html?ID=308163",
+            "url": "https://t.me/YeouidoStory2/115087"
           },
           {
-            "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
-            "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
-            "url": "https://t.me/corevalue/46111"
+            "title": "[특징주] 나노, 미국 AI 데이터센터 온사이트 발전설비향 SCR 촉매 공급 ...",
+            "summary": "[특징주] 나노, 미국 AI 데이터센터 온사이트 발전설비향 SCR 촉매 공급 ... https://www.etoday.co.kr/news/view/2605479",
+            "url": "https://t.me/characteristicstock/82412"
           },
           {
-            "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
-            "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
-            "url": "https://t.me/corevalue/46117"
+            "title": "대덕전자, 5000억원 규모 시설투자에 4%대 강세[특징주]",
+            "summary": "대덕전자, 5000억원 규모 시설투자에 4%대 강세[특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03024166645516816",
+            "url": "https://t.me/characteristicstock/82415"
           },
           {
-            "title": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정",
-            "summary": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정 https://m.stock.naver.com/investment/news/flashnews/417/0001152100 [관련 종목] 삼성전자 | KB금융 | 현대차 | 기아 | SK하이닉스",
-            "url": "https://t.me/moneythemestock/62536"
+            "title": "대덕전자, 5000억원 규모 시설투자에 4%대 강세[특징주]",
+            "summary": "대덕전자, 5000억원 규모 시설투자에 4%대 강세[특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03024166645516816",
+            "url": "https://t.me/characteristicstock/82418"
           },
           {
-            "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
-            "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
-            "url": "https://t.me/moneythemestock/62539"
+            "title": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑",
+            "summary": "[특징주] 삼성전자, 장초반 2%대 상승…SK하이닉스도 0.5%↑ https://www.yna.co.kr/view/AKR20260721041700008?input=1195m",
+            "url": "https://t.me/characteristicstock/82426"
           },
           {
-            "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
-            "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62543"
+            "title": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환",
+            "summary": "[특징주] 삼성전자·SK하이닉스, 등락 반복하다 '상승세' 전환 https://www.g-enews.com/view.php?ud=20260721095058637144093b5d4e_1 가비아, 7% 급등…자진상폐 공개매수가 도달 https://www.mt.co.kr/stock/2026/07/21/2026072110033886701",
+            "url": "https://t.me/characteristicstock/82433"
           },
           {
-            "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
-            "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
-            "url": "https://t.me/moneythemestock/62544"
+            "title": "삼전 4%·닉스 3%대↑…반도체주 동반 반등[특징주]",
+            "summary": "삼전 4%·닉스 3%대↑…반도체주 동반 반등[특징주] https://www.dailian.co.kr/news/view/1669054/?sc=Naver",
+            "url": "https://t.me/characteristicstock/82437"
           },
           {
-            "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
-            "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62545"
+            "title": "[특징주] '삼전닉스' 코스피 반등에 장초반 동반 강세",
+            "summary": "[특징주] '삼전닉스' 코스피 반등에 장초반 동반 강세 https://www.pointdaily.co.kr/news/articleView.html?idxno=312538",
+            "url": "https://t.me/characteristicstock/82440"
           },
           {
-            "title": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구",
-            "summary": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구 https://m.stock.naver.com/investment/news/flashnews/009/0005709521 [관련 종목] SK하이닉스 | SK",
-            "url": "https://t.me/moneythemestock/62559"
+            "title": "[뉴욕 브리핑] 홍해도 막혔다…반도체 반등에도 美증시 하락",
+            "summary": "[뉴욕 브리핑] 홍해도 막혔다…반도체 반등에도 美증시 하락 https://news.dealsitetv.com/articles/173526",
+            "url": "https://t.me/characteristicstock/82442"
           },
           {
-            "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
-            "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
-            "url": "https://t.me/moneythemestock/62565"
+            "title": "[증시 오늘(21일) 핵심 특징주] 반도체 급반등에 6730선 날아오른 코스피...",
+            "summary": "[증시 오늘(21일) 핵심 특징주] 반도체 급반등에 6730선 날아오른 코스피... https://www.thefairnews.co.kr/news/articleView.html?idxno=82704",
+            "url": "https://t.me/characteristicstock/82443"
           },
           {
-            "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
-            "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
-            "url": "https://t.me/moneythemestock/62571"
+            "title": "[증시 오늘(21일) 핵심 특징주] 반도체 급반등에 6730선 날아오른 코스피...",
+            "summary": "[증시 오늘(21일) 핵심 특징주] 반도체 급반등에 6730선 날아오른 코스피... https://www.thefairnews.co.kr/news/articleView.html?idxno=82704",
+            "url": "https://t.me/characteristicstock/82444"
           },
           {
-            "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
-            "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
-            "url": "https://t.me/moneythemestock/62573"
+            "title": "[특징주] 삼전닉스 급반등…저가매수세 등에 4~6%대↑(종합)",
+            "summary": "[특징주] 삼전닉스 급반등…저가매수세 등에 4~6%대↑(종합) https://www.yna.co.kr/view/AKR20260721041751008?input=1195m",
+            "url": "https://t.me/characteristicstock/82445"
           },
           {
-            "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
-            "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
-            "url": "https://t.me/moneythemestock/62574"
+            "title": "[특징주] 삼전닉스 급반등…저가매수세 등에 4~6%대↑(종합)",
+            "summary": "[특징주] 삼전닉스 급반등…저가매수세 등에 4~6%대↑(종합) https://www.yna.co.kr/view/AKR20260721041751008?input=1195m",
+            "url": "https://t.me/characteristicstock/82446"
           },
           {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
-            "url": "https://t.me/valjuman/31932"
+            "title": "[미국 특징주] '가짜 경고음 많다' MS 반도체·메모리주 매수 추천",
+            "summary": "[미국 특징주] '가짜 경고음 많다' MS 반도체·메모리주 매수 추천 https://www.newspim.com/news/view/20260721000702",
+            "url": "https://t.me/characteristicstock/82471"
           },
           {
-            "title": "🏦",
-            "summary": "🏦 20일(월) 오전 장세, 코스피/코스닥 하락종목이 대다수 * 09:45 기준 · SK하이닉스는 +0~1%대 상승으로 보합이나 · 코스피 종목 906개 중 하락종목 663개로 73.18% · 코스닥 종목 1,732개 중 하락종목은 1,316개로 75.98% 🔍 독립리서치 지엘리서치 t.me/valjuman",
-            "url": "https://t.me/valjuman/31939"
+            "title": "[미국 특징주] '가짜 경고음 많다' MS 반도체·메모리주 매수 추천",
+            "summary": "[미국 특징주] '가짜 경고음 많다' MS 반도체·메모리주 매수 추천 https://www.newspim.com/news/view/20260721000702",
+            "url": "https://t.me/characteristicstock/82472"
           },
           {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
-            "url": "https://t.me/valjuman/31953"
+            "title": "국장은 2배 ETF가 원인이 아니라 AI 버블 때문에 빠지는거라고 하시는 분들 왜 비반도체가 반도체보다 더 빠지는지 AI와 관련이 낮은 코스닥이 더 빠지는지 설명이 가능하신가요?  정부가 쏠림을 완",
+            "summary": "국장은 2배 ETF가 원인이 아니라 AI 버블 때문에 빠지는거라고 하시는 분들 왜 비반도체가 반도체보다 더 빠지는지 AI와 관련이 낮은 코스닥이 더 빠지는지 설명이 가능하신가요?  정부가 쏠림을 완화하기는 커녕 과도하게 부추긴 겁니다.  정부는 변동성을 관리하는 심판 역할을 해야 하는데, 이상한 선수를 투입하는 감독 역할을 한겁니다.",
+            "url": "https://t.me/corevalue/46150"
+          },
+          {
+            "title": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령",
+            "summary": "AI 피크아웃 우려 속 빅테크 실적, 반도체 투자심리 분수령 https://m.stock.naver.com/investment/news/flashnews/003/0014077179 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | Microsoft | Alphabet",
+            "url": "https://t.me/moneythemestock/62576"
+          },
+          {
+            "title": "SK하이닉스 ADR 하락 마감, 본주 보합권 등락",
+            "summary": "SK하이닉스 ADR 하락 마감, 본주 보합권 등락 https://m.stock.naver.com/investment/news/flashnews/629/0000517493 [관련 종목] SK하이닉스",
+            "url": "https://t.me/moneythemestock/62589"
+          },
+          {
+            "title": "SK하이닉스, ADR 자금 원화 환전으로 환율 급락",
+            "summary": "SK하이닉스, ADR 자금 원화 환전으로 환율 급락 https://m.stock.naver.com/investment/news/flashnews/005/0001862351 [관련 종목] SK하이닉스",
+            "url": "https://t.me/moneythemestock/62615"
           }
         ]
       },
       {
         "rank": 4,
-        "name": "TSMC",
+        "name": "나노",
         "type": "종목",
-        "mention": 13,
+        "mention": 17,
         "channel": 6,
-        "score": 25,
+        "score": 29,
         "articles": [
           {
-            "title": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속”",
-            "summary": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속” https://n.news.naver.com/mnews/article/011/0004643078?sid=104",
-            "url": "https://t.me/YeouidoStory2/115012"
+            "title": "[SK증권 반도체 소부장 이동주]",
+            "summary": "[SK증권 반도체 소부장 이동주] 코미코 (매수 유지, TP 10만원 유지) 재점화 ▶️ 2Q26 Preview 매출액 1,760억원(QoQ +12%, YoY +21%), 영업이익 277억원(QoQ +35%, YoY -8%) 추정 일부 해외 법인(피닉스, 대련, 황강 등) 가동 전으로 고정비 반영. 그럼에도 QoQ 큰 폭의 증익 시현 예상 국내 메모리 고객사 대응의 안성 법인 가동률 90% ",
+            "url": "https://t.me/YeouidoStory2/115045"
           },
           {
-            "title": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정",
-            "summary": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 https://n.news.naver.com/mnews/article/215/0001259251?rc=N&ntype=RANKING&sid=105",
-            "url": "https://t.me/YeouidoStory2/115020"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\"",
-            "summary": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\" https://www.newspim.com/news/view/20260720000610",
-            "url": "https://t.me/characteristicstock/82403"
+            "title": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주",
+            "summary": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주 부각 30. 아가방컴퍼니 (13.11%) : 의류관련주, 시총1300억대, 유아의류사업, 출산장려정책 테마에 따른 유아용품 수요 증가 기대감, 유아 라이프스타일 전반으로 사업 영역 확대를 통한 성",
+            "url": "https://t.me/balanceasset/30205"
           },
           {
-            "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
-            "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
-            "url": "https://t.me/corevalue/46111"
+            "title": "좋은 아침입니다",
+            "summary": "좋은 아침입니다 ☀️ Morning Report(2026.07.21.화) ☀️ 29PER 모닝 브리핑 최근 상승에 따른 차익실현으로 대형 우량주 중심의 다우가 눌렸으나, 지난주 약 10% 급락하며 기술적 약세장에 진입했던 반도체·기술주에는 저가 매수세가 유입되며 지수 낙폭이 제한됐습니다. 미·이란 갈등이 9일째 이어지는 가운데 이란이 협상 가능성을 시사했고, 알리바바의 신규 AI 모델 공개로",
+            "url": "https://t.me/bumsong2/25214"
           },
           {
-            "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
-            "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
-            "url": "https://t.me/corevalue/46117"
+            "title": "[특징주] 나노, 미국 AI 데이터센터 온사이트 발전설비향 SCR 촉매 공급 ...",
+            "summary": "[특징주] 나노, 미국 AI 데이터센터 온사이트 발전설비향 SCR 촉매 공급 ... https://www.etoday.co.kr/news/view/2605479",
+            "url": "https://t.me/characteristicstock/82412"
           },
           {
-            "title": "JP모건은",
-            "summary": "JP모건은 반도체 섹터에 대한 투자 의견을 '비중확대(Overweight)'로 유지하며, 최근의 주가 조정을 \"매력적인 전술적 매수 기회\"라고 평가 최근 AI 매도세를 반도체 반등의 발판으로 보는 이유 최근 AI 관련 주식들은 힘든 시기를 보냈습니다. 메모리 반도체 기업들의 영향이 큰 한국의 코스피(KOSPI)는 최근 고점 대비 25% 하락했고, 필라델피아 반도체 지수(SOX)는 20% 밀렸",
-            "url": "https://t.me/corevalue/46130"
+            "title": "[미국 특징주] 오라클 신용위험 18년 만에 최고치 근접",
+            "summary": "[미국 특징주] 오라클 신용위험 18년 만에 최고치 근접 https://www.newspim.com/news/view/20260721000087 [미국 특징주] UBS \"모멘텀주 매도 막바지…AI·반도체 기회\" https://www.newspim.com/news/view/20260721000083 [미국 특징주] 카디널헬스, 어댑트헬스 당뇨병 사업 등 3.6억불 인수 https://www.n",
+            "url": "https://t.me/characteristicstock/82413"
           },
           {
-            "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
-            "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
-            "url": "https://t.me/moneythemestock/62539"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 34억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 12억) 5) 신라에스지 (29.94% / 3억) 6) 엑시온그룹 (29.93% / 8억) 7) 원풍물산 (29.84% / 0억)",
+            "url": "https://t.me/moneythemestock/62580"
           },
           {
-            "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
-            "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62543"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 35억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 13억) 5) 신라에스지 (29.94% / 6억) 6) 엑시온그룹 (29.93% / 8억) 7) 피플바이오 (29.87% / 5억",
+            "url": "https://t.me/moneythemestock/62591"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 17억) 3) 나노 (29.97% / 36억) 4) 비케이홀딩스 (29.97% / 2억) 5) 썸에이지 (29.95% / 13억) 6) 신라에스지 (29.94% / 6억) 7) 엑시온그룹 (29.93% / 8억",
+            "url": "https://t.me/moneythemestock/62595"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 30억) 3) 이랜시스 (29.97% / 65억) 4) 나노 (29.97% / 36억) 5) 비케이홀딩스 (29.97% / 2억) 6) 썸에이지 (29.95% / 13억) 7) 신라에스지 (29.94% / 6억",
+            "url": "https://t.me/moneythemestock/62596"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 340억) 2) 에브리봇 (30.00% / 46억) 3) 엔젠바이오 (29.99% / 2억) 4) 솔디펜스 (29.98% / 31억) 5) 이랜시스 (29.97% / 74억) 6) 나노 (29.97% / 37억) 7) 다이나믹솔루션 (29.97%",
+            "url": "https://t.me/moneythemestock/62599"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 351억) 2) 에브리봇 (30.00% / 48억) 3) 엔젠바이오 (29.99% / 2억) 4) 이랜시스 (29.97% / 76억) 5) 나노 (29.97% / 37억) 6) 비케이홀딩스 (29.97% / 2억) 7) 썸에이지 (29.95% /",
+            "url": "https://t.me/moneythemestock/62603"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 스모트로닉 (30.00% / 485억) 2) 코스모로보틱스 (30.00% / 352억) 3) 에브리봇 (30.00% / 49억) 4) 엔젠바이오 (29.99% / 2억) 5) 이랜시스 (29.97% / 77억) 6) 나노 (29.97% / 41억) 7) 다이나믹솔루션 (29.9",
+            "url": "https://t.me/moneythemestock/62604"
+          },
+          {
+            "title": "⚡️",
+            "summary": "⚡️ 나노, 美 AI 데이터센터 온사이트 발전 SCR 촉매필터 수주 ✅ 400만달러 규모 SCR 촉매 공급을 확보했다 · 북미 AI 데이터센터 가스발전설비향 400만달러 계약 체결 · 글로벌 톱3 가스터빈 메이커 장비가 적용된 복합단지에 공급 · 데이터센터 내부에서 전력을 생산하는 온사이트 발전 프로젝트 ✅ 신공장 고밀도 촉매가 후속 수주 기반이 된다 · 나노 신공장 생산 고밀도 촉매의 첫 ",
+            "url": "https://t.me/valjuman/31975"
+          },
+          {
+            "title": "260416_나노_지엘리서치.pdf",
+            "summary": "260416_나노_지엘리서치.pdf",
+            "url": "https://t.me/valjuman/31976"
           },
           {
             "title": "💾",
-            "summary": "💾 \"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 ✅ 애리조나 투자를 2,650억달러로 확대한다 · 애리조나 거점, 생산공장 10곳·패키징 2곳·R&D센터 구축 · 1호 공장 가동 중…2호 장비 반입, 3호 건설 진행 · 추가 1,000억달러는 전공정과 첨단 패키징에 투입 ✅ 2나노가 신규 매출 축으로 부상한다 · 4나노 양산에 이어 2나노 매출이 3분기부터 확대될 전망 · AI ",
-            "url": "https://t.me/valjuman/31949"
-          },
-          {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
-            "url": "https://t.me/valjuman/31953"
-          },
-          {
-            "title": "✅",
-            "summary": "✅ 반도체 ‘패닉’ 속 실적시즌…“빅테크 투자가 반등 분수령” - SK증권 보고서 - 글로벌 증시보다 부진한 코스피…반도체·AI 인프라 매도 집중 - TSMC 호실적에도 주가 무반응…중국 오픈소스 AI 경계 재부상 - 낙폭 과대로 밸류 매력 커졌지만 선제적 방향성 베팅은 신중해야 https://n.news.naver.com/mnews/article/018/0006332772?rc=N&ntyp",
-            "url": "https://t.me/valuefinder/27072"
-          },
-          {
-            "title": "✅",
-            "summary": "✅ TSMC CFO \"AI 호황 끝나지 않는다\"…美에 400조원 베팅, 증설 가속 https://www.digitaltoday.co.kr/news/articleView.html?idxno=685127",
-            "url": "https://t.me/valuefinder/27075"
+            "summary": "💾 SEMI “AI 투자에 반도체 장비 시장 2028년 340조원… 역대 최대” ✅ 글로벌 장비 시장은 5년 연속 최대치를 경신한다 · 장비 매출 2026년 1,659억달러(+23.2%)→2028년 2,295억달러 전망 · 웨이퍼 팹 장비는 2026년 1,439억달러→2028년 2,000억달러로 확대 · AI 인프라·첨단 로직·차세대 메모리 증설이 성장 견인 ✅ HBM·2나노·후공정 투자가 ",
+            "url": "https://t.me/valjuman/31986"
           }
         ]
       },
       {
         "rank": 5,
-        "name": "가비아",
-        "type": "종목",
-        "mention": 12,
-        "channel": 5,
-        "score": 22,
+        "name": "중동 정세 불안/해운주",
+        "type": "이슈",
+        "mention": 19,
+        "channel": 3,
+        "score": 25,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "후티, 사우디 해상 봉쇄 선언⋯중동 전선 홍해까지 확대되나",
+            "summary": "후티, 사우디 해상 봉쇄 선언⋯중동 전선 홍해까지 확대되나 https://www.etoday.co.kr/news/view/2605417",
+            "url": "https://t.me/YeouidoStory2/115050"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑",
+            "summary": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑ https://www.etoday.co.kr/news/view/2605498",
+            "url": "https://t.me/characteristicstock/82420"
           },
           {
-            "title": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세",
-            "summary": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세 https://www.etnews.com/20260720000191 [ET특징주]가비아, 맥쿼리 공개매수·자진 상폐 추진에 상승세 https://www.etnews.com/20260720000193",
-            "url": "https://t.me/characteristicstock/82404"
+            "title": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑",
+            "summary": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑ https://www.etoday.co.kr/news/view/2605498",
+            "url": "https://t.me/characteristicstock/82422"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "[특징주] 흥아해운, 후티 '사우디 해상 봉쇄' 즉시 발효 선언…홍해 물...",
+            "summary": "[특징주] 흥아해운, 후티 '사우디 해상 봉쇄' 즉시 발효 선언…홍해 물... https://www.financialpost.co.kr/news/articleView.html?idxno=267235",
+            "url": "https://t.me/characteristicstock/82431"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
-            "url": "https://t.me/moneythemestock/62551"
+            "title": "[특징주] 흥아해운, 후티 '사우디 해상 봉쇄' 즉시 발효 선언…홍해 물...",
+            "summary": "[특징주] 흥아해운, 후티 '사우디 해상 봉쇄' 즉시 발효 선언…홍해 물... https://www.financialpost.co.kr/news/articleView.html?idxno=267235 [특징주] 후티 홍해차단 선언에 일부 해운주 장초반 급등 https://www.yna.co.kr/view/AKR20260721057300008?input=1195m",
+            "url": "https://t.me/characteristicstock/82432"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62555"
+            "title": "[특징주] 후티 홍해차단 선언에 일부 해운주 장초반 급등",
+            "summary": "[특징주] 후티 홍해차단 선언에 일부 해운주 장초반 급등 https://www.yna.co.kr/view/AKR20260721057300008?input=1195m",
+            "url": "https://t.me/characteristicstock/82434"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
-            "url": "https://t.me/moneythemestock/62556"
+            "title": "[투데이's 특징주] 지속되는 중동 정세 불안에 해운주·신재생주 장 초...",
+            "summary": "[투데이's 특징주] 지속되는 중동 정세 불안에 해운주·신재생주 장 초... https://www.todaykorea.co.kr/news/articleView.html?idxno=403997",
+            "url": "https://t.me/characteristicstock/82436"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
-            "url": "https://t.me/moneythemestock/62557"
+            "title": "[투데이's 특징주] 지속되는 중동 정세 불안에 해운주·신재생주 장 초...",
+            "summary": "[투데이's 특징주] 지속되는 중동 정세 불안에 해운주·신재생주 장 초... https://www.todaykorea.co.kr/news/articleView.html?idxno=403997 삼전 4%·닉스 3%대↑…반도체주 동반 반등[특징주] https://www.dailian.co.kr/news/view/1669054/?sc=Naver",
+            "url": "https://t.me/characteristicstock/82438"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62560"
+            "title": "[특징주] 후티 '사우디 해상 봉쇄' 선언에 해운주 강세",
+            "summary": "[특징주] 후티 '사우디 해상 봉쇄' 선언에 해운주 강세 https://www.newspim.com/news/view/20260721000351",
+            "url": "https://t.me/characteristicstock/82439"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62563"
+            "title": "[특징주] 후티 '사우디 해상 봉쇄' 선언에 해운주 강세",
+            "summary": "[특징주] 후티 '사우디 해상 봉쇄' 선언에 해운주 강세 https://www.newspim.com/news/view/20260721000351 [특징주] '삼전닉스' 코스피 반등에 장초반 동반 강세 https://www.pointdaily.co.kr/news/articleView.html?idxno=312538 [뉴욕 브리핑] 홍해도 막혔다…반도체 반등에도 美증시 하락 https://new",
+            "url": "https://t.me/characteristicstock/82441"
           },
           {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 등락률 상위 분석 · 가비아 강세 - 디씨케이인베스트먼트의 공개매수 후 자진상폐·완전자회사 편입 추진 · 케이프 등 조선기자재주 강세 - 미국 함정시장 진출 확대 기대로 등락률에서도 강세 · 케이아이엔엑스 강세 - IDC/클라우드 등 인터넷 서비스 제공 전문기업 - AI 데이터 트래픽 증가 & 과천 IDC 입주 확대 영향 · 범한퓨얼셀 강세 -",
-            "url": "https://t.me/valjuman/31933"
+            "title": "[뉴욕 브리핑] 홍해도 막혔다…반도체 반등에도 美증시 하락",
+            "summary": "[뉴욕 브리핑] 홍해도 막혔다…반도체 반등에도 美증시 하락 https://news.dealsitetv.com/articles/173526",
+            "url": "https://t.me/characteristicstock/82442"
           },
           {
-            "title": "💻",
-            "summary": "💻 [가비아 M&A] 지배구조 개선 요구 속 내놓은 답은 '본체 상폐' ✅ 자회사 성장에도 가비아 주주 귀속 이익은 제한됐다 · 1분기 연결 매출 850억원·영업이익 107억원·순이익 90억원 · 가비아 별도 순이익은 17억원으로 전년 대비 15.4% 감소 · 연결 순이익 중 지배주주 귀속 38억원, 비지배지분 귀속 53억원 ✅ 맥쿼리는 가비아만 비상장사로 전환한다 · 디씨케이인베스트먼트가 ",
-            "url": "https://t.me/valjuman/31957"
+            "title": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등",
+            "summary": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등 https://www.ziksir.com/news/articleView.html?idxno=140655 [특징주] 유디엠텍, 10억원 공급계약 해지에 11%대 급락 http://www.biztribune.co.kr/news/articleView.html?idxno=356208 [특징주] 코오롱티슈진, TG-C 美 3상 기",
+            "url": "https://t.me/characteristicstock/82452"
+          },
+          {
+            "title": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망",
+            "summary": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망 https://www.newspim.com/news/view/20260721000646",
+            "url": "https://t.me/characteristicstock/82454"
+          },
+          {
+            "title": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망",
+            "summary": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망 https://www.newspim.com/news/view/20260721000646",
+            "url": "https://t.me/characteristicstock/82455"
+          },
+          {
+            "title": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세",
+            "summary": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세 https://www.etnews.com/20260721000190",
+            "url": "https://t.me/characteristicstock/82458"
+          },
+          {
+            "title": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망",
+            "summary": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망 https://www.newspim.com/news/view/20260721000670",
+            "url": "https://t.me/characteristicstock/82463"
+          },
+          {
+            "title": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망",
+            "summary": "[미국 특징주] 중동 전쟁에 유전 서비스 업체 실적 '직격탄' 전망 https://www.newspim.com/news/view/20260721000670",
+            "url": "https://t.me/characteristicstock/82464"
+          },
+          {
+            "title": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세",
+            "summary": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세 https://www.etnews.com/20260721000190",
+            "url": "https://t.me/characteristicstock/82466"
+          },
+          {
+            "title": "미국-이란 긴장 고조, 중동 해협 봉쇄 위기 속 해운주 급등",
+            "summary": "미국-이란 긴장 고조, 중동 해협 봉쇄 위기 속 해운주 급등 https://m.stock.naver.com/investment/news/flashnews/003/0014077617 [관련 종목] STX그린로지스 | 흥아해운 | HMM",
+            "url": "https://t.me/moneythemestock/62590"
           }
         ]
       },
       {
         "rank": 6,
-        "name": "SK",
+        "name": "엔젠바이오",
         "type": "종목",
-        "mention": 9,
-        "channel": 6,
-        "score": 21,
+        "mention": 15,
+        "channel": 4,
+        "score": 23,
         "articles": [
           {
-            "title": "[SK 증권 황지우][The Market Visualized] 역대 최저 PER",
-            "summary": "[SK 증권 황지우][The Market Visualized] 역대 최저 PER [Summary] - 국내 증시는 코스피가 주간 -10% 내외의 조정을 받으며 상승종목비율 21.7%로 시장 내부 취약성 지속 - 코스피 12개월 선행 PER은 5.81배로 역사상 최저. 금융위기·코로나 국면보다 낮은 수준으로, 실적과 주가의 괴리가 전례없이 확대. 현재 가격을 움직이는 요인이 실적은 아니지만, ",
-            "url": "https://t.me/YeouidoStory2/114991"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "[신한투자증권 김아람] SK텔레콤",
-            "summary": "[신한투자증권 김아람] SK텔레콤 지금 주가에서는 업사이드 리스크가 더 커 (2) ▶️ 엔트로픽 상장 타임라인 Update . 7/16 블룸버그에 따르면 엔트로픽은 ‘이르면 10월 상장’을 타겟으로 복수의 투자자와 미팅 모색. 오픈AI는 당초 가을 상장을 목표했으나 2027년 중으로 연기한 것으로 알려짐 . 당사는 엔트로픽 상장 전까지 SK텔레콤 주가의 오버슈팅 가능성이 크다는 의견. 특히나",
-            "url": "https://t.me/YeouidoStory2/114994"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주",
+            "summary": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주 부각 30. 아가방컴퍼니 (13.11%) : 의류관련주, 시총1300억대, 유아의류사업, 출산장려정책 테마에 따른 유아용품 수요 증가 기대감, 유아 라이프스타일 전반으로 사업 영역 확대를 통한 성",
+            "url": "https://t.me/balanceasset/30205"
           },
           {
-            "title": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9...",
-            "summary": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9... https://www.ajunews.com/view/20260720140154764",
-            "url": "https://t.me/characteristicstock/82407"
+            "title": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주]",
+            "summary": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03060246645516816 [특징주] 코오롱그룹, TG-C 3상 실패 소식에 줄줄이 ‘하한가’ https://biz.chosun.com/stock/stock_general/2026/07/21/TEDDXRGBHFHJ7GKK6PL3ZI2NXY/",
+            "url": "https://t.me/characteristicstock/82421"
           },
           {
-            "title": "[SK증권 반도체 한동희]",
-            "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
-            "url": "https://t.me/corevalue/46109"
+            "title": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주]",
+            "summary": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03060246645516816",
+            "url": "https://t.me/characteristicstock/82423"
           },
           {
-            "title": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구",
-            "summary": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구 https://m.stock.naver.com/investment/news/flashnews/009/0005709521 [관련 종목] SK하이닉스 | SK",
-            "url": "https://t.me/moneythemestock/62559"
+            "title": "[특징주] 혈액암 정밀진단 패널 공급 확대 소식에…엔젠바이오 '上'",
+            "summary": "[특징주] 혈액암 정밀진단 패널 공급 확대 소식에…엔젠바이오 '上' https://www.newsworks.co.kr/news/articleView.html?idxno=847726",
+            "url": "https://t.me/characteristicstock/82477"
           },
           {
-            "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
-            "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
-            "url": "https://t.me/moneythemestock/62565"
+            "title": "[특징주] 혈액암 정밀진단 패널 공급 확대 소식에…엔젠바이오 '上'",
+            "summary": "[특징주] 혈액암 정밀진단 패널 공급 확대 소식에…엔젠바이오 '上' https://www.newsworks.co.kr/news/articleView.html?idxno=847726",
+            "url": "https://t.me/characteristicstock/82478"
           },
           {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
-            "url": "https://t.me/valjuman/31932"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 34억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 12억) 5) 신라에스지 (29.94% / 3억) 6) 엑시온그룹 (29.93% / 8억) 7) 원풍물산 (29.84% / 0억)",
+            "url": "https://t.me/moneythemestock/62580"
           },
           {
-            "title": "✅",
-            "summary": "✅ 반도체 ‘패닉’ 속 실적시즌…“빅테크 투자가 반등 분수령” - SK증권 보고서 - 글로벌 증시보다 부진한 코스피…반도체·AI 인프라 매도 집중 - TSMC 호실적에도 주가 무반응…중국 오픈소스 AI 경계 재부상 - 낙폭 과대로 밸류 매력 커졌지만 선제적 방향성 베팅은 신중해야 https://n.news.naver.com/mnews/article/018/0006332772?rc=N&ntyp",
-            "url": "https://t.me/valuefinder/27072"
+            "title": "엔젠바이오, 혈액암 진단 패널 공급 확대 소식에 상한가 직행",
+            "summary": "엔젠바이오, 혈액암 진단 패널 공급 확대 소식에 상한가 직행 https://m.stock.naver.com/investment/news/flashnews/018/0006333636 [관련 종목] 엔젠바이오",
+            "url": "https://t.me/moneythemestock/62582"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 35억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 13억) 5) 신라에스지 (29.94% / 6억) 6) 엑시온그룹 (29.93% / 8억) 7) 피플바이오 (29.87% / 5억",
+            "url": "https://t.me/moneythemestock/62591"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 17억) 3) 나노 (29.97% / 36억) 4) 비케이홀딩스 (29.97% / 2억) 5) 썸에이지 (29.95% / 13억) 6) 신라에스지 (29.94% / 6억) 7) 엑시온그룹 (29.93% / 8억",
+            "url": "https://t.me/moneythemestock/62595"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 30억) 3) 이랜시스 (29.97% / 65억) 4) 나노 (29.97% / 36억) 5) 비케이홀딩스 (29.97% / 2억) 6) 썸에이지 (29.95% / 13억) 7) 신라에스지 (29.94% / 6억",
+            "url": "https://t.me/moneythemestock/62596"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 340억) 2) 에브리봇 (30.00% / 46억) 3) 엔젠바이오 (29.99% / 2억) 4) 솔디펜스 (29.98% / 31억) 5) 이랜시스 (29.97% / 74억) 6) 나노 (29.97% / 37억) 7) 다이나믹솔루션 (29.97%",
+            "url": "https://t.me/moneythemestock/62599"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 351억) 2) 에브리봇 (30.00% / 48억) 3) 엔젠바이오 (29.99% / 2억) 4) 이랜시스 (29.97% / 76억) 5) 나노 (29.97% / 37억) 6) 비케이홀딩스 (29.97% / 2억) 7) 썸에이지 (29.95% /",
+            "url": "https://t.me/moneythemestock/62603"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 스모트로닉 (30.00% / 485억) 2) 코스모로보틱스 (30.00% / 352억) 3) 에브리봇 (30.00% / 49억) 4) 엔젠바이오 (29.99% / 2억) 5) 이랜시스 (29.97% / 77억) 6) 나노 (29.97% / 41억) 7) 다이나믹솔루션 (29.9",
+            "url": "https://t.me/moneythemestock/62604"
           }
         ]
       },
       {
         "rank": 7,
-        "name": "삼천당제약",
+        "name": "코오롱티슈진",
         "type": "종목",
-        "mention": 8,
+        "mention": 13,
         "channel": 5,
-        "score": 18,
+        "score": 23,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "2026년 7월 21일 (화)",
+            "summary": "2026년 7월 21일 (화) <주요이슈점검> * 뉴욕증시, 7/20(현지시간) 美·이란 충돌에 따른 전쟁 장기화 우려 등에 하락… 다우 -307.16(-0.59%) 51,839.26, 나스닥 -12.17(-0.05%) 25,508.07, S&P500 7,443.28(-0.19%), 필라델피아반도체 11,743.85(+0.60%) * 국제유가($,배럴), 美-이란 무력 충돌 격화 등에 상승.",
+            "url": "https://t.me/balanceasset/30192"
           },
           {
-            "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
-            "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
-            "url": "https://t.me/characteristicstock/82399"
+            "title": "코오롱티슈진, TG-C 미국 3상 유의성 충족 못해…하한가 직행",
+            "summary": "코오롱티슈진, TG-C 미국 3상 유의성 충족 못해…하한가 직행 https://www.mt.co.kr/stock/2026/07/21/2026072109143226933",
+            "url": "https://t.me/characteristicstock/82417"
           },
           {
-            "title": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上",
-            "summary": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上 https://www.etnews.com/20260720000211 [ET특징주] 한울반도체, AI MLCC 전수검사 시스템 개발… 주가 상한가 https://www.etnews.com/20260720000222",
-            "url": "https://t.me/characteristicstock/82409"
+            "title": "코오롱티슈진, TG-C 미국 3상 유의성 충족 못해…하한가 직행",
+            "summary": "코오롱티슈진, TG-C 미국 3상 유의성 충족 못해…하한가 직행 https://www.mt.co.kr/stock/2026/07/21/2026072109143226933",
+            "url": "https://t.me/characteristicstock/82419"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "TG-C 美 임상 유효성 입증 실패한 코오롱티슈진…관련 그룹株 하한가 직...",
+            "summary": "TG-C 美 임상 유효성 입증 실패한 코오롱티슈진…관련 그룹株 하한가 직... http://www.newsworker.co.kr/news/articleView.html?idxno=437319",
+            "url": "https://t.me/characteristicstock/82447"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62555"
+            "title": "TG-C 美 임상 유효성 입증 실패한 코오롱티슈진…관련 그룹株 하한가 직...",
+            "summary": "TG-C 美 임상 유효성 입증 실패한 코오롱티슈진…관련 그룹株 하한가 직... http://www.newsworker.co.kr/news/articleView.html?idxno=437319",
+            "url": "https://t.me/characteristicstock/82448"
+          },
+          {
+            "title": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등",
+            "summary": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등 https://www.ziksir.com/news/articleView.html?idxno=140655 [특징주] 유디엠텍, 10억원 공급계약 해지에 11%대 급락 http://www.biztribune.co.kr/news/articleView.html?idxno=356208 [특징주] 코오롱티슈진, TG-C 美 3상 기",
+            "url": "https://t.me/characteristicstock/82452"
+          },
+          {
+            "title": "(특징주)코오롱티슈진, 임상 유효성 미충족에 하한가",
+            "summary": "(특징주)코오롱티슈진, 임상 유효성 미충족에 하한가 http://www.newstomato.com/ReadNews.aspx?no=1307689&inflow=N [미국 특징주] 광통신주 조정 속 바클레이스 루멘텀에 매수 의견 https://www.newspim.com/news/view/20260721000669",
+            "url": "https://t.me/characteristicstock/82462"
+          },
+          {
+            "title": "코오롱그룹, TG-C 3상 실패로 하한가",
+            "summary": "코오롱그룹, TG-C 3상 실패로 하한가 https://m.stock.naver.com/investment/news/flashnews/366/0001180513 [관련 종목] 코오롱티슈진 | 코오롱생명과학 | 코오롱",
+            "url": "https://t.me/moneythemestock/62583"
+          },
+          {
+            "title": "코오롱티슈진, TG-C 미국 3상 유의성 미충족",
+            "summary": "코오롱티슈진, TG-C 미국 3상 유의성 미충족 https://m.stock.naver.com/investment/news/flashnews/008/0005388396 [관련 종목] 코오롱티슈진",
+            "url": "https://t.me/moneythemestock/62584"
+          },
+          {
+            "title": "코오롱티슈진, TG-C 美 3상 효능 입증 실패로 하한가",
+            "summary": "코오롱티슈진, TG-C 美 3상 효능 입증 실패로 하한가 https://m.stock.naver.com/investment/news/flashnews/018/0006333633 [관련 종목] 코오롱티슈진 | 코오롱",
+            "url": "https://t.me/moneythemestock/62585"
+          },
+          {
+            "title": "🧬",
+            "summary": "🧬 코오롱티슈진 美 3상 실패 원인은 ‘위약 효과’…“10월 2차 임상이 승부처” ✅ 약효보다 예상 밖의 위약 효과가 임상 실패를 만들었다 · TG-C 투여군 VAS -38.7점으로 미국 2상 효과 재현 · 위약군도 -39.2점 개선돼 통계적 유의성 확보 실패 · 관절강 주사·체중 감소·팬데믹 활동 축소 등이 위약 효과 원인으로 추정 ✅ 두 번째 임상 성공 시 허가 신청 가능성은 남아 있다 ",
+            "url": "https://t.me/valjuman/31969"
           },
           {
             "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 13:50 거래대금 상위 분석 ✅ 거래대금 40위권 내 전반 하락세 · 상승 종목 7개 · 바이오·조선기자재·정유 등 개별 모멘텀 보유주 중심 선방 ✅ 개별종목 상승 ▲ 📌 삼성전기 (3) _ MLCC·FC-BGA 공급 부족 장기화 전망으로 수혜 기대 📌 현대힘스 (10)· 세진중공업 (28) _ 한화 필리조선소 미사일 계측함 수주로 미국 함정시장 진출 기대 📌 삼천당",
-            "url": "https://t.me/valjuman/31945"
-          },
-          {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 (월) 13:50 거래대금 상위 분석 ✅ 거래대금 40위권 내 전반 하락세  · 상승 종목 7개 · 바이오·조선기자재·정유 등 개별 모멘텀 보유주 중심 선방 ✅ 개별종목 상승 ▲ 📌 삼성전기(3) _ MLCC·FC-BGA 공급 부족 장기화 전망으로 수혜 기대 📌 현대힘스(10)·세진중공업(28) _ 한화 필리조선소 미사일 계측함 수주로 미국 함정시장 진출 기대 📌 삼천당제약(",
-            "url": "https://t.me/valjuman/31946"
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감 · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스닥",
+            "url": "https://t.me/valjuman/31991"
           }
         ]
       },
       {
         "rank": 8,
-        "name": "한울반도체",
+        "name": "한화",
         "type": "종목",
-        "mention": 9,
-        "channel": 4,
+        "mention": 7,
+        "channel": 5,
         "score": 17,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "[CrediVille] 석유화학산업 구조개편 현황과 신용 점검",
+            "summary": "[CrediVille] 석유화학산업 구조개편 현황과 신용 점검 ▶ 국내크레딧 김상만(T.3771-7508) ▶ https://buly.kr/FWVSSA2 *하나증권 채권분석팀 텔레그램: https://t.me/hanabond 뭉쳐있으면 죽고 흩어지면 산다 - 국내 1·2호 석유화학업계 구조개편안이 각각 공정거래위원회와 정부의 승인을 앞두고 있음. 대산산단 4개사(롯데케미칼/롯데대산석화/HD현",
+            "url": "https://t.me/HanaResearch/19963"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "<오늘 개장전 꼭 알아야할 5가지_7/21 Bloomberg> 한화 임혜윤",
+            "summary": "<오늘 개장전 꼭 알아야할 5가지_7/21 Bloomberg> 한화 임혜윤 1) 홍해 원유 수출 차질 우려 예멘의 친이란 후티 반군이 사우디아라비아가 예멘 수도 사나를 봉쇄한 데 대한 보복으로 사우디 선박에 대한 해상 봉쇄를 “즉시” 실시한다고 발표. 후티는 2023년 말부터 수개월 동안 홍해 남단의 바브엘만데브 해협 인근 선박을 공격해 아시아와 유럽을 잇는 최단 항로의 운항을 사실상 마비시",
+            "url": "https://t.me/YeouidoStory2/115043"
           },
           {
-            "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
-            "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
-            "url": "https://t.me/characteristicstock/82399"
+            "title": "⚙️",
+            "summary": "⚙️ #엔진2사 「엔진 초호황!, 주가는 반토막?」 ☞ https://bit.ly/ENGINE2Q26PRE ▶️ Issue: 주가 낙폭 너무 큰 엔진2사 강력 추천. 2Q26 및 하반기 프리뷰 ▶️ Pitch - 조선업종과 특히 엔진은 5월부터 시장 수급에 휘말려 주가 급락. 상승여력이 어마해졌는데, 펀더멘탈은 오히려 사상최대 수주와 증설 등으로 2028년까지 조선보다 더 가파른 성장이 보이",
+            "url": "https://t.me/YeouidoStory2/115047"
           },
           {
-            "title": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上",
-            "summary": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上 https://www.etnews.com/20260720000211 [ET특징주] 한울반도체, AI MLCC 전수검사 시스템 개발… 주가 상한가 https://www.etnews.com/20260720000222",
-            "url": "https://t.me/characteristicstock/82409"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "2026년 7월 21일 (화)",
+            "summary": "2026년 7월 21일 (화) <주요이슈점검> * 뉴욕증시, 7/20(현지시간) 美·이란 충돌에 따른 전쟁 장기화 우려 등에 하락… 다우 -307.16(-0.59%) 51,839.26, 나스닥 -12.17(-0.05%) 25,508.07, S&P500 7,443.28(-0.19%), 필라델피아반도체 11,743.85(+0.60%) * 국제유가($,배럴), 美-이란 무력 충돌 격화 등에 상승.",
+            "url": "https://t.me/balanceasset/30192"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
-            "url": "https://t.me/moneythemestock/62551"
+            "title": "⚙️",
+            "summary": "⚙️ #엔진2사 「엔진 초호황!, 주가는 반토막?」 ☞ https://bit.ly/ENGINE2Q26PRE ▶️ Issue: 주가 낙폭 너무 큰 엔진2사 강력 추천. 2Q26 및 하반기 프리뷰 ▶️ Pitch - 조선업종과 특히 엔진은 5월부터 시장 수급에 휘말려 주가 급락. 상승여력이 어마해졌는데, 펀더멘탈은 오히려 사상최대 수주와 증설 등으로 2028년까지 조선보다 더 가파른 성장이 보이",
+            "url": "https://t.me/corevalue/46137"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62555"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
-            "url": "https://t.me/moneythemestock/62556"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
-            "url": "https://t.me/moneythemestock/62557"
+            "title": "한화그룹 김동선 부사장, 신설 지주사 출범으로 독자 경영 시험대",
+            "summary": "한화그룹 김동선 부사장, 신설 지주사 출범으로 독자 경영 시험대 https://m.stock.naver.com/investment/news/flashnews/648/0000049039 [관련 종목] 한화 | 한화에어로스페이스",
+            "url": "https://t.me/moneythemestock/62578"
           }
         ]
       },
       {
         "rank": 9,
-        "name": "주연테크",
-        "type": "종목",
-        "mention": 10,
+        "name": "단일종목 레버리지 ETF",
+        "type": "이슈",
+        "mention": 8,
         "channel": 3,
-        "score": 16,
+        "score": 14,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "[속보] 李대통령 \"레버리지 ETF 조치 과감히…낙폭 보완대책도 정부 몫\"",
+            "summary": "[속보] 李대통령 \"레버리지 ETF 조치 과감히…낙폭 보완대책도 정부 몫\" https://biz.sbs.co.kr/article/20000323581",
+            "url": "https://t.me/YeouidoStory2/115077"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "옛부터 레버리지는 애버리지라고 불렸음.",
+            "summary": "옛부터 레버리지는 애버리지라고 불렸음. https://naver.me/xJc6UHCa",
+            "url": "https://t.me/YeouidoStory2/115082"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "JP모간 “코스피 급락, 레버리지 ETF가 키웠다…청산 75% 진행” [줍줍리포트]",
+            "summary": "JP모간 “코스피 급락, 레버리지 ETF가 키웠다…청산 75% 진행” [줍줍리포트] https://www.sedaily.com/article/20070015",
+            "url": "https://t.me/YeouidoStory2/115097"
           },
           {
-            "title": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락",
-            "summary": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락 https://m.stock.naver.com/investment/news/flashnews/018/0006332919 [관련 종목] 주연테크 | 에넥스 | 손오공",
-            "url": "https://t.me/moneythemestock/62548"
+            "title": "단일종목 레버리지ETF 출시 이후 수익률",
+            "summary": "단일종목 레버리지ETF 출시 이후 수익률",
+            "url": "https://t.me/corevalue/46146"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
-            "url": "https://t.me/moneythemestock/62551"
+            "title": "국장은 2배 ETF가 원인이 아니라 AI 버블 때문에 빠지는거라고 하시는 분들 왜 비반도체가 반도체보다 더 빠지는지 AI와 관련이 낮은 코스닥이 더 빠지는지 설명이 가능하신가요?  정부가 쏠림을 완",
+            "summary": "국장은 2배 ETF가 원인이 아니라 AI 버블 때문에 빠지는거라고 하시는 분들 왜 비반도체가 반도체보다 더 빠지는지 AI와 관련이 낮은 코스닥이 더 빠지는지 설명이 가능하신가요?  정부가 쏠림을 완화하기는 커녕 과도하게 부추긴 겁니다.  정부는 변동성을 관리하는 심판 역할을 해야 하는데, 이상한 선수를 투입하는 감독 역할을 한겁니다.",
+            "url": "https://t.me/corevalue/46150"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62555"
+            "title": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망",
+            "summary": "DB투자, 단일종목 레버리지 ETF발 증시 변동성 심화 및 보완책 효과 지연 전망 https://m.stock.naver.com/investment/news/flashnews/029/0003037977 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62592"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
-            "url": "https://t.me/moneythemestock/62556"
+            "title": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승",
+            "summary": "단일종목 레버리지 ETF, 대통령 보완대책 주문에도 일제 상승 https://m.stock.naver.com/investment/news/flashnews/629/0000517723 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA",
+            "url": "https://t.me/moneythemestock/62605"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
-            "url": "https://t.me/moneythemestock/62557"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62560"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62563"
+            "title": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시",
+            "summary": "이 대통령, 단일종목 레버리지 ETF 추가 보완책 마련 지시 https://m.stock.naver.com/investment/news/flashnews/008/0005388929 [관련 종목] 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62616"
           }
         ]
       },
       {
         "rank": 10,
-        "name": "손오공",
+        "name": "STX그린로지스",
         "type": "종목",
-        "mention": 8,
-        "channel": 4,
-        "score": 16,
+        "mention": 7,
+        "channel": 3,
+        "score": 13,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "<7월 21일 보고서‧기사‧특징주>",
+            "summary": "<7월 21일 보고서‧기사‧특징주> ▶️ 보고서 현대엘리베이터 :견조한 실적과 적극적인 주주환원정책(리딩투자증권 ) https://myip.kr/Pjhgv 정부가 밀어주는 AI 데이터센터 사업(한투증권) -전력 자급률이 높은 비수도권에 대한 데이터센터 건설 촉진 https://zrr.kr/EMVcWi 대덕전자 :이제 웃어요 (메리츠증권) -추가 증설로 더해지는 안정적인 우상향 https://",
+            "url": "https://t.me/YeouidoStory2/115100"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑",
+            "summary": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑ https://www.etoday.co.kr/news/view/2605498",
+            "url": "https://t.me/characteristicstock/82420"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑",
+            "summary": "[특징주] 중동 양대 해협 봉쇄 우려에 해운주 강세…STX그린로지스 20%↑ https://www.etoday.co.kr/news/view/2605498",
+            "url": "https://t.me/characteristicstock/82422"
           },
           {
-            "title": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락",
-            "summary": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락 https://m.stock.naver.com/investment/news/flashnews/018/0006332919 [관련 종목] 주연테크 | 에넥스 | 손오공",
-            "url": "https://t.me/moneythemestock/62548"
+            "title": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등",
+            "summary": "[특징주] 중동 긴장 고조에 해운주 강세…흥아해운·STX그린로지스 급등 https://www.ziksir.com/news/articleView.html?idxno=140655 [특징주] 유디엠텍, 10억원 공급계약 해지에 11%대 급락 http://www.biztribune.co.kr/news/articleView.html?idxno=356208 [특징주] 코오롱티슈진, TG-C 美 3상 기",
+            "url": "https://t.me/characteristicstock/82452"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
-            "url": "https://t.me/moneythemestock/62551"
+            "title": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세",
+            "summary": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세 https://www.etnews.com/20260721000190",
+            "url": "https://t.me/characteristicstock/82458"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62560"
+            "title": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세",
+            "summary": "[ET특징주]STX그린로지스, 중동 양대 해협 봉쇄 우려에 상승세 https://www.etnews.com/20260721000190",
+            "url": "https://t.me/characteristicstock/82466"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62563"
-          },
-          {
-            "title": "260605_손오공_지엘리서치.pdf",
-            "summary": "260605_손오공_지엘리서치.pdf",
-            "url": "https://t.me/valjuman/31938"
+            "title": "미국-이란 긴장 고조, 중동 해협 봉쇄 위기 속 해운주 급등",
+            "summary": "미국-이란 긴장 고조, 중동 해협 봉쇄 위기 속 해운주 급등 https://m.stock.naver.com/investment/news/flashnews/003/0014077617 [관련 종목] STX그린로지스 | 흥아해운 | HMM",
+            "url": "https://t.me/moneythemestock/62590"
           }
         ]
       },
       {
         "rank": 11,
-        "name": "진영",
+        "name": "다이나믹솔루션",
         "type": "종목",
-        "mention": 9,
+        "mention": 6,
         "channel": 3,
-        "score": 15,
+        "score": 12,
         "articles": [
           {
-            "title": "<7월 20일 보고서‧기사‧특징주>",
-            "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
-            "url": "https://t.me/YeouidoStory2/115031"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "07월 20일 월요일 몽당연필의 장마감 시황",
-            "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
-            "url": "https://t.me/balanceasset/30184"
+            "title": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주",
+            "summary": "29. 청담글로벌 (13.21%) : 유통관련주, 시총1000억대, 이커머스사업, 자금조달 진행중, 북미 주요 리테일 체인인 캐나다 월마트의 뷰티·푸드 카테고리 공식 벤더 등록을 완료 ⇨ 유통관련주 부각 30. 아가방컴퍼니 (13.11%) : 의류관련주, 시총1300억대, 유아의류사업, 출산장려정책 테마에 따른 유아용품 수요 증가 기대감, 유아 라이프스타일 전반으로 사업 영역 확대를 통한 성",
+            "url": "https://t.me/balanceasset/30205"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62547"
+            "title": "[특징주] 다이나믹솔루션, 삼성 로봇 사업 본격 진출 소식에 상한가",
+            "summary": "[특징주] 다이나믹솔루션, 삼성 로봇 사업 본격 진출 소식에 상한가 https://www.bloter.net/news/articleView.html?idxno=668542",
+            "url": "https://t.me/characteristicstock/82479"
           },
           {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
-            "url": "https://t.me/moneythemestock/62551"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
-            "url": "https://t.me/moneythemestock/62555"
+            "title": "[특징주] 다이나믹솔루션, 삼성 로봇 사업 본격 진출 소식에 상한가",
+            "summary": "[특징주] 다이나믹솔루션, 삼성 로봇 사업 본격 진출 소식에 상한가 https://www.bloter.net/news/articleView.html?idxno=668542",
+            "url": "https://t.me/characteristicstock/82480"
           },
           {
             "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
-            "url": "https://t.me/moneythemestock/62556"
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 340억) 2) 에브리봇 (30.00% / 46억) 3) 엔젠바이오 (29.99% / 2억) 4) 솔디펜스 (29.98% / 31억) 5) 이랜시스 (29.97% / 74억) 6) 나노 (29.97% / 37억) 7) 다이나믹솔루션 (29.97%",
+            "url": "https://t.me/moneythemestock/62599"
           },
           {
             "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
-            "url": "https://t.me/moneythemestock/62557"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62560"
-          },
-          {
-            "title": "🚀",
-            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
-            "url": "https://t.me/moneythemestock/62563"
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 스모트로닉 (30.00% / 485억) 2) 코스모로보틱스 (30.00% / 352억) 3) 에브리봇 (30.00% / 49억) 4) 엔젠바이오 (29.99% / 2억) 5) 이랜시스 (29.97% / 77억) 6) 나노 (29.97% / 41억) 7) 다이나믹솔루션 (29.9",
+            "url": "https://t.me/moneythemestock/62604"
           }
         ]
       },
       {
         "rank": 12,
-        "name": "테슬라",
+        "name": "비케이홀딩스",
         "type": "종목",
-        "mention": 5,
-        "channel": 5,
-        "score": 15,
+        "mention": 8,
+        "channel": 2,
+        "score": 12,
         "articles": [
           {
-            "title": "테슬라 S/X 라임 철거완요. 옵티머스 7월말..8월초 초기생산 시작",
-            "summary": "테슬라 S/X 라임 철거완요. 옵티머스 7월말..8월초 초기생산 시작 https://www.basenor.com/blogs/news/teslas-optimus-factory-at-giga-texas-is-growing-fast?hl=ko-KR#:~:text=The%20Optimus%20factory%20is%20being%20built%20on,and%20appearance%20in%20ou",
-            "url": "https://t.me/YeouidoStory2/115035"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "2026년 7월 20일 (월)",
-            "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
-            "url": "https://t.me/balanceasset/30171"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 34억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 12억) 5) 신라에스지 (29.94% / 3억) 6) 엑시온그룹 (29.93% / 8억) 7) 원풍물산 (29.84% / 0억)",
+            "url": "https://t.me/moneythemestock/62580"
           },
           {
-            "title": "🟢",
-            "summary": "🟢 29PER Market Pulse | 7월 20일 (월) 🧭 오늘의 핵심 (Key Concept) 지난주 한국은행의 전격적인 기준금리 인상 쇼크와 글로벌 테크 공급망 균열 경고가 시장을 깊게 짓누르고 있습니다. 코스피는 장중 6,548선까지 밀려났고, 코스닥 역시 753선이 무너지며 시장의 심리적 마지노선이 차례로 붕괴되는 강력한 하방 압력 장세를 보이고 있습니다. 오늘 오전 관세청이 발",
-            "url": "https://t.me/bumsong2/25203"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 35억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 13억) 5) 신라에스지 (29.94% / 6억) 6) 엑시온그룹 (29.93% / 8억) 7) 피플바이오 (29.87% / 5억",
+            "url": "https://t.me/moneythemestock/62591"
           },
           {
-            "title": "[미국 특징주] 테슬라, 독일 공장 증설로 연간 37.5대 생산",
-            "summary": "[미국 특징주] 테슬라, 독일 공장 증설로 연간 37.5대 생산 https://www.newspim.com/news/view/20260720000570",
-            "url": "https://t.me/characteristicstock/82401"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 17억) 3) 나노 (29.97% / 36억) 4) 비케이홀딩스 (29.97% / 2억) 5) 썸에이지 (29.95% / 13억) 6) 신라에스지 (29.94% / 6억) 7) 엑시온그룹 (29.93% / 8억",
+            "url": "https://t.me/moneythemestock/62595"
           },
           {
-            "title": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향",
-            "summary": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향 https://m.stock.naver.com/investment/news/mainnews/014/0005550386 [관련 종목] 테슬라 | 마이크론 테크놀로지",
-            "url": "https://t.me/moneythemestock/62572"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 30억) 3) 이랜시스 (29.97% / 65억) 4) 나노 (29.97% / 36억) 5) 비케이홀딩스 (29.97% / 2억) 6) 썸에이지 (29.95% / 13억) 7) 신라에스지 (29.94% / 6억",
+            "url": "https://t.me/moneythemestock/62596"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 340억) 2) 에브리봇 (30.00% / 46억) 3) 엔젠바이오 (29.99% / 2억) 4) 솔디펜스 (29.98% / 31억) 5) 이랜시스 (29.97% / 74억) 6) 나노 (29.97% / 37억) 7) 다이나믹솔루션 (29.97%",
+            "url": "https://t.me/moneythemestock/62599"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 351억) 2) 에브리봇 (30.00% / 48억) 3) 엔젠바이오 (29.99% / 2억) 4) 이랜시스 (29.97% / 76억) 5) 나노 (29.97% / 37억) 6) 비케이홀딩스 (29.97% / 2억) 7) 썸에이지 (29.95% /",
+            "url": "https://t.me/moneythemestock/62603"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 스모트로닉 (30.00% / 485억) 2) 코스모로보틱스 (30.00% / 352억) 3) 에브리봇 (30.00% / 49억) 4) 엔젠바이오 (29.99% / 2억) 5) 이랜시스 (29.97% / 77억) 6) 나노 (29.97% / 41억) 7) 다이나믹솔루션 (29.9",
+            "url": "https://t.me/moneythemestock/62604"
           }
         ]
       },
       {
         "rank": 13,
-        "name": "알파벳",
+        "name": "썸에이지",
         "type": "종목",
-        "mention": 5,
-        "channel": 5,
-        "score": 15,
+        "mention": 8,
+        "channel": 2,
+        "score": 12,
         "articles": [
           {
-            "title": "<오늘 개장전 꼭 알아야할 5가지_7/20 Bloomberg> 한화 임혜윤",
-            "summary": "<오늘 개장전 꼭 알아야할 5가지_7/20 Bloomberg> 한화 임혜윤 1) 미국 반도체주 약세장? 반도체 주식은 AI에 대한 수요에 힘입어 이어온 놀라운 상승세를 이어갔으나 경쟁 심화, 잠재적 과잉 생산, 수십억 달러에 달하는 AI 투자 등의 우려에 난항을 겪고 있음. 에드워드존스는 “AI 투자 테마는 무너지고 있는 것이 아니라 성숙단계에 접어들고 있는 것으로 보이며, 이는 혁신적인 투",
-            "url": "https://t.me/YeouidoStory2/115000"
+            "title": "07월 21일 화요일 몽당연필의 장마감 시황",
+            "summary": "07월 21일 화요일 몽당연필의 장마감 시황 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 금일 거래소 6747.95 (3.56%) 코스닥 753.36 (0.50%) 2026년 07월 21일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 스모트로닉 (30.00%) : 자동차부품관련주, 시총1200억대, 파워트레인&전기추진시스",
+            "url": "https://t.me/balanceasset/30204"
           },
           {
-            "title": "2026년 7월 20일 (월)",
-            "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
-            "url": "https://t.me/balanceasset/30171"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 34억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 12억) 5) 신라에스지 (29.94% / 3억) 6) 엑시온그룹 (29.93% / 8억) 7) 원풍물산 (29.84% / 0억)",
+            "url": "https://t.me/moneythemestock/62580"
           },
           {
-            "title": "🟢",
-            "summary": "🟢 29PER Market Pulse | 7월 20일 (월) 🧭 오늘의 핵심 (Key Concept) 지난주 한국은행의 전격적인 기준금리 인상 쇼크와 글로벌 테크 공급망 균열 경고가 시장을 깊게 짓누르고 있습니다. 코스피는 장중 6,548선까지 밀려났고, 코스닥 역시 753선이 무너지며 시장의 심리적 마지노선이 차례로 붕괴되는 강력한 하방 압력 장세를 보이고 있습니다. 오늘 오전 관세청이 발",
-            "url": "https://t.me/bumsong2/25203"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 나노 (29.97% / 35억) 3) 비케이홀딩스 (29.97% / 2억) 4) 썸에이지 (29.95% / 13억) 5) 신라에스지 (29.94% / 6억) 6) 엑시온그룹 (29.93% / 8억) 7) 피플바이오 (29.87% / 5억",
+            "url": "https://t.me/moneythemestock/62591"
           },
           {
-            "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
-            "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
-            "url": "https://t.me/moneythemestock/62545"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 17억) 3) 나노 (29.97% / 36억) 4) 비케이홀딩스 (29.97% / 2억) 5) 썸에이지 (29.95% / 13억) 6) 신라에스지 (29.94% / 6억) 7) 엑시온그룹 (29.93% / 8억",
+            "url": "https://t.me/moneythemestock/62595"
           },
           {
-            "title": "🎯",
-            "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
-            "url": "https://t.me/valjuman/31953"
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 엔젠바이오 (29.99% / 2억) 2) 솔디펜스 (29.98% / 30억) 3) 이랜시스 (29.97% / 65억) 4) 나노 (29.97% / 36억) 5) 비케이홀딩스 (29.97% / 2억) 6) 썸에이지 (29.95% / 13억) 7) 신라에스지 (29.94% / 6억",
+            "url": "https://t.me/moneythemestock/62596"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 340억) 2) 에브리봇 (30.00% / 46억) 3) 엔젠바이오 (29.99% / 2억) 4) 솔디펜스 (29.98% / 31억) 5) 이랜시스 (29.97% / 74억) 6) 나노 (29.97% / 37억) 7) 다이나믹솔루션 (29.97%",
+            "url": "https://t.me/moneythemestock/62599"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 코스모로보틱스 (30.00% / 351억) 2) 에브리봇 (30.00% / 48억) 3) 엔젠바이오 (29.99% / 2억) 4) 이랜시스 (29.97% / 76억) 5) 나노 (29.97% / 37억) 6) 비케이홀딩스 (29.97% / 2억) 7) 썸에이지 (29.95% /",
+            "url": "https://t.me/moneythemestock/62603"
+          },
+          {
+            "title": "🚀",
+            "summary": "🚀 [KRX 상승률 TOP10] 2026-07-21 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 스모트로닉 (30.00% / 485억) 2) 코스모로보틱스 (30.00% / 352억) 3) 에브리봇 (30.00% / 49억) 4) 엔젠바이오 (29.99% / 2억) 5) 이랜시스 (29.97% / 77억) 6) 나노 (29.97% / 41억) 7) 다이나믹솔루션 (29.9",
+            "url": "https://t.me/moneythemestock/62604"
           }
         ]
       },
       {
         "rank": 14,
-        "name": "레버리지 투자 및 시장 규제",
-        "type": "이슈",
-        "mention": 9,
-        "channel": 3,
-        "score": 15,
+        "name": "레인보우로보틱스",
+        "type": "종목",
+        "mention": 4,
+        "channel": 4,
+        "score": 12,
         "articles": [
           {
-            "title": "도박은 다 같이 죽자고.... 도박장만 돈벌지.... 결국 주식으로 돈버는건..  수수료 챙기는 증권사..  매메세 챙기는 정부 뿐  \"K증시 도박장 됐다\"…'삼전닉스 레버리지'에 외신도 쓴소리 h",
-            "summary": "도박은 다 같이 죽자고.... 도박장만 돈벌지.... 결국 주식으로 돈버는건..  수수료 챙기는 증권사..  매메세 챙기는 정부 뿐  \"K증시 도박장 됐다\"…'삼전닉스 레버리지'에 외신도 쓴소리 https://www.hankyung.com/article/2026072045286",
-            "url": "https://t.me/YeouidoStory2/115028"
+            "title": "레인보우로보틱스 종목분석",
+            "summary": "레인보우로보틱스 종목분석 https://tradingdiary.co.kr/analysis/insights/QgT91mFnXR5l7JGOw9bv-레인보우로보틱스-종목분석-2026-07-21",
+            "url": "https://t.me/bumsong2/25233"
           },
           {
-            "title": "단일종목 레버리지ETF 출시 이후 수익률",
-            "summary": "단일종목 레버리지ETF 출시 이후 수익률",
-            "url": "https://t.me/corevalue/46118"
+            "title": "현대차 주가 하락 및 2분기 실적 둔화 우려",
+            "summary": "현대차 주가 하락 및 2분기 실적 둔화 우려 https://m.stock.naver.com/investment/news/mainnews/011/0004643661 [관련 종목] 현대차 | 두산로보틱스 | 레인보우로보틱스",
+            "url": "https://t.me/moneythemestock/62611"
           },
           {
-            "title": "단일종목 레버리지ETF 출시 이후 수익률",
-            "summary": "단일종목 레버리지ETF 출시 이후 수익률",
-            "url": "https://t.me/corevalue/46119"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감 · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스닥",
+            "url": "https://t.me/valjuman/31991"
           },
           {
-            "title": "단일종목 레버리지ETF 출시 이후 수익률",
-            "summary": "단일종목 레버리지ETF 출시 이후 수익률",
-            "url": "https://t.me/corevalue/46121"
-          },
-          {
-            "title": "국회 정무위 \"단일종목 ETF 강력 모니터링·추가 대책\" 주문",
-            "summary": "국회 정무위 \"단일종목 ETF 강력 모니터링·추가 대책\" 주문 https://m.ytn.co.kr/news_view.php?s_mcd=0101&key=202607201233014214&pos= 모니터링 면밀히 검토 숙고 대책 강구 만지작",
-            "url": "https://t.me/corevalue/46122"
-          },
-          {
-            "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
-            "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
-            "url": "https://t.me/moneythemestock/62544"
-          },
-          {
-            "title": "카카오모빌리티, ADR 상장 규제로 고심",
-            "summary": "카카오모빌리티, ADR 상장 규제로 고심 https://m.stock.naver.com/investment/news/flashnews/011/0004643200 [관련 종목] 카카오",
-            "url": "https://t.me/moneythemestock/62567"
-          },
-          {
-            "title": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향",
-            "summary": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향 https://m.stock.naver.com/investment/news/mainnews/014/0005550386 [관련 종목] 테슬라 | 마이크론 테크놀로지",
-            "url": "https://t.me/moneythemestock/62572"
-          },
-          {
-            "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
-            "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
-            "url": "https://t.me/moneythemestock/62574"
+            "title": "✅",
+            "summary": "✅ [단독] 삼성·현대차그룹 '로봇동맹' - 로봇개 軍 배치…최대 1000대 - 삼성, 대표직속 로봇조직 신설 삼성그룹과 현대자동차그룹의 ‘로봇 동맹’이 첫 결실을 거뒀다. 삼성전자의 로봇 자회사 레인보우로보틱스와 현대로템이 함께 개발한 4족 보행 로봇(로봇개)을 하반기 군에 납품하기로 했다. 두 그룹이 미래 먹거리인 피지컬 인공지능(AI)으로 동맹 범위를 넓힌 첫 사례다. 21일 업계에 따",
+            "url": "https://t.me/valuefinder/27098"
           }
         ]
       },
       {
         "rank": 15,
-        "name": "중동 지정학적 리스크 및 유가",
-        "type": "이슈",
-        "mention": 6,
-        "channel": 4,
-        "score": 14,
+        "name": "코오롱",
+        "type": "종목",
+        "mention": 5,
+        "channel": 3,
+        "score": 11,
         "articles": [
           {
-            "title": "미군의 사망자도 발생되고 이 동네 분위기가 다시 심상치 않습니다. 거의 다시 원점으로 돌아간 분위기네요.",
-            "summary": "미군의 사망자도 발생되고 이 동네 분위기가 다시 심상치 않습니다. 거의 다시 원점으로 돌아간 분위기네요.",
-            "url": "https://t.me/balanceasset/30177"
+            "title": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주]",
+            "summary": "혈액암 진단 패널 공급 확대…엔젠바이오 '상한가'[특징주] https://www.edaily.co.kr/news/newspath.asp?newsid=03060246645516816 [특징주] 코오롱그룹, TG-C 3상 실패 소식에 줄줄이 ‘하한가’ https://biz.chosun.com/stock/stock_general/2026/07/21/TEDDXRGBHFHJ7GKK6PL3ZI2NXY/",
+            "url": "https://t.me/characteristicstock/82421"
           },
           {
-            "title": "모건 스탠리: 디젤 시장은 여전히 타이트합니다",
-            "summary": "모건 스탠리: 디젤 시장은 여전히 타이트합니다 모건 스탠리는 유럽의 기록적인 디젤 정제 마진이 원유 가격 상승보다는 공급 차질로 인해 발생하고 있다고 말합니다. 호르무즈 해협 서쪽의 정제 연료 수출은 정상보다 훨씬 낮은 수준을 유지하고 있으며, 러시아 정제 능력의 절반 이상이 오프라인 상태이며 디젤 수출이 제한되고 있습니다. 은행은 연말까지 유럽 디젤 재고가 수년 만에 최저치로 떨어질 것으로",
-            "url": "https://t.me/bumsong2/25205"
+            "title": "[특징주] 외국인 '삼성전자·좋은사람들', 기관 'HMM·코오롱'",
+            "summary": "[특징주] 외국인 '삼성전자·좋은사람들', 기관 'HMM·코오롱' https://www.newstnt.com/news/articleView.html?idxno=710970",
+            "url": "https://t.me/characteristicstock/82453"
           },
           {
-            "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
-            "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
-            "url": "https://t.me/characteristicstock/82399"
+            "title": "코오롱그룹, TG-C 3상 실패로 하한가",
+            "summary": "코오롱그룹, TG-C 3상 실패로 하한가 https://m.stock.naver.com/investment/news/flashnews/366/0001180513 [관련 종목] 코오롱티슈진 | 코오롱생명과학 | 코오롱",
+            "url": "https://t.me/moneythemestock/62583"
           },
           {
-            "title": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9...",
-            "summary": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9... https://www.ajunews.com/view/20260720140154764",
-            "url": "https://t.me/characteristicstock/82407"
+            "title": "코오롱티슈진, TG-C 美 3상 효능 입증 실패로 하한가",
+            "summary": "코오롱티슈진, TG-C 美 3상 효능 입증 실패로 하한가 https://m.stock.naver.com/investment/news/flashnews/018/0006333633 [관련 종목] 코오롱티슈진 | 코오롱",
+            "url": "https://t.me/moneythemestock/62585"
           },
           {
-            "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
-            "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
-            "url": "https://t.me/moneythemestock/62539"
-          },
-          {
-            "title": "중동 긴장 고조에 따른 유가 급등, 신재생·해운주 동반 강세",
-            "summary": "중동 긴장 고조에 따른 유가 급등, 신재생·해운주 동반 강세 https://m.stock.naver.com/investment/news/flashnews/421/0009067680 [관련 종목] STX그린로지스 | 흥아해운 | HMM | 팬오션 | 한화솔루션",
-            "url": "https://t.me/moneythemestock/62549"
+            "title": "🎯",
+            "summary": "🎯 7월 21일 장마감 시황정리 ✅ 코스피, 반도체 대형주 급반등에 6,747선 마감 · 코스피 6,747.95(+3.56%) 마감 · 장중 6,429.03까지 하락 후 6,836.86까지 반등 · 수급: 개인 -1조 6,574억 / 외국인 +2,950억 / 기관 +1조 3,901억 · 상승 주도: 삼성전자(+6.15%), SK하이닉스(+4.08%), 삼성바이오로직스(+3.72%) ✅ 코스닥",
+            "url": "https://t.me/valjuman/31991"
           }
         ]
       }
@@ -15592,6 +15732,1044 @@
               "title": "중동 불안에 국제유가 4.5% 급등···9주 내린 국내 기름값 다시 오르나",
               "summary": "중동 불안으로 국제유가가 4.5% 급등하며 9주간 내렸던 국내 기름값이 다시 오를 조짐이라는 기사",
               "url": "https://www.sisajournal-e.com/news/articleView.html?idxno=422512"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "report_date": "2026-07-21",
+      "range_label": "2026-07-20(월) 05:00 ~ 2026-07-21(화) 04:59 KST",
+      "message_count": 220,
+      "channel_count": 13,
+      "items": [
+        {
+          "rank": 1,
+          "name": "반도체/AI 업황 및 투자",
+          "type": "이슈",
+          "mention": 30,
+          "channel": 8,
+          "score": 46,
+          "articles": [
+            {
+              "title": "高성장기대 반도체용 STS강관 시장…세아·이렘 \"레퍼런스가 곧 경쟁력\"",
+              "summary": "高성장기대 반도체용 STS강관 시장…세아·이렘 \"레퍼런스가 곧 경쟁력\" https://m.snmnews.com/news/articleView.html?idxno=572200",
+              "url": "https://t.me/YeouidoStory2/115004"
+            },
+            {
+              "title": "'데이터센터 철강' 올해분 다 팔려…AI·로봇 올라탄 철강·화학",
+              "summary": "'데이터센터 철강' 올해분 다 팔려…AI·로봇 올라탄 철강·화학 https://www.mt.co.kr/industry/2026/07/20/2026071512242442355",
+              "url": "https://t.me/YeouidoStory2/115008"
+            },
+            {
+              "title": "코스모신소재, AI·전장 수요 폭증에 MLCC 이형필름 생산라인 풀가동",
+              "summary": "코스모신소재, AI·전장 수요 폭증에 MLCC 이형필름 생산라인 풀가동 https://www.mtnews.net/news/articleView.html?idxno=25360",
+              "url": "https://t.me/YeouidoStory2/115011"
+            },
+            {
+              "title": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속”",
+              "summary": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속” https://n.news.naver.com/mnews/article/011/0004643078?sid=104",
+              "url": "https://t.me/YeouidoStory2/115012"
+            },
+            {
+              "title": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정",
+              "summary": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 https://n.news.naver.com/mnews/article/215/0001259251?rc=N&ntype=RANKING&sid=105",
+              "url": "https://t.me/YeouidoStory2/115020"
+            },
+            {
+              "title": "엔비디아, 베라 CPU 및 루빈 GPU 4만여 개로 일본 국가 AI 팩토리 구축",
+              "summary": "엔비디아, 베라 CPU 및 루빈 GPU 4만여 개로 일본 국가 AI 팩토리 구축 https://www.inven.co.kr/webzine/news/?news=318671",
+              "url": "https://t.me/YeouidoStory2/115024"
+            },
+            {
+              "title": "새만금 AI밸리 인재도 지역서 육성…현대차, 전북대에 첨단산업 계약학과 추진",
+              "summary": "새만금 AI밸리 인재도 지역서 육성…현대차, 전북대에 첨단산업 계약학과 추진 https://n.news.naver.com/mnews/article/016/0002672412?sid=101",
+              "url": "https://t.me/YeouidoStory2/115032"
+            },
+            {
+              "title": "든알리바바, 신형 AI 모델 'Qwen3.8 Max' 공개 — \"앤트로픽 Fable 5에 이어 세계 2위 성능\" 주장, 중국 AI 추격 가속",
+              "summary": "든알리바바, 신형 AI 모델 'Qwen3.8 Max' 공개 — \"앤트로픽 Fable 5에 이어 세계 2위 성능\" 주장, 중국 AI 추격 가속 * Qwen3.8 Max 프리뷰 공개 - 알리바바, 플래그십 LLM Qwen3.8 Max 프리뷰 버전을 X를 통해 발표 — 파라미터 2.4조개 규모임 - 자사 코딩 플랫폼에서 이용 가능하며, 조만간 오픈웨이트로 공개해 개발자가 다운로드·수정할 수 있게 ",
+              "url": "https://t.me/alphasignal_now/24294"
+            },
+            {
+              "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
+              "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
+              "url": "https://t.me/alphasignal_now/24295"
+            },
+            {
+              "title": "제헌절 연휴 후 다시 시작되는 한주입니다. 연휴기간 뉴스들은 그리 우호적이진 않네요. 반도체관련주들이 약세를 면치 못하고 있는데 이번주 빅테크 실적 발표 후 AI관련 투자 계획에 관심이 집중되는 한",
+              "summary": "제헌절 연휴 후 다시 시작되는 한주입니다. 연휴기간 뉴스들은 그리 우호적이진 않네요. 반도체관련주들이 약세를 면치 못하고 있는데 이번주 빅테크 실적 발표 후 AI관련 투자 계획에 관심이 집중되는 한주입니다.",
+              "url": "https://t.me/balanceasset/30173"
+            },
+            {
+              "title": "제2의 딥시크 사태로 불리우는 문샷AI의  kimi K3의 흥행이 연휴간 가장 큰 이슈중의 하나였습니다. 저가형 AI들의 반란이 나오면 나올수록 AI기업들은 승자독식구조를 위해 더욱더 투자속도를 빠",
+              "summary": "제2의 딥시크 사태로 불리우는 문샷AI의  kimi K3의 흥행이 연휴간 가장 큰 이슈중의 하나였습니다. 저가형 AI들의 반란이 나오면 나올수록 AI기업들은 승자독식구조를 위해 더욱더 투자속도를 빠르게 늘리지 않을까? 싶긴합니다.",
+              "url": "https://t.me/balanceasset/30175"
+            },
+            {
+              "title": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\"",
+              "summary": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\" https://www.newspim.com/news/view/20260720000610",
+              "url": "https://t.me/characteristicstock/82403"
+            },
+            {
+              "title": "[특징주] 피에스케이, 12% 급락…반도체 피크아웃 공포",
+              "summary": "[특징주] 피에스케이, 12% 급락…반도체 피크아웃 공포 https://www.etoday.co.kr/news/view/2605199",
+              "url": "https://t.me/characteristicstock/82405"
+            },
+            {
+              "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
+              "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
+              "url": "https://t.me/corevalue/46111"
+            },
+            {
+              "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
+              "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
+              "url": "https://t.me/corevalue/46117"
+            },
+            {
+              "title": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토",
+              "summary": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토 뉴스: https://money.udn.com/money/story/5612/9637858?from=edn_maintab_cate ☀️ 채널: https://t.me/kiwoom_semibat .",
+              "url": "https://t.me/corevalue/46124"
+            },
+            {
+              "title": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토  뉴",
+              "summary": "UMC가 주문 폭주로 인해 어려움을 겪고 있음. Qualcomm, Intel, Sandisk 등 주요 미국 고객사의 강력한 수요에 힘입어 대만 남부 과학단지에 12AP7 공장 확장 계획을 검토  뉴스: https://money.udn.com/money/story/5612/9637858?from=edn_maintab_cate ☀️ 채널: https://t.me/kiwoom_semibat  .",
+              "url": "https://t.me/corevalue/46125"
+            },
+            {
+              "title": "* 서버 DRAM (64GB) 현물가 폭등 관련",
+              "summary": "* 서버 DRAM (64GB) 현물가 폭등 관련 - 전일 발간된 보고서의 핵심 차트 (현물가 vs 고정가 해석) - 서버 DRAM 현물가는 7월 중순부터 급격한 상승세로 전환 중 (서버 DRAM 현물가는 DRAMeXchange 등에 트래킹되지 않는 데이터) - 사우디 등 소버린AI 프로젝트 및 새로운 AIDC 테스트 수요량이 확대되며, 현재 샘플 보낼 물량도 부족한 상황 - 이에 현물가는 3",
+              "url": "https://t.me/corevalue/46126"
+            },
+            {
+              "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
+              "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
+              "url": "https://t.me/moneythemestock/62539"
+            },
+            {
+              "title": "동양, 주식병합 완료 및 거래 재개, AI 데이터센터 신사업 추진",
+              "summary": "동양, 주식병합 완료 및 거래 재개, AI 데이터센터 신사업 추진 https://m.stock.naver.com/investment/news/flashnews/018/0006332809 [관련 종목] 동양",
+              "url": "https://t.me/moneythemestock/62540"
+            },
+            {
+              "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
+              "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62543"
+            },
+            {
+              "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
+              "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62545"
+            },
+            {
+              "title": "라온피플, 생성형 AI·골프센서 사업 확대로 성장 본격화",
+              "summary": "라온피플, 생성형 AI·골프센서 사업 확대로 성장 본격화 https://m.stock.naver.com/investment/news/flashnews/018/0006332932 [관련 종목] 라온피플",
+              "url": "https://t.me/moneythemestock/62550"
+            },
+            {
+              "title": "테크윙, 107억 규모 반도체 검사장비 공급계약 체결",
+              "summary": "테크윙, 107억 규모 반도체 검사장비 공급계약 체결 https://m.stock.naver.com/investment/news/flashnews/018/0006333022 [관련 종목] 테크윙",
+              "url": "https://t.me/moneythemestock/62554"
+            },
+            {
+              "title": "삼성전기, MLCC·FCBGA 공급 부족 장기화로 반등 전망",
+              "summary": "삼성전기, MLCC·FCBGA 공급 부족 장기화로 반등 전망 https://m.stock.naver.com/investment/news/mainnews/018/0006332775 [관련 종목] 삼성전기",
+              "url": "https://t.me/moneythemestock/62564"
+            },
+            {
+              "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
+              "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
+              "url": "https://t.me/moneythemestock/62565"
+            },
+            {
+              "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
+              "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
+              "url": "https://t.me/moneythemestock/62571"
+            },
+            {
+              "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
+              "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
+              "url": "https://t.me/moneythemestock/62573"
+            },
+            {
+              "title": "외인 매수세에 반도체 투톱 양전 및 낙폭 축소, 그러나 하락종목 수가 2,100개 넘는 장세",
+              "summary": "외인 매수세에 반도체 투톱 양전 및 낙폭 축소, 그러나 하락종목 수가 2,100개 넘는 장세",
+              "url": "https://t.me/valuefinder/27073"
+            },
+            {
+              "title": "* 서버 DRAM (64GB) 현물가 폭등 관련",
+              "summary": "* 서버 DRAM (64GB) 현물가 폭등 관련 - 전일 발간된 보고서의 핵심 차트 (현물가 vs 고정가 해석) - 서버 DRAM 현물가는 7월 중순부터 급격한 상승세로 전환 중 (서버 DRAM 현물가는 DRAMeXchange 등에 트래킹되지 않는 데이터) - 사우디 등 소버린AI 프로젝트 및 새로운 AIDC 테스트 수요량이 확대되며, 현재 샘플 보낼 물량도 부족한 상황 - 이에 현물가는 3",
+              "url": "https://t.me/ym_research/6273"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "삼성전자",
+          "type": "종목",
+          "mention": 22,
+          "channel": 7,
+          "score": 36,
+          "articles": [
+            {
+              "title": "[하나증권 유통/화장품 박종대]",
+              "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 백화점, 첫번째 모멘텀을 뒤로 하며(26.07.20) 1. 백화점 모멘텀 세가지, 자산효과/소득효과/외국인 인바운드 현황 분석 - 백화점 판매 신장률이 1분기에 이어 2분기에도 견조한 증가세를 지속하고 있음. 2분기 백화점 기존점 성장률(이하 관리기준)은 신세계/현대/롯데가 각각 YoY 26%, 16%, 15%",
+              "url": "https://t.me/HanaResearch/19946"
+            },
+            {
+              "title": "[Web발신]",
+              "summary": "[Web발신] 안녕하십니까 유진투자증권 허재환입니다 =반도체 고점론= * 한달간 국내 반도체주도 급락했지만, 마이크론(-30%)/샌디스크(-40.4%), 일본 키오시아(-52%) 등 상반기 주도주의 추세가 심하게 훼손되었습니다. * 중국 창신메모리 상장, 레버리지 ETF 쏠림, 뉴욕주 데이터센터 신규 허가 유보, 중국 문샷의 Kimi K3 등 요인들도 있겠지만, 문제의 핵심은 반도체 이익이 ",
+              "url": "https://t.me/YeouidoStory2/114992"
+            },
+            {
+              "title": "📮",
+              "summary": "📮 [메리츠증권 전기전자/IT부품 양승수] 샘씨엔에스(252990) : 흐름이 꺾이지 않는다 ▶ 2Q26 Preview: 탑라인 성장과 수익성 방어를 동시에 - 2Q26 별도 실적은 매출액 297억원(+58.5% YoY), 영업이익 86억원(+150.3% YoY, OPM 29.1%)으로, 영업이익 기준 시장 컨센서스(81억원)를 6.6% 상회할 전망 - DRAM향 매출은 국내 프로브카드 업체",
+              "url": "https://t.me/YeouidoStory2/114993"
+            },
+            {
+              "title": "삼성전자, 4:3 비율 '와이드폴드'를 폴더블 라인업 최다 생산 모델로 배정 — 애플 폴더블 참전으로 4:3 전환 가속 전망",
+              "summary": "삼성전자, 4:3 비율 '와이드폴드'를 폴더블 라인업 최다 생산 모델로 배정 — 애플 폴더블 참전으로 4:3 전환 가속 전망 * 갤럭시 Z 폴드8(와이드폴드) 생산 계획 - ETNews에 따르면 삼성은 Z 폴드8용 디스플레이 패널 약 280만대 생산 계획 — Z 폴드8 울트라 200만대, Z 플립 150만대 대비 최대 물량임 - ZDNet 6월 보도 당시 와이드폴드 목표는 150~200만대 ",
+              "url": "https://t.me/alphasignal_now/24293"
+            },
+            {
+              "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
+              "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
+              "url": "https://t.me/alphasignal_now/24295"
+            },
+            {
+              "title": "2026년 7월 20일 (월)",
+              "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
+              "url": "https://t.me/balanceasset/30171"
+            },
+            {
+              "title": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY,",
+              "summary": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY, 콜옵션 https://youtube.com/live/g7_K91ChJvk?feature=share",
+              "url": "https://t.me/balanceasset/30181"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]",
+              "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
+              "url": "https://t.me/corevalue/46109"
+            },
+            {
+              "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
+              "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
+              "url": "https://t.me/corevalue/46111"
+            },
+            {
+              "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
+              "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
+              "url": "https://t.me/corevalue/46117"
+            },
+            {
+              "title": "JP모건은",
+              "summary": "JP모건은 반도체 섹터에 대한 투자 의견을 '비중확대(Overweight)'로 유지하며, 최근의 주가 조정을 \"매력적인 전술적 매수 기회\"라고 평가 최근 AI 매도세를 반도체 반등의 발판으로 보는 이유 최근 AI 관련 주식들은 힘든 시기를 보냈습니다. 메모리 반도체 기업들의 영향이 큰 한국의 코스피(KOSPI)는 최근 고점 대비 25% 하락했고, 필라델피아 반도체 지수(SOX)는 20% 밀렸",
+              "url": "https://t.me/corevalue/46130"
+            },
+            {
+              "title": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정",
+              "summary": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정 https://m.stock.naver.com/investment/news/flashnews/417/0001152100 [관련 종목] 삼성전자 | KB금융 | 현대차 | 기아 | SK하이닉스",
+              "url": "https://t.me/moneythemestock/62536"
+            },
+            {
+              "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
+              "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
+              "url": "https://t.me/moneythemestock/62539"
+            },
+            {
+              "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
+              "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62543"
+            },
+            {
+              "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
+              "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
+              "url": "https://t.me/moneythemestock/62544"
+            },
+            {
+              "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
+              "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62545"
+            },
+            {
+              "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
+              "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
+              "url": "https://t.me/moneythemestock/62565"
+            },
+            {
+              "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
+              "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
+              "url": "https://t.me/moneythemestock/62571"
+            },
+            {
+              "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
+              "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
+              "url": "https://t.me/moneythemestock/62573"
+            },
+            {
+              "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
+              "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
+              "url": "https://t.me/moneythemestock/62574"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
+              "url": "https://t.me/valjuman/31932"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
+              "url": "https://t.me/valjuman/31953"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "SK하이닉스",
+          "type": "종목",
+          "mention": 21,
+          "channel": 6,
+          "score": 33,
+          "articles": [
+            {
+              "title": "[하나증권 유통/화장품 박종대]",
+              "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 백화점, 첫번째 모멘텀을 뒤로 하며(26.07.20) 1. 백화점 모멘텀 세가지, 자산효과/소득효과/외국인 인바운드 현황 분석 - 백화점 판매 신장률이 1분기에 이어 2분기에도 견조한 증가세를 지속하고 있음. 2분기 백화점 기존점 성장률(이하 관리기준)은 신세계/현대/롯데가 각각 YoY 26%, 16%, 15%",
+              "url": "https://t.me/HanaResearch/19946"
+            },
+            {
+              "title": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅",
+              "summary": "삼성전자, 평택 P5 장비 발주 최종 단계 진입 — 계약 규모 10조원 초과 전망, AI 메모리 슈퍼사이클 장기화 베팅 * P5 장비 발주 임박 - 삼성, P5 1단계 반도체 장비 공급사 선정 최종 단계에 진입한 상태 — 발주(PO)가 곧 이어질 전망 - 동시에 2단계 공급사 선정도 이미 진행 중 — 기존의 순차 증설이 아니라 복수 생산라인을 병렬로 추진하는 것임 - 업계는 이번 장비 계약 ",
+              "url": "https://t.me/alphasignal_now/24295"
+            },
+            {
+              "title": "2026년 7월 20일 (월)",
+              "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
+              "url": "https://t.me/balanceasset/30171"
+            },
+            {
+              "title": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY,",
+              "summary": "7월 20일 월요일 잠시후 4시 몽당연필의 라이브방송 시작합니다. [LIVE] 몽당연필 : 삼성전자, SK하이닉스, SK하이닉스ADR,  SK하이닉스 레버리지 ETF, 마이크론, CXMT, EWY, 콜옵션 https://youtube.com/live/g7_K91ChJvk?feature=share",
+              "url": "https://t.me/balanceasset/30181"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]",
+              "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
+              "url": "https://t.me/corevalue/46109"
+            },
+            {
+              "title": "DS투자증권 반도체 Analyst 이수림",
+              "summary": "DS투자증권 반도체 Analyst 이수림 [반도체] 공급 과잉이 우려되시나요? 1. `35년까지 중장기 수급 분석: Capex의 당위성은 충분하다 - DRAM 시장은 26년에 이어 27년에도 심각한 공급부족이 지속될 전망 - 26년 AI용 DRAM이 전체 DRAM bit 수요의 12%를 차지하며 35년까지 약 40% 수준으로 확대된다고 가정할 때 전체 DRAM bit 수요는 35년까지 연평균",
+              "url": "https://t.me/corevalue/46110"
+            },
+            {
+              "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
+              "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
+              "url": "https://t.me/corevalue/46111"
+            },
+            {
+              "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
+              "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
+              "url": "https://t.me/corevalue/46117"
+            },
+            {
+              "title": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정",
+              "summary": "삼성전자 갤럭시 언팩 및 ECB 기준금리 결정 예정 https://m.stock.naver.com/investment/news/flashnews/417/0001152100 [관련 종목] 삼성전자 | KB금융 | 현대차 | 기아 | SK하이닉스",
+              "url": "https://t.me/moneythemestock/62536"
+            },
+            {
+              "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
+              "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
+              "url": "https://t.me/moneythemestock/62539"
+            },
+            {
+              "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
+              "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62543"
+            },
+            {
+              "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
+              "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
+              "url": "https://t.me/moneythemestock/62544"
+            },
+            {
+              "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
+              "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62545"
+            },
+            {
+              "title": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구",
+              "summary": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구 https://m.stock.naver.com/investment/news/flashnews/009/0005709521 [관련 종목] SK하이닉스 | SK",
+              "url": "https://t.me/moneythemestock/62559"
+            },
+            {
+              "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
+              "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
+              "url": "https://t.me/moneythemestock/62565"
+            },
+            {
+              "title": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목",
+              "summary": "SK하이닉스, 반도체 피크아웃 공포 속 하이퍼스케일러 실적 발표 주목 https://m.stock.naver.com/investment/news/flashnews/016/0002672470 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Amazon",
+              "url": "https://t.me/moneythemestock/62571"
+            },
+            {
+              "title": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록",
+              "summary": "소부장 급락 속 코스닥, 13개월 만에 최저치 기록 https://m.stock.naver.com/investment/news/flashnews/009/0005709759 [관련 종목] 삼성전자 | SK하이닉스 | 원익IPS",
+              "url": "https://t.me/moneythemestock/62573"
+            },
+            {
+              "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
+              "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
+              "url": "https://t.me/moneythemestock/62574"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
+              "url": "https://t.me/valjuman/31932"
+            },
+            {
+              "title": "🏦",
+              "summary": "🏦 20일(월) 오전 장세, 코스피/코스닥 하락종목이 대다수 * 09:45 기준 · SK하이닉스는 +0~1%대 상승으로 보합이나 · 코스피 종목 906개 중 하락종목 663개로 73.18% · 코스닥 종목 1,732개 중 하락종목은 1,316개로 75.98% 🔍 독립리서치 지엘리서치 t.me/valjuman",
+              "url": "https://t.me/valjuman/31939"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
+              "url": "https://t.me/valjuman/31953"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "TSMC",
+          "type": "종목",
+          "mention": 13,
+          "channel": 6,
+          "score": 25,
+          "articles": [
+            {
+              "title": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속”",
+              "summary": "TSMC “AI 메가트렌드 장기화...美 애리조나 증설 가속” https://n.news.naver.com/mnews/article/011/0004643078?sid=104",
+              "url": "https://t.me/YeouidoStory2/115012"
+            },
+            {
+              "title": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정",
+              "summary": "\"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 https://n.news.naver.com/mnews/article/215/0001259251?rc=N&ntype=RANKING&sid=105",
+              "url": "https://t.me/YeouidoStory2/115020"
+            },
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\"",
+              "summary": "[아시아 특징주] TSMC \"미국 투자 트럼프 압박 아니라 수요 대응\" https://www.newspim.com/news/view/20260720000610",
+              "url": "https://t.me/characteristicstock/82403"
+            },
+            {
+              "title": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상",
+              "summary": ">>메모리 Q3 계약가격 두 자릿수 상승 전망…DRAM 호황 2028년 하반기 정점 예상 (대만공상시보) •AI 서버 수요 증가와 HBM 생산 확대에 따라 기존 DRAM 생산능력이 HBM으로 전환되면서 메모리 공급 부족이 2028년까지 지속될 전망. 2026년 3분기 DRAM 계약가격은 QoQ 1825% 상승, 4분기는 QoQ 810% 이하 상승 예상, 2027년에도 가격 상승세가 이어질 전",
+              "url": "https://t.me/corevalue/46111"
+            },
+            {
+              "title": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\"",
+              "summary": "에이데이터(ADATA) 천리바이 회장: \"AI 거품론은 시기상조, 2030년 이후에나 논할 일\" 글로벌 수요는 시장의 상상을 초월, 향후 10년간 메모리 공급 부족 전망 대만 TSMC의 실적 발표(법인설명회) 이후 주가가 폭락하면서 시장에 AI 투자 과열 및 거품(버블) 우려가 다시 제기되었습니다. 이에 대해 글로벌 메모리 모듈 대기업 에이데이터(ADATA)의 천리바이 회장은 AI 거품론을 ",
+              "url": "https://t.me/corevalue/46117"
+            },
+            {
+              "title": "JP모건은",
+              "summary": "JP모건은 반도체 섹터에 대한 투자 의견을 '비중확대(Overweight)'로 유지하며, 최근의 주가 조정을 \"매력적인 전술적 매수 기회\"라고 평가 최근 AI 매도세를 반도체 반등의 발판으로 보는 이유 최근 AI 관련 주식들은 힘든 시기를 보냈습니다. 메모리 반도체 기업들의 영향이 큰 한국의 코스피(KOSPI)는 최근 고점 대비 25% 하락했고, 필라델피아 반도체 지수(SOX)는 20% 밀렸",
+              "url": "https://t.me/corevalue/46130"
+            },
+            {
+              "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
+              "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
+              "url": "https://t.me/moneythemestock/62539"
+            },
+            {
+              "title": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동",
+              "summary": "반도체 실적 호조에도 주가 급락, AI 투자 지속 여부로 시장 관심 이동 https://m.stock.naver.com/investment/news/mainnews/018/0006332843 [관련 종목] 삼성전자 | SK하이닉스 | TSMC | NVIDIA | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62543"
+            },
+            {
+              "title": "💾",
+              "summary": "💾 \"AI 수요 계속된다\"…TSMC, 美투자 397조원 확정 ✅ 애리조나 투자를 2,650억달러로 확대한다 · 애리조나 거점, 생산공장 10곳·패키징 2곳·R&D센터 구축 · 1호 공장 가동 중…2호 장비 반입, 3호 건설 진행 · 추가 1,000억달러는 전공정과 첨단 패키징에 투입 ✅ 2나노가 신규 매출 축으로 부상한다 · 4나노 양산에 이어 2나노 매출이 3분기부터 확대될 전망 · AI ",
+              "url": "https://t.me/valjuman/31949"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
+              "url": "https://t.me/valjuman/31953"
+            },
+            {
+              "title": "✅",
+              "summary": "✅ 반도체 ‘패닉’ 속 실적시즌…“빅테크 투자가 반등 분수령” - SK증권 보고서 - 글로벌 증시보다 부진한 코스피…반도체·AI 인프라 매도 집중 - TSMC 호실적에도 주가 무반응…중국 오픈소스 AI 경계 재부상 - 낙폭 과대로 밸류 매력 커졌지만 선제적 방향성 베팅은 신중해야 https://n.news.naver.com/mnews/article/018/0006332772?rc=N&ntyp",
+              "url": "https://t.me/valuefinder/27072"
+            },
+            {
+              "title": "✅",
+              "summary": "✅ TSMC CFO \"AI 호황 끝나지 않는다\"…美에 400조원 베팅, 증설 가속 https://www.digitaltoday.co.kr/news/articleView.html?idxno=685127",
+              "url": "https://t.me/valuefinder/27075"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "가비아",
+          "type": "종목",
+          "mention": 12,
+          "channel": 5,
+          "score": 22,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세",
+              "summary": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세 https://www.etnews.com/20260720000191 [ET특징주]가비아, 맥쿼리 공개매수·자진 상폐 추진에 상승세 https://www.etnews.com/20260720000193",
+              "url": "https://t.me/characteristicstock/82404"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
+              "url": "https://t.me/moneythemestock/62551"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62555"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
+              "url": "https://t.me/moneythemestock/62556"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
+              "url": "https://t.me/moneythemestock/62557"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62560"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62563"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 등락률 상위 분석 · 가비아 강세 - 디씨케이인베스트먼트의 공개매수 후 자진상폐·완전자회사 편입 추진 · 케이프 등 조선기자재주 강세 - 미국 함정시장 진출 확대 기대로 등락률에서도 강세 · 케이아이엔엑스 강세 - IDC/클라우드 등 인터넷 서비스 제공 전문기업 - AI 데이터 트래픽 증가 & 과천 IDC 입주 확대 영향 · 범한퓨얼셀 강세 -",
+              "url": "https://t.me/valjuman/31933"
+            },
+            {
+              "title": "💻",
+              "summary": "💻 [가비아 M&A] 지배구조 개선 요구 속 내놓은 답은 '본체 상폐' ✅ 자회사 성장에도 가비아 주주 귀속 이익은 제한됐다 · 1분기 연결 매출 850억원·영업이익 107억원·순이익 90억원 · 가비아 별도 순이익은 17억원으로 전년 대비 15.4% 감소 · 연결 순이익 중 지배주주 귀속 38억원, 비지배지분 귀속 53억원 ✅ 맥쿼리는 가비아만 비상장사로 전환한다 · 디씨케이인베스트먼트가 ",
+              "url": "https://t.me/valjuman/31957"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "SK",
+          "type": "종목",
+          "mention": 9,
+          "channel": 6,
+          "score": 21,
+          "articles": [
+            {
+              "title": "[SK 증권 황지우][The Market Visualized] 역대 최저 PER",
+              "summary": "[SK 증권 황지우][The Market Visualized] 역대 최저 PER [Summary] - 국내 증시는 코스피가 주간 -10% 내외의 조정을 받으며 상승종목비율 21.7%로 시장 내부 취약성 지속 - 코스피 12개월 선행 PER은 5.81배로 역사상 최저. 금융위기·코로나 국면보다 낮은 수준으로, 실적과 주가의 괴리가 전례없이 확대. 현재 가격을 움직이는 요인이 실적은 아니지만, ",
+              "url": "https://t.me/YeouidoStory2/114991"
+            },
+            {
+              "title": "[신한투자증권 김아람] SK텔레콤",
+              "summary": "[신한투자증권 김아람] SK텔레콤 지금 주가에서는 업사이드 리스크가 더 커 (2) ▶️ 엔트로픽 상장 타임라인 Update . 7/16 블룸버그에 따르면 엔트로픽은 ‘이르면 10월 상장’을 타겟으로 복수의 투자자와 미팅 모색. 오픈AI는 당초 가을 상장을 목표했으나 2027년 중으로 연기한 것으로 알려짐 . 당사는 엔트로픽 상장 전까지 SK텔레콤 주가의 오버슈팅 가능성이 크다는 의견. 특히나",
+              "url": "https://t.me/YeouidoStory2/114994"
+            },
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9...",
+              "summary": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9... https://www.ajunews.com/view/20260720140154764",
+              "url": "https://t.me/characteristicstock/82407"
+            },
+            {
+              "title": "[SK증권 반도체 한동희]",
+              "summary": "[SK증권 반도체 한동희] 안녕하세요, SK증권 한동희입니다. ‘과거’ Peak-out 지표인 P 상승률 둔화, LTA 본질과 효과, 코어위브의 Put option에 대한 해석 자료입니다. 과거의 모습과는 본질적으로 다르며, 가격 강세 기반은 여전하다고 판단합니다. 낡은 공식으로 방향을 혼동하는 것을 경계합니다. 변화하는 메모리, 낡은 공식 LTA의 본질과 효과: 공급을 잠그는 계약 본질: ",
+              "url": "https://t.me/corevalue/46109"
+            },
+            {
+              "title": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구",
+              "summary": "거버넌스포럼, 최태원 SK회장 자본주의 원칙 준수 촉구 https://m.stock.naver.com/investment/news/flashnews/009/0005709521 [관련 종목] SK하이닉스 | SK",
+              "url": "https://t.me/moneythemestock/62559"
+            },
+            {
+              "title": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목",
+              "summary": "삼성·SK 메가팹 투자 본격화, 반도체 강관 3사 주목 https://m.stock.naver.com/investment/news/mainnews/014/0005550127 [관련 종목] 삼성전자 | SK하이닉스 | 세아제강지주",
+              "url": "https://t.me/moneythemestock/62565"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 장전 08:15 프리마켓 거래대금 상위 분석 · SK하이닉스·삼성전자·SK스퀘어 등 반도체주 약세 - 17일(금) 뉴욕증시 미국 반도체 매도세 영향 - SOX가 6월 고점 대비 20% 이상 하락, 엔비디아 -2.3% · 한화오션 · 현대힘스 · 케이프 등 조선·기자재주 강세 - 미국 함정의 국내 블록 생산·현지 조립 방안 재부각 · 한화시스템 · LIG디펜스 · 한화에",
+              "url": "https://t.me/valjuman/31932"
+            },
+            {
+              "title": "✅",
+              "summary": "✅ 반도체 ‘패닉’ 속 실적시즌…“빅테크 투자가 반등 분수령” - SK증권 보고서 - 글로벌 증시보다 부진한 코스피…반도체·AI 인프라 매도 집중 - TSMC 호실적에도 주가 무반응…중국 오픈소스 AI 경계 재부상 - 낙폭 과대로 밸류 매력 커졌지만 선제적 방향성 베팅은 신중해야 https://n.news.naver.com/mnews/article/018/0006332772?rc=N&ntyp",
+              "url": "https://t.me/valuefinder/27072"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "삼천당제약",
+          "type": "종목",
+          "mention": 8,
+          "channel": 5,
+          "score": 18,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
+              "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
+              "url": "https://t.me/characteristicstock/82399"
+            },
+            {
+              "title": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上",
+              "summary": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上 https://www.etnews.com/20260720000211 [ET특징주] 한울반도체, AI MLCC 전수검사 시스템 개발… 주가 상한가 https://www.etnews.com/20260720000222",
+              "url": "https://t.me/characteristicstock/82409"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62555"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 13:50 거래대금 상위 분석 ✅ 거래대금 40위권 내 전반 하락세 · 상승 종목 7개 · 바이오·조선기자재·정유 등 개별 모멘텀 보유주 중심 선방 ✅ 개별종목 상승 ▲ 📌 삼성전기 (3) _ MLCC·FC-BGA 공급 부족 장기화 전망으로 수혜 기대 📌 현대힘스 (10)· 세진중공업 (28) _ 한화 필리조선소 미사일 계측함 수주로 미국 함정시장 진출 기대 📌 삼천당",
+              "url": "https://t.me/valjuman/31945"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 (월) 13:50 거래대금 상위 분석 ✅ 거래대금 40위권 내 전반 하락세  · 상승 종목 7개 · 바이오·조선기자재·정유 등 개별 모멘텀 보유주 중심 선방 ✅ 개별종목 상승 ▲ 📌 삼성전기(3) _ MLCC·FC-BGA 공급 부족 장기화 전망으로 수혜 기대 📌 현대힘스(10)·세진중공업(28) _ 한화 필리조선소 미사일 계측함 수주로 미국 함정시장 진출 기대 📌 삼천당제약(",
+              "url": "https://t.me/valjuman/31946"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "한울반도체",
+          "type": "종목",
+          "mention": 9,
+          "channel": 4,
+          "score": 17,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
+              "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
+              "url": "https://t.me/characteristicstock/82399"
+            },
+            {
+              "title": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上",
+              "summary": "[ET특징주] 하락장 속 나홀로 질주… 삼천당제약, 美 FDA 회신에 주가 上 https://www.etnews.com/20260720000211 [ET특징주] 한울반도체, AI MLCC 전수검사 시스템 개발… 주가 상한가 https://www.etnews.com/20260720000222",
+              "url": "https://t.me/characteristicstock/82409"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
+              "url": "https://t.me/moneythemestock/62551"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62555"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
+              "url": "https://t.me/moneythemestock/62556"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
+              "url": "https://t.me/moneythemestock/62557"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "주연테크",
+          "type": "종목",
+          "mention": 10,
+          "channel": 3,
+          "score": 16,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락",
+              "summary": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락 https://m.stock.naver.com/investment/news/flashnews/018/0006332919 [관련 종목] 주연테크 | 에넥스 | 손오공",
+              "url": "https://t.me/moneythemestock/62548"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
+              "url": "https://t.me/moneythemestock/62551"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62555"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
+              "url": "https://t.me/moneythemestock/62556"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
+              "url": "https://t.me/moneythemestock/62557"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62560"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62563"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "손오공",
+          "type": "종목",
+          "mention": 8,
+          "channel": 4,
+          "score": 16,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락",
+              "summary": "애국 테마주 열풍 속 주연테크 급등, 에넥스 급락 https://m.stock.naver.com/investment/news/flashnews/018/0006332919 [관련 종목] 주연테크 | 에넥스 | 손오공",
+              "url": "https://t.me/moneythemestock/62548"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
+              "url": "https://t.me/moneythemestock/62551"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62560"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62563"
+            },
+            {
+              "title": "260605_손오공_지엘리서치.pdf",
+              "summary": "260605_손오공_지엘리서치.pdf",
+              "url": "https://t.me/valjuman/31938"
+            }
+          ]
+        },
+        {
+          "rank": 11,
+          "name": "진영",
+          "type": "종목",
+          "mention": 9,
+          "channel": 3,
+          "score": 15,
+          "articles": [
+            {
+              "title": "<7월 20일 보고서‧기사‧특징주>",
+              "summary": "<7월 20일 보고서‧기사‧특징주> ▶️ 보고서 SK텔레콤 : 지금 주가에서는 업사이드 리스크가 더 커 (신한) -엔트로픽 기업가치 추가 상승 가능성: -데이터센터로 인한 본업 멀티플 리레이팅 http://bbs2.shinhansec.com/board/message/file.pdf.do?attachmentId=352675 샘씨엔에스 : 흐름이 꺾이지 않는다 (메리츠증권) - 탑라인 성장과 수",
+              "url": "https://t.me/YeouidoStory2/115031"
+            },
+            {
+              "title": "07월 20일 월요일 몽당연필의 장마감 시황",
+              "summary": "07월 20일 월요일 몽당연필의 장마감 시황 금일 거래소 6818.35 (-6.40%) 코스닥 791.75 (-4.54%) 전일 거래소 6516.27 (-4.46%) 코스닥 749.97 (-5.29%) 2026년 07월 20일 상승률 TOP30 (by 몽당연필&홈런왕, 관리종목, 우선주, 스팩주 제외) 1. 주연테크 (30.00%) : IT하드웨어관련주, 시총100억대, PC조립사업, 저시총",
+              "url": "https://t.me/balanceasset/30184"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 09:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) STX그린로지스 (29.98% / 53억) 4) 손오공 (29.98% / 32억) 5) 한울반도체 (29.97% / 217억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62547"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 10:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) 손오공 (29.98% / 75억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 227억) 7) 가비아 (29.94% / 3",
+              "url": "https://t.me/moneythemestock/62551"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 11:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 썸에이지 (29.99% / 5억) 3) 플라즈맵 (29.99% / 4억) 4) STX그린로지스 (29.98% / 55억) 5) 한울반도체 (29.97% / 230억) 6) 가비아 (29.94% / 3억) 7) 엑시온그룹 (29.93% / ",
+              "url": "https://t.me/moneythemestock/62555"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 12:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 172억) 3) 썸에이지 (29.99% / 5억) 4) 플라즈맵 (29.99% / 4억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 231억) 7) 가비아 (29.94% /",
+              "url": "https://t.me/moneythemestock/62556"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 13:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 1억) 2) 고려산업 (29.99% / 173억) 3) 플라즈맵 (29.99% / 11억) 4) 썸에이지 (29.99% / 5억) 5) STX그린로지스 (29.98% / 55억) 6) 한울반도체 (29.97% / 232억) 7) 가비아 (29.94% ",
+              "url": "https://t.me/moneythemestock/62557"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 14:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 175억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62560"
+            },
+            {
+              "title": "🚀",
+              "summary": "🚀 [KRX 상승률 TOP10] 2026-07-20 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 주연테크 (30.00% / 2억) 2) 고려산업 (29.99% / 177억) 3) 썸에이지 (29.99% / 5억) 4) 손오공 (29.98% / 113억) 5) STX그린로지스 (29.98% / 56억) 6) 가비아 (29.94% / 4억) 7) 레몬헬스케어 (29.93% /",
+              "url": "https://t.me/moneythemestock/62563"
+            }
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "테슬라",
+          "type": "종목",
+          "mention": 5,
+          "channel": 5,
+          "score": 15,
+          "articles": [
+            {
+              "title": "테슬라 S/X 라임 철거완요. 옵티머스 7월말..8월초 초기생산 시작",
+              "summary": "테슬라 S/X 라임 철거완요. 옵티머스 7월말..8월초 초기생산 시작 https://www.basenor.com/blogs/news/teslas-optimus-factory-at-giga-texas-is-growing-fast?hl=ko-KR#:~:text=The%20Optimus%20factory%20is%20being%20built%20on,and%20appearance%20in%20ou",
+              "url": "https://t.me/YeouidoStory2/115035"
+            },
+            {
+              "title": "2026년 7월 20일 (월)",
+              "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
+              "url": "https://t.me/balanceasset/30171"
+            },
+            {
+              "title": "🟢",
+              "summary": "🟢 29PER Market Pulse | 7월 20일 (월) 🧭 오늘의 핵심 (Key Concept) 지난주 한국은행의 전격적인 기준금리 인상 쇼크와 글로벌 테크 공급망 균열 경고가 시장을 깊게 짓누르고 있습니다. 코스피는 장중 6,548선까지 밀려났고, 코스닥 역시 753선이 무너지며 시장의 심리적 마지노선이 차례로 붕괴되는 강력한 하방 압력 장세를 보이고 있습니다. 오늘 오전 관세청이 발",
+              "url": "https://t.me/bumsong2/25203"
+            },
+            {
+              "title": "[미국 특징주] 테슬라, 독일 공장 증설로 연간 37.5대 생산",
+              "summary": "[미국 특징주] 테슬라, 독일 공장 증설로 연간 37.5대 생산 https://www.newspim.com/news/view/20260720000570",
+              "url": "https://t.me/characteristicstock/82401"
+            },
+            {
+              "title": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향",
+              "summary": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향 https://m.stock.naver.com/investment/news/mainnews/014/0005550386 [관련 종목] 테슬라 | 마이크론 테크놀로지",
+              "url": "https://t.me/moneythemestock/62572"
+            }
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "알파벳",
+          "type": "종목",
+          "mention": 5,
+          "channel": 5,
+          "score": 15,
+          "articles": [
+            {
+              "title": "<오늘 개장전 꼭 알아야할 5가지_7/20 Bloomberg> 한화 임혜윤",
+              "summary": "<오늘 개장전 꼭 알아야할 5가지_7/20 Bloomberg> 한화 임혜윤 1) 미국 반도체주 약세장? 반도체 주식은 AI에 대한 수요에 힘입어 이어온 놀라운 상승세를 이어갔으나 경쟁 심화, 잠재적 과잉 생산, 수십억 달러에 달하는 AI 투자 등의 우려에 난항을 겪고 있음. 에드워드존스는 “AI 투자 테마는 무너지고 있는 것이 아니라 성숙단계에 접어들고 있는 것으로 보이며, 이는 혁신적인 투",
+              "url": "https://t.me/YeouidoStory2/115000"
+            },
+            {
+              "title": "2026년 7월 20일 (월)",
+              "summary": "2026년 7월 20일 (월) <주요이슈점검> * 뉴욕증시, 7/17(현지시간) 반도체 등 기술주 부진 등에 하락… 다우 -406.55(-0.77%) 52,146.42, 나스닥 -361.71(-1.40%) 25,520.24, S&P500 7,457.69(-1.01%), 필라델피아반도체 11,673.89(-1.63%) * 국제유가($,배럴), 美·이란 무력 충돌 격화 등에 폭등... WTI +",
+              "url": "https://t.me/balanceasset/30171"
+            },
+            {
+              "title": "🟢",
+              "summary": "🟢 29PER Market Pulse | 7월 20일 (월) 🧭 오늘의 핵심 (Key Concept) 지난주 한국은행의 전격적인 기준금리 인상 쇼크와 글로벌 테크 공급망 균열 경고가 시장을 깊게 짓누르고 있습니다. 코스피는 장중 6,548선까지 밀려났고, 코스닥 역시 753선이 무너지며 시장의 심리적 마지노선이 차례로 붕괴되는 강력한 하방 압력 장세를 보이고 있습니다. 오늘 오전 관세청이 발",
+              "url": "https://t.me/bumsong2/25203"
+            },
+            {
+              "title": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠",
+              "summary": "하이퍼스케일러 2분기 실적, 증시 투자심리 반전 열쇠 https://m.stock.naver.com/investment/news/flashnews/648/0000049016 [관련 종목] 삼성전자 | SK하이닉스 | 알파벳 | 메타 플랫폼스 | 마이크로소프트",
+              "url": "https://t.me/moneythemestock/62545"
+            },
+            {
+              "title": "🎯",
+              "summary": "🎯 7월 20일 장마감 시황정리 ✅ 코스피, 반도체·보험·자동차 약세에 6,516선 마감 · 코스피 6,516.27(-4.46%) 마감 · 장중 6,814.86까지 반등 후 6,472.80까지 하락 · 수급: 개인 +3,511억 / 외국인 +5,161억 / 기관 -9,218억 · 하락 주도: 삼성생명(-8.91%), KB금융(-6.79%), 기아(-6.48%) ✅ 코스닥, 반도체·이차전지 급",
+              "url": "https://t.me/valjuman/31953"
+            }
+          ]
+        },
+        {
+          "rank": 14,
+          "name": "레버리지 투자 및 시장 규제",
+          "type": "이슈",
+          "mention": 9,
+          "channel": 3,
+          "score": 15,
+          "articles": [
+            {
+              "title": "도박은 다 같이 죽자고.... 도박장만 돈벌지.... 결국 주식으로 돈버는건..  수수료 챙기는 증권사..  매메세 챙기는 정부 뿐  \"K증시 도박장 됐다\"…'삼전닉스 레버리지'에 외신도 쓴소리 h",
+              "summary": "도박은 다 같이 죽자고.... 도박장만 돈벌지.... 결국 주식으로 돈버는건..  수수료 챙기는 증권사..  매메세 챙기는 정부 뿐  \"K증시 도박장 됐다\"…'삼전닉스 레버리지'에 외신도 쓴소리 https://www.hankyung.com/article/2026072045286",
+              "url": "https://t.me/YeouidoStory2/115028"
+            },
+            {
+              "title": "단일종목 레버리지ETF 출시 이후 수익률",
+              "summary": "단일종목 레버리지ETF 출시 이후 수익률",
+              "url": "https://t.me/corevalue/46118"
+            },
+            {
+              "title": "단일종목 레버리지ETF 출시 이후 수익률",
+              "summary": "단일종목 레버리지ETF 출시 이후 수익률",
+              "url": "https://t.me/corevalue/46119"
+            },
+            {
+              "title": "단일종목 레버리지ETF 출시 이후 수익률",
+              "summary": "단일종목 레버리지ETF 출시 이후 수익률",
+              "url": "https://t.me/corevalue/46121"
+            },
+            {
+              "title": "국회 정무위 \"단일종목 ETF 강력 모니터링·추가 대책\" 주문",
+              "summary": "국회 정무위 \"단일종목 ETF 강력 모니터링·추가 대책\" 주문 https://m.ytn.co.kr/news_view.php?s_mcd=0101&key=202607201233014214&pos= 모니터링 면밀히 검토 숙고 대책 강구 만지작",
+              "url": "https://t.me/corevalue/46122"
+            },
+            {
+              "title": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목",
+              "summary": "ADR·레버리지 ETF, 코스피 변동성 확대 원인 지목 https://m.stock.naver.com/investment/news/flashnews/366/0001180249 [관련 종목] SK하이닉스 | 삼성전자",
+              "url": "https://t.me/moneythemestock/62544"
+            },
+            {
+              "title": "카카오모빌리티, ADR 상장 규제로 고심",
+              "summary": "카카오모빌리티, ADR 상장 규제로 고심 https://m.stock.naver.com/investment/news/flashnews/011/0004643200 [관련 종목] 카카오",
+              "url": "https://t.me/moneythemestock/62567"
+            },
+            {
+              "title": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향",
+              "summary": "서학개미, 해외 단일종목 레버리지 투자 예탁금 3천만원 상향 https://m.stock.naver.com/investment/news/mainnews/014/0005550386 [관련 종목] 테슬라 | 마이크론 테크놀로지",
+              "url": "https://t.me/moneythemestock/62572"
+            },
+            {
+              "title": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속",
+              "summary": "단일종목 레버리지 대책 첫날에도 거래대금 12조 원 돌파, 과열 지속 https://m.stock.naver.com/investment/news/flashnews/422/0000887001 [관련 종목] 삼성전자 | SK하이닉스",
+              "url": "https://t.me/moneythemestock/62574"
+            }
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "중동 지정학적 리스크 및 유가",
+          "type": "이슈",
+          "mention": 6,
+          "channel": 4,
+          "score": 14,
+          "articles": [
+            {
+              "title": "미군의 사망자도 발생되고 이 동네 분위기가 다시 심상치 않습니다. 거의 다시 원점으로 돌아간 분위기네요.",
+              "summary": "미군의 사망자도 발생되고 이 동네 분위기가 다시 심상치 않습니다. 거의 다시 원점으로 돌아간 분위기네요.",
+              "url": "https://t.me/balanceasset/30177"
+            },
+            {
+              "title": "모건 스탠리: 디젤 시장은 여전히 타이트합니다",
+              "summary": "모건 스탠리: 디젤 시장은 여전히 타이트합니다 모건 스탠리는 유럽의 기록적인 디젤 정제 마진이 원유 가격 상승보다는 공급 차질로 인해 발생하고 있다고 말합니다. 호르무즈 해협 서쪽의 정제 연료 수출은 정상보다 훨씬 낮은 수준을 유지하고 있으며, 러시아 정제 능력의 절반 이상이 오프라인 상태이며 디젤 수출이 제한되고 있습니다. 은행은 연말까지 유럽 디젤 재고가 수년 만에 최저치로 떨어질 것으로",
+              "url": "https://t.me/bumsong2/25205"
+            },
+            {
+              "title": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가",
+              "summary": "[특징주] 미래생명자원, 흑해 곡물선 피격·중동 긴장에 상한가 https://www.tokenpost.kr/news/economy/379358 [특징주] 국제유가 급등…신재생에너지주 강세 http://www.hansbiz.co.kr/news/articleView.html?idxno=851134 [특징주] 외국인 '빛과전자' 매도 전환…기관 '삼성중공업·엘앤에프' 순... https://www",
+              "url": "https://t.me/characteristicstock/82399"
+            },
+            {
+              "title": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9...",
+              "summary": "[특징주] 국제유가 급등에 신재생에너지 업종 투심 개선…SK이터닉스, 9... https://www.ajunews.com/view/20260720140154764",
+              "url": "https://t.me/characteristicstock/82407"
+            },
+            {
+              "title": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락",
+              "summary": "삼성전자·SK하이닉스, 반도체주 약세 및 미-이란 긴장 고조로 프리마켓 5% 안팎 급락 https://m.stock.naver.com/investment/news/flashnews/029/0003037697 [관련 종목] 삼성전자 | SK하이닉스 | NVIDIA | TSMC",
+              "url": "https://t.me/moneythemestock/62539"
+            },
+            {
+              "title": "중동 긴장 고조에 따른 유가 급등, 신재생·해운주 동반 강세",
+              "summary": "중동 긴장 고조에 따른 유가 급등, 신재생·해운주 동반 강세 https://m.stock.naver.com/investment/news/flashnews/421/0009067680 [관련 종목] STX그린로지스 | 흥아해운 | HMM | 팬오션 | 한화솔루션",
+              "url": "https://t.me/moneythemestock/62549"
             }
           ]
         }
