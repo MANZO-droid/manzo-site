@@ -46,6 +46,8 @@ A(collect_gainers.py) 파이프라인은 코드가 완성돼 있고 git push까�
 | 게시까지 자동, 사후 검토 | 확인된 사실 — `git_push()`가 스크립트 안에서 조건 없이 자동 실행됨. 사람이 막는 지점(게이트)은 코드에 없음 |
 | Gemini 토큰 소진 시 중단 | **다르게 동작** — 429 오류 시 최대 4회, 최대 120초 대기하며 자동 재시도. 그래도 실패하면 중단이 아니라 `riseReason`/`chartAnalysis`를 빈 문자열로 저장하고 계속 진행 |
 | `financials`(재무 정보) | 코드는 항상 빈 값(`{}`)으로 저장하지만, 실제 `stock-analysis-data.json`(예: 2026-07-16자)에는 매출·영업이익 등 실제 수치가 채워져 있음 — **확인 필요**: 누가/어떤 절차로 이 값을 채우는지(수동? 다른 스크립트?) |
+| `chartAnalysis`의 수치 근거 | `analyze_stock()`의 Gemini 프롬프트에는 실제 `technicals`(ma5/ma20/volRatio/cross 등) 값이 전달되지 않음. 실제 사례(2026-07-13 기가레인)에서 `chartAnalysis`가 "골든크로스 형성"이라고 썼지만 같은 항목의 실제 `technicals.cross`는 `null` — 자세한 내용은 `tests/manzo-regression-2026-07-13.md` |
+| 뉴스 `summary` 필드 | 코드는 기사 본문을 400자로 요약해 저장해야 하는데(`fetch_article_summary`), 실제 데이터에는 수집된 기사 여러 건의 `summary`가 전부 빈 문자열로 저장된 사례가 있음(2026-07-13) — 추출 실패 원인 확인 필요 |
 
 ## 필요 도구
 확인된 사실:
