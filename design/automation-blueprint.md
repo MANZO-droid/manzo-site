@@ -38,7 +38,7 @@ index.html은 이 셋을 각각 `/stock-analysis-data.json`, `/api/top-gainers`,
 - Top10(B): 키움증권 API — 확인된 사실 (연동은 됐으나 2026-07-12 이후 정상 호출 안 됨)
 - 마켓 스코프(C): 텔레그램 공개 채널 13곳(`moneythemestock` 등) 크롤링 — 확인된 사실
 - 상승 이유: 종목당 네이버 뉴스 최대 15개 수집 후 Gemini 분석. **뉴스가 0건이면 분석 자체를 생략**(`riseReason`에 "뉴스를 수집하지 못했습니다" 문구만 남기고 `chartAnalysis`는 빈 값) — 뉴스 없다고 Gemini가 추정해서 지어내는 동작은 없음(복원 전 로컬 버전에는 이 위험한 "추정 지어내기" 동작이 있었으나, 정상 버전에는 없음)
-- API 키 보관 위치: `.env.local`(로컬 실행용, Git에 커밋 안 됨) + **GitHub Secrets**(GitHub Actions 실행용, `GEMINI_API_KEY` 등록 필요 — **확인 필요**: 등록됐는지 아직 확인 안 함, 등록 안 하면 GitHub Actions가 실패함)
+- API 키 보관 위치: `.env.local`(로컬 실행용, Git에 커밋 안 됨) + **GitHub Secrets**(GitHub Actions 실행용) — **확인 완료(2026-07-25)**: `GEMINI_API_KEY`가 Repository secret으로 이미 등록돼 있음(GitHub 저장소 Settings → Secrets and variables → Actions)
 
 ## 현재 단계
 A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까지 자동 실행됨. B(Kiwoom→Supabase)는 2026-07-12부터 원인 불명으로 멈춰 있음. C(마켓 스코프)는 GitHub Actions로 전환됐으나 기존 Cowork 예약 작업과 중복 실행 가능성이 있음.
@@ -67,7 +67,7 @@ A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까�
 - 작업 폴더: `E:\AI 스터디\만조그룹 2차`
 
 확인 필요 (`AUTOMATION_NOTES.md` §5 "사람이 해야 할 일" 그대로 옮김):
-1. GitHub Secrets에 `GEMINI_API_KEY` 등록 여부 확인 — 안 하면 GitHub Actions 워크플로우 둘 다 실패
+1. ~~GitHub Secrets에 `GEMINI_API_KEY` 등록 여부 확인~~ — **확인 완료(2026-07-25)**: GitHub 저장소 Settings → Secrets and variables → Actions에 `GEMINI_API_KEY`가 Repository secret으로 등록돼 있음(등록일 기준 5일 전, 즉 이 저장소 작업보다 먼저 등록됨). GitHub Actions 실행 자체가 이 이유로 실패하지는 않을 것으로 확인
 2. Vercel Cron(B)이 2026-07-12부터 멈춘 원인 확인 (Vercel 대시보드 로그)
 3. GitHub Actions 정상 작동 확인 후 **Windows 작업 스케줄러**와 **Cowork Scheduled Task(market-scope-daily-update)**를 꺼서 중복 실행 방지
 4. `krx-holidays-2026.json`을 한국거래소(KRX) 공식 2026년 휴장일 공지와 최종 대조
