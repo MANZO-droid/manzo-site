@@ -4,14 +4,14 @@
 
 ## 지금 들어있는 것 (공통 샘플, 가상)
 
-- `N-01-regular-meeting.txt` — 발화자 구분만 된 가상 정기회의 대화 (정상 입력 1)
-- `N-02-short-call.txt` — 발화자 구분만 된 가상 짧은 통화 대화 (정상 입력 2, 표현·형식만 다름)
+- `N-01-top10-api-snapshot.txt` — 가상 당일 상승률 Top10 원시 자료, 표 형식 (정상 입력 1)
+- `N-02-top10-text-list.txt` — 같은 날짜·같은 종목을 텔레그램 채널 요약체로 옮긴 자료 (정상 입력 2, 표현·형식만 다름)
 
-두 파일 모두 강의 `강의자료/common-sample-pack/`의 원본을 그대로 복사한 것이며, 모든 인물·조직·일정·숫자는 수업용 가상 정보입니다. 원본은 `강의자료/common-sample-pack/`에도 그대로 남아 있습니다.
+두 파일 모두 강의 `강의자료/common-sample-pack/`의 원본을 그대로 복사한 것이며, 모든 종목명·수치·뉴스 문구는 수업용 가상 정보입니다. 원본은 `강의자료/common-sample-pack/`에도 그대로 남아 있습니다.
 
 ## 목 입력 (semiclass-mock-input-generator로 생성)
 
-- `E-01-no-speaker-labels.txt` — 발화자 구분이 없고 담당자·일정이 빠진 형식 오류 목 입력
+- `E-01-missing-classification.txt` — 종목코드·구분(우선주/관리종목/ETF/정리매매)이 표시되지 않은 형식 오류 목 입력
 - `E-02-duplicate-of-N-01.txt` — N-01과 내용이 같은 중복 제출 목 입력
 
 두 파일의 시험 목적·기대 행동은 `tests/lesson-02-results.md`의 매니페스트 표에 있습니다.

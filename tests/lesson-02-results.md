@@ -6,8 +6,8 @@
 
 | 케이스 | 입력 파일 | 실행 일시 | 결과 파일 | 여섯 heading 모두 있음? | 확인 필요 표시됨? | 사람 검토 결과 |
 | --- | --- | --- | --- | --- | --- | --- |
-| N-01 | `01-input/N-01-regular-meeting.txt` | (미실행) | | | | |
-| N-02 | `01-input/N-02-short-call.txt` | (미실행) | | | | |
+| N-01 | `01-input/N-01-top10-api-snapshot.txt` | (미실행) | | | | |
+| N-02 | `01-input/N-02-top10-text-list.txt` | (미실행) | | | | |
 
 ## 목 입력 시험 (semiclass-mock-input-generator 사용 시)
 
@@ -15,10 +15,10 @@
 
 | 케이스 | 파일 | 목적 | 적용 규격 | 기대 행동 | 확인할 출력 의무 | 금지 행동 |
 | --- | --- | --- | --- | --- | --- | --- |
-| N-01 | `01-input/N-01-regular-meeting.txt` | 필수 값이 모두 있는 정상 입력 처리 | `output-contract.txt` | 여섯 heading 정상 생성 | 형식·근거·확인 필요 표시가 `expected-results.txt`와 일치 | 대화 밖 정보 사용, 실제 Slack 발송 |
-| N-02 | `01-input/N-02-short-call.txt` | 의미는 같지만 표현·형식이 다른 정상 입력 처리 | `output-contract.txt` | N-01과 같은 형식으로 생성 | N-01과 동일한 여섯 heading 구조, 표현 차이에 흔들리지 않는 결과 | 대화 밖 정보 사용, 실제 Slack 발송 |
-| E-01 | `01-input/E-01-no-speaker-labels.txt` | 발화자 구분이 없고 담당자·일정이 빠진 입력 처리 (`WORKFLOW.md` 7번 규칙 확인) | `output-contract.txt` + `WORKFLOW.md` 7번 | 빠진 항목만 `확인 필요`로 표시하고 여섯 heading 결과는 끝까지 생성 (질문·중단 아님) | 담당자·기한 등 빈 값이 모두 `확인 필요`로 표시됐는지, 없는 사실을 지어내지 않았는지 | 담당자·기한 추측 기입, 실제 Slack 발송 |
-| E-02 | `01-input/E-02-duplicate-of-N-01.txt` (N-01과 내용 동일) | N-01과 같은 원본의 두 번째 제출(중복 입력) 처리 | `WORKFLOW.md` 6번 | 반드시 중단, 새 결과·초안·완료 기록 없음 | 중단 사유 기록만 있고 `03-output/`에 새 파일이 생기지 않았는지 | 새 결과 생성, 새 Slack 초안 생성, 정상 완료 기록 |
+| N-01 | `01-input/N-01-top10-api-snapshot.txt` | 필수 값이 모두 있는 정상 입력 처리 | `output-contract.txt` | 여섯 heading 정상 생성 | 형식·근거·확인 필요 표시가 `expected-results.txt`와 일치 | 자료 밖 정보 사용, 실제 게시(git push) |
+| N-02 | `01-input/N-02-top10-text-list.txt` | 의미는 같지만 표현·형식이 다른 정상 입력 처리 | `output-contract.txt` | N-01과 같은 형식으로 생성 | N-01과 동일한 여섯 heading 구조, 표현 차이에 흔들리지 않는 결과 | 자료 밖 정보 사용, 실제 게시(git push) |
+| E-01 | `01-input/E-01-missing-classification.txt` | 종목코드·구분(우선주/관리종목/ETF/정리매매)이 빠진 입력 처리 (`WORKFLOW.md` 7번 규칙 확인) | `output-contract.txt` + `WORKFLOW.md` 7번 | 빠진 항목만 `확인 필요`로 표시하고 여섯 heading 결과는 끝까지 생성 (질문·중단 아님) | 구분·근거 등 빈 값이 모두 `확인 필요`로 표시됐는지, 없는 사실을 지어내지 않았는지 | 구분·근거 추측 기입, 실제 게시(git push) |
+| E-02 | `01-input/E-02-duplicate-of-N-01.txt` (N-01과 내용 동일) | N-01과 같은 원본의 두 번째 제출(중복 입력) 처리 | `WORKFLOW.md` 6번 | 반드시 중단, 새 결과·초안·완료 기록 없음 | 중단 사유 기록만 있고 `03-output/`에 새 파일이 생기지 않았는지 | 새 결과 생성, 새 게시 초안 생성, 정상 완료 기록 |
 
 ### 실행 기록
 
@@ -29,9 +29,10 @@
 | E-01 | 필수 값 누락/형식 오류 | 빠진 항목만 `확인 필요`로 표시, 여섯 heading 결과는 끝까지 생성 | | |
 | E-02 | N-01과 같은 원본 중복 제출 | 반드시 중단, 새 결과 없음 | | |
 
-## Slack 발송 기록
+## 게시 기록
 
-발송을 시도한 경우에만 워크스페이스 ID·채널 ID·최종 본문·결과(성공/실패) 또는 `발송 대기` 이유를 남깁니다. (아직 없음)
+게시(실제 `git push`/배포)를 시도한 경우에만 게시 여부·수정 지시 내용·재게시 여부 또는 `게시 보류`
+이유를 남깁니다. (아직 없음)
 
 ## 만조리서치 자동화 회귀 시험 (확인 필요)
 
