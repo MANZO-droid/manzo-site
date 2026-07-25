@@ -345,6 +345,10 @@ def fetch_stock_news(ticker: str, target_date: str, max_articles: int = 15) -> l
 
 # ─── Gemini 분석 ──────────────────────────────────────────────────────────────
 
+class GeminiQuotaExhausted(Exception):
+    """Gemini 429가 재시도 후에도 풀리지 않을 때 발생시켜 전체 실행을 중단시킨다."""
+
+
 def call_gemini_with_retry(client, prompt: str, max_retries: int = 4) -> str:
     wait = 60
     for attempt in range(max_retries):
@@ -367,7 +371,11 @@ def call_gemini_with_retry(client, prompt: str, max_retries: int = 4) -> str:
             else:
                 print(f"    [Gemini 오류] {e}")
                 return ""
-    return ""
+    raise GeminiQuotaExhausted(
+        f"Gemini 429(RESOURCE_EXHAUSTED)가 {max_retries}회 재시도 후에도 풀리지 않았습니다. "
+        "할당량이 소진된 것으로 보여 자동 실행을 중단합니다. 할당량 회복 후 사람이 "
+        "직접(workflow_dispatch 등으로) 다시 실행해야 합니다."
+    )
 
 
 def analyze_stock(client, name: str, ticker: str, date_str: str,
@@ -651,13 +659,20 @@ def main():
     with open(JSON_PATH, encoding="utf-8") as f:
         data = json.load(f)
 
-    if mode == "daily":
-        if not unattended and weekday >= 5:
-            print(f"[skip] {date_str}은 주말입니다. --mode daily 강제 실행이 아니면 건너뜁니다.")
-            return
-        entry = run_daily(client, date_str)
-    else:
-        entry = run_weekly(client, date_str, week_start, week_end)
+    try:
+        if mode == "daily":
+            if not unattended and weekday >= 5:
+                print(f"[skip] {date_str}은 주말입니다. --mode daily 강제 실행이 아니면 건너뜁니다.")
+                return
+            entry = run_daily(client, date_str)
+        else:
+            entry = run_weekly(client, date_str, week_start, week_end)
+    except GeminiQuotaExhausted as e:
+        # 여기서 멈추면 stock-analysis-data.json 저장·git_push()는 실행되지 않는다 -
+        # 부분적으로만 분석된 데이터를 커밋하지 않기 위함. 워크플로우는 실패로
+        # 표시되고, 사람이 할당량 회복 후 "Run workflow"로 직접 다시 실행해야 한다.
+        print(f"\n[중단] {e}")
+        sys.exit(1)
 
     data["dates"][date_str] = entry
     data["latestDate"] = max(data["dates"].keys())
