@@ -273,8 +273,15 @@ def fetch_article_summary(url: str) -> str:
     try:
         r = requests.get(url, headers=HEADERS, timeout=8)
         r.encoding = "euc-kr"
+        # finance.naver.com/item/news_read.naver는 실제 기사를 주지 않고
+        # <SCRIPT>top.location.href='https://n.news.naver.com/...'</SCRIPT> 로만 응답한다.
+        # requests는 이 JS 리다이렉트를 따라가지 않으므로 직접 파싱해서 재요청한다.
+        m = re.search(r"top\.location\.href=['\"]([^'\"]+)['\"]", r.text)
+        if m:
+            r = requests.get(m.group(1), headers=HEADERS, timeout=8)
+            r.encoding = r.apparent_encoding or "utf-8"
         soup = BeautifulSoup(r.text, "html.parser")
-        content = soup.select_one("#newsct_article, .newsct_article, #articeBody, .article_body, #content")
+        content = soup.select_one("#dic_area, #newsct_article, .newsct_article, #articeBody, .article_body, #content")
         text = content.get_text(" ", strip=True) if content else soup.get_text(" ", strip=True)
         return re.sub(r"\s+", " ", text)[:400]
     except Exception:
@@ -361,6 +368,7 @@ def call_gemini_with_retry(client, prompt: str, max_retries: int = 4) -> str:
 
 def analyze_stock(client, name: str, ticker: str, date_str: str,
                   change_pct: float, articles: list[dict],
+                  technicals: dict | None = None,
                   is_weekly: bool = False) -> tuple[str, str]:
     if not articles:
         return f"{name}에 대한 뉴스 기사를 수집하지 못했습니다.", ""
@@ -369,6 +377,15 @@ def analyze_stock(client, name: str, ticker: str, date_str: str,
     arts_text = "\n".join(
         f"[기사 {i}] ({a['date']}) {a['title']}\n{a['summary']}"
         for i, a in enumerate(articles, 1)
+    )
+
+    t = technicals or {}
+    technicals_section = (
+        f"ma5={t.get('ma5')}, ma20={t.get('ma20')}, ma60={t.get('ma60')}, ma120={t.get('ma120')}, "
+        f"현재가={t.get('current')}, 52주고가={t.get('w52High')}, 52주저가={t.get('w52Low')}, "
+        f"고가대비={t.get('pctFromHigh')}%, 저가대비={t.get('pctFromLow')}%, "
+        f"거래량비율(20일평균 대비)={t.get('volRatio')}, 추세={t.get('trend')}, "
+        f"골든/데드크로스 발생 여부={t.get('cross') or '크로스 없음'}"
     )
 
     prompt = f"""당신은 한국 주식 전문 애널리스트입니다.
@@ -381,17 +398,23 @@ def analyze_stock(client, name: str, ticker: str, date_str: str,
 === 실제 수집 기사 {len(articles)}개 ===
 {arts_text}
 
+=== 실제 계산된 기술적 지표 (차트 분석은 반드시 이 수치만 근거로 작성) ===
+{technicals_section}
+
 아래 형식으로 작성하세요:
 
 [riseReason]
 기사에서 확인된 핵심 급등 원인을 3~5문장으로 서술하세요.
 - 계약금액·수주액·수익률 등 구체적 수치가 있으면 반드시 포함
 - 추측이 아닌 기사에서 확인된 사실만 작성
+- 위 기사에 없는 사건(공시 종류, 계약 상대방, 날짜, 금액 등)은 절대 지어내지 마세요
 - 200자 이상
 
 [chartAnalysis]
-이동평균선 배열, 거래량 특이점, 지지·저항 구간 등 기술적 특징과
-향후 주목할 가격대 또는 리스크 요인을 150자 이상으로 작성하세요.
+위 "실제 계산된 기술적 지표"에 있는 수치만 근거로 이동평균선 배열, 거래량 특이점,
+지지·저항 구간 등 기술적 특징과 향후 주목할 가격대 또는 리스크 요인을 150자 이상으로
+작성하세요. "골든/데드크로스 발생 여부"가 "크로스 없음"이면 골든크로스나 데드크로스가
+발생했다고 쓰지 마세요.
 """
 
     text = call_gemini_with_retry(client, prompt)
@@ -497,7 +520,8 @@ def run_daily(client, date_str: str):
 
         # Gemini 분석
         print(f"     Gemini 분석 중...")
-        rise, chart = analyze_stock(client, name, ticker, date_str, g["changePct"], articles)
+        rise, chart = analyze_stock(client, name, ticker, date_str, g["changePct"], articles,
+                                    technicals=g["technicals"])
         g["riseReason"] = rise
         g["chartAnalysis"] = chart
         time.sleep(1)
@@ -536,7 +560,8 @@ def run_weekly(client, date_str: str, from_date: str, to_date: str):
         print(f"     기사 {len(articles)}개")
         g["news"] = [{"title": a["title"], "summary": a["summary"], "url": a["url"]} for a in articles[:5]]
 
-        rise, chart = analyze_stock(client, name, ticker, date_str, g["changePct"], articles, is_weekly=True)
+        rise, chart = analyze_stock(client, name, ticker, date_str, g["changePct"], articles,
+                                    technicals=g["technicals"], is_weekly=True)
         g["riseReason"] = rise
         g["chartAnalysis"] = chart
         time.sleep(1)

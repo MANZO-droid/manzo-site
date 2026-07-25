@@ -1,65 +1,79 @@
 # 만조리서치 Top10 종목 분석 자동화 — 설계도
 
 작성일: 2026-07-25
-갱신: 2026-07-25 (실제 코드 `scripts/collect_gainers.py`, `scripts/collect_market_scope.py`, `api/cron-update-gainers.js`, `vercel.json`, `scripts/setup_scheduler.ps1` 확인 후)
+갱신: 2026-07-25 (실제 코드 확인 후) → 재갱신: 2026-07-25 (`AUTOMATION_NOTES.md`와 `feature/trading-day-automation` 브랜치 커밋 확인 후 — 최초 갱신판이 로컬에서 되돌려져 있던 옛 버전을 기준으로 쓰여 있어 바로잡음)
 
 ## 업무
-한국 증시 장 마감 기준 당일 주가 상승률 Top10 종목을 리스트업하고, 상승 이유와 차트를 분석해 만조리서치 홈페이지 '당일 상승률 상위 10위' 섹션에 매일 새 데이터로 반영한다. 토요일에는 한 주간 상승률 Top10을 같은 방식으로 같은 섹션에 반영한다.
+한국 증시 장 마감 기준 당일 주가 상승률 Top10 종목을 리스트업하고, 상승 이유와 차트를 분석해 만조리서치 홈페이지 '당일 상승률 상위 10위' 섹션에 매일 새 데이터로 반영한다. 토요일(또는 연휴 시 정해진 규칙에 따른 첫 휴장일)에는 한 주간 상승률 Top10을 같은 방식으로 같은 섹션에 반영한다.
 
-현재 불편: 예전에는 클로드코드 스케줄로 자동화를 시도했지만 끝까지 자동 완료된 적이 없었음. 지금은 **Windows 작업 스케줄러 + 로컬 파이썬 스크립트** 방식으로 바뀌어 있음(아래 "코드 기준 확인된 사실" 참고).
+## 중요: 한 번 발견한 걸 다시 잃어버릴 뻔한 이력
 
-## 코드로 확인한 실제 구조 (2026-07-25)
+`scripts/collect_gainers.py`, `scripts/collect_market_scope.py`, `api/cron-update-gainers.js`는 한 번
+`feature/trading-day-automation` 브랜치에서 휴장일 자동 판별(krx_calendar) 연동까지 끝나 커밋됐었는데,
+이후 로컬에서 이 세 파일만 그 연동이 빠진 옛 버전으로 되돌아가 있었습니다(원인 불명 — 사용자도 의도한
+게 아니라고 확인). 2026-07-25에 이 되돌림을 발견해 커밋된 상태로 복원했습니다. 아래 내용은 **복원된
+정상 상태** 기준입니다. 자세한 배경은 `AUTOMATION_NOTES.md`를 참고하세요.
 
-실행 중인 자동화는 하나가 아니라 **세 갈래**로 나뉘어 있습니다.
+## 코드로 확인한 실제 구조 (2026-07-25, 복원 후 기준)
+
+실행 중인 자동화는 하나가 아니라 **세 갈래**로 나뉘어 있고, 각 갈래마다 트리거가 이중으로 걸려 있는
+곳도 있습니다.
 
 | 갈래 | 트리거 | 데이터 소스 | 저장 위치 |
 | --- | --- | --- | --- |
-| A. 상승률/거래대금 Top10 + 종목분석 | Windows 작업 스케줄러(`scripts/setup_scheduler.ps1`) — 평일 16:00 `--mode daily`, 토요일 16:00 `--mode weekly` | 네이버 증권(상승률·거래대금 크롤링), 네이버 fchart(OHLCV), 네이버 금융 뉴스, Gemini(`gemini-2.5-flash`) | `stock-analysis-data.json` (실행 스크립트 안에서 git add/commit/push까지 자동 실행) |
-| B. Kiwoom API → Supabase 랭킹 | Vercel Cron(`vercel.json`, 매일 07:00 UTC = 16:00 KST) → `api/cron-update-gainers.js` | 키움증권 API(`api/_kiwoom.js`) | Supabase `daily_gainers` 테이블 (프론트는 `/api/top-gainers`로 읽음) — **확인 필요**: 메모 기록상 "8050 지정단말기 인증 실패"로 막혀 있었는데 지금 정상 동작하는지 |
-| C. 마켓 스코프(테마·종목 언급) | **확인 필요** — `scripts/collect_market_scope.py`는 있으나 `setup_scheduler.ps1`에 등록된 예약 작업이 없음 | 텔레그램 공개 채널 13곳 크롤링, Gemini(이슈 탐지) | `market-scope-data.json` |
+| A. 상승률/거래대금 Top10 + 종목분석 | **GitHub Actions**(`.github/workflows/gainers-daily.yml`, 매일 07:00 UTC=16:00 KST, 인자 없이 실행 → `krx_calendar.get_weekly_report_trigger()`가 개장일 여부·daily/weekly를 자동 판단) — 원래 있던 **Windows 작업 스케줄러**(`scripts/setup_scheduler.ps1`, 평일/토요일 16:00)는 중복 실행 방지를 위해 꺼야 함(아직 안 끔, 확인 필요) | 네이버 증권(상승률·거래대금 크롤링), 네이버 fchart(OHLCV), 네이버 금융 뉴스, Gemini(`gemini-2.0-flash`) | `stock-analysis-data.json` (실행 스크립트 안에서 git add/commit/push까지 자동 실행) |
+| B. Kiwoom API → Supabase 랭킹 | **Vercel Cron**(`vercel.json`, 매일 07:00 UTC=16:00 KST) → `api/cron-update-gainers.js` (개장일 아니면 `isTradingDay()`로 스킵) | 키움증권 API(`api/_kiwoom.js`) | Supabase `daily_gainers` 테이블(프론트는 `/api/top-gainers`로 읽음) — **확인 필요**: `AUTOMATION_NOTES.md` 기준 2026-07-12부터 갱신이 멈춰 있음(원인 미상, Vercel 대시보드 확인 필요) |
+| C. 마켓 스코프(테마·종목 언급) | **GitHub Actions**(`.github/workflows/market-scope-daily.yml`, 개장일에만 실행) — 원래 있던 **Cowork Scheduled Task**(`market-scope-daily-update`, 로컬 새벽 5시)는 중복 실행 방지를 위해 꺼야 함(확인 필요) | 텔레그램 공개 채널 13곳 크롤링, Gemini(이슈 탐지) | `market-scope-data.json` |
 
 index.html은 이 셋을 각각 `/stock-analysis-data.json`, `/api/top-gainers`, `market-scope-data.json`으로 fetch해서 화면에 채웁니다.
 
 ## 시작 신호
-- A(Top10+분석): 평일 16:00 / 토요일 16:00, **Windows 작업 스케줄러** — 확인된 사실 (`scripts/setup_scheduler.ps1`)
-- B(Kiwoom→Supabase): 매일 07:00 UTC(=16:00 KST), **Vercel Cron** — 확인된 사실 (`vercel.json`)
-- C(마켓 스코프): 확인 필요 — 예약 등록이 안 보임, 지금 누가 어떻게 실행하는지 확인 필요
-- 확인 필요: "토요일과 이어진 앞선 요일이 휴일인 연휴면 평일 다음 첫 휴일 기준"이라는 조건은 코드에 없음(휴일 캘린더 연동 안 됨). `--mode daily`가 주말이면 그냥 건너뜀(skip)만 함.
+- A(Top10+분석): **GitHub Actions**가 매일 07:00 UTC 호출하고, 실제 발행 여부·daily/weekly 모드는 `krx_calendar.get_weekly_report_trigger()`가 KRX 휴장일 캘린더(`krx-holidays-2026.json`) 기준으로 자동 판단 — 확인된 사실 (`AUTOMATION_NOTES.md` §1, §3에 날짜별 테스트 케이스로 검증됨)
+- "토요일과 이어진 앞선 요일이 휴일인 연휴면 평일 다음 첫 휴일 기준" 규칙 — **이미 구현·검증됨**. "토요일 → 그 전 금요일이 휴장이면 금요일 당일 발행, 목·금·토 연속 휴장이면 목요일(연휴 시작일) 발행"으로 해석해 구현. 다만 이 해석은 원 스펙 문장이 다소 모순돼 보여 사람이 판단해 정한 것이라 — **확인 필요**: 이 해석이 실제 의도와 맞는지 한 번 확인
+- B(Kiwoom→Supabase): 매일 07:00 UTC(=16:00 KST), Vercel Cron — 확인된 사실, 다만 2026-07-12 이후 실제로 갱신이 안 되고 있음
+- C(마켓 스코프): GitHub Actions, 개장일에만 — 확인된 사실
 
 ## 입력자료
 - Top10(A): 네이버 증권 상승률/거래대금 페이지 크롤링, 네이버 fchart(OHLCV 120일) — 확인된 사실
-- Top10(B): 키움증권 API — 확인된 사실 (연동은 됐으나 정상 호출 여부는 확인 필요)
+- Top10(B): 키움증권 API — 확인된 사실 (연동은 됐으나 2026-07-12 이후 정상 호출 안 됨)
 - 마켓 스코프(C): 텔레그램 공개 채널 13곳(`moneythemestock` 등) 크롤링 — 확인된 사실
-- 상승 이유: 종목당 네이버 뉴스 최대 15개 수집 후 Gemini 분석(뉴스 없으면 Gemini가 추정으로 작성) — 확인된 사실
-- API 키 보관 위치: `.env.local` (Git에 커밋되지 않음, `.gitignore`에 `.env*` 포함 확인) — 확인된 사실. `GEMINI_API_KEY` 필요.
+- 상승 이유: 종목당 네이버 뉴스 최대 15개 수집 후 Gemini 분석. **뉴스가 0건이면 분석 자체를 생략**(`riseReason`에 "뉴스를 수집하지 못했습니다" 문구만 남기고 `chartAnalysis`는 빈 값) — 뉴스 없다고 Gemini가 추정해서 지어내는 동작은 없음(복원 전 로컬 버전에는 이 위험한 "추정 지어내기" 동작이 있었으나, 정상 버전에는 없음)
+- API 키 보관 위치: `.env.local`(로컬 실행용, Git에 커밋 안 됨) + **GitHub Secrets**(GitHub Actions 실행용, `GEMINI_API_KEY` 등록 필요 — **확인 필요**: 등록됐는지 아직 확인 안 함, 등록 안 하면 GitHub Actions가 실패함)
 
 ## 현재 단계
-A(collect_gainers.py) 파이프라인은 코드가 완성돼 있고 git push까지 자동 실행됨. B(Kiwoom→Supabase)는 메모 기록상 인증 문제로 막혀 있었음(재확인 필요). C(마켓 스코프)는 코드는 있으나 정기 실행 여부가 확인 필요 상태.
+A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까지 자동 실행됨. B(Kiwoom→Supabase)는 2026-07-12부터 원인 불명으로 멈춰 있음. C(마켓 스코프)는 GitHub Actions로 전환됐으나 기존 Cowork 예약 작업과 중복 실행 가능성이 있음.
 
-## AI 역할 — 설계와 실제 코드가 다른 점
+## AI 역할 — 설계와 실제 코드가 다른 점 (복원 후 기준)
 
 | 설계(로드맵 1강) | 실제 코드(`collect_gainers.py`) |
 | --- | --- |
-| 우선주·관리종목·ETF·정리매매 종목 자동 제외 | **미구현** — `get_daily_top10()`은 등락률 정렬 + 종목코드 중복 제거만 하고, 우선주/관리종목/ETF/정리매매 필터링 로직이 없음 |
-| 필터링 후 Top10 10개 미만이면 중단 | **미구현** — 몇 개가 모이든 그대로 진행 (부족해도 중단 안 함) |
-| 상승 이유/차트 분량 250자 이상 | 실제 Gemini 프롬프트 기준은 riseReason 200자 이상, chartAnalysis 600자 이상 (250자 기준과 다름) |
+| 우선주·관리종목·ETF·정리매매 종목 자동 제외 | **미구현** — `get_daily_top10()`은 등락률 정렬 + 종목코드 중복 제거만 하고, 필터링 로직이 없음 (krx_calendar 복원과는 무관한, 여전히 남아있는 별개의 미구현 항목) |
+| 필터링 후 Top10 10개 미만이면 중단 | **미구현** — 몇 개가 모이든 그대로 진행 |
+| 상승 이유/차트 분량 250자 이상 | 실제 Gemini 프롬프트 기준은 riseReason 200자 이상, chartAnalysis 150자 이상 (250자 기준과 다름) |
 | 게시까지 자동, 사후 검토 | 확인된 사실 — `git_push()`가 스크립트 안에서 조건 없이 자동 실행됨. 사람이 막는 지점(게이트)은 코드에 없음 |
-| Gemini 토큰 소진 시 중단 | **다르게 동작** — 429 오류 시 최대 4회, 최대 120초 대기하며 자동 재시도. 그래도 실패하면 중단이 아니라 `riseReason`/`chartAnalysis`를 빈 문자열로 저장하고 계속 진행 |
-| `financials`(재무 정보) | 코드는 항상 빈 값(`{}`)으로 저장하지만, 실제 `stock-analysis-data.json`(예: 2026-07-16자)에는 매출·영업이익 등 실제 수치가 채워져 있음 — **확인 필요**: 누가/어떤 절차로 이 값을 채우는지(수동? 다른 스크립트?) |
-| `chartAnalysis`의 수치 근거 | `analyze_stock()`의 Gemini 프롬프트에는 실제 `technicals`(ma5/ma20/volRatio/cross 등) 값이 전달되지 않음. 실제 사례(2026-07-13 기가레인)에서 `chartAnalysis`가 "골든크로스 형성"이라고 썼지만 같은 항목의 실제 `technicals.cross`는 `null` — 자세한 내용은 `tests/manzo-regression-2026-07-13.md` |
-| 뉴스 `summary` 필드 | 코드는 기사 본문을 400자로 요약해 저장해야 하는데(`fetch_article_summary`), 실제 데이터에는 수집된 기사 여러 건의 `summary`가 전부 빈 문자열로 저장된 사례가 있음(2026-07-13) — 추출 실패 원인 확인 필요 |
+| Gemini 토큰 소진 시 중단 | **다르게 동작** — 429 오류 시 재시도(대기 시간은 오류 메시지 파싱, 최대 누적 300초). 그래도 실패하면 중단이 아니라 빈 문자열로 계속 진행 |
+| `financials`(재무 정보) | 코드는 항상 빈 값(`{}`)으로 저장하지만, 실제 `stock-analysis-data.json`(예: 2026-07-16자)에는 매출·영업이익 등 실제 수치가 채워져 있음 — **확인 필요**: 누가/어떤 절차로 이 값을 채우는지 |
+| `chartAnalysis`의 수치 근거 | **수정함(2026-07-25)** — 원래 `analyze_stock()`의 Gemini 프롬프트에 실제 `technicals` 값이 전달되지 않아, 전체 120건 중 크로스 언급 10건 중 7건이 실제 `technicals.cross`와 다르게 서술됨(예: 실제 데드크로스인데 골든크로스로 서술). 프롬프트에 실제 수치를 전달하고 "크로스 없음이면 지어내지 말라"는 지시를 추가함. 실제 Gemini 재실행으로는 아직 검증 못함 — `tests/manzo-fixes-2026-07-25.md` 참고 |
+| 뉴스 `summary` 필드 | **수정함(2026-07-25)** — 원인은 네이버가 `news_read.naver` 주소를 JS 리다이렉트로 바꿔서 실제 기사 페이지(`n.news.naver.com/mnews/article/...`)를 못 읽고 있었기 때문. `fetch_article_summary()`가 이 리다이렉트를 따라가도록 고쳐 실제 URL로 재검증 완료(빈 문자열 → 실제 기사 186자) |
+| 기사 있는데도 근거 없는 사실 서술 | **완화(2026-07-25)** — 실제 사례(기가레인 2026-07-13)에서 수집된 기사 5건에 없는 "조회공시" 언급이 riseReason에 등장. 프롬프트에 "기사에 없는 사건(공시 종류·계약 상대방·날짜·금액)은 지어내지 말라"는 지시를 추가. (뉴스 0건일 때 지어내는 문제는 위 "입력자료" 항목대로 애초에 분석을 생략하므로 복원 후에는 해당 없음) |
 
 ## 필요 도구
 확인된 사실:
 - 네이버 증권/뉴스 크롤링 (`requests` + `BeautifulSoup`)
-- Gemini API (`google-genai`, 모델 `gemini-2.5-flash`)
+- Gemini API (`google-genai`, 모델 `gemini-2.0-flash`)
 - 키움증권 API 연동 코드 존재 (`api/_kiwoom.js`)
-- 스케줄 실행: Windows 작업 스케줄러(A) + Vercel Cron(B)
+- 거래일 판단: `lib/krx-calendar.js`(JS) + `scripts/krx_calendar.py`(Python), 둘 다 `krx-holidays-2026.json`을 읽음
+- 스케줄 실행: **GitHub Actions**(A, C) + Vercel Cron(B)
 - 작업 폴더: `E:\AI 스터디\만조그룹 2차`
 
-확인 필요:
+확인 필요 (`AUTOMATION_NOTES.md` §5 "사람이 해야 할 일" 그대로 옮김):
+1. GitHub Secrets에 `GEMINI_API_KEY` 등록 여부 확인 — 안 하면 GitHub Actions 워크플로우 둘 다 실패
+2. Vercel Cron(B)이 2026-07-12부터 멈춘 원인 확인 (Vercel 대시보드 로그)
+3. GitHub Actions 정상 작동 확인 후 **Windows 작업 스케줄러**와 **Cowork Scheduled Task(market-scope-daily-update)**를 꺼서 중복 실행 방지
+4. `krx-holidays-2026.json`을 한국거래소(KRX) 공식 2026년 휴장일 공지와 최종 대조
+5. 매년 초 `krx-holidays-2027.json` 등 다음 해 휴장일 파일 추가 필요(자동화 안 돼 있음, 안 하면 평일 휴장일이 조용히 누락됨)
+6. `scripts/audit_volume_gaps.py`를 실제 프로덕션 데이터로 재실행해 `volumeStocks` 백필 필요 날짜 확인
 - 뉴스 크롤링 대상 사이트의 이용약관/저작권 관련 확인 여부
-- Kiwoom/Supabase(B) 갈래가 지금도 유지보수 대상인지, 아니면 A(JSON 기반)로 대체된 것인지
 
 ## 사람 검토
 확인된 사실(설계 의도): 검토 시점은 최종 게시(배포) 이후 사후 검토, 검토 항목은 상승 이유 분석의 사실관계·분량·종목 필터링 누락.
@@ -79,7 +93,7 @@ A(collect_gainers.py) 파이프라인은 코드가 완성돼 있고 git push까�
 확인 필요: 위 중단 조건 중 "제미나이 토큰 소진"과 "필터링 후 10개 미만"은 실제 코드 동작과 다름(위 표 참고) — 설계대로 코드를 고칠지, 아니면 지금 코드 동작에 맞게 성공 기준을 다시 쓸지 결정 필요.
 
 ## 다음 최소 단위
-Top10 필터링 로직(우선주·관리종목·ETF·정리매매 제외)을 `get_daily_top10()`에 실제로 추가하는 것이 아직 안 끝난 가장 작은 단위 작업.
+Top10 필터링 로직(우선주·관리종목·ETF·정리매매 제외)을 `get_daily_top10()`에 실제로 추가하는 것이 아직 안 끝난 가장 작은 단위 작업. 그 전에 위 "필요 도구 — 확인 필요" 1~3번(GitHub Secrets 등록, Vercel Cron 원인, 중복 스케줄 끄기)부터 먼저 정리하는 걸 권장.
 
 ---
-※ 이 문서는 설계도이며, 위 "코드로 확인한 실제 구조" 절 이외의 실제 실행은 각 스크립트/함수 파일에서 이뤄진다. 새로 발견된 "확인 필요"는 코드를 고치기 전에 먼저 정리할 것을 권장한다.
+※ 이 문서는 설계도이며, 위 "코드로 확인한 실제 구조" 절 이외의 실제 실행은 각 스크립트/함수 파일에서 이뤄진다. 더 자세한 배경·검증 근거는 `AUTOMATION_NOTES.md`를 참고할 것.
