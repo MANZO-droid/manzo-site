@@ -26,6 +26,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: gainers-daily
+  cancel-in-progress: false
+
 jobs:
   collect-gainers:
     runs-on: ubuntu-latest
