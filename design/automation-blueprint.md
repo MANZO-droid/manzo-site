@@ -22,7 +22,7 @@
 | 갈래 | 트리거 | 데이터 소스 | 저장 위치 |
 | --- | --- | --- | --- |
 | A. 상승률/거래대금 Top10 + 종목분석 | **GitHub Actions**(`.github/workflows/gainers-daily.yml`, 매일 07:00 UTC=16:00 KST, 인자 없이 실행 → `krx_calendar.get_weekly_report_trigger()`가 개장일 여부·daily/weekly를 자동 판단) — 원래 있던 **Windows 작업 스케줄러**(`scripts/setup_scheduler.ps1`, 평일/토요일 16:00)는 중복 실행 방지를 위해 꺼야 함(아직 안 끔, 확인 필요) | 네이버 증권(상승률·거래대금 크롤링), 네이버 fchart(OHLCV), 네이버 금융 뉴스, Gemini(`gemini-2.0-flash`) | `stock-analysis-data.json` (실행 스크립트 안에서 git add/commit/push까지 자동 실행) |
-| B. Kiwoom API → Supabase 랭킹 | **Vercel Cron**(`vercel.json`, 매일 07:00 UTC=16:00 KST) → `api/cron-update-gainers.js` (개장일 아니면 `isTradingDay()`로 스킵) | 키움증권 API(`api/_kiwoom.js`) | Supabase `daily_gainers` 테이블(프론트는 `/api/top-gainers`로 읽음) — **확인 필요**: `AUTOMATION_NOTES.md` 기준 2026-07-12부터 갱신이 멈춰 있음(원인 미상, Vercel 대시보드 확인 필요) |
+| B. Kiwoom API → Supabase 랭킹 | **꺼짐(2026-07-25)** — 원래 Vercel Cron(`vercel.json`, 매일 07:00 UTC=16:00 KST)이었으나, 키움 "지정단말기(8050)" 인증 실패로 13일 연속 실패해 크론 등록 자체를 껐음(코드는 유지, 커밋 `bde1de2`) | 키움증권 API(`api/_kiwoom.js`) | Supabase `daily_gainers` 테이블(프론트는 `/api/top-gainers`로 읽음) — 2026-07-12 이후 갱신 없음(원인 확인됨, 재개는 지정단말기 해제 후) |
 | C. 마켓 스코프(테마·종목 언급) | **GitHub Actions**(`.github/workflows/market-scope-daily.yml`, 개장일에만 실행) — 원래 있던 **Cowork Scheduled Task**(`market-scope-daily-update`, 로컬 새벽 5시)는 중복 실행 방지를 위해 꺼야 함(확인 필요) | 텔레그램 공개 채널 13곳 크롤링, Gemini(이슈 탐지) | `market-scope-data.json` |
 
 index.html은 이 셋을 각각 `/stock-analysis-data.json`, `/api/top-gainers`, `market-scope-data.json`으로 fetch해서 화면에 채웁니다.
@@ -30,18 +30,18 @@ index.html은 이 셋을 각각 `/stock-analysis-data.json`, `/api/top-gainers`,
 ## 시작 신호
 - A(Top10+분석): **GitHub Actions**가 매일 07:00 UTC 호출하고, 실제 발행 여부·daily/weekly 모드는 `krx_calendar.get_weekly_report_trigger()`가 KRX 휴장일 캘린더(`krx-holidays-2026.json`) 기준으로 자동 판단 — 확인된 사실 (`AUTOMATION_NOTES.md` §1, §3에 날짜별 테스트 케이스로 검증됨)
 - "토요일과 이어진 앞선 요일이 휴일인 연휴면 평일 다음 첫 휴일 기준" 규칙 — **이미 구현·검증됨**. "토요일 → 그 전 금요일이 휴장이면 금요일 당일 발행, 목·금·토 연속 휴장이면 목요일(연휴 시작일) 발행"으로 해석해 구현. 다만 이 해석은 원 스펙 문장이 다소 모순돼 보여 사람이 판단해 정한 것이라 — **확인 필요**: 이 해석이 실제 의도와 맞는지 한 번 확인
-- B(Kiwoom→Supabase): 매일 07:00 UTC(=16:00 KST), Vercel Cron — 확인된 사실, 다만 2026-07-12 이후 실제로 갱신이 안 되고 있음
+- B(Kiwoom→Supabase): **2026-07-25부로 크론 꺼짐** — 키움 지정단말기 인증 실패로 13일 연속 실패해 `vercel.json`에서 `crons` 항목을 제거함(코드는 유지). 지정단말기 해제 후 재등록 필요
 - C(마켓 스코프): GitHub Actions, 개장일에만 — 확인된 사실
 
 ## 입력자료
 - Top10(A): 네이버 증권 상승률/거래대금 페이지 크롤링, 네이버 fchart(OHLCV 120일) — 확인된 사실
-- Top10(B): 키움증권 API — 확인된 사실 (연동은 됐으나 2026-07-12 이후 정상 호출 안 됨)
+- Top10(B): 키움증권 API — 확인된 사실 (연동은 됐으나 지정단말기 인증 문제로 2026-07-12 이후 호출 안 됨, 2026-07-25부로 크론 자체를 꺼둠)
 - 마켓 스코프(C): 텔레그램 공개 채널 13곳(`moneythemestock` 등) 크롤링 — 확인된 사실
 - 상승 이유: 종목당 네이버 뉴스 최대 15개 수집 후 Gemini 분석. **뉴스가 0건이면 분석 자체를 생략**(`riseReason`에 "뉴스를 수집하지 못했습니다" 문구만 남기고 `chartAnalysis`는 빈 값) — 뉴스 없다고 Gemini가 추정해서 지어내는 동작은 없음(복원 전 로컬 버전에는 이 위험한 "추정 지어내기" 동작이 있었으나, 정상 버전에는 없음)
 - API 키 보관 위치: `.env.local`(로컬 실행용, Git에 커밋 안 됨) + **GitHub Secrets**(GitHub Actions 실행용) — **확인 완료(2026-07-25)**: `GEMINI_API_KEY`가 Repository secret으로 이미 등록돼 있음(GitHub 저장소 Settings → Secrets and variables → Actions)
 
 ## 현재 단계
-A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까지 자동 실행됨. B(Kiwoom→Supabase)는 2026-07-12부터 원인 불명으로 멈춰 있음. C(마켓 스코프)는 GitHub Actions로 전환됐으나 기존 Cowork 예약 작업과 중복 실행 가능성이 있음.
+A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까지 자동 실행됨. B(Kiwoom→Supabase)는 지정단말기 인증 문제로 2026-07-25부로 크론을 꺼둔 상태(재개는 사람이 키움증권에 해제 요청한 뒤). C(마켓 스코프)는 GitHub Actions로 전환됐으나 기존 Cowork 예약 작업과 중복 실행 가능성이 있음.
 
 ## AI 역할 — 설계와 실제 코드가 다른 점 (복원 후 기준)
 
@@ -68,7 +68,7 @@ A(collect_gainers.py, GitHub Actions)는 코드가 완성돼 있고 git push까�
 
 확인 필요 (`AUTOMATION_NOTES.md` §5 "사람이 해야 할 일" 그대로 옮김):
 1. ~~GitHub Secrets에 `GEMINI_API_KEY` 등록 여부 확인~~ — **확인 완료(2026-07-25)**: GitHub 저장소 Settings → Secrets and variables → Actions에 `GEMINI_API_KEY`가 Repository secret으로 등록돼 있음(등록일 기준 5일 전, 즉 이 저장소 작업보다 먼저 등록됨). GitHub Actions 실행 자체가 이 이유로 실패하지는 않을 것으로 확인
-2. Vercel Cron(B)이 2026-07-12부터 멈춘 원인 확인 (Vercel 대시보드 로그)
+2. ~~Vercel Cron(B)이 2026-07-12부터 멈춘 원인 확인~~ — **원인 확인 완료(2026-07-25)**: 커밋 `bde1de2`(같은 날, origin/main에 이미 푸시·배포됨)에서 확인. 키움 "지정단말기(8050)" 인증 실패로 13일 연속 크론이 실패하고 있었고, 문제가 풀릴 때까지 `vercel.json`의 `crons` 항목 자체를 껐음(코드는 남겨둠). **다음 조치**: 사람이 키움증권(1544-9000)에 지정단말기(내PC지정) 서비스 해제를 요청 → 해제되면 `vercel.json`에 `crons` 항목을 다시 추가해 재개
 3. GitHub Actions 정상 작동 확인 후 **Windows 작업 스케줄러**와 **Cowork Scheduled Task(market-scope-daily-update)**를 꺼서 중복 실행 방지
 4. `krx-holidays-2026.json`을 한국거래소(KRX) 공식 2026년 휴장일 공지와 최종 대조
 5. 매년 초 `krx-holidays-2027.json` 등 다음 해 휴장일 파일 추가 필요(자동화 안 돼 있음, 안 하면 평일 휴장일이 조용히 누락됨)
