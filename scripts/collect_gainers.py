@@ -354,12 +354,16 @@ def call_gemini_with_retry(client, prompt: str, max_retries: int = 4) -> str:
         except Exception as e:
             err = str(e)
             if "429" in err or "RESOURCE_EXHAUSTED" in err:
-                # 대기 시간 파싱 시도
-                m = re.search(r"retry.*?(\d+)s", err, re.IGNORECASE)
-                wait_sec = int(m.group(1)) + 5 if m else wait
+                # 대기 시간 파싱 시도. Gemini의 실제 retryDelay는 "43.421279537s"처럼
+                # 소수점이 붙어 있을 수 있어, 소수점까지 포함해서 파싱해야 한다.
+                # (이전 버그: (\d+)s만 쓰면 정수부를 건너뛰고 소수부 자릿수를
+                #  통째로 "초"로 읽어버려 time.sleep()이 몇 년짜리로 부풀 수 있었음)
+                m = re.search(r"retry.*?(\d+(?:\.\d+)?)s", err, re.IGNORECASE)
+                parsed = int(float(m.group(1))) + 5 if m else wait
+                wait_sec = min(parsed, 120)
                 print(f"    [Gemini 429] {wait_sec}초 대기 후 재시도 ({attempt+1}/{max_retries})...")
                 time.sleep(wait_sec)
-                wait = min(wait * 2, 300)
+                wait = min(wait * 2, 120)
             else:
                 print(f"    [Gemini 오류] {e}")
                 return ""
