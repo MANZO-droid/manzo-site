@@ -49,6 +49,49 @@ HEADERS = {
 GEMINI_MODEL = "gemini-2.0-flash"
 KST = timezone(timedelta(hours=9))
 
+# ─── Top10 제외 대상 판별 (우선주·ETF·ETN / 관리종목·정리매매는 확인 필요) ────────
+
+_ETF_TICKER_CACHE: set | None = None
+
+
+def _get_etf_tickers() -> set:
+    """네이버 ETF 목록 API에서 ETF 종목코드 전체를 가져와 캐시한다 (로그인 불필요)."""
+    global _ETF_TICKER_CACHE
+    if _ETF_TICKER_CACHE is not None:
+        return _ETF_TICKER_CACHE
+    try:
+        r = requests.get(
+            "https://finance.naver.com/api/sise/etfItemList.nhn",
+            headers=HEADERS, timeout=15,
+        )
+        items = r.json().get("result", {}).get("etfItemList", [])
+        _ETF_TICKER_CACHE = {item["itemcode"] for item in items}
+    except Exception as e:
+        print(f"  [ETF 목록 수집 오류] {e}")
+        _ETF_TICKER_CACHE = set()
+    return _ETF_TICKER_CACHE
+
+
+def classify_excluded(ticker: str, name: str) -> str | None:
+    """Top10에서 제외해야 하면 사유 문자열, 포함해도 되면 None을 반환한다.
+
+    확인된 사실: ETN은 상품명에 항상 "ETN"이 포함되고, 우선주는 종목명이
+    (숫자)우(B)로 끝나는 KRX 표기 관례를 따른다(예: 진흥기업2우B). ETF는
+    브랜드명(KODEX/TIGER 등)만으로 이름에서 판별할 수 없어 네이버 ETF
+    목록 API로 종목코드를 직접 대조한다.
+
+    확인 필요: 관리종목·정리매매는 로그인 없이 공개된 API를 찾지 못해
+    아직 판별하지 않는다. KRX Data Marketplace 계정(KRX_ID/KRX_PW)이
+    준비되면 공식 관리종목현황 API로 이 함수에 조건을 추가해야 한다.
+    """
+    if "ETN" in name.upper():
+        return "ETN"
+    if ticker in _get_etf_tickers():
+        return "ETF"
+    if re.search(r"\d?우(B)?$", name):
+        return "우선주"
+    return None
+
 
 # ─── 환경변수 로드 ────────────────────────────────────────────────────────────
 
@@ -84,7 +127,9 @@ def fetch_top_gainers(market_url: str, top_n: int = 20) -> list[dict]:
             if not a:
                 continue
             href = a.get("href", "")
-            m = re.search(r"code=(\d+)", href)
+            # 정식 종목은 항상 6자리 숫자 코드. "0197X0"처럼 문자가 섞인 코드는
+            # 개별종목 선물연계 ETN 등 파생상품이므로 애초에 후보에 넣지 않는다.
+            m = re.search(r"code=(\d{6})(?![0-9A-Za-z])", href)
             if not m:
                 continue
             ticker = m.group(1)
@@ -114,20 +159,28 @@ def fetch_top_gainers(market_url: str, top_n: int = 20) -> list[dict]:
 
 
 def get_daily_top10(date_str: str) -> list[dict]:
-    """KOSPI+KOSDAQ 합산 상승률 상위 10종목 반환."""
-    kospi = fetch_top_gainers("https://finance.naver.com/sise/sise_rise.naver")
+    """KOSPI+KOSDAQ 합산 상승률 상위 10종목 반환 (우선주·ETF·ETN 제외)."""
+    kospi = fetch_top_gainers("https://finance.naver.com/sise/sise_rise.naver", top_n=40)
     time.sleep(0.5)
-    kosdaq = fetch_top_gainers("https://finance.naver.com/sise/sise_rise_ksdaq.naver")
+    kosdaq = fetch_top_gainers("https://finance.naver.com/sise/sise_rise_ksdaq.naver", top_n=40)
 
     all_stocks = kospi + kosdaq
-    # 등락률 내림차순 정렬, 중복 ticker 제거
+    # 등락률 내림차순 정렬, 중복 ticker 제거, 제외 대상은 건너뛰고 다음 순위로 채움
     seen = set()
-    unique = []
+    top10 = []
     for s in sorted(all_stocks, key=lambda x: x["changePct"], reverse=True):
-        if s["ticker"] not in seen:
-            seen.add(s["ticker"])
-            unique.append(s)
-    top10 = unique[:10]
+        if s["ticker"] in seen:
+            continue
+        seen.add(s["ticker"])
+        reason = classify_excluded(s["ticker"], s["name"])
+        if reason:
+            print(f"  [제외] {s['name']} ({s['ticker']}) - {reason}")
+            continue
+        top10.append(s)
+        if len(top10) >= 10:
+            break
+    if len(top10) < 10:
+        print(f"  [경고] 제외 처리 후 {len(top10)}개만 확보됨 (10개 미달)")
     for i, s in enumerate(top10, 1):
         s["rank"] = i
     return top10
@@ -148,8 +201,8 @@ def get_weekly_top10(from_date: str, to_date: str) -> list[dict]:
     while cur <= to_dt:
         if cur.weekday() < 5:  # 평일만
             print(f"  [{cur.strftime('%m/%d')}] 데이터 수집 중...")
-            kospi = fetch_top_gainers("https://finance.naver.com/sise/sise_rise.naver", top_n=30)
-            kosdaq = fetch_top_gainers("https://finance.naver.com/sise/sise_rise_ksdaq.naver", top_n=30)
+            kospi = fetch_top_gainers("https://finance.naver.com/sise/sise_rise.naver", top_n=40)
+            kosdaq = fetch_top_gainers("https://finance.naver.com/sise/sise_rise_ksdaq.naver", top_n=40)
             for s in kospi + kosdaq:
                 t = s["ticker"]
                 if t not in weekly_map:
@@ -166,7 +219,18 @@ def get_weekly_top10(from_date: str, to_date: str) -> list[dict]:
             cumulative *= (1 + d / 100)
         s["weeklyChangePct"] = round((cumulative - 1) * 100, 2)
 
-    top10 = sorted(weekly_map.values(), key=lambda x: x["weeklyChangePct"], reverse=True)[:10]
+    candidates = sorted(weekly_map.values(), key=lambda x: x["weeklyChangePct"], reverse=True)
+    top10 = []
+    for s in candidates:
+        reason = classify_excluded(s["ticker"], s["name"])
+        if reason:
+            print(f"  [제외] {s['name']} ({s['ticker']}) - {reason}")
+            continue
+        top10.append(s)
+        if len(top10) >= 10:
+            break
+    if len(top10) < 10:
+        print(f"  [경고] 제외 처리 후 {len(top10)}개만 확보됨 (10개 미달)")
     for i, s in enumerate(top10, 1):
         s["rank"] = i
         s["changePct"] = s["weeklyChangePct"]
@@ -227,8 +291,8 @@ def calc_technicals(ohlcv: list[dict], close: int, volume: int) -> dict:
     ma60 = calc_ma(closes, 60)
     ma120 = calc_ma(closes, 120)
 
-    w52_high = max(highs[-252:]) if len(highs) >= 52 else max(highs)
-    w52_low = min(lows[-252:]) if len(lows) >= 52 else min(lows)
+    w52_high = max(highs[-252:]) if len(highs) >= 52 else (max(highs) if highs else close)
+    w52_low = min(lows[-252:]) if len(lows) >= 52 else (min(lows) if lows else close)
 
     vol_avg20 = int(sum(volumes[-20:]) / min(20, len(volumes))) if volumes else 0
     vol_ratio = round(volume / vol_avg20, 1) if vol_avg20 else 0
@@ -462,7 +526,7 @@ def fetch_volume_stocks() -> list[dict]:
                 if not a:
                     continue
                 href = a.get("href", "")
-                m = re.search(r"code=(\d+)", href)
+                m = re.search(r"code=(\d{6})(?![0-9A-Za-z])", href)
                 if not m:
                     continue
                 ticker = m.group(1)
