@@ -1,227 +1,487 @@
 {
   "current": {
-    "report_date": "2026-07-26",
-    "range_label": "2026-07-25(토) 05:00 ~ 2026-07-26(일) 04:59 KST",
-    "message_count": 24,
-    "channel_count": 16,
+    "report_date": "2026-07-27",
+    "range_label": "2026-07-26(일) 05:00 ~ 2026-07-27(월) 04:59 KST",
+    "message_count": 56,
+    "channel_count": 13,
     "items": [
       {
         "rank": 1,
-        "name": "반도체 업황 회복(삼성전자·SK하이닉스)",
-        "type": "이슈",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "name": "SK하이닉스",
+        "type": "종목",
+        "mention": 14,
+        "channel": 5,
+        "score": 24,
         "articles": [
           {
-            "title": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세",
-            "summary": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세 - 메모리 가격 반등과 HBM 수요 기대로 반도체 대형주 동반 회복세",
-            "url": "https://v.daum.net/v/20260708102109268"
+            "title": "📡",
+            "summary": "📡 주간 퀀트 코멘트 (‘26.7.26, 하나증권 이경수) ✔️ 알파벳, 인텔의 강한 리비전 상향, 미국 실적모멘텀 강하게 끌어올려 💬 미국 호실적 발표로 상호미디어 및 반도체, 산업재, 투자은행의 내년 강한 실적모멘텀 발생 💬 Alphabet (GOOGL) — 7/22 장 마감 후 ✅ 클라우드 압도적 서프라이즈, 주가는 하락 매출 $1,198억(YoY +24%, 컨센 $1,169억 상회).",
+            "url": "https://t.me/HANAStrategy/7598"
           },
           {
-            "title": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥'",
-            "summary": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥' - 미국발 반도체주 강세가 국내 대형 반도체주 상승으로 이어졌다는 분석",
-            "url": "https://www.mt.co.kr/stock/2026/07/15/2026071516481686228"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 [주간 증시 전망]",
-            "summary": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 - 다음주 빅테크·반도체 실적 발표가 시장 방향성을 좌우할 전망",
-            "url": "https://www.fnnews.com/news/202607261200005886"
+            "title": "[은행 Weekly/ 하나증권 최정욱, CFA",
+            "summary": "[은행 Weekly/ 하나증권 최정욱, CFA ☎ 3771-3643] 안녕하세요. 하나증권 최정욱입니다. 7월 마지막주 은행업종 주간동향 보내드립니다. ★ 은행(Overweight): 양호했던 실적. ELS 과징금 환입도 소급적용될 전망 ▶ 전주 은행주 초과하락. 컨센서스 상회하는 호실적 시현에도 이를 차익실현 기회로 삼는 모습. 다만 상대적 안정성은 크게 부각 - 전주 은행주는 3.5% 하",
+            "url": "https://t.me/HanaResearch/20009"
+          },
+          {
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/HanaResearch/20016"
+          },
+          {
+            "title": "[하나증권 유통/화장품 박종대]",
+            "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 제자리로 돌아가는 길(26.07.27) ■유통: 2027년이 본격 시작이다. 1) 높은 GDI 증가율, 2027년부터 소비 확대로 이어질 전망 -한국에서 소비는 후행지표. 2021년과 올해처럼  코스피가 너무 크게 움직일 때 동행성 발생. 가계에서 주식자산이 차지하는 비중은 8% 정도에 불과하지만, 지난 1분기",
+            "url": "https://t.me/HanaResearch/20019"
+          },
+          {
+            "title": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\"",
+            "summary": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\" 최근 한국 메모리 반도체 기업들의 주가 하락이 근거 없는 우려에 의한 과도한 조정이라 보며, 삼성전자와 SK하이닉스에 대한 '매수(Buy)' 의견을 재확인 낮은 재고 및 공급 부족: 시장의 우려와 달리 공급업체 및 고객사의 메모리 재고는 매우 낮은 수준이며, 수급 충족 비율이 70%에서 50%로 떨",
+            "url": "https://t.me/corevalue/46223"
+          },
+          {
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/corevalue/46224"
+          },
+          {
+            "title": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상",
+            "summary": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상 https://m.stock.naver.com/investment/news/flashnews/003/0014088185 [관련 종목] 마이크로소프트 | 아마존 | 메타 플랫폼스 | 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62778"
+          },
+          {
+            "title": "SK하이닉스, 2분기 영업익 64조원 전망",
+            "summary": "SK하이닉스, 2분기 영업익 64조원 전망 https://m.stock.naver.com/investment/news/mainnews/366/0001181932 [관련 종목] SK하이닉스 | 삼성전자",
+            "url": "https://t.me/moneythemestock/62779"
+          },
+          {
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
+          },
+          {
+            "title": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감",
+            "summary": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감 https://m.stock.naver.com/investment/news/flashnews/008/0005391120 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Apple",
+            "url": "https://t.me/moneythemestock/62784"
+          },
+          {
+            "title": "💾",
+            "summary": "💾 연기금, 7월 하이닉스 집중 매수하며 순매수 전환 ✅ 매도 폭탄 우려와 달리 순매수 모습 · 26일 보도, 국민연금이 포함된 '연기금 등'은 7월 들어 올해 처음 월간 순매수 전환 · 7월 순매도 거래일도 6일, 상반기보다 매도 강도가 낮아진 상태 ✅ '연기금 등'의 7월 행보: SK하이닉스 매수 · 7월 초~7/24 기준 684억원 순매수 · 순매수 상위: SK하이닉스 4,258억원 ,",
+            "url": "https://t.me/valjuman/32153"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 7월 5주차 국내증시 주요 실적발표 일정 - 월요일의 한화오션 , LG이노텍 - 화요일의 HD현대일렉트릭 , 한화시스템 - 수요일의 SK하이닉스 , 한국항공우주 - 목요일의 삼성전자 , 삼성전기 - 금요일의 한화에어로 , LG씨엔에스 삼성전자는 저번의 잠정공시 이후 확정공시이긴 하나, 어쨌거나 중요한 한 주가 될 전망",
+            "url": "https://t.me/valjuman/32162"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 [주간 증시 전망 _ 7월 5주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 ✅ 지난주 시장 상황 : 7000선 회복 하루 만에 반납, 5.72% 급락 · 급락의 배경은 반도체 업황 우려와 지정학적 리스크의 동시 부각 · 주 후반의 낙폭은 실적 펀더멘털 훼손보다 심리·수급 요인에 기인 · 주알파벳이 2분기 실적 발표에서 올해 CAPEX 가이던스를 상향하며 국내 증시 상승 견인 -> ",
+            "url": "https://t.me/valjuman/32164"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "국제유가 급등·중동 리스크",
-        "type": "이슈",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "name": "삼성전자",
+        "type": "종목",
+        "mention": 13,
+        "channel": 5,
+        "score": 23,
         "articles": [
           {
-            "title": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리",
-            "summary": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리 - 중동 긴장에 따른 유가 급등이 국내 증시 섹터별로 엇갈린 영향을 준다는 분석",
-            "url": "https://www.hankyung.com/article/202607243321i"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납",
-            "summary": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납 - 중동 군사 긴장 고조와 브렌트유 급등으로 투자심리 위축",
-            "url": "https://www.greened.kr/news/articleView.html?idxno=345831"
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/HanaResearch/20016"
           },
           {
-            "title": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍'",
-            "summary": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍' - 중동 리스크 완화 소식에 코스피가 낙폭을 만회했다는 후속 보도",
-            "url": "https://www.sankyungtoday.com/news/articleView.html?idxno=60944"
+            "title": "[하나증권 유통/화장품 박종대]",
+            "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 제자리로 돌아가는 길(26.07.27) ■유통: 2027년이 본격 시작이다. 1) 높은 GDI 증가율, 2027년부터 소비 확대로 이어질 전망 -한국에서 소비는 후행지표. 2021년과 올해처럼  코스피가 너무 크게 움직일 때 동행성 발생. 가계에서 주식자산이 차지하는 비중은 8% 정도에 불과하지만, 지난 1분기",
+            "url": "https://t.me/HanaResearch/20019"
+          },
+          {
+            "title": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\"",
+            "summary": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\" 최근 한국 메모리 반도체 기업들의 주가 하락이 근거 없는 우려에 의한 과도한 조정이라 보며, 삼성전자와 SK하이닉스에 대한 '매수(Buy)' 의견을 재확인 낮은 재고 및 공급 부족: 시장의 우려와 달리 공급업체 및 고객사의 메모리 재고는 매우 낮은 수준이며, 수급 충족 비율이 70%에서 50%로 떨",
+            "url": "https://t.me/corevalue/46223"
+          },
+          {
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/corevalue/46224"
+          },
+          {
+            "title": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상",
+            "summary": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상 https://m.stock.naver.com/investment/news/flashnews/003/0014088185 [관련 종목] 마이크로소프트 | 아마존 | 메타 플랫폼스 | 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62778"
+          },
+          {
+            "title": "SK하이닉스, 2분기 영업익 64조원 전망",
+            "summary": "SK하이닉스, 2분기 영업익 64조원 전망 https://m.stock.naver.com/investment/news/mainnews/366/0001181932 [관련 종목] SK하이닉스 | 삼성전자",
+            "url": "https://t.me/moneythemestock/62779"
+          },
+          {
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
+          },
+          {
+            "title": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감",
+            "summary": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감 https://m.stock.naver.com/investment/news/flashnews/008/0005391120 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Apple",
+            "url": "https://t.me/moneythemestock/62784"
+          },
+          {
+            "title": "💾",
+            "summary": "💾 연기금, 7월 하이닉스 집중 매수하며 순매수 전환 ✅ 매도 폭탄 우려와 달리 순매수 모습 · 26일 보도, 국민연금이 포함된 '연기금 등'은 7월 들어 올해 처음 월간 순매수 전환 · 7월 순매도 거래일도 6일, 상반기보다 매도 강도가 낮아진 상태 ✅ '연기금 등'의 7월 행보: SK하이닉스 매수 · 7월 초~7/24 기준 684억원 순매수 · 순매수 상위: SK하이닉스 4,258억원 ,",
+            "url": "https://t.me/valjuman/32153"
+          },
+          {
+            "title": "🔩",
+            "summary": "🔩 아모그린텍 NDR * 7/21(화) NDR 진행 · 고효율 자성부품 은 25년 매출 약 500억원으로 최대 사업부 · 테슬라향 비중 60~70%, 테슬라 ESS·EV와 휴머노이드 충전 시스템향 공급 확대 기대 · ESS는 25년 매출 약 400억원 · 3Q26부터 소프트뱅크·KDDI향 통신 ESS 공급 시작 예정이며, KK Wind Solutions향 물량 확대가 하반기 실적 개선 견인 ",
+            "url": "https://t.me/valjuman/32160"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 7월 5주차 국내증시 주요 실적발표 일정 - 월요일의 한화오션 , LG이노텍 - 화요일의 HD현대일렉트릭 , 한화시스템 - 수요일의 SK하이닉스 , 한국항공우주 - 목요일의 삼성전자 , 삼성전기 - 금요일의 한화에어로 , LG씨엔에스 삼성전자는 저번의 잠정공시 이후 확정공시이긴 하나, 어쨌거나 중요한 한 주가 될 전망",
+            "url": "https://t.me/valjuman/32162"
+          },
+          {
+            "title": "🎯",
+            "summary": "🎯 [주간 증시 전망 _ 7월 5주차] 주요 경제지표 발표, 이벤트 일정 및 투자전략 ✅ 지난주 시장 상황 : 7000선 회복 하루 만에 반납, 5.72% 급락 · 급락의 배경은 반도체 업황 우려와 지정학적 리스크의 동시 부각 · 주 후반의 낙폭은 실적 펀더멘털 훼손보다 심리·수급 요인에 기인 · 주알파벳이 2분기 실적 발표에서 올해 CAPEX 가이던스를 상향하며 국내 증시 상승 견인 -> ",
+            "url": "https://t.me/valjuman/32164"
           }
         ]
       },
       {
         "rank": 3,
-        "name": "샌즈랩",
-        "type": "종목",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "name": "반도체 업황",
+        "type": "이슈",
+        "mention": 6,
+        "channel": 4,
+        "score": 14,
         "articles": [
           {
-            "title": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목",
-            "summary": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목 - MS와 트럼프의 AI 사이버보안 논의 소식에 샌즈랩 주가 급등",
-            "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=317237"
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/HanaResearch/20016"
           },
           {
-            "title": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등",
-            "summary": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등 - 사이버보안 테마 전반이 동반 강세를 보였다는 마감시황",
-            "url": "https://www.ggilbo.com/news/articleView.html?idxno=1069806"
+            "title": "AI 데이터센터 물 들어올때 노젓자…기판 소켓 중소업체도 증설 열풍",
+            "summary": "AI 데이터센터 물 들어올때 노젓자…기판 소켓 중소업체도 증설 열풍 https://n.news.naver.com/mnews/article/009/0005712246",
+            "url": "https://t.me/YeouidoStory2/115285"
           },
           {
-            "title": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑",
-            "summary": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑ - MS와의 AI 보안 기술 협력 소식이 주가 상승을 견인",
-            "url": "https://www.cstimes.com/news/articleView.html?idxno=630967"
+            "title": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\"",
+            "summary": "씨티(Citi), 메모리 반도체 '피크아웃' 우려 일축… 삼성전자·SK하이닉스 '매수' 유지\" 최근 한국 메모리 반도체 기업들의 주가 하락이 근거 없는 우려에 의한 과도한 조정이라 보며, 삼성전자와 SK하이닉스에 대한 '매수(Buy)' 의견을 재확인 낮은 재고 및 공급 부족: 시장의 우려와 달리 공급업체 및 고객사의 메모리 재고는 매우 낮은 수준이며, 수급 충족 비율이 70%에서 50%로 떨",
+            "url": "https://t.me/corevalue/46223"
+          },
+          {
+            "title": "[하나증권 반도체 김록호]",
+            "summary": "[하나증권 반도체 김록호] Industry Research 자료 링크: https://vo.la/885MjbL 반도체/소부장(Overweight): 실적 전망치 상향 여부가 분수령 ■ 데이터 포인트 및 주간 리뷰: 양호한 수출 데이터 확인. 국내 업체들 디커플링 심화 - 7월 20일 영업일 평균 메모리 반도체 수출 금액은 전년동기대비 270% 증가한 12.2억 달러를 기록. 구체적으로 DRA",
+            "url": "https://t.me/corevalue/46224"
+          },
+          {
+            "title": "SK하이닉스, 2분기 영업익 64조원 전망",
+            "summary": "SK하이닉스, 2분기 영업익 64조원 전망 https://m.stock.naver.com/investment/news/mainnews/366/0001181932 [관련 종목] SK하이닉스 | 삼성전자",
+            "url": "https://t.me/moneythemestock/62779"
+          },
+          {
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
           }
         ]
       },
       {
         "rank": 4,
-        "name": "두산에너빌리티",
+        "name": "중동 지정학적 리스크",
+        "type": "이슈",
+        "mention": 4,
+        "channel": 4,
+        "score": 12,
+        "articles": [
+          {
+            "title": "[하나/에너지화학/윤재성] Weekly Monitor: 후티의 아람코 정제설비 공격",
+            "summary": "[하나/에너지화학/윤재성] Weekly Monitor: 후티의 아람코 정제설비 공격 ▶ 보고서: https://bit.ly/4bfmrvE [총평] ▶ WTI 89.3$(+8%), Dubai 90.4$ (+11%). 정제마진 46.1$(WoW +3.0$). 유럽 디젤 선물 WoW +5% ▶ 석유화학 강세. PO +14%, 톨루엔 +9%, 프로필렌/PA +7%, 아세톤 +6% 등이 눈에 띔 ▶ ",
+            "url": "https://t.me/HanaResearch/20017"
+          },
+          {
+            "title": "트럼프가 대이란 공습을 돌연 중단하자 이란도 \"공격 멈추면 우리도 멈춘다\"며 상호 휴전에 응했으나, 테헤란은 이번 중단을 진정성보다 전술적 조치로 의심하고 있음 (로이터, 7/26)",
+            "summary": "트럼프가 대이란 공습을 돌연 중단하자 이란도 \"공격 멈추면 우리도 멈춘다\"며 상호 휴전에 응했으나, 테헤란은 이번 중단을 진정성보다 전술적 조치로 의심하고 있음 (로이터, 7/26) * 공습 중단 경위 - 미군은 13일 밤 연속 대이란 공습을 강화하다 금요일 밤 펜타곤이 돌연 작전 중단, 토·일 이틀간 미국의 추가 공격 없었음 - 미 UN대사 마이크 왈츠는 폭스뉴스에서 \"트럼프가 외교에 시간",
+            "url": "https://t.me/alphasignal_now/24308"
+          },
+          {
+            "title": "이란군 “미국, 최근 이틀 간 공습 멈춰…우리도 보복 작전 중단”",
+            "summary": "이란군 “미국, 최근 이틀 간 공습 멈춰…우리도 보복 작전 중단” https://www.mk.co.kr/news/world/12107863",
+            "url": "https://t.me/bumsong2/25358"
+          },
+          {
+            "title": "*TACO가 아니라, 패트리엇 미사일 shortage.",
+            "summary": "*TACO가 아니라, 패트리엇 미사일 shortage. ㅡㅡㅡㅡㅡㅡㅡ \"트럼프, '방공미사일 부족' 보고에 이란 대규모 공격 보류\" 도널드 트럼프 미국 대통령이 미군의 중동 지역 방공 미사일 재고가 부족하다는 참모진의 보고를 받고 대규모 이란 공격을 보류 했다고 미 일간 뉴욕타임스(NYT)가 현지시간 25일 보도했습니다. NYT가 인용한 소식통들에 따르면 전날 트럼프 대통령과 참모진의 비공개",
+            "url": "https://t.me/valjuman/32151"
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "name": "AI 산업 및 투자",
+        "type": "이슈",
+        "mention": 5,
+        "channel": 3,
+        "score": 11,
+        "articles": [
+          {
+            "title": "[디지털자산 Weekly 온체인, 하나증권 AI/디지털자산/인터넷/게임 이준호]",
+            "summary": "[디지털자산 Weekly 온체인, 하나증권 AI/디지털자산/인터넷/게임 이준호] '클래리티 액트 표결 예정, 국내 사업화 확인' 리포트: https://tinyurl.com/2pmuyx9z ✅ 디지털자산 및 관련 기업 총평 - 디지털자산 시장은 7/18~7/25 동안 크게 움직이지 않았다. 주요 코인의 수익률은 BTC -0.3%, ETH +0.8%, SOL -1.7%, TRX +1.2%다. ",
+            "url": "https://t.me/HanaResearch/20013"
+          },
+          {
+            "title": "[데이터센터 코멘트, 하나증권 AI/디지털자산/인터넷/게임 이준호]",
+            "summary": "[데이터센터 코멘트, 하나증권 AI/디지털자산/인터넷/게임 이준호] '국내 AI 데이터센터, 출발합니다' 리포트: https://tinyurl.com/2n9j8ts6 ✅ 샌프란시스코 AI 서밋, 국내 데이터센터 구축 가시화 - 하나증권은 7월 16일 인뎁스 「데크크(Data center Creator Crew)」에서 2030년까지 추가로 필요한 국내 AI DC 유효 수요를 Base 시나리오 ",
+            "url": "https://t.me/HanaResearch/20014"
+          },
+          {
+            "title": "\"AI 칩 사모대출도 유동화…월가, 거래 시작\"",
+            "summary": "\"AI 칩 사모대출도 유동화…월가, 거래 시작\" https://n.news.naver.com/article/001/0016210911?sid=101",
+            "url": "https://t.me/YeouidoStory2/115283"
+          },
+          {
+            "title": "AI 데이터센터 물 들어올때 노젓자…기판 소켓 중소업체도 증설 열풍",
+            "summary": "AI 데이터센터 물 들어올때 노젓자…기판 소켓 중소업체도 증설 열풍 https://n.news.naver.com/mnews/article/009/0005712246",
+            "url": "https://t.me/YeouidoStory2/115285"
+          },
+          {
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
+          }
+        ]
+      },
+      {
+        "rank": 6,
+        "name": "아마존",
+        "type": "종목",
+        "mention": 4,
+        "channel": 3,
+        "score": 10,
+        "articles": [
+          {
+            "title": "📡",
+            "summary": "📡 주간 퀀트 코멘트 (‘26.7.26, 하나증권 이경수) ✔️ 알파벳, 인텔의 강한 리비전 상향, 미국 실적모멘텀 강하게 끌어올려 💬 미국 호실적 발표로 상호미디어 및 반도체, 산업재, 투자은행의 내년 강한 실적모멘텀 발생 💬 Alphabet (GOOGL) — 7/22 장 마감 후 ✅ 클라우드 압도적 서프라이즈, 주가는 하락 매출 $1,198억(YoY +24%, 컨센 $1,169억 상회).",
+            "url": "https://t.me/HANAStrategy/7598"
+          },
+          {
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
+          },
+          {
+            "title": "[하나증권 유통/화장품 박종대]",
+            "summary": "[하나증권 유통/화장품 박종대] •Weekly Retail-Cos.Letter - 제자리로 돌아가는 길(26.07.27) ■유통: 2027년이 본격 시작이다. 1) 높은 GDI 증가율, 2027년부터 소비 확대로 이어질 전망 -한국에서 소비는 후행지표. 2021년과 올해처럼  코스피가 너무 크게 움직일 때 동행성 발생. 가계에서 주식자산이 차지하는 비중은 8% 정도에 불과하지만, 지난 1분기",
+            "url": "https://t.me/HanaResearch/20019"
+          },
+          {
+            "title": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상",
+            "summary": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상 https://m.stock.naver.com/investment/news/flashnews/003/0014088185 [관련 종목] 마이크로소프트 | 아마존 | 메타 플랫폼스 | 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62778"
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "name": "HD현대",
         "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "[오늘 이 종목] 두산에너빌리티, 원전 밸류체인 재평가 본격화… SKC·삼성E&A 등 핵심주 주목",
-            "summary": "두산에너빌리티, 원전 밸류체인 재평가 본격화 - 원전 밸류체인 전반의 재평가 기대감이 부각",
-            "url": "https://v.daum.net/v/20260508113900566"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "두산에너빌리티, 주가 장 초반 3%대 상승…원전·전력기기 기대감에 투자심리 개선",
-            "summary": "두산에너빌리티, 주가 장 초반 3%대 상승 - 원전·전력기기 기대감에 투자심리 개선",
-            "url": "https://cbci.co.kr/news/articleView.html?idxno=585243"
+            "title": "HD현대삼호, 美 타코마항 항만크레인 4기 수주",
+            "summary": "HD현대삼호, 美 타코마항 항만크레인 4기 수주 https://m.stock.naver.com/investment/news/flashnews/011/0004645198 [관련 종목] HD현대",
+            "url": "https://t.me/moneythemestock/62780"
           },
           {
-            "title": "[특징주] 두산에너빌리티, IR·실적 예고에 장중 상승세…미래 성장 기대감 반영",
-            "summary": "두산에너빌리티, IR·실적 예고에 장중 상승세 - 미래 성장 기대감이 주가에 반영됐다는 특징주 분석",
-            "url": "https://news.jkn.co.kr/post/946396"
+            "title": "🎯",
+            "summary": "🎯 7월 5주차 국내증시 주요 실적발표 일정 - 월요일의 한화오션 , LG이노텍 - 화요일의 HD현대일렉트릭 , 한화시스템 - 수요일의 SK하이닉스 , 한국항공우주 - 목요일의 삼성전자 , 삼성전기 - 금요일의 한화에어로 , LG씨엔에스 삼성전자는 저번의 잠정공시 이후 확정공시이긴 하나, 어쨌거나 중요한 한 주가 될 전망",
+            "url": "https://t.me/valjuman/32162"
           }
         ]
       },
       {
-        "rank": 5,
-        "name": "조선주 수주 랠리",
-        "type": "이슈",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
+        "rank": 8,
+        "name": "신한지주",
+        "type": "종목",
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
         "articles": [
           {
-            "title": "[속보] 삼성중공업·HD현대중공업·한화오션 등 조선주 강세…중동 긴장 속 수주 기대감 부각",
-            "summary": "삼성중공업·HD현대중공업·한화오션 등 조선주 강세 - 중동 긴장 속에서도 수주 기대감이 주가를 지지",
-            "url": "https://www.cbci.co.kr/news/articleView.html?idxno=573553"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "[특징주] 수주 랠리 알리는 조선주 '강세'",
-            "summary": "수주 랠리 알리는 조선주 '강세' - 조선 3사의 신규 수주 랠리가 이어지고 있다는 특징주 보도",
-            "url": "https://www.sedaily.com/NewsVIew/22IN77608L"
+            "title": "[은행 Weekly/ 하나증권 최정욱, CFA",
+            "summary": "[은행 Weekly/ 하나증권 최정욱, CFA ☎ 3771-3643] 안녕하세요. 하나증권 최정욱입니다. 7월 마지막주 은행업종 주간동향 보내드립니다. ★ 은행(Overweight): 양호했던 실적. ELS 과징금 환입도 소급적용될 전망 ▶ 전주 은행주 초과하락. 컨센서스 상회하는 호실적 시현에도 이를 차익실현 기회로 삼는 모습. 다만 상대적 안정성은 크게 부각 - 전주 은행주는 3.5% 하",
+            "url": "https://t.me/HanaResearch/20009"
+          },
+          {
+            "title": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음",
+            "summary": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음 https://m.stock.naver.com/investment/news/flashnews/469/0000944438 [관련 종목] KB금융 | 신한지주 | 하나금융지주 | 우리금융지주",
+            "url": "https://t.me/moneythemestock/62783"
           }
         ]
       },
       {
-        "rank": 6,
-        "name": "방산·우주항공 수주 모멘텀",
-        "type": "이슈",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
+        "rank": 9,
+        "name": "KB금융",
+        "type": "종목",
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
         "articles": [
           {
-            "title": "천궁·K9으로 수주 1조…방산 다음은 우주산업",
-            "summary": "천궁·K9으로 수주 1조…방산 다음은 우주산업 - 방산 대형 수주에 이어 우주산업으로 성장동력이 확대되고 있다는 분석",
-            "url": "https://www.hankyung.com/article/2026071576721"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전",
-            "summary": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전 - 방산 4사가 우주 산업 밸류체인 구축에 속도를 내고 있다는 심층 보도",
-            "url": "https://www.fnnews.com/news/202606241811306801"
+            "title": "[은행 Weekly/ 하나증권 최정욱, CFA",
+            "summary": "[은행 Weekly/ 하나증권 최정욱, CFA ☎ 3771-3643] 안녕하세요. 하나증권 최정욱입니다. 7월 마지막주 은행업종 주간동향 보내드립니다. ★ 은행(Overweight): 양호했던 실적. ELS 과징금 환입도 소급적용될 전망 ▶ 전주 은행주 초과하락. 컨센서스 상회하는 호실적 시현에도 이를 차익실현 기회로 삼는 모습. 다만 상대적 안정성은 크게 부각 - 전주 은행주는 3.5% 하",
+            "url": "https://t.me/HanaResearch/20009"
+          },
+          {
+            "title": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음",
+            "summary": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음 https://m.stock.naver.com/investment/news/flashnews/469/0000944438 [관련 종목] KB금융 | 신한지주 | 하나금융지주 | 우리금융지주",
+            "url": "https://t.me/moneythemestock/62783"
           }
         ]
       },
       {
-        "rank": 7,
-        "name": "니어스랩(드론 방산 IPO)",
+        "rank": 10,
+        "name": "Microsoft",
+        "type": "종목",
+        "mention": 3,
+        "channel": 2,
+        "score": 7,
+        "articles": [
+          {
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
+          },
+          {
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
+          },
+          {
+            "title": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감",
+            "summary": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감 https://m.stock.naver.com/investment/news/flashnews/008/0005391120 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Apple",
+            "url": "https://t.me/moneythemestock/62784"
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "name": "마이크로소프트",
         "type": "종목",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "드론 기업 '니어스랩', 코스닥 상장예비심사 승인…방산 시장 공략 속도",
-            "summary": "니어스랩, 코스닥 상장예비심사 승인 - 방산 드론 시장 공략에 속도를 낸다는 IPO 소식",
-            "url": "https://www.unicornfactory.co.kr/article/2026062508483994051"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동…몸값 '추가 수주'에 달려",
-            "summary": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동 - 몸값은 추가 수주 여부에 달려있다는 분석",
-            "url": "https://www.mt.co.kr/future/2026/04/21/2026040914302389436"
+            "title": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상",
+            "summary": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상 https://m.stock.naver.com/investment/news/flashnews/003/0014088185 [관련 종목] 마이크로소프트 | 아마존 | 메타 플랫폼스 | 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62778"
           }
         ]
       },
       {
-        "rank": 8,
-        "name": "AI 반도체 중소형주",
-        "type": "이슈",
+        "rank": 12,
+        "name": "Apple",
+        "type": "종목",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "\"모르면 뒤처져요\" AI 반도체관련주 TOP11, 진짜 수혜주 어디?",
-            "summary": "AI 반도체관련주 TOP11, 진짜 수혜주 어디 - 제주반도체·칩스앤미디어·코아시아·텔레칩스 등 중소형 AI 반도체주 소개",
-            "url": "https://v.daum.net/v/UkbzeTZvvl"
+            "title": "✔️",
+            "summary": "✔️ 국내 실적 전망 (코스피 26F OP YoY +223% 예상) 💬 3Q26F OP 추정치: 277조원으로 QoQ +21.7% (추정치 변화 1개월 +3.8%, 1주전대비 -0.1%) 💬 올해 OP 전망치: 968조원 (1개월 +3.3%, 1주전대비 -0.1%) ✔️ 국내 대형주/업종/종목 리비전 상하위(3Q26F OP 기준) 👍 상향: 삼성전자/SK/삼성SDI/LS ELECTRIC/한화",
+            "url": "https://t.me/HANAStrategy/7599"
           },
           {
-            "title": "[AI MY 증시전망] 미국 반도체주 강세에 투자심리 회복 전망",
-            "summary": "미국 반도체주 강세에 투자심리 회복 전망 - 미국발 반도체주 강세가 국내 중소형 반도체주 투자심리 회복에 영향",
-            "url": "https://www.newspim.com/news/view/20260722000087"
+            "title": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감",
+            "summary": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감 https://m.stock.naver.com/investment/news/flashnews/008/0005391120 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Apple",
+            "url": "https://t.me/moneythemestock/62784"
           }
         ]
       },
       {
-        "rank": 9,
-        "name": "밸류업·저PBR 금융주",
-        "type": "이슈",
+        "rank": 13,
+        "name": "NVIDIA",
+        "type": "종목",
         "mention": 2,
         "channel": 1,
         "score": 4,
         "articles": [
           {
-            "title": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트",
-            "summary": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트 - 4대 금융지주 등 저PBR 밸류업 수혜주 정리",
-            "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74720"
+            "title": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감",
+            "summary": "SK하이닉스 실적·한미 반도체 협력, AI 투심 회복 기대감 https://m.stock.naver.com/investment/news/mainnews/008/0005391050 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft",
+            "url": "https://t.me/moneythemestock/62782"
           },
           {
-            "title": "'실적' '밸류업' 두마리 토끼 잡나…반도체·금융주, 증시 주도권 쟁탈전 가열",
-            "summary": "'실적' '밸류업' 두마리 토끼 잡나 - 반도체·금융주가 증시 주도권을 놓고 경쟁하고 있다는 분석",
-            "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74718"
+            "title": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감",
+            "summary": "빅테크 실적·FOMC 앞둔 코스피, 반등 기대감 https://m.stock.naver.com/investment/news/flashnews/008/0005391120 [관련 종목] SK하이닉스 | 삼성전자 | NVIDIA | Microsoft | Apple",
+            "url": "https://t.me/moneythemestock/62784"
           }
         ]
       },
       {
-        "rank": 10,
-        "name": "2차전지 소재",
-        "type": "이슈",
-        "mention": 2,
+        "rank": 14,
+        "name": "메타 플랫폼스",
+        "type": "종목",
+        "mention": 1,
         "channel": 1,
-        "score": 4,
+        "score": 3,
         "articles": [
           {
-            "title": "'2차전지 관련주' 충전 끝, 불기둥 폭발…한빛레이저 10% 급등",
-            "summary": "'2차전지 관련주' 충전 끝, 불기둥 폭발 - 한빛레이저 등 2차전지 소재주가 급등했다는 특징주 보도",
-            "url": "https://news.nate.com/view/20260422n07112"
-          },
+            "title": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상",
+            "summary": "이번 주 코스피, 빅테크 실적·FOMC 앞둔 변동성 확대 예상 https://m.stock.naver.com/investment/news/flashnews/003/0014088185 [관련 종목] 마이크로소프트 | 아마존 | 메타 플랫폼스 | 삼성전자 | SK하이닉스",
+            "url": "https://t.me/moneythemestock/62778"
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "name": "하나금융지주",
+        "type": "종목",
+        "mention": 1,
+        "channel": 1,
+        "score": 3,
+        "articles": [
           {
-            "title": "[특징주] 2차전지株 랠리 지속…'애경케미칼·리튬포어스' 30%↑",
-            "summary": "2차전지株 랠리 지속 - 애경케미칼·리튬포어스 등이 상한가를 기록하며 랠리가 이어지고 있다는 보도",
-            "url": "https://news.nate.com/view/20260422n08012"
+            "title": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음",
+            "summary": "금융지주 상반기 사상 최대 실적 달성, 하반기 부실 관리 경고음 https://m.stock.naver.com/investment/news/flashnews/469/0000944438 [관련 종목] KB금융 | 신한지주 | 하나금융지주 | 우리금융지주",
+            "url": "https://t.me/moneythemestock/62783"
           }
         ]
       }
@@ -20217,6 +20477,234 @@
               "title": "🚀",
               "summary": "🚀 [KRX 상승률 TOP10] 2026-07-22 15:30 (KST) - 거래소: KRX / 시간: 정규장 1) 카티스 (29.97% / 10억) 2) 코스모로보틱스 (29.96% / 128억) 3) 휴림에이텍 (29.95% / 3억) 4) 티엑스알로보틱스 (29.95% / 2억) 5) 듀오백 (29.94% / 1억) 6) 케이엔에스 (29.93% / 14억) 7) 에스아이리소스 (29.",
               "url": "https://t.me/moneythemestock/62648"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "report_date": "2026-07-26",
+      "range_label": "2026-07-25(토) 05:00 ~ 2026-07-26(일) 04:59 KST",
+      "message_count": 24,
+      "channel_count": 16,
+      "items": [
+        {
+          "rank": 1,
+          "name": "반도체 업황 회복(삼성전자·SK하이닉스)",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세",
+              "summary": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세 - 메모리 가격 반등과 HBM 수요 기대로 반도체 대형주 동반 회복세",
+              "url": "https://v.daum.net/v/20260708102109268"
+            },
+            {
+              "title": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥'",
+              "summary": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥' - 미국발 반도체주 강세가 국내 대형 반도체주 상승으로 이어졌다는 분석",
+              "url": "https://www.mt.co.kr/stock/2026/07/15/2026071516481686228"
+            },
+            {
+              "title": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 [주간 증시 전망]",
+              "summary": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 - 다음주 빅테크·반도체 실적 발표가 시장 방향성을 좌우할 전망",
+              "url": "https://www.fnnews.com/news/202607261200005886"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "국제유가 급등·중동 리스크",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리",
+              "summary": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리 - 중동 긴장에 따른 유가 급등이 국내 증시 섹터별로 엇갈린 영향을 준다는 분석",
+              "url": "https://www.hankyung.com/article/202607243321i"
+            },
+            {
+              "title": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납",
+              "summary": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납 - 중동 군사 긴장 고조와 브렌트유 급등으로 투자심리 위축",
+              "url": "https://www.greened.kr/news/articleView.html?idxno=345831"
+            },
+            {
+              "title": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍'",
+              "summary": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍' - 중동 리스크 완화 소식에 코스피가 낙폭을 만회했다는 후속 보도",
+              "url": "https://www.sankyungtoday.com/news/articleView.html?idxno=60944"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "샌즈랩",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목",
+              "summary": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목 - MS와 트럼프의 AI 사이버보안 논의 소식에 샌즈랩 주가 급등",
+              "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=317237"
+            },
+            {
+              "title": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등",
+              "summary": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등 - 사이버보안 테마 전반이 동반 강세를 보였다는 마감시황",
+              "url": "https://www.ggilbo.com/news/articleView.html?idxno=1069806"
+            },
+            {
+              "title": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑",
+              "summary": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑ - MS와의 AI 보안 기술 협력 소식이 주가 상승을 견인",
+              "url": "https://www.cstimes.com/news/articleView.html?idxno=630967"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "두산에너빌리티",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "[오늘 이 종목] 두산에너빌리티, 원전 밸류체인 재평가 본격화… SKC·삼성E&A 등 핵심주 주목",
+              "summary": "두산에너빌리티, 원전 밸류체인 재평가 본격화 - 원전 밸류체인 전반의 재평가 기대감이 부각",
+              "url": "https://v.daum.net/v/20260508113900566"
+            },
+            {
+              "title": "두산에너빌리티, 주가 장 초반 3%대 상승…원전·전력기기 기대감에 투자심리 개선",
+              "summary": "두산에너빌리티, 주가 장 초반 3%대 상승 - 원전·전력기기 기대감에 투자심리 개선",
+              "url": "https://cbci.co.kr/news/articleView.html?idxno=585243"
+            },
+            {
+              "title": "[특징주] 두산에너빌리티, IR·실적 예고에 장중 상승세…미래 성장 기대감 반영",
+              "summary": "두산에너빌리티, IR·실적 예고에 장중 상승세 - 미래 성장 기대감이 주가에 반영됐다는 특징주 분석",
+              "url": "https://news.jkn.co.kr/post/946396"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "조선주 수주 랠리",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "[속보] 삼성중공업·HD현대중공업·한화오션 등 조선주 강세…중동 긴장 속 수주 기대감 부각",
+              "summary": "삼성중공업·HD현대중공업·한화오션 등 조선주 강세 - 중동 긴장 속에서도 수주 기대감이 주가를 지지",
+              "url": "https://www.cbci.co.kr/news/articleView.html?idxno=573553"
+            },
+            {
+              "title": "[특징주] 수주 랠리 알리는 조선주 '강세'",
+              "summary": "수주 랠리 알리는 조선주 '강세' - 조선 3사의 신규 수주 랠리가 이어지고 있다는 특징주 보도",
+              "url": "https://www.sedaily.com/NewsVIew/22IN77608L"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "방산·우주항공 수주 모멘텀",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "천궁·K9으로 수주 1조…방산 다음은 우주산업",
+              "summary": "천궁·K9으로 수주 1조…방산 다음은 우주산업 - 방산 대형 수주에 이어 우주산업으로 성장동력이 확대되고 있다는 분석",
+              "url": "https://www.hankyung.com/article/2026071576721"
+            },
+            {
+              "title": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전",
+              "summary": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전 - 방산 4사가 우주 산업 밸류체인 구축에 속도를 내고 있다는 심층 보도",
+              "url": "https://www.fnnews.com/news/202606241811306801"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "니어스랩(드론 방산 IPO)",
+          "type": "종목",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "드론 기업 '니어스랩', 코스닥 상장예비심사 승인…방산 시장 공략 속도",
+              "summary": "니어스랩, 코스닥 상장예비심사 승인 - 방산 드론 시장 공략에 속도를 낸다는 IPO 소식",
+              "url": "https://www.unicornfactory.co.kr/article/2026062508483994051"
+            },
+            {
+              "title": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동…몸값 '추가 수주'에 달려",
+              "summary": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동 - 몸값은 추가 수주 여부에 달려있다는 분석",
+              "url": "https://www.mt.co.kr/future/2026/04/21/2026040914302389436"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "AI 반도체 중소형주",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "\"모르면 뒤처져요\" AI 반도체관련주 TOP11, 진짜 수혜주 어디?",
+              "summary": "AI 반도체관련주 TOP11, 진짜 수혜주 어디 - 제주반도체·칩스앤미디어·코아시아·텔레칩스 등 중소형 AI 반도체주 소개",
+              "url": "https://v.daum.net/v/UkbzeTZvvl"
+            },
+            {
+              "title": "[AI MY 증시전망] 미국 반도체주 강세에 투자심리 회복 전망",
+              "summary": "미국 반도체주 강세에 투자심리 회복 전망 - 미국발 반도체주 강세가 국내 중소형 반도체주 투자심리 회복에 영향",
+              "url": "https://www.newspim.com/news/view/20260722000087"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "밸류업·저PBR 금융주",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 1,
+          "score": 4,
+          "articles": [
+            {
+              "title": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트",
+              "summary": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트 - 4대 금융지주 등 저PBR 밸류업 수혜주 정리",
+              "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74720"
+            },
+            {
+              "title": "'실적' '밸류업' 두마리 토끼 잡나…반도체·금융주, 증시 주도권 쟁탈전 가열",
+              "summary": "'실적' '밸류업' 두마리 토끼 잡나 - 반도체·금융주가 증시 주도권을 놓고 경쟁하고 있다는 분석",
+              "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74718"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "2차전지 소재",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 1,
+          "score": 4,
+          "articles": [
+            {
+              "title": "'2차전지 관련주' 충전 끝, 불기둥 폭발…한빛레이저 10% 급등",
+              "summary": "'2차전지 관련주' 충전 끝, 불기둥 폭발 - 한빛레이저 등 2차전지 소재주가 급등했다는 특징주 보도",
+              "url": "https://news.nate.com/view/20260422n07112"
+            },
+            {
+              "title": "[특징주] 2차전지株 랠리 지속…'애경케미칼·리튬포어스' 30%↑",
+              "summary": "2차전지株 랠리 지속 - 애경케미칼·리튬포어스 등이 상한가를 기록하며 랠리가 이어지고 있다는 보도",
+              "url": "https://news.nate.com/view/20260422n08012"
             }
           ]
         }
