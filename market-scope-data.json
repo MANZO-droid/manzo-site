@@ -1,233 +1,466 @@
 {
   "current": {
-    "report_date": "2026-07-26",
-    "range_label": "2026-07-25(토) 05:00 ~ 2026-07-26(일) 04:59 KST",
-    "message_count": 24,
-    "channel_count": 16,
+    "report_date": "2026-07-27",
+    "range_label": "2026-07-26(일) 05:00 ~ 2026-07-27(월) 04:59 KST",
+    "message_count": 26,
+    "channel_count": 17,
     "items": [
       {
         "rank": 1,
-        "name": "반도체 업황 회복(삼성전자·SK하이닉스)",
+        "name": "코스피·코스닥 동반 반등 마감",
         "type": "이슈",
-        "mention": 3,
-        "channel": 3,
-        "score": 9,
+        "mention": 4,
+        "channel": 4,
+        "score": 12,
         "articles": [
           {
-            "title": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세",
-            "summary": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세 - 메모리 가격 반등과 HBM 수요 기대로 반도체 대형주 동반 회복세",
-            "url": "https://v.daum.net/v/20260708102109268"
+            "title": "코스피, 강보합 6700선 회복…코스닥은 2%대 반등",
+            "summary": "코스피, 강보합 6700선 회복…코스닥은 2%대 반등 - 외국인 순매도 속에서도 개인·기관 매수세로 코스피가 6700선을 지켰고 코스닥은 2%대 상승 마감",
+            "url": "https://www.etoday.co.kr/news/view/2607906"
           },
           {
-            "title": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥'",
-            "summary": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥' - 미국발 반도체주 강세가 국내 대형 반도체주 상승으로 이어졌다는 분석",
-            "url": "https://www.mt.co.kr/stock/2026/07/15/2026071516481686228"
+            "title": "코스피, 강보합 6700선 마감…코스닥은 2% 상승",
+            "summary": "코스피, 강보합 6700선 마감…코스닥은 2% 상승 - 장중 낙폭을 딛고 코스피·코스닥 동반 반등 마감했다는 시황 정리",
+            "url": "https://www.etnews.com/20260727000402"
           },
           {
-            "title": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 [주간 증시 전망]",
-            "summary": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 - 다음주 빅테크·반도체 실적 발표가 시장 방향성을 좌우할 전망",
-            "url": "https://www.fnnews.com/news/202607261200005886"
+            "title": "[스팟] 코스닥 12.32포인트(1.65%) 오른 760.54 출발",
+            "summary": "코스닥 12.32포인트(1.65%) 오른 760.54 출발 - 개장 직후부터 강한 상승세로 출발한 코스닥 시장 스팟 시황",
+            "url": "https://www.mt.co.kr/stock/2026/07/27/2026072708494424706"
           }
         ]
       },
       {
         "rank": 2,
-        "name": "국제유가 급등·중동 리스크",
-        "type": "이슈",
+        "name": "케이엔알시스템",
+        "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리",
-            "summary": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리 - 중동 긴장에 따른 유가 급등이 국내 증시 섹터별로 엇갈린 영향을 준다는 분석",
-            "url": "https://www.hankyung.com/article/202607243321i"
+            "title": "케이엔알시스템, 글로벌 빅테크향 '악력 최대 300kg' 슈퍼 휴머노이드 손 개발 완료",
+            "summary": "케이엔알시스템, 글로벌 빅테크향 '악력 최대 300kg' 슈퍼 휴머노이드 손 개발 완료 - 산업용 로봇손 개발 완료 소식에 상한가",
+            "url": "https://news.nate.com/view/20260727n04659"
           },
           {
-            "title": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납",
-            "summary": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납 - 중동 군사 긴장 고조와 브렌트유 급등으로 투자심리 위축",
-            "url": "https://www.greened.kr/news/articleView.html?idxno=345831"
+            "title": "케이엔알시스템, '슈퍼휴머노이드 로봇손' 개발 완료···2026년 출시 예고",
+            "summary": "케이엔알시스템, '슈퍼휴머노이드 로봇손' 개발 완료 - 베트남 생산기지 설비 구축 완료로 양산 기대감도 부각",
+            "url": "https://www.smartbizn.com/news/articleView.html?idxno=149423"
           },
           {
-            "title": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍'",
-            "summary": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍' - 중동 리스크 완화 소식에 코스피가 낙폭을 만회했다는 후속 보도",
-            "url": "https://www.sankyungtoday.com/news/articleView.html?idxno=60944"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 케이엔알시스템 등 로봇·AI·특허 호재 종목 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
         "rank": 3,
-        "name": "샌즈랩",
+        "name": "오브젠",
         "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목",
-            "summary": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목 - MS와 트럼프의 AI 사이버보안 논의 소식에 샌즈랩 주가 급등",
-            "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=317237"
+            "title": "[특징주] 오브젠, 네이버-엔비디아 투자 소식에 '上'…AI파트너십 재평가",
+            "summary": "오브젠, 네이버-엔비디아 투자 소식에 상한가 - 네이버클라우드 협력사로서 AI 파트너십 수혜 기대",
+            "url": "https://www.etoday.co.kr/news/view/2607623"
           },
           {
-            "title": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등",
-            "summary": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등 - 사이버보안 테마 전반이 동반 강세를 보였다는 마감시황",
-            "url": "https://www.ggilbo.com/news/articleView.html?idxno=1069806"
+            "title": "씽크풀 : 오브젠(417860) 저점에선 물량 모아둘 기회로 보이며, 이후 전망 및 대응전략",
+            "summary": "오브젠 저점 매수 기회 및 이후 전망 분석",
+            "url": "https://m.thinkpool.com/compDiscuss/cont/1018971"
           },
           {
-            "title": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑",
-            "summary": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑ - MS와의 AI 보안 기술 협력 소식이 주가 상승을 견인",
-            "url": "https://www.cstimes.com/news/articleView.html?idxno=630967"
+            "title": "AI 마케팅 테마주 오브젠, 정부 수혜 기대감에 급등! 기업 가치와 투자 포인트 정리",
+            "summary": "AI 마케팅 테마주 오브젠 급등 - 정부 수혜 기대감과 기업 가치 분석",
+            "url": "https://edureina.com/entry/AI-%EB%A7%88%EC%BC%80%ED%8C%85-%ED%85%8C%EB%A7%88%EC%A3%BC-%EC%98%A4%EB%B8%8C%EC%A0%A0-%EC%A0%95%EB%B6%80-%EC%88%98%ED%98%9C-%EA%B8%B0%EB%8C%80%EA%B0%90%EC%97%90-%EA%B8%89%EB%93%B1-%EA%B8%B0%EC%97%85-%EA%B0%80%EC%B9%98%EC%99%80-%ED%88%AC%EC%9E%90-%ED%8F%AC%EC%9D%B8%ED%8A%B8-%EC%A0%95%EB%A6%AC"
           }
         ]
       },
       {
         "rank": 4,
-        "name": "두산에너빌리티",
+        "name": "셀리드",
         "type": "종목",
         "mention": 3,
         "channel": 3,
         "score": 9,
         "articles": [
           {
-            "title": "[오늘 이 종목] 두산에너빌리티, 원전 밸류체인 재평가 본격화… SKC·삼성E&A 등 핵심주 주목",
-            "summary": "두산에너빌리티, 원전 밸류체인 재평가 본격화 - 원전 밸류체인 전반의 재평가 기대감이 부각",
-            "url": "https://v.daum.net/v/20260508113900566"
+            "title": "셀리드, NK세포 기술 美 특허 등록 결정에 상한가",
+            "summary": "셀리드, NK세포 기술 美 특허 등록 결정에 상한가 - BVAC 파이프라인 핵심 기술의 미국 특허 등록 결정",
+            "url": "https://www.hankyung.com/article/202607277786i"
           },
           {
-            "title": "두산에너빌리티, 주가 장 초반 3%대 상승…원전·전력기기 기대감에 투자심리 개선",
-            "summary": "두산에너빌리티, 주가 장 초반 3%대 상승 - 원전·전력기기 기대감에 투자심리 개선",
-            "url": "https://cbci.co.kr/news/articleView.html?idxno=585243"
+            "title": "이틀 연속 상한가 셀리드, 연내 품목허가 신청이 관건",
+            "summary": "이틀 연속 상한가 셀리드 - 연내 품목허가 신청 여부가 향후 관건이라는 분석",
+            "url": "https://www.medipana.com/article/view.php?news_idx=329311"
           },
           {
-            "title": "[특징주] 두산에너빌리티, IR·실적 예고에 장중 상승세…미래 성장 기대감 반영",
-            "summary": "두산에너빌리티, IR·실적 예고에 장중 상승세 - 미래 성장 기대감이 주가에 반영됐다는 특징주 분석",
-            "url": "https://news.jkn.co.kr/post/946396"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 셀리드 등 특허 호재 종목 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
         "rank": 5,
-        "name": "조선주 수주 랠리",
-        "type": "이슈",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
+        "name": "썸에이지",
+        "type": "종목",
+        "mention": 3,
+        "channel": 3,
+        "score": 9,
         "articles": [
           {
-            "title": "[속보] 삼성중공업·HD현대중공업·한화오션 등 조선주 강세…중동 긴장 속 수주 기대감 부각",
-            "summary": "삼성중공업·HD현대중공업·한화오션 등 조선주 강세 - 중동 긴장 속에서도 수주 기대감이 주가를 지지",
-            "url": "https://www.cbci.co.kr/news/articleView.html?idxno=573553"
+            "title": "썸에이지 상한가와 NHN 급상승 등 게임주 오랜만에 '주목'",
+            "summary": "썸에이지 상한가·NHN 급상승 - 게임주 전반이 오랜만에 강세를 보였다는 분석",
+            "url": "https://www.gamevu.co.kr/news/articleView.html?idxno=59603"
           },
           {
-            "title": "[특징주] 수주 랠리 알리는 조선주 '강세'",
-            "summary": "수주 랠리 알리는 조선주 '강세' - 조선 3사의 신규 수주 랠리가 이어지고 있다는 특징주 보도",
-            "url": "https://www.sedaily.com/NewsVIew/22IN77608L"
+            "title": "썸에이지, 상한가 진입.. +29.87% ↑",
+            "summary": "썸에이지 상한가 진입 - 더블랙레이블 지분가치 재조명이 배경",
+            "url": "https://www.sedaily.com/NewsView/2GWL23QHAT"
+          },
+          {
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 썸에이지 등 지분가치 부각 종목 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
         "rank": 6,
-        "name": "방산·우주항공 수주 모멘텀",
-        "type": "이슈",
-        "mention": 2,
-        "channel": 2,
-        "score": 6,
-        "articles": [
-          {
-            "title": "천궁·K9으로 수주 1조…방산 다음은 우주산업",
-            "summary": "천궁·K9으로 수주 1조…방산 다음은 우주산업 - 방산 대형 수주에 이어 우주산업으로 성장동력이 확대되고 있다는 분석",
-            "url": "https://www.hankyung.com/article/2026071576721"
-          },
-          {
-            "title": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전",
-            "summary": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전 - 방산 4사가 우주 산업 밸류체인 구축에 속도를 내고 있다는 심층 보도",
-            "url": "https://www.fnnews.com/news/202606241811306801"
-          }
-        ]
-      },
-      {
-        "rank": 7,
-        "name": "니어스랩(드론 방산 IPO)",
+        "name": "아이크래프트",
         "type": "종목",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "드론 기업 '니어스랩', 코스닥 상장예비심사 승인…방산 시장 공략 속도",
-            "summary": "니어스랩, 코스닥 상장예비심사 승인 - 방산 드론 시장 공략에 속도를 낸다는 IPO 소식",
-            "url": "https://www.unicornfactory.co.kr/article/2026062508483994051"
+            "title": "아이크래프트, 323억 규모 공급계약 체결",
+            "summary": "아이크래프트, 323억 규모 공급계약 체결 - 비엔아이엔씨와 엔비디아 베라 루빈 네트워크 공급계약 공시",
+            "url": "https://www.edaily.co.kr/News/Read?newsId=04244326645517800"
           },
           {
-            "title": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동…몸값 '추가 수주'에 달려",
-            "summary": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동 - 몸값은 추가 수주 여부에 달려있다는 분석",
-            "url": "https://www.mt.co.kr/future/2026/04/21/2026040914302389436"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 아이크래프트 등 대형 수주 종목 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
-        "rank": 8,
-        "name": "AI 반도체 중소형주",
-        "type": "이슈",
+        "rank": 7,
+        "name": "씨피시스템",
+        "type": "종목",
         "mention": 2,
         "channel": 2,
         "score": 6,
         "articles": [
           {
-            "title": "\"모르면 뒤처져요\" AI 반도체관련주 TOP11, 진짜 수혜주 어디?",
-            "summary": "AI 반도체관련주 TOP11, 진짜 수혜주 어디 - 제주반도체·칩스앤미디어·코아시아·텔레칩스 등 중소형 AI 반도체주 소개",
-            "url": "https://v.daum.net/v/UkbzeTZvvl"
+            "title": "[속보] 씨피시스템 주가 급등세 속 상한가 껑충…양대지수 강세 속 매수세 집중",
+            "summary": "씨피시스템 상한가 - 양대지수 강세 속 매수세 집중",
+            "url": "https://www.cbci.co.kr/news/articleView.html?idxno=592200"
           },
           {
-            "title": "[AI MY 증시전망] 미국 반도체주 강세에 투자심리 회복 전망",
-            "summary": "미국 반도체주 강세에 투자심리 회복 전망 - 미국발 반도체주 강세가 국내 중소형 반도체주 투자심리 회복에 영향",
-            "url": "https://www.newspim.com/news/view/20260722000087"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 씨피시스템 등 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "name": "바이오인프라",
+        "type": "종목",
+        "mention": 2,
+        "channel": 2,
+        "score": 6,
+        "articles": [
+          {
+            "title": "[급등주] 바이오인프라, +29.87% 상한가 마감",
+            "summary": "바이오인프라 상한가 마감 - 2분기 매출 42.5% 증가, 9개 분기 만에 흑자전환",
+            "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1130045"
+          },
+          {
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 바이오인프라 등 실적 개선 종목 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
         "rank": 9,
-        "name": "밸류업·저PBR 금융주",
-        "type": "이슈",
+        "name": "아이씨에이치",
+        "type": "종목",
         "mention": 2,
-        "channel": 1,
-        "score": 4,
+        "channel": 2,
+        "score": 6,
         "articles": [
           {
-            "title": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트",
-            "summary": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트 - 4대 금융지주 등 저PBR 밸류업 수혜주 정리",
-            "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74720"
+            "title": "아이씨에이치, 수직계열화 완성… IT·전장 부문 소재 공급망 강화",
+            "summary": "아이씨에이치, 수직계열화 완성 - IT·전장 부문 소재 공급망 강화 소식에 상한가",
+            "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=444947"
           },
           {
-            "title": "'실적' '밸류업' 두마리 토끼 잡나…반도체·금융주, 증시 주도권 쟁탈전 가열",
-            "summary": "'실적' '밸류업' 두마리 토끼 잡나 - 반도체·금융주가 증시 주도권을 놓고 경쟁하고 있다는 분석",
-            "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74718"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 아이씨에이치 등 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       },
       {
         "rank": 10,
-        "name": "2차전지 소재",
-        "type": "이슈",
+        "name": "파이온엑스",
+        "type": "종목",
         "mention": 2,
-        "channel": 1,
-        "score": 4,
+        "channel": 2,
+        "score": 6,
         "articles": [
           {
-            "title": "'2차전지 관련주' 충전 끝, 불기둥 폭발…한빛레이저 10% 급등",
-            "summary": "'2차전지 관련주' 충전 끝, 불기둥 폭발 - 한빛레이저 등 2차전지 소재주가 급등했다는 특징주 보도",
-            "url": "https://news.nate.com/view/20260422n07112"
+            "title": "파이온엑스(900100) 주가·공시·재무·예측 점수",
+            "summary": "파이온엑스 주가·공시 정보 - 코스닥 상한가 명단에 이름을 올림",
+            "url": "https://kstock.info/stock/?symbol=900100"
           },
           {
-            "title": "[특징주] 2차전지株 랠리 지속…'애경케미칼·리튬포어스' 30%↑",
-            "summary": "2차전지株 랠리 지속 - 애경케미칼·리튬포어스 등이 상한가를 기록하며 랠리가 이어지고 있다는 보도",
-            "url": "https://news.nate.com/view/20260422n08012"
+            "title": "[급등락주 짚어보기] 코스피 상한가 '0'…코스닥, 대형 호재·실적 개선에 10개 종목 '上'",
+            "summary": "코스닥 대형 호재·실적 개선에 10개 종목 상한가 - 파이온엑스 등 정리",
+            "url": "https://www.etoday.co.kr/news/view/2607936"
           }
         ]
       }
     ]
   },
   "history": [
+    {
+      "report_date": "2026-07-26",
+      "range_label": "2026-07-25(토) 05:00 ~ 2026-07-26(일) 04:59 KST",
+      "message_count": 24,
+      "channel_count": 16,
+      "items": [
+        {
+          "rank": 1,
+          "name": "반도체 업황 회복(삼성전자·SK하이닉스)",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세",
+              "summary": "반도체 다시 회복하나…급락했던 SK하이닉스·삼성전자 동반 상승세 - 메모리 가격 반등과 HBM 수요 기대로 반도체 대형주 동반 회복세",
+              "url": "https://v.daum.net/v/20260708102109268"
+            },
+            {
+              "title": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥'",
+              "summary": "美 반도체 랠리 재개…삼성전자·SK하이닉스 '쑥' - 미국발 반도체주 강세가 국내 대형 반도체주 상승으로 이어졌다는 분석",
+              "url": "https://www.mt.co.kr/stock/2026/07/15/2026071516481686228"
+            },
+            {
+              "title": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 [주간 증시 전망]",
+              "summary": "중동 변수에 숨죽인 증시…AI 실적 시즌이 가른다 - 다음주 빅테크·반도체 실적 발표가 시장 방향성을 좌우할 전망",
+              "url": "https://www.fnnews.com/news/202607261200005886"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "국제유가 급등·중동 리스크",
+          "type": "이슈",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리",
+              "summary": "다시 주식시장 변수로 등장한 국제유가…수혜섹터·피해섹터 총정리 - 중동 긴장에 따른 유가 급등이 국내 증시 섹터별로 엇갈린 영향을 준다는 분석",
+              "url": "https://www.hankyung.com/article/202607243321i"
+            },
+            {
+              "title": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납",
+              "summary": "코스피, 중동 리스크 재확산·국제유가 급등에 7000선 반납 - 중동 군사 긴장 고조와 브렌트유 급등으로 투자심리 위축",
+              "url": "https://www.greened.kr/news/articleView.html?idxno=345831"
+            },
+            {
+              "title": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍'",
+              "summary": "코스피 8,000선 재탈환…중동 리스크 완화에 증시 '훈풍' - 중동 리스크 완화 소식에 코스피가 낙폭을 만회했다는 후속 보도",
+              "url": "https://www.sankyungtoday.com/news/articleView.html?idxno=60944"
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "샌즈랩",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목",
+              "summary": "샌즈랩 주가 파죽지세...트럼프와 MS, AI 사이버 보안 논의 주목 - MS와 트럼프의 AI 사이버보안 논의 소식에 샌즈랩 주가 급등",
+              "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=317237"
+            },
+            {
+              "title": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등",
+              "summary": "MS와 트럼프·머스크 AI 보안 논의에 모니터랩 상한가... 샌즈랩 등 급등 - 사이버보안 테마 전반이 동반 강세를 보였다는 마감시황",
+              "url": "https://www.ggilbo.com/news/articleView.html?idxno=1069806"
+            },
+            {
+              "title": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑",
+              "summary": "[특징주] 샌즈랩, '딥시크' 美 사이버보안 뚫어… MS와 AI 보안 개발에↑ - MS와의 AI 보안 기술 협력 소식이 주가 상승을 견인",
+              "url": "https://www.cstimes.com/news/articleView.html?idxno=630967"
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "두산에너빌리티",
+          "type": "종목",
+          "mention": 3,
+          "channel": 3,
+          "score": 9,
+          "articles": [
+            {
+              "title": "[오늘 이 종목] 두산에너빌리티, 원전 밸류체인 재평가 본격화… SKC·삼성E&A 등 핵심주 주목",
+              "summary": "두산에너빌리티, 원전 밸류체인 재평가 본격화 - 원전 밸류체인 전반의 재평가 기대감이 부각",
+              "url": "https://v.daum.net/v/20260508113900566"
+            },
+            {
+              "title": "두산에너빌리티, 주가 장 초반 3%대 상승…원전·전력기기 기대감에 투자심리 개선",
+              "summary": "두산에너빌리티, 주가 장 초반 3%대 상승 - 원전·전력기기 기대감에 투자심리 개선",
+              "url": "https://cbci.co.kr/news/articleView.html?idxno=585243"
+            },
+            {
+              "title": "[특징주] 두산에너빌리티, IR·실적 예고에 장중 상승세…미래 성장 기대감 반영",
+              "summary": "두산에너빌리티, IR·실적 예고에 장중 상승세 - 미래 성장 기대감이 주가에 반영됐다는 특징주 분석",
+              "url": "https://news.jkn.co.kr/post/946396"
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "조선주 수주 랠리",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "[속보] 삼성중공업·HD현대중공업·한화오션 등 조선주 강세…중동 긴장 속 수주 기대감 부각",
+              "summary": "삼성중공업·HD현대중공업·한화오션 등 조선주 강세 - 중동 긴장 속에서도 수주 기대감이 주가를 지지",
+              "url": "https://www.cbci.co.kr/news/articleView.html?idxno=573553"
+            },
+            {
+              "title": "[특징주] 수주 랠리 알리는 조선주 '강세'",
+              "summary": "수주 랠리 알리는 조선주 '강세' - 조선 3사의 신규 수주 랠리가 이어지고 있다는 특징주 보도",
+              "url": "https://www.sedaily.com/NewsVIew/22IN77608L"
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "방산·우주항공 수주 모멘텀",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "천궁·K9으로 수주 1조…방산 다음은 우주산업",
+              "summary": "천궁·K9으로 수주 1조…방산 다음은 우주산업 - 방산 대형 수주에 이어 우주산업으로 성장동력이 확대되고 있다는 분석",
+              "url": "https://www.hankyung.com/article/2026071576721"
+            },
+            {
+              "title": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전",
+              "summary": "100조 수주고 쌓은 방산 빅4, 우주 밸류체인 구축 속도전 - 방산 4사가 우주 산업 밸류체인 구축에 속도를 내고 있다는 심층 보도",
+              "url": "https://www.fnnews.com/news/202606241811306801"
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "니어스랩(드론 방산 IPO)",
+          "type": "종목",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "드론 기업 '니어스랩', 코스닥 상장예비심사 승인…방산 시장 공략 속도",
+              "summary": "니어스랩, 코스닥 상장예비심사 승인 - 방산 드론 시장 공략에 속도를 낸다는 IPO 소식",
+              "url": "https://www.unicornfactory.co.kr/article/2026062508483994051"
+            },
+            {
+              "title": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동…몸값 '추가 수주'에 달려",
+              "summary": "'드론 잡는 드론' 니어스랩, 코스닥 IPO 시동 - 몸값은 추가 수주 여부에 달려있다는 분석",
+              "url": "https://www.mt.co.kr/future/2026/04/21/2026040914302389436"
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "AI 반도체 중소형주",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 2,
+          "score": 6,
+          "articles": [
+            {
+              "title": "\"모르면 뒤처져요\" AI 반도체관련주 TOP11, 진짜 수혜주 어디?",
+              "summary": "AI 반도체관련주 TOP11, 진짜 수혜주 어디 - 제주반도체·칩스앤미디어·코아시아·텔레칩스 등 중소형 AI 반도체주 소개",
+              "url": "https://v.daum.net/v/UkbzeTZvvl"
+            },
+            {
+              "title": "[AI MY 증시전망] 미국 반도체주 강세에 투자심리 회복 전망",
+              "summary": "미국 반도체주 강세에 투자심리 회복 전망 - 미국발 반도체주 강세가 국내 중소형 반도체주 투자심리 회복에 영향",
+              "url": "https://www.newspim.com/news/view/20260722000087"
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "밸류업·저PBR 금융주",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 1,
+          "score": 4,
+          "articles": [
+            {
+              "title": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트",
+              "summary": "밸류업 프로그램 관련 금융·자동차 섹터 배당 수익률·저PBR 리스트 - 4대 금융지주 등 저PBR 밸류업 수혜주 정리",
+              "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74720"
+            },
+            {
+              "title": "'실적' '밸류업' 두마리 토끼 잡나…반도체·금융주, 증시 주도권 쟁탈전 가열",
+              "summary": "'실적' '밸류업' 두마리 토끼 잡나 - 반도체·금융주가 증시 주도권을 놓고 경쟁하고 있다는 분석",
+              "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=74718"
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "2차전지 소재",
+          "type": "이슈",
+          "mention": 2,
+          "channel": 1,
+          "score": 4,
+          "articles": [
+            {
+              "title": "'2차전지 관련주' 충전 끝, 불기둥 폭발…한빛레이저 10% 급등",
+              "summary": "'2차전지 관련주' 충전 끝, 불기둥 폭발 - 한빛레이저 등 2차전지 소재주가 급등했다는 특징주 보도",
+              "url": "https://news.nate.com/view/20260422n07112"
+            },
+            {
+              "title": "[특징주] 2차전지株 랠리 지속…'애경케미칼·리튬포어스' 30%↑",
+              "summary": "2차전지株 랠리 지속 - 애경케미칼·리튬포어스 등이 상한가를 기록하며 랠리가 이어지고 있다는 보도",
+              "url": "https://news.nate.com/view/20260422n08012"
+            }
+          ]
+        }
+      ]
+    },
     {
       "report_date": "2026-07-25",
       "range_label": "2026-07-24(금) 05:00 ~ 2026-07-25(토) 04:59 KST",
