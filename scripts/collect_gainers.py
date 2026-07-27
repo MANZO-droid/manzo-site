@@ -6,7 +6,7 @@
   1) 네이버 증권에서 당일 KOSPI+KOSDAQ 상승률 상위 종목 실시간 수집
   2) 종목별 OHLCV 120일치 → 이동평균·거래량비율 등 기술적 지표 계산
   3) 네이버 금융 뉴스 10개 이상 수집
-  4) Gemini로 상승이유·차트분석 작성
+  4) Claude(Anthropic API)로 상승이유·차트분석 작성
   5) stock-analysis-data.json 갱신 → git push → Vercel 자동 배포
 
 사용법:
@@ -24,15 +24,15 @@
     GitHub Actions 전환 후 중복 실행 방지를 위해 비활성화 권장.
 
 필요 환경변수 (.env.local):
-  GEMINI_API_KEY
+  ANTHROPIC_API_KEY
 """
 import argparse, json, os, re, subprocess, sys, time
 from datetime import datetime, timedelta, timezone
 from xml.etree import ElementTree
 
+import anthropic
 import requests
 from bs4 import BeautifulSoup
-from google import genai
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -46,7 +46,7 @@ HEADERS = {
     "Accept-Language": "ko-KR,ko;q=0.9",
     "Referer": "https://finance.naver.com/",
 }
-GEMINI_MODEL = "gemini-2.0-flash"
+CLAUDE_MODEL = "claude-opus-5"
 KST = timezone(timedelta(hours=9))
 
 # ─── Top10 제외 대상 판별 (우선주·ETF·ETN / 관리종목·정리매매는 확인 필요) ────────
@@ -407,36 +407,38 @@ def fetch_stock_news(ticker: str, target_date: str, max_articles: int = 15) -> l
     return articles
 
 
-# ─── Gemini 분석 ──────────────────────────────────────────────────────────────
+# ─── Claude 분석 (Anthropic API) ───────────────────────────────────────────────
 
-class GeminiQuotaExhausted(Exception):
-    """Gemini 429가 재시도 후에도 풀리지 않을 때 발생시켜 전체 실행을 중단시킨다."""
+class ClaudeQuotaExhausted(Exception):
+    """Claude 429가 재시도 후에도 풀리지 않을 때 발생시켜 전체 실행을 중단시킨다."""
 
 
-def call_gemini_with_retry(client, prompt: str, max_retries: int = 4) -> str:
+def call_claude_with_retry(client, prompt: str, max_retries: int = 4) -> str:
     wait = 60
     for attempt in range(max_retries):
         try:
-            resp = client.models.generate_content(model=GEMINI_MODEL, contents=prompt)
-            return resp.text
-        except Exception as e:
-            err = str(e)
-            if "429" in err or "RESOURCE_EXHAUSTED" in err:
-                # 대기 시간 파싱 시도. Gemini의 실제 retryDelay는 "43.421279537s"처럼
-                # 소수점이 붙어 있을 수 있어, 소수점까지 포함해서 파싱해야 한다.
-                # (이전 버그: (\d+)s만 쓰면 정수부를 건너뛰고 소수부 자릿수를
-                #  통째로 "초"로 읽어버려 time.sleep()이 몇 년짜리로 부풀 수 있었음)
-                m = re.search(r"retry.*?(\d+(?:\.\d+)?)s", err, re.IGNORECASE)
-                parsed = int(float(m.group(1))) + 5 if m else wait
-                wait_sec = min(parsed, 120)
-                print(f"    [Gemini 429] {wait_sec}초 대기 후 재시도 ({attempt+1}/{max_retries})...")
-                time.sleep(wait_sec)
-                wait = min(wait * 2, 120)
-            else:
-                print(f"    [Gemini 오류] {e}")
-                return ""
-    raise GeminiQuotaExhausted(
-        f"Gemini 429(RESOURCE_EXHAUSTED)가 {max_retries}회 재시도 후에도 풀리지 않았습니다. "
+            resp = client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=1024,
+                thinking={"type": "disabled"},
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return "".join(b.text for b in resp.content if b.type == "text")
+        except anthropic.RateLimitError as e:
+            retry_after = None
+            try:
+                retry_after = e.response.headers.get("retry-after")
+            except Exception:
+                pass
+            wait_sec = min(int(float(retry_after)) + 5, 120) if retry_after else wait
+            print(f"    [Claude 429] {wait_sec}초 대기 후 재시도 ({attempt+1}/{max_retries})...")
+            time.sleep(wait_sec)
+            wait = min(wait * 2, 120)
+        except anthropic.APIStatusError as e:
+            print(f"    [Claude 오류] {e}")
+            return ""
+    raise ClaudeQuotaExhausted(
+        f"Claude 429(rate_limit_error)가 {max_retries}회 재시도 후에도 풀리지 않았습니다. "
         "할당량이 소진된 것으로 보여 자동 실행을 중단합니다. 할당량 회복 후 사람이 "
         "직접(workflow_dispatch 등으로) 다시 실행해야 합니다."
     )
@@ -493,7 +495,7 @@ def analyze_stock(client, name: str, ticker: str, date_str: str,
 발생했다고 쓰지 마세요.
 """
 
-    text = call_gemini_with_retry(client, prompt)
+    text = call_claude_with_retry(client, prompt)
     rise, chart = "", ""
     m_rise = re.search(r"\[riseReason\](.*?)(?=\[chartAnalysis\]|$)", text, re.DOTALL)
     m_chart = re.search(r"\[chartAnalysis\](.*?)$", text, re.DOTALL)
@@ -594,8 +596,8 @@ def run_daily(client, date_str: str):
         print(f"     → 기사 {len(articles)}개")
         g["news"] = [{"title": a["title"], "summary": a["summary"], "url": a["url"]} for a in articles[:5]]
 
-        # Gemini 분석
-        print(f"     Gemini 분석 중...")
+        # Claude 분석
+        print(f"     Claude 분석 중...")
         rise, chart = analyze_stock(client, name, ticker, date_str, g["changePct"], articles,
                                     technicals=g["technicals"])
         g["riseReason"] = rise
@@ -667,12 +669,12 @@ def git_push(date_str: str):
 
 def main():
     load_env()
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
-        print("[오류] GEMINI_API_KEY가 없습니다. .env.local에 추가해 주세요.")
+        print("[오류] ANTHROPIC_API_KEY가 없습니다. .env.local에 추가해 주세요.")
         sys.exit(1)
 
-    client = genai.Client(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key, max_retries=0)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default=None, help="리포트 날짜 (기본: 오늘, YYYY-MM-DD)")
@@ -731,7 +733,7 @@ def main():
             entry = run_daily(client, date_str)
         else:
             entry = run_weekly(client, date_str, week_start, week_end)
-    except GeminiQuotaExhausted as e:
+    except ClaudeQuotaExhausted as e:
         # 여기서 멈추면 stock-analysis-data.json 저장·git_push()는 실행되지 않는다 -
         # 부분적으로만 분석된 데이터를 커밋하지 않기 위함. 워크플로우는 실패로
         # 표시되고, 사람이 할당량 회복 후 "Run workflow"로 직접 다시 실행해야 한다.

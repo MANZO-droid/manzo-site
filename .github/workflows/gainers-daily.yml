@@ -13,8 +13,9 @@ name: "상승률 상위 10위 자동 수집"
 # 실제 실행 여부/모드 판단은 스크립트에게 맡깁니다.
 #
 # 필요한 GitHub Secrets (Settings → Secrets and variables → Actions에서 등록):
-#   - GEMINI_API_KEY : Google Gemini API 키 (사람이 직접 등록해야 함 - 이 워크플로우
-#                      파일만으로는 자동으로 채워지지 않습니다)
+#   - ANTHROPIC_API_KEY : Anthropic Claude API 키 (사람이 직접 등록해야 함 - 이 워크플로우
+#                         파일만으로는 자동으로 채워지지 않습니다). Gemini 429 할당량
+#                         문제로 2026-07-27 Claude(claude-opus-5)로 교체함.
 
 on:
   schedule:
@@ -47,11 +48,11 @@ jobs:
 
       - name: 의존성 설치
         run: |
-          pip install requests beautifulsoup4 google-genai
+          pip install requests beautifulsoup4 anthropic
 
       - name: 상승률 상위 10위 수집 (거래일 캘린더 자동 판단)
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PYTHONUNBUFFERED: "1"
         run: |
           python -u scripts/collect_gainers.py
