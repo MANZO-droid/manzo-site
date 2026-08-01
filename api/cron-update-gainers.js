@@ -48,9 +48,13 @@ async function upsertToSupabase(tradeDate, rows) {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error('SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 환경변수 없음');
 
-  const payload = rows.map((r) => ({ trade_date: tradeDate, updated_at: new Date().toISOString(), ...r }));
+  // 2026-08-01: daily_gainers의 유일키가 (trade_date, rank)에서
+  // (trade_date, rank, report_type)으로 바뀌었다(리서치자동화 저장소
+  // db/002_daily_gainers_weekly_and_comments.sql — 주간 리포트 지원 추가).
+  // 이 파이프라인은 항상 당일(daily) 데이터만 다루므로 report_type을 명시한다.
+  const payload = rows.map((r) => ({ trade_date: tradeDate, report_type: 'daily', updated_at: new Date().toISOString(), ...r }));
   const res = await fetch(
-    `${url}/rest/v1/daily_gainers?on_conflict=trade_date,rank`,
+    `${url}/rest/v1/daily_gainers?on_conflict=trade_date,rank,report_type`,
     {
       method: 'POST',
       headers: {

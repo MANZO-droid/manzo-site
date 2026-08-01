@@ -1150,38 +1150,19 @@ const NEWSLETTERS = [
   window.selectSADate = selectSADate;
 
   // ---------- 데이터 로드 ----------
-  // 상승률(gainers)은 DB(/api/top-gainers)에서, 거래대금 등은 기존 JSON에서 읽어 병합.
-  // DB 조회가 실패하면 기존 JSON만으로 동작(안전 폴백).
+  // 상승률(gainers)·거래대금(volumeStocks) 모두 /api/top-gainers(Supabase) 하나에서 읽는다.
+  // 2026-08-01: stock-analysis-data.json 하드코딩 폴백 제거 — 원천은 Supabase 하나뿐.
   function loadStockAnalysis() {
-    Promise.all([
-      fetch('/stock-analysis-data.json?t=' + Date.now()).then(r => r.json()).catch(() => ({ dates: {} })),
-      fetch('/api/top-gainers?t=' + Date.now()).then(r => (r.ok ? r.json() : null)).catch(() => null),
-    ])
-      .then(([jsonData, dbData]) => {
-        const data = (jsonData && typeof jsonData === 'object') ? jsonData : { dates: {} };
+    fetch('/api/top-gainers?t=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        data = (data && typeof data === 'object') ? data : { dates: {} };
         data.dates = data.dates || {};
-
-        // DB에 상승률 데이터가 있으면 해당 날짜의 gainers를 DB 값으로 대체(원천 = DB).
-        //
-        // ⚠ 예전 버그: 여기서 dbData.latestDate를 data.latestDate에 그대로 덮어써서,
-        //   "거래대금 상위 10위" 표까지 DB의 최신 날짜(gainers 전용, volumeStocks가
-        //   전혀 없는 날짜일 수 있음)를 기준으로 렌더링하려다 "데이터가 없습니다"가
-        //   뜨는 문제가 있었다. 이제는 두 섹션의 "최신 날짜"를 완전히 분리해서
-        //   추적한다: latestGainersDate(DB 우선) vs latestVolumeDate(JSON 파일에서
-        //   volumeStocks가 실제로 채워진 마지막 날짜, DB와 무관하게 독립 계산).
-        let latestGainersDate = null;
-        if (dbData && dbData.dates) {
-          Object.keys(dbData.dates).forEach(d => {
-            if (!data.dates[d]) data.dates[d] = { date: d, gainers: [], volumeStocks: [] };
-            data.dates[d].gainers = dbData.dates[d].gainers || [];
-          });
-          if (dbData.latestDate) latestGainersDate = dbData.latestDate;
-        }
-        if (!latestGainersDate) latestGainersDate = data.latestDate || null;
 
         const allDateKeys = Object.keys(data.dates);
         const volumeDateKeys = allDateKeys.filter(d => (data.dates[d].volumeStocks || []).length > 0);
-        const latestVolumeDate = volumeDateKeys.length ? volumeDateKeys.sort()[volumeDateKeys.length - 1] : null;
+        const latestGainersDate = data.latestDate || null;
+        const latestVolumeDate = data.latestVolumeDate || null;
 
         window._saData = data;
 
@@ -1322,7 +1303,7 @@ const NEWSLETTERS = [
   }
 
   function fetchData() {
-    return fetch('market-scope-data.json?v=' + Date.now())
+    return fetch('/api/market-scope?v=' + Date.now())
       .then(function (res) {
         if (!res.ok) throw new Error('no data');
         return res.json();
