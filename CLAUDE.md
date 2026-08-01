@@ -14,17 +14,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - API key, OAuth secret, Supabase service role key 같은 비밀값은 코드나 채팅에 노출하지 않습니다. (단, Supabase anon key처럼 브라우저에 공개되어도 되는 값은 구분해서 설명 — 아래 "인증/Supabase" 참고)
 - 작업 후에는 무엇이 바뀌었는지, 어디서 확인하는지, 다음에 무엇을 하면 좋은지 짧게 정리합니다.
 
+## 이 저장소는 사이트 코드 전용입니다 (2026-08-01)
+
+원래 이 저장소 안에 "리서치자동화"(데이터를 만들어내는 파이프라인, 세미클래스 2강 실습 겸용)가 `리서치자동화/` 폴더로 함께 있었습니다. 2026-08-01에 완전히 분리해 **별도 저장소** `E:\AI 스터디\리서치자동화\`(자체 git, 자체 GitHub 저장소)로 옮겼습니다. 이 저장소에는 이제 사이트 코드만 있습니다.
+
+두 저장소는 **JSON 파일 2개로만 이어집니다**: `리서치자동화`의 GitHub Actions가 `stock-analysis-data.json`·`market-scope-data.json`을 만들어 **이 저장소**에 커밋·푸시합니다(크로스 저장소 푸시, `SITE_REPO_PAT`라는 이름의 PAT 사용). 자세한 자동화 규칙·설계·로드맵은 리서치자동화 저장소의 `CLAUDE.md`/`README.md`를 확인하세요 — 여기서는 다루지 않습니다.
+
 ## 명령어
 
-빌드 도구나 패키지 매니저가 없는 순수 정적 사이트입니다 (`package.json` 없음, `npm install` 불필요).
+빌드 스텝이 없는 정적 사이트입니다 (`package.json`의 의존성은 `web-push` 하나뿐).
 
 ```bash
-# 로컬 미리보기 서버 (.claude/launch.json에 등록된 방식)
+# 로컬 미리보기 서버
 python -m http.server 3000
 # → http://localhost:3000 에서 index.html 등을 직접 확인
 ```
 
-배포는 Vercel(GitHub 연동, 프로젝트명 `manzo-site`)이 `main` 브랜치 push를 감지해 자동으로 처리합니다. 별도의 `vercel.json`이나 빌드 스텝은 없으며, `api/` 폴더는 Vercel이 자동으로 서버리스 함수로 인식합니다. 즉 **이 프로젝트의 배포 = git push**입니다.
+배포는 Vercel(GitHub 연동, 프로젝트명 `manzo-site`)이 `main` 브랜치 push를 감지해 자동으로 처리합니다. 즉 **이 프로젝트의 배포 = git push**입니다. Vercel의 **Root Directory는 저장소 루트 그 자체**(빈 값)입니다 — 별도 하위 폴더를 지정하지 않습니다. `api/` 폴더는 Vercel이 자동으로 서버리스 함수로 인식합니다.
 
 커밋 메시지는 `data: ...`, `feat: ...` 형식의 한글 설명을 사용하는 기존 관례를 따릅니다.
 
@@ -35,9 +41,19 @@ python -m http.server 3000
 - [archive.html](archive.html), [article.html](article.html) — 뉴스레터 지난 호 아카이브 / 개별 분석 글 상세 페이지. 각각 index.html과 동일한 CSS 변수(`--bg`, `--accent` 등)를 **파일마다 따로 복붙**해서 갖고 있습니다 (공유 스타일시트 없음). 색상·간격 등 디자인을 바꿀 때는 세 파일 모두 확인해야 합니다.
 
 ### 데이터가 흘러가는 방식
-- `market-scope-data.json`, `stock-analysis-data.json`은 index.html이 `fetch()`로 직접 읽어 마켓 스코프/종목 분석 섹션을 그립니다. 이 JSON들은 **이 저장소 안에 생성 스크립트가 없고**, 외부에서 (Gemini 등으로) 만든 값을 그대로 파일에 덮어써서 커밋하는 방식으로 갱신됩니다 (커밋 로그의 `data: ... 업데이트` 커밋들 참고). 즉 "코드"가 아니라 "데이터 스냅샷"을 갱신하는 작업입니다.
-- 아티클(분석 글) 목록은 index.html 493번째 줄 근처의 인라인 `const ARTICLES = [...]` 배열로 관리됩니다.
-- 국내/해외 뉴스 헤드라인은 `api/news.js`(RSS 프록시)와 `api/naver-news.js`(네이버 뉴스 검색 API)를 프론트에서 호출해 채웁니다. 네이버 API 자격증명은 Vercel 환경변수 `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET`으로만 존재하며 코드에는 없습니다.
+
+index.html의 섹션 중 **자동화가 만드는 것은 3개**이고, 나머지는 그때그때 불러오거나 하드코딩입니다.
+
+| 섹션 | 데이터 출처 | 만드는 주체 |
+| --- | --- | --- |
+| 당일 상승률 상위 10위 | `stock-analysis-data.json` → `dates[날짜].gainers[]` | 별도 저장소 `리서치자동화`의 `collect_gainers.py` |
+| 거래대금 상위 10위 | 같은 파일 → `dates[날짜].volumeStocks[]` | 같은 스크립트 |
+| 마켓 스코프 | `market-scope-data.json` | 별도 저장소 `리서치자동화`의 `collect_market_scope.py` |
+| 최신 경제 헤드라인 | — | 방문자가 열 때마다 `api/news.js`(RSS), `api/naver-news.js`(네이버 API) **실시간 호출**, 파일에 저장 안 됨 |
+| 분석 글 목록 | — | `index.html` 안의 인라인 `const ARTICLES = [...]` 배열에 하드코딩 |
+
+- 두 JSON은 이 저장소 루트에 있고 index.html이 `fetch()`로 읽습니다. **이 저장소 안에는 두 JSON을 만드는 코드가 없습니다** — 리서치자동화 저장소의 GitHub Actions가 크로스 저장소 푸시로 갱신합니다 (커밋 로그의 `data: ... 업데이트` 커밋들, 커밋 작성자가 `github-actions[bot]`).
+- 네이버 API 자격증명은 Vercel 환경변수 `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET`으로만 존재하며 코드에는 없습니다.
 - `docs_cache/`의 `.pkl` 파일은 OpenDartReader(국내 기업 corp code 조회용) 캐시로, 이 저장소의 실행 흐름과는 무관한 로컬 캐시입니다.
 
 ### 쓰이지 않는 레거시 파일 (주의)
@@ -53,14 +69,3 @@ index.html 하단에 Supabase JS SDK를 CDN으로 불러와 이메일/구글 로
 
 ### 진행 상황 기록
 [.semiclass/brand-vibecoding-progress.md](.semiclass/brand-vibecoding-progress.md)에 prepare→local→preview→content→git→github→vercel→qa 단계별 진행 상태가 표로 기록되어 있습니다. 큰 작업을 마치면 이 표를 최신 상태로 갱신해주세요.
-
-## 업무자동화 학습 공간 (2강)
-
-이 저장소는 '세미클래스 — 나만의 웹사이트 만들기' 강의 프로젝트인 동시에, "AI 업무자동화" 강의의 개인 실습 공간이기도 합니다. 수강생의 1강 설계도(현재 [design/automation.yaml](design/automation.yaml))에서 자동화 대상을 이 저장소의 '당일 상승률 상위 10위' 파이프라인(`stock-analysis-data.json`)으로 직접 지정했기 때문에, 별도 폴더가 아니라 이 루트에 함께 둡니다. (2026-08-01: `01-input/`, `02-reference/`, `03-output/`, `context/`, `inbox/`, `evidence/`, `knowledge/`, `progress/`, `workflow/`, `tests/`, 루트 `skills/` 등 지난 2강 번호형 구조는 `input/`, `reference/`, `design/`, `.automation/`으로 정리하고 `.automation/archive/2026-08-01-lesson02-compaction/legacy-root/`에 숨김 보관했습니다.)
-
-- 전체 안내는 [README.md](README.md), 자동화 규격 전체는 [design/automation.yaml](design/automation.yaml)을 확인하세요.
-- 진행 상태는 [design/roadmap.yaml](design/roadmap.yaml)이 정본입니다. 증거 없이 완료로 바꾸지 않습니다.
-- "입·출력 규격 검증을 진행해줘" 또는 "목 입력을 만들어줘" 요청을 받으면, `.claude/skills/`와 `.agents/skills/`의 `semiclass-input-output-spec-review`/`semiclass-mock-input-generator` SKILL.md를 적용합니다. 스킬이 없거나 찾을 수 없으면 일반 답변으로 대신하지 말고 누락된 경로를 그대로 알려주세요.
-- 확정된 규칙은 [reference/policies/confirmed-rules.md](reference/policies/confirmed-rules.md), 아직 확정 전인 질문·후보는 [.automation/intake.json](.automation/intake.json)의 `open_questions`에 있습니다. 한 번에 다음 행동 하나만 안내하고, `design/roadmap.yaml`의 `stages` 순서(design → prepare → first_run → verify → operate)를 따르세요.
-- 파일이나 로드맵 상태가 바뀌면 `node .automation/dashboard/refresh-dashboard.mjs .`로 [dashboard.html](dashboard.html)을 다시 만드세요.
-- 위 워크스페이스 자체는 어려운 말 대신 비유와 작은 예시로 안내하는 학습용 공간입니다. 이 절이 다루는 파일들(README.md, design/, input/, reference/, output/, .automation/, dashboard.html 등) 밖의 사이트 코드 작업에는 이 문서의 다른 절(워크스페이스 성격, 아키텍처 등)을 그대로 따르세요.
