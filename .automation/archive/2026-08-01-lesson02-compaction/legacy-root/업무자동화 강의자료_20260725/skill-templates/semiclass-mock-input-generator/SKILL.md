@@ -11,9 +11,10 @@ description: 승인된 자동화 워크플로우의 규격으로 정상·변형�
 
 ## 먼저 읽을 자료
 
-1. `design/automation.yaml`
-2. `reference/policies/`, `reference/forms/`의 승인된 입력·출력 규격
-3. 이미 있다면 `input/`의 예시와 `.automation/test-suites/`의 이전 기록
+1. `design/automation-blueprint.md`
+2. `workflow/WORKFLOW.md`
+3. `02-reference/`의 승인된 입력·출력 규격
+4. 이미 있다면 `01-input/`의 예시와 `tests/`의 이전 기록
 
 규격이 비어 있거나 서로 맞지 않으면 데이터를 지어내지 말고, 필요한 규칙을 한 가지 질문으로 확인합니다.
 
@@ -28,7 +29,7 @@ description: 승인된 자동화 워크플로우의 규격으로 정상·변형�
 
 ## 매니페스트에 적을 것
 
-각 케이스의 안정적인 ID, 파일 이름 또는 행 위치, 시험 목적, 적용 규격, 기대 행동, 확인할 출력 의무, 금지 행동을 `.automation/test-suites/<suite-id>/`에 남깁니다.
+각 케이스의 안정적인 ID, 파일 이름 또는 행 위치, 시험 목적, 적용 규격, 기대 행동, 확인할 출력 의무, 금지 행동을 `tests/`에 남깁니다.
 
 - N-01·N-02는 표준 산출물의 형식이 같은지 확인합니다.
 - E-01은 질문·`확인 필요`·중단·초안만 생성 중 승인된 행동을 확인합니다.

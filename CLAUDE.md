@@ -56,10 +56,11 @@ index.html 하단에 Supabase JS SDK를 CDN으로 불러와 이메일/구글 로
 
 ## 업무자동화 학습 공간 (2강)
 
-이 저장소는 '세미클래스 — 나만의 웹사이트 만들기' 강의 프로젝트인 동시에, "AI 업무자동화" 강의의 개인 실습 공간이기도 합니다. 수강생의 1강 설계도([design/automation-blueprint.md](design/automation-blueprint.md))에서 자동화 대상을 이 저장소의 '당일 상승률 상위 10위' 파이프라인(마켓 스코프 자동화, market-scope-data.json/stock-analysis-data.json)으로 직접 지정했기 때문에, 별도 폴더가 아니라 이 루트에 함께 둡니다.
+이 저장소는 '세미클래스 — 나만의 웹사이트 만들기' 강의 프로젝트인 동시에, "AI 업무자동화" 강의의 개인 실습 공간이기도 합니다. 수강생의 1강 설계도(현재 [design/automation.yaml](design/automation.yaml))에서 자동화 대상을 이 저장소의 '당일 상승률 상위 10위' 파이프라인(`stock-analysis-data.json`)으로 직접 지정했기 때문에, 별도 폴더가 아니라 이 루트에 함께 둡니다. (2026-08-01: `01-input/`, `02-reference/`, `03-output/`, `context/`, `inbox/`, `evidence/`, `knowledge/`, `progress/`, `workflow/`, `tests/`, 루트 `skills/` 등 지난 2강 번호형 구조는 `input/`, `reference/`, `design/`, `.automation/`으로 정리하고 `.automation/archive/2026-08-01-lesson02-compaction/legacy-root/`에 숨김 보관했습니다.)
 
-- 전체 안내는 [README.md](README.md), 폴더별 역할은 [02-reference/workspace-file-guide.md](02-reference/workspace-file-guide.md)를 확인하세요.
-- 진행 상태는 [progress/roadmap.md](progress/roadmap.md) / [progress/roadmap.html](progress/roadmap.html)이 정본입니다. 증거 없이 완료로 바꾸지 않습니다.
-- "입·출력 규격 검증을 진행해줘" 또는 "목 입력을 만들어줘" 요청을 받으면, 먼저 `skills/`(사람이 읽는 정본)와 `.claude/skills/`(Claude Code가 인식하는 투영본)의 `semiclass-input-output-spec-review`/`semiclass-mock-input-generator` SKILL.md를 적용합니다. 스킬이 없거나 찾을 수 없으면 일반 답변으로 대신하지 말고 누락된 경로를 그대로 알려주세요.
-- 확정된 규칙은 `context/README.md`, 아직 확정 전인 질문·후보는 `inbox/lesson-02.md`에 있습니다. 한 번에 다음 행동 하나만 안내하고, `progress/roadmap.md`의 회차 순서를 따르세요.
-- 위 워크스페이스 자체는 어려운 말 대신 비유와 작은 예시로 안내하는 학습용 공간입니다. 이 절이 다루는 파일들(README.md, skills/, design/, progress/ 등) 밖의 사이트 코드 작업에는 이 문서의 다른 절(워크스페이스 성격, 아키텍처 등)을 그대로 따르세요.
+- 전체 안내는 [README.md](README.md), 자동화 규격 전체는 [design/automation.yaml](design/automation.yaml)을 확인하세요.
+- 진행 상태는 [design/roadmap.yaml](design/roadmap.yaml)이 정본입니다. 증거 없이 완료로 바꾸지 않습니다.
+- "입·출력 규격 검증을 진행해줘" 또는 "목 입력을 만들어줘" 요청을 받으면, `.claude/skills/`와 `.agents/skills/`의 `semiclass-input-output-spec-review`/`semiclass-mock-input-generator` SKILL.md를 적용합니다. 스킬이 없거나 찾을 수 없으면 일반 답변으로 대신하지 말고 누락된 경로를 그대로 알려주세요.
+- 확정된 규칙은 [reference/policies/confirmed-rules.md](reference/policies/confirmed-rules.md), 아직 확정 전인 질문·후보는 [.automation/intake.json](.automation/intake.json)의 `open_questions`에 있습니다. 한 번에 다음 행동 하나만 안내하고, `design/roadmap.yaml`의 `stages` 순서(design → prepare → first_run → verify → operate)를 따르세요.
+- 파일이나 로드맵 상태가 바뀌면 `node .automation/dashboard/refresh-dashboard.mjs .`로 [dashboard.html](dashboard.html)을 다시 만드세요.
+- 위 워크스페이스 자체는 어려운 말 대신 비유와 작은 예시로 안내하는 학습용 공간입니다. 이 절이 다루는 파일들(README.md, design/, input/, reference/, output/, .automation/, dashboard.html 등) 밖의 사이트 코드 작업에는 이 문서의 다른 절(워크스페이스 성격, 아키텍처 등)을 그대로 따르세요.

@@ -1,47 +1,40 @@
-# 업무자동화 학습 공간 (AI 업무자동화 강의)
+# 업무자동화 학습 공간 — 만조리서치 Top10 종목 분석 자동화
 
-이 폴더(`E:\AI 스터디\만조그룹 2차`)는 만조리서치(만조인베스트) 사이트 프로젝트인 동시에, "AI 업무자동화" 강의의 개인 실습 공간이기도 합니다. 학생의 1강 설계도(`design/automation-blueprint.md`)에서 확인된 대로, 이 학생의 자동화 대상은 **만조리서치 홈페이지의 '당일 상승률 상위 10위' 섹션을 매일 자동 갱신하는 일**이며, 그 작업 폴더가 바로 여기입니다. 그래서 강의 자료와 학습용 스캐폴딩을 별도 폴더가 아니라 이 저장소 안에 그대로 둡니다.
+이 폴더(`E:\AI 스터디\만조그룹 2차`)는 만조리서치(만조인베스트) 사이트 프로젝트인 동시에, "AI 업무자동화" 강의의 개인 실습 공간입니다. 자세한 규칙은 프로젝트 루트 `CLAUDE.md`의 "업무자동화 학습 공간 (2강)" 절을 확인하세요.
 
-## 업무 (design/automation-blueprint.md 요약)
-- 한국 증시 마감 기준 당일(평일) 또는 주간(토요일/연휴) 상승률 Top10 종목을 자동으로 뽑아 상승 이유·차트를 분석하고, 홈페이지 '당일 상승률 상위 10위' 섹션에 매일 새 데이터로 반영합니다.
-- 현재 불편: 클로드코드 스케줄로 자동화를 시도했지만 한 번도 끝까지 자동 완료된 적이 없어 매번 수동으로 마무리했습니다. (원인 중 하나: 무료 운영 중 제미나이 토큰 소진)
+## 이 자동화가 줄이는 일
+한국 증시 마감 기준 당일(평일) 또는 주간(토요일·연휴) 상승률 Top10 종목을 자동으로 뽑아 상승 이유·차트를 분석하고, 홈페이지 '당일 상승률 상위 10위' 섹션에 매일 새 데이터로 반영하는 일.
 
-## 시작 조건 (확인된 사실)
-- 평일: 한국시간 17시(장 마감 후) 자동 시작
-- 주말/연휴: 새벽 6시 자동 시작
-- 실행 도구: 클로드코드 스케줄 기능
-- 확인 필요: 연휴 판별(휴장일 캘린더 연동 등)을 스케줄 트리거가 어떻게 자동화할지 미확정
+## 시작 조건
+GitHub Actions(`.github/workflows/gainers-daily.yml`)가 매일 07:00 UTC(=16:00 KST)에 호출하고, `krx_calendar.get_weekly_report_trigger()`가 오늘 발행 여부와 daily/weekly 모드를 자동 판단합니다.
 
 ## 입력
-- Top10 선정·차트 데이터: 한국투자증권 API, 키움증권 API, 필요 시 pykrx
-- 상승 이유: 네이버 등 포털에서 종목당 최소 10개 이상 뉴스 크롤링 후 분석
-- 확인 필요: 인증정보가 정확히 어떤 파일(.env 등)에 있는지, Git에 커밋되지 않도록 되어 있는지
+네이버 증권 상승률/거래대금 크롤링, 네이버 fchart OHLCV(120일), 종목당 네이버 뉴스 최대 15개. 실제 예시 1건은 [input/manzo-real-2026-07-13-049080.txt](input/manzo-real-2026-07-13-049080.txt).
+
+## 처리
+`design/automation.yaml`의 `process` 8단계(발행 여부 판단 → Top10 선정 → 거래대금 상위 선정 → 기술적 지표 계산 → 뉴스 수집 → 상승 이유/차트 분석 → 결과 저장 → 게시) — 실제로는 `scripts/collect_gainers.py`가 담당합니다.
 
 ## 결과
-- 일간·주간 결과 모두 홈페이지 동일한 '당일 상승률 상위 10위' 섹션에 반영 (확인된 사실)
-- 확인 필요: 일간/주간 데이터를 구분해서 볼 수 있어야 하는지, 그냥 덮어써도 되는지
+`stock-analysis-data.json`의 `dates[날짜].gainers[]`, `index.html` '당일 상승률 상위 10위' 섹션. 출력 규격은 [reference/policies/manzo-output-contract.md](reference/policies/manzo-output-contract.md) 참고.
 
-## 사람 검토
-- 검토 시점: 최종 게시(배포) 이후 사후 검토 (확인된 사실)
-- 검토 항목: 상승 이유 분석의 사실관계, 상승 이유/차트 설명 분량(250자 이상), 종목 필터링 누락·오류
-- 오류 발견 시: 사용자가 수정 지시 → 수정 후 재배포
+## 사람이 확인할 곳
+최종 게시(배포) 이후 사후 검토 — 상승 이유 분석의 사실관계, 분량, 종목 필터링 누락·오류. `git_push()`가 스크립트 안에서 조건 없이 자동 실행되므로 사전에 막는 지점은 현재 없습니다(확인 필요).
 
-## 다음 최소 단위
-Top10 필터링 로직만 떼어내어, 우선주·관리종목·ETF·정리매매 종목을 제외한 Top10이 오류 없이 자동으로 완성되는지 먼저 검증합니다. (`progress/roadmap.html`의 1강 항목)
+## 현재 로드맵 단계
+`design`(설계, 진행 중) — 자세한 근거와 단계별 증거는 [design/roadmap.yaml](design/roadmap.yaml) 참고.
 
-## 이 폴더에서 지금 진행 중인 것 (2강 · 공통 실습)
-개인 정상 입력(뉴스 크롤링 결과, Top10 리스트 등 익명화된 표준 샘플)이 아직 파일로 준비되지 않아, 2강 "입·출력 규격 검증 → 반복 시험" 연습은 **강의 공통 샘플(가상 Top10 상승 종목 자동화)** 로 먼저 진행합니다. `01-input/`, `02-reference/`, `03-output/`, `tests/lesson-02-results.md`를 확인하세요. 이 공통 샘플은 실제 만조리서치 데이터가 아니라 가상 종목·가상 수치로 만든 연습용 자료이며, 그 결과는 만조리서치 자동화의 완료 증거가 아닙니다.
+## 다음 행동
+관리종목·정리매매 제외 필터링을 `get_daily_top10()`에 추가(KRX 계정 발급 후 `classify_excluded()`에 조건 추가).
 
-## 폴더 안내
-각 폴더가 어떤 상황에 어떤 파일을 담는지는 [02-reference/workspace-file-guide.md](02-reference/workspace-file-guide.md)에서 확인합니다.
+## 미결 질문
+아직 확정되지 않은 질문은 [.automation/intake.json](.automation/intake.json)의 `open_questions`에 있습니다.
+
+## 대시보드
+[dashboard.html](dashboard.html)을 더블클릭하면 위 정보를 화면으로 볼 수 있습니다. 파일이 바뀐 뒤에는 `node .automation/dashboard/refresh-dashboard.mjs .`로 다시 만듭니다.
 
 ## 스킬
-- `skills/semiclass-input-output-spec-review/SKILL.md` — "입·출력 규격 검증을 진행해줘"
-- `skills/semiclass-mock-input-generator/SKILL.md` — "목 입력을 만들어줘" / "테스트 입력 만들어줘"
+- `.claude/skills/semiclass-input-output-spec-review/SKILL.md`, `.agents/skills/semiclass-input-output-spec-review/SKILL.md` — "입·출력 규격 검증을 진행해줘"
+- `.claude/skills/semiclass-mock-input-generator/SKILL.md`, `.agents/skills/semiclass-mock-input-generator/SKILL.md` — "목 입력을 만들어줘" / "테스트 입력 만들어줘"
 
-Claude Code는 `.claude/skills/`, Codex는 `.agents/skills/`의 같은 파일을 인식합니다. **스킬을 만든 직후에는 이 대화를 계속 쓰지 말고, 폴더를 다시 열거나 새 세션을 시작한 뒤** 위 문장으로 요청하세요.
-
-## 원본 강의자료
-`강의자료/`(= `업무자동화 강의자료_20260725/`) 폴더의 README·설계 자료는 그대로 보존되어 있으며, 이 스캐폴딩 작업의 출발점입니다. 강의자료 폴더 자체를 프로젝트로 열지 않습니다.
-
-`강의자료/나의_자동화_로드맵.html`이 이 학생의 원본 1강 로드맵이며, 내용 변경 없이 `progress/roadmap.html`로 복사되어 있습니다. **앞으로 진행 상황(체크박스 등)을 갱신할 때는 `progress/roadmap.html`을 정본으로 씁니다.** 강의자료 폴더의 원본은 그날 제출한 스냅샷으로 그대로 두고 고치지 않습니다.
+## 지난 2강 구형 구조(01-input/, 02-reference/, 03-output/, context/, inbox/, evidence/, knowledge/, progress/, workflow/, tests/, 강의자료 등)
+2026-08-01에 `.automation/archive/2026-08-01-lesson02-compaction/legacy-root/`로 숨김 보관했습니다. 그 안의 실제 자료(실제 입력 1건, 실제 출력 규격, 실제 회귀 기록)는 위 `input/`, `reference/policies/`, `design/`으로 이미 옮겨졌고, 강의 공통 가상 샘플(N-01·N-02·N-03·E-01·E-02 등)은 정보 손실 없이 그대로 보관만 되어 있습니다.
