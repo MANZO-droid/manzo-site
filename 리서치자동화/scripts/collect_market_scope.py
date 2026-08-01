@@ -29,8 +29,11 @@ import requests
 from bs4 import BeautifulSoup
 import google.generativeai as genai
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-JSON_PATH = os.path.join(ROOT, "market-scope-data.json")
+# 리서치자동화/scripts/ 에서 두 단계 위가 저장소 루트다(.env.local이 여기 있다).
+# 결과 JSON은 사이트가 읽어야 하므로 웹페이지관리/ 아래에 쓴다.
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+WEB_DIR = os.path.join(ROOT, "웹페이지관리")
+JSON_PATH = os.path.join(WEB_DIR, "market-scope-data.json")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from krx_calendar import is_trading_day  # noqa: E402

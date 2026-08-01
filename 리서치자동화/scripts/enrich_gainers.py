@@ -21,8 +21,9 @@ from google.genai import types
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-JSON_PATH = os.path.join(ROOT, "stock-analysis-data.json")
+# 리서치자동화/scripts/ 에서 두 단계 위가 저장소 루트다(.env.local이 여기 있다).
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+JSON_PATH = os.path.join(ROOT, "웹페이지관리", "stock-analysis-data.json")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                   "AppleWebKit/537.36 (KHTML, like Gecko) "

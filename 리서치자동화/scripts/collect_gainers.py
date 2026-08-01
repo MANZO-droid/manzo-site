@@ -36,8 +36,12 @@ from bs4 import BeautifulSoup
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-JSON_PATH = os.path.join(ROOT, "stock-analysis-data.json")
+# 리서치자동화/scripts/ 에서 두 단계 위가 저장소 루트다(.env.local, git 저장소가 여기 있다).
+# 결과 JSON은 사이트가 읽어야 하므로 웹페이지관리/ 아래에 쓴다.
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+WEB_DIR = os.path.join(ROOT, "웹페이지관리")
+JSON_REL = "웹페이지관리/stock-analysis-data.json"
+JSON_PATH = os.path.join(WEB_DIR, "stock-analysis-data.json")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from krx_calendar import is_trading_day, get_weekly_report_trigger  # noqa: E402
@@ -656,7 +660,7 @@ def run_weekly(client, date_str: str, from_date: str, to_date: str):
 
 def git_push(date_str: str):
     try:
-        subprocess.run(["git", "add", "stock-analysis-data.json"], cwd=ROOT, check=True)
+        subprocess.run(["git", "add", JSON_REL], cwd=ROOT, check=True)
         subprocess.run(
             ["git", "commit", "-m", f"data: 상승률 상위 10위 자동 업데이트 ({date_str})"],
             cwd=ROOT, check=True

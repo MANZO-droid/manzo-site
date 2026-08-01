@@ -1,13 +1,14 @@
 // 키움 REST API - '전일대비 등락률 상위'(ka10027) 데이터가 실제로 오는지 확인하는 테스트 스크립트.
-// 실행: node scripts/test-kiwoom.js
-// 키는 프로젝트 루트의 .env.local 파일에서 읽습니다 (이 파일은 git에 올라가지 않음).
+// 실행: node 웹페이지관리/scripts/test-kiwoom.js
+// 키는 저장소 루트의 .env.local 파일에서 읽습니다 (이 파일은 git에 올라가지 않음).
 
 const fs = require('fs');
 const path = require('path');
 
 // --- .env.local 에서 KIWOOM_APPKEY / KIWOOM_SECRET 읽기 (별도 라이브러리 없이) ---
 function loadEnvLocal() {
-  const envPath = path.join(__dirname, '..', '.env.local');
+  // 웹페이지관리/scripts/ 에서 두 단계 위가 저장소 루트다.
+  const envPath = path.join(__dirname, '..', '..', '.env.local');
   if (!fs.existsSync(envPath)) return;
   const text = fs.readFileSync(envPath, 'utf8');
   for (const line of text.split(/\r?\n/)) {

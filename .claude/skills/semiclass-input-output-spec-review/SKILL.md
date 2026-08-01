@@ -7,15 +7,15 @@ description: 1강 로드맵을 바탕으로 자동화 워크플로우의 입·�
 
 ## 언제 쓰나요
 
-`design/automation.yaml`의 `process`를 처음 시험하기 전, 또는 실행 결과가 기대와 달랐을 때 사용합니다.
+`리서치자동화/design/automation.yaml`의 `process`를 처음 시험하기 전, 또는 실행 결과가 기대와 달랐을 때 사용합니다.
 
 ## 먼저 읽을 자료
 
-1. `design/automation.yaml`
-2. `design/roadmap.yaml`
-3. `input/`의 현재 입력 예시
-4. `reference/policies/`, `reference/forms/`의 승인된 입력·출력 기준
-5. 이미 있다면 `.automation/test-suites/`의 실행 기록
+1. `리서치자동화/design/automation.yaml`
+2. `리서치자동화/design/roadmap.yaml`
+3. `리서치자동화/input/`의 현재 입력 예시
+4. `리서치자동화/reference/policies/`, `리서치자동화/reference/forms/`의 승인된 입력·출력 기준
+5. 이미 있다면 `리서치자동화/.automation/test-suites/`의 실행 기록
 
 ## 검토 순서
 

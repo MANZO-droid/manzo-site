@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function loadEnvLocal() {
-  const envPath = path.join(__dirname, '..', '.env.local');
+  // 웹페이지관리/scripts/ 에서 두 단계 위가 저장소 루트다(.env.local이 여기 있다).
+  const envPath = path.join(__dirname, '..', '..', '.env.local');
   if (!fs.existsSync(envPath)) return;
   const text = fs.readFileSync(envPath, 'utf8');
   for (const line of text.split(/\r?\n/)) {
