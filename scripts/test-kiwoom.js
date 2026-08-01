@@ -7,8 +7,8 @@ const path = require('path');
 
 // --- .env.local 에서 KIWOOM_APPKEY / KIWOOM_SECRET 읽기 (별도 라이브러리 없이) ---
 function loadEnvLocal() {
-  // 웹페이지관리/scripts/ 에서 두 단계 위가 저장소 루트다.
-  const envPath = path.join(__dirname, '..', '..', '.env.local');
+  // scripts/ 에서 한 단계 위가 저장소 루트다.
+  const envPath = path.join(__dirname, '..', '.env.local');
   if (!fs.existsSync(envPath)) return;
   const text = fs.readFileSync(envPath, 'utf8');
   for (const line of text.split(/\r?\n/)) {
