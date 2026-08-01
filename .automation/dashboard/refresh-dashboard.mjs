@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, relative, resolve, sep } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const SCRIPT_DIRECTORY = dirname(fileURLToPath(import.meta.url));
 const DASHBOARD_PLACEHOLDER = "__SEMICLASS_DASHBOARD_DATA__";
@@ -395,7 +395,7 @@ export function refreshDashboard(rootPath) {
   };
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1])) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const rootPath = process.argv[2] ?? ".";
   try {
     const result = refreshDashboard(rootPath);

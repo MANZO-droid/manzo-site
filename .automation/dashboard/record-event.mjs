@@ -3,6 +3,7 @@
 import { randomUUID } from "node:crypto";
 import { appendFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 import { refreshDashboard } from "./refresh-dashboard.mjs";
 
@@ -36,7 +37,7 @@ export function recordEvent(rootPath, options) {
   return { event, dashboard_path: refreshed.dashboard_path };
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1])) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = process.argv.slice(2);
   const rootPath = args.find((argument) => !argument.startsWith("--")) ?? ".";
   const dataJson = argumentValue(args, "data-json");
