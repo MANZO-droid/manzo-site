@@ -46,6 +46,10 @@ function toVolumeCard(r) {
     changePct: r.change_pct,
     tradeAmount: r.trade_amount,
     naverUrl: r.naver_url,
+    investors: r.investors || null,
+    prevRank: r.prev_rank,
+    priceChange: r.price_change,
+    prevTradeAmount: r.prev_trade_amount,
   };
 }
 
