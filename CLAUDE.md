@@ -18,7 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 원래 이 저장소 안에 "리서치자동화"(데이터를 만들어내는 파이프라인, 세미클래스 2강 실습 겸용)가 `리서치자동화/` 폴더로 함께 있었습니다. 2026-08-01에 완전히 분리해 **별도 저장소** `E:\AI 스터디\리서치자동화\`(자체 git, 자체 GitHub 저장소)로 옮겼습니다. 이 저장소에는 이제 사이트 코드만 있습니다.
 
-두 저장소는 **JSON 파일 2개로만 이어집니다**: `리서치자동화`의 GitHub Actions가 `stock-analysis-data.json`·`market-scope-data.json`을 만들어 **이 저장소**에 커밋·푸시합니다(크로스 저장소 푸시, `SITE_REPO_PAT`라는 이름의 PAT 사용). 자세한 자동화 규칙·설계·로드맵은 리서치자동화 저장소의 `CLAUDE.md`/`README.md`를 확인하세요 — 여기서는 다루지 않습니다.
+원래 두 저장소는 **JSON 파일 2개로만** 이어져 있었습니다(`리서치자동화`의 GitHub Actions가 `stock-analysis-data.json`·`market-scope-data.json`을 만들어 이 저장소에 크로스 저장소 푸시). **2026-08-01~08-02에 이 연결 방식이 완전히 바뀌었습니다**: 사이트는 Supabase 표(`daily_gainers`·`volume_stocks`·`market_scope_reports`)를 직접 읽고(아래 "데이터가 흘러가는 방식" 참고), 데이터를 만드는 코드(수집·분석·기록)는 전부 `리서치자동화` 저장소 쪽에만 있습니다 — **이 저장소에는 데이터를 쓰는 코드가 하나도 없습니다.** `리서치자동화` 쪽 GitHub Actions도 더 이상 이 저장소로 크로스 저장소 푸시를 하지 않으며(`SITE_REPO_PAT` 제거됨), 그 근거였던 두 JSON 파일 자체도 Supabase에 같은 데이터가 이미 다 있는 걸 확인한 뒤 삭제했습니다. 자세한 자동화 규칙·설계·로드맵은 리서치자동화 저장소의 `CLAUDE.md`/`README.md`를 확인하세요 — 여기서는 다루지 않습니다.
 
 ## 명령어
 
@@ -40,32 +40,39 @@ python -m http.server 3000
 - [index.html](index.html) — 메인 페이지. 히어로, 뉴스레터 구독, 국내/해외 경제 헤드라인, 마켓 스코프(당일 상승률·거래대금 상위 종목), 종목별 차트 분석 모달, 로그인까지 한 파일 안에 `<style>`/`<script>`가 모두 인라인으로 들어있는 큰 파일입니다.
 - [archive.html](archive.html), [article.html](article.html) — 뉴스레터 지난 호 아카이브 / 개별 분석 글 상세 페이지. 각각 index.html과 동일한 CSS 변수(`--bg`, `--accent` 등)를 **파일마다 따로 복붙**해서 갖고 있습니다 (공유 스타일시트 없음). 색상·간격 등 디자인을 바꿀 때는 세 파일 모두 확인해야 합니다.
 
-### 데이터가 흘러가는 방식
+### 데이터가 흘러가는 방식 (2026-08-02 기준, Supabase 직접 서빙으로 전환됨)
 
-index.html의 섹션 중 **자동화가 만드는 것은 3개**이고, 나머지는 그때그때 불러오거나 하드코딩입니다.
+**의도된 구조(설계자 확정, 2026-08-02 완전 정리)**: `리서치자동화` 저장소가 Supabase(DB/Schema)에 데이터를 직접 쓰고, 이 저장소(사이트)는 Supabase에서 **읽기 전용**으로만 동작합니다. 두 저장소는 git으로 이어지지 않고 Supabase 하나로만 이어집니다. 예전에 사이트 쪽에도 직접 쓰는 코드(`api/cron-update-gainers.js`, 키움 API 직접 호출)가 있었지만, 리서치자동화 쪽이 이미 같은 표를 채우고 있어 **같은 데이터에 두 곳이 동시에 쓰는 충돌 요인**이었습니다. 이 코드는 2026-08-02에 완전히 삭제했습니다 — 이제 이 저장소 안에는 Supabase에 쓰는 코드가 전혀 없습니다.
+
+index.html의 섹션 중 **자동화가 만드는 것은 3개 + 보강 필드 1개**이고, 나머지는 그때그때 불러오거나 하드코딩입니다.
 
 | 섹션 | 데이터 출처 | 만드는 주체 |
 | --- | --- | --- |
-| 당일 상승률 상위 10위 | `stock-analysis-data.json` → `dates[날짜].gainers[]` | 별도 저장소 `리서치자동화`의 `collect_gainers.py` |
-| 거래대금 상위 10위 | 같은 파일 → `dates[날짜].volumeStocks[]` | 같은 스크립트 |
-| 마켓 스코프 | `market-scope-data.json` | 별도 저장소 `리서치자동화`의 `collect_market_scope.py` |
+| 당일 상승률 상위 10위 | Supabase `daily_gainers` 표 → `/api/top-gainers` | 리서치자동화 저장소의 `scripts/collect_gainers.py` (GitHub Actions, 매일 16:00 KST) |
+| 거래대금 상위 10위 | Supabase `volume_stocks` 표 → 같은 `/api/top-gainers` | 같은 스크립트가 같이 씀 |
+| 마켓 스코프 | Supabase `market_scope_reports` 표 → `/api/market-scope` | 리서치자동화 저장소의 `scripts/collect_market_scope.py` (GitHub Actions, 매일) |
+| 종목별 상승 이유(`rise_reason`)·차트 분석(`chart_analysis`) | `daily_gainers`의 같은 행에 컬럼으로 저장 → `/api/top-gainers` 응답의 `riseReason`/`chartAnalysis` | `collect_gainers.py`가 뉴스 수집 후 Groq(무료)로 작성해 같이 upsert. git push 불필요 — Supabase에 저장되는 즉시 다음 페이지 로드에 반영 |
 | 최신 경제 헤드라인 | — | 방문자가 열 때마다 `api/news.js`(RSS), `api/naver-news.js`(네이버 API) **실시간 호출**, 파일에 저장 안 됨 |
 | 분석 글 목록 | — | `index.html` 안의 인라인 `const ARTICLES = [...]` 배열에 하드코딩 |
 
-- 두 JSON은 이 저장소 루트에 있고 index.html이 `fetch()`로 읽습니다. **이 저장소 안에는 두 JSON을 만드는 코드가 없습니다** — 리서치자동화 저장소의 GitHub Actions가 크로스 저장소 푸시로 갱신합니다 (커밋 로그의 `data: ... 업데이트` 커밋들, 커밋 작성자가 `github-actions[bot]`).
+- `api/top-gainers.js`, `api/market-scope.js`는 Supabase **anon(공개) key**만 써서 표를 읽기 전용으로 조회하고, 프론트가 쓰기 좋은 모양(camelCase)으로 변환해 돌려주는 서버리스 함수입니다. 이 두 함수가 예전의 `stock-analysis-data.json`/`market-scope-data.json` 하드코딩을 완전히 대체했습니다.
+- `daily_gainers` 표의 유일키는 `(trade_date, rank, report_type)`입니다(주간 리포트 지원을 위해 `report_type` 컬럼이 나중에 추가됨, 리서치자동화 저장소 `db/002_...sql` 마이그레이션). 리서치자동화 쪽 자동화는 항상 `report_type = 'daily'` 행만 씁니다 — 주간 집계는 리서치자동화 쪽 스크립트(`--mode weekly`)가 담당합니다.
+- `stock-analysis-data.json`·`market-scope-data.json` 두 파일은 **2026-08-02에 삭제했습니다** — Supabase에 같은(또는 더 많은) 데이터가 이미 들어가 있는 걸 직접 대조해 확인한 뒤 지웠습니다(자세한 대조 결과는 이 삭제 작업 당시 대화 기록 참고).
 - 네이버 API 자격증명은 Vercel 환경변수 `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET`으로만 존재하며 코드에는 없습니다.
 - `docs_cache/`의 `.pkl` 파일은 OpenDartReader(국내 기업 corp code 조회용) 캐시로, 이 저장소의 실행 흐름과는 무관한 로컬 캐시입니다.
 
 ### 쓰이지 않는 레거시 파일 (주의)
-아래 세 파일은 어디에서도 `fetch`/`<script src>`로 참조되지 않는, 더 이른 시점의 프로토타입 잔재입니다. 실제 화면은 index.html에 인라인된 코드로 동작하므로, 이 파일들을 고쳐도 사이트에는 반영되지 않습니다.
+아래 파일들은 어디에서도 `fetch`/`<script src>`로 참조되지 않는, 이전 시점의 프로토타입·구조 잔재입니다. 실제 화면은 index.html에 인라인된 코드로 동작하므로, 이 파일들을 고쳐도 사이트에는 반영되지 않습니다.
 - [data.js](data.js) — 예전 방식의 `ARTICLES` 배열 (현재는 index.html 인라인 배열이 실사용됨)
 - [style.css](style.css) — 예전 공용 스타일시트 (현재는 각 HTML 파일의 인라인 `<style>`이 실사용됨)
 - [chart_data.json](chart_data.json) — 예전 차트 목데이터 (현재 차트는 index.html의 `genOHLC`/`makeCandleSVG` 시드 기반 함수로 그 자리에서 생성됨)
 
-작업 요청이 "사이트 화면"에 관한 것이라면 위 세 파일이 아니라 index.html(/archive.html/article.html) 인라인 코드를 수정해야 합니다.
+작업 요청이 "사이트 화면"에 관한 것이라면 위 파일들이 아니라 index.html(/archive.html/article.html) 인라인 코드와 `api/top-gainers.js`·`api/market-scope.js`를 확인해야 합니다.
 
 ### 인증 / Supabase
 index.html 하단에 Supabase JS SDK를 CDN으로 불러와 이메일/구글 로그인 모달을 붙여둔 상태입니다 (`SUPABASE_URL`, `SUPABASE_KEY`가 코드에 하드코딩돼 있는데, 이는 브라우저 노출을 전제로 설계된 **anon(공개) key**라 정책상 문제없음 — Row Level Security로 보호). 반면 **service role key는 절대 코드에 넣지 않아야** 하며, 현재 코드에도 없습니다. `.semiclass/brand-vibecoding-progress.md` 기준으로 Supabase 연동은 "수업 후 선택" 단계로 표시되어 있어, 로그인 모달 UI는 있지만 실제 회원 데이터/권한 흐름은 아직 뼈대 단계일 수 있습니다 — 관련 작업 전에 현재 동작을 먼저 확인하세요.
+
+`daily_gainers`·`volume_stocks`·`market_scope_reports` 세 표도 같은 Supabase 프로젝트(`nxvpipgvcrfkujbvjjak`)에 있습니다. 이 저장소는 anon key로 **읽기만** 합니다(`api/top-gainers.js`, `api/market-scope.js`). **쓰기는 전부 리서치자동화 저장소 쪽 GitHub Actions가 `SUPABASE_SERVICE_ROLE_KEY`로 RLS를 우회해 직접 합니다** — 이 저장소 안에는 서비스 롤 키를 쓰는 코드가 없습니다(2026-08-02, `api/cron-update-gainers.js` 삭제로 완전히 정리됨).
 
 ### 진행 상황 기록
 [.semiclass/brand-vibecoding-progress.md](.semiclass/brand-vibecoding-progress.md)에 prepare→local→preview→content→git→github→vercel→qa 단계별 진행 상태가 표로 기록되어 있습니다. 큰 작업을 마치면 이 표를 최신 상태로 갱신해주세요.
