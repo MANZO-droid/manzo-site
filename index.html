@@ -884,7 +884,7 @@ const NEWSLETTERS = [
         <span class="sa-fin-label">매출증가율</span><span class="sa-fin-val">${fin.revenueGrowth != null ? fin.revenueGrowth+'%' : '-'}</span>
       </div>` : '';
       const newsHtml = (s.news && s.news.length) ? `<ul class="sa-news-list">${
-        s.news.slice(0,3).map(n=>`<li><a href="${n.link}" target="_blank" rel="noopener">${n.title}</a></li>`).join('')
+        s.news.slice(0,3).map(n=>`<li><a href="${n.url||n.link}" target="_blank" rel="noopener">${n.title}</a>${n.relativeLabel && n.relativeLabel!=='당일' ? `<span style="color:#aaa;font-size:11px;margin-left:6px">(${n.relativeLabel})</span>` : ''}</li>`).join('')
       }</ul>` : '';
       return `<article class="article-card" onclick="openSAModal(${s.rank-1})">
         <div class="article-card-img">${chartSvg}</div>
@@ -1117,7 +1117,7 @@ const NEWSLETTERS = [
     ];
     const finHtml = fin.period ? `<div class="sa-modal-fin">${finItems.map(f=>`<div class="sa-modal-fin-item"><div class="sa-modal-fin-label">${f.label}</div><div class="sa-modal-fin-val">${f.val}</div></div>`).join('')}</div>` : '';
     const newsHtml = (s.news && s.news.length) ? `<h4 class="sa-section-title">최근 뉴스</h4>
-      <ul class="sa-news-list">${s.news.map(n=>`<li><a href="${n.link}" target="_blank" rel="noopener">${n.title}</a><span style="color:#aaa;font-size:11px;margin-left:6px">${(n.pubDate||'').slice(0,16)}</span></li>`).join('')}</ul>` : '';
+      <ul class="sa-news-list">${s.news.map(n=>`<li><a href="${n.url||n.link}" target="_blank" rel="noopener">${n.title}</a><span style="color:#aaa;font-size:11px;margin-left:6px">${n.relativeLabel || (n.pubDate||'').slice(0,16)}</span></li>`).join('')}</ul>` : '';
     const riseHtml = s.riseReason ? `<div class="sa-analysis-block sa-rise-block">
       <div class="sa-analysis-icon">📈</div>
       <div><div class="sa-analysis-label">오늘 상승 이유</div><p class="sa-analysis-text">${s.riseReason}</p></div>
