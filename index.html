@@ -958,31 +958,55 @@ const NEWSLETTERS = [
   }
 
   // ---------- 날짜 탭 ----------
-  function buildDateTabs(dates, activeDate) {
+  // 탭에는 항상 최근 6일만 보인다(window._saTabDates에 로드 시점에 고정).
+  // 그보다 오래된 날짜는 달력에서만 고를 수 있고, 탭 목록 자체는 늘어나지 않는다.
+  function buildDateTabs(tabDates, activeDate) {
     const container = document.getElementById('sa-date-tabs');
-    const sorted = Object.keys(dates).filter(d => new Date(d).getDay() !== 0).sort().reverse();
+    const sorted = tabDates.filter(d => new Date(d).getDay() !== 0).sort().reverse();
     container.innerHTML = sorted.map(d => {
       const label = d.slice(5).replace('-', '/');
-      return `<button class="sa-date-tab${d===activeDate?' active':''}" onclick="selectSADate('${d}')">${label}</button>`;
+      return `<button class="sa-date-tab${d===activeDate?' active':''}" data-date="${d}" onclick="selectSADate('${d}')">${label}</button>`;
     }).join('');
+  }
+
+  // 이미 불러온 날짜면 즉시, 아니면(달력에서 고른 옛날 날짜) 그 날짜 하루치만
+  // /api/top-gainers?date=로 새로 가져와 window._saData.dates 캐시에 더한다.
+  function ensureDateLoaded(dateKey) {
+    if (window._saData && window._saData.dates && window._saData.dates[dateKey]) {
+      return Promise.resolve(window._saData.dates[dateKey]);
+    }
+    return fetch('/api/top-gainers?date=' + dateKey + '&t=' + Date.now())
+      .then(r => r.json())
+      .then(res => {
+        const entry = res && res.dates && res.dates[dateKey];
+        if (entry) {
+          window._saData = window._saData || { dates: {} };
+          window._saData.dates = window._saData.dates || {};
+          window._saData.dates[dateKey] = entry;
+        }
+        return entry || null;
+      })
+      .catch(() => null);
   }
 
   function selectSADate(dateKey) {
     window._saCurrentDate = dateKey;
     document.querySelectorAll('.sa-date-tab').forEach(b => {
-      b.classList.toggle('active', b.textContent === dateKey.slice(5).replace('-','/'));
+      b.classList.toggle('active', b.dataset.date === dateKey);
     });
-    const dateData = window._saData && window._saData.dates && window._saData.dates[dateKey];
-    renderGainerCards(dateData);
     closeDateCalendar();
+    const grid = document.getElementById('articles-grid');
+    if (grid) grid.innerHTML = '<div class="sa-loading">불러오는 중입니다...</div>';
+    ensureDateLoaded(dateKey).then(dateData => renderGainerCards(dateData));
   }
 
   // 거래대금 섹션 전용 날짜 선택 (상승률 섹션과 완전히 독립된 상태)
   function selectVolDate(dateKey) {
     window._volCurrentDate = dateKey;
-    const dateData = window._saData && window._saData.dates && window._saData.dates[dateKey];
-    renderVolumeTable(dateData);
     closeDateCalendar();
+    const tbody = document.getElementById('vol-tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="8" class="ms-empty">불러오는 중입니다...</td></tr>';
+    ensureDateLoaded(dateKey).then(dateData => renderVolumeTable(dateData));
   }
 
   // ---------- 자동 날짜 결정 (3:30 PM KST 기준) ----------
@@ -1016,16 +1040,12 @@ const NEWSLETTERS = [
   // 날짜를 선택할 수 있게 한다. 상승률('gainers')·거래대금('volume') 두 섹션에서
   // 공용으로 쓰는 컴포넌트이며, kind에 따라 "데이터가 있는 날짜" 판정 기준과
   // 클릭 시 호출할 선택 함수가 달라진다.
+  // 2026-08-09: 달력은 이미 불러온 최근 6일치가 아니라, Supabase에 실제로
+  // 존재하는 날짜 전체 목록(loadStockAnalysis에서 미리 받아둔
+  // window._gainerAllDates/_volAllDates)을 기준으로 선택 가능 여부를 표시한다.
   function calDataDateSet(kind) {
-    const data = window._saData;
-    const set = new Set();
-    if (!data || !data.dates) return set;
-    Object.keys(data.dates).forEach(d => {
-      const entry = data.dates[d] || {};
-      const list = kind === 'volume' ? entry.volumeStocks : entry.gainers;
-      if (list && list.length) set.add(d);
-    });
-    return set;
+    const list = kind === 'volume' ? window._volAllDates : window._gainerAllDates;
+    return new Set(list || []);
   }
 
   function openDateCalendar(kind) {
@@ -1153,9 +1173,11 @@ const NEWSLETTERS = [
   // 상승률(gainers)·거래대금(volumeStocks) 모두 /api/top-gainers(Supabase) 하나에서 읽는다.
   // 2026-08-01: stock-analysis-data.json 하드코딩 폴백 제거 — 원천은 Supabase 하나뿐.
   function loadStockAnalysis() {
-    fetch('/api/top-gainers?t=' + Date.now())
-      .then(r => r.json())
-      .then(data => {
+    Promise.all([
+      fetch('/api/top-gainers?t=' + Date.now()).then(r => r.json()),
+      fetch('/api/top-gainers?availableDates=1&t=' + Date.now()).then(r => r.json()).catch(() => null),
+    ])
+      .then(([data, avail]) => {
         data = (data && typeof data === 'object') ? data : { dates: {} };
         data.dates = data.dates || {};
 
@@ -1165,6 +1187,12 @@ const NEWSLETTERS = [
         const latestVolumeDate = data.latestVolumeDate || null;
 
         window._saData = data;
+        // 탭에 보일 날짜는 최초 로드 시점(최근 6일)으로 고정 — 달력에서 옛날
+        // 날짜를 더 불러와도 window._saData.dates는 커지지만 탭 목록은 안 늘어난다.
+        window._saTabDates = allDateKeys.slice();
+        // 달력에서 "선택 가능한 날짜"로 표시할 전체 목록(Supabase 실제 보유 날짜).
+        window._gainerAllDates = (avail && avail.gainerDates) || allDateKeys.slice();
+        window._volAllDates = (avail && avail.volumeDates) || volumeDateKeys.slice();
 
         const gainersActiveDate = autoSelectDate(allDateKeys, latestGainersDate);
         const volActiveDate = autoSelectDate(volumeDateKeys.length ? volumeDateKeys : allDateKeys, latestVolumeDate);
@@ -1172,7 +1200,7 @@ const NEWSLETTERS = [
         window._saCurrentDate = gainersActiveDate;
         window._volCurrentDate = volActiveDate;
 
-        buildDateTabs(data.dates, gainersActiveDate);
+        buildDateTabs(window._saTabDates, gainersActiveDate);
         renderGainerCards(data.dates && data.dates[gainersActiveDate]);
         renderVolumeTable(data.dates && data.dates[volActiveDate]);
       })
