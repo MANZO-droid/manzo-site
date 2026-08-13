@@ -1554,6 +1554,55 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   const VAPID_PUBLIC_KEY = 'BAgvcxMt5U0bB7Jv96ge_LKv5tvdc3UhN_J6PH9k3fLRM-c05Anzhj3d8J4p5ToZsMykUQIKrKdqZST41nPDyrg';
   var authMode = 'login';
 
+  // ── 회원 행동 기록 (2026-08-09) ──────────────────────────────────────────
+  // 로그인한 회원에 한해서만 페이지뷰·클릭·체류시간을 user_events 표에 남긴다
+  // (비로그인 방문자는 추적하지 않음). 관리자 페이지(admin.html)가 이 표를
+  // 집계해서 보여준다. db/001_user_events.sql을 먼저 Supabase에 실행해야
+  // 이 insert들이 실제로 저장된다(표 없으면 조용히 실패하고 넘어감).
+  var trackedUserId = null;
+  var pageEnterTs = null;
+
+  function sendUserEvent(eventType, extra) {
+    if (!trackedUserId) return;
+    var row = Object.assign({ user_id: trackedUserId, event_type: eventType, page: document.title }, extra || {});
+    sb.from('user_events').insert(row).then(function () {});
+  }
+
+  function flushDuration() {
+    if (!trackedUserId || pageEnterTs == null) return;
+    var ms = Math.round(performance.now() - pageEnterTs);
+    if (ms > 500) sendUserEvent('duration', { duration_ms: ms });
+    pageEnterTs = performance.now();
+  }
+
+  function startTracking(user) {
+    if (!user || trackedUserId === user.id) return;
+    trackedUserId = user.id;
+    pageEnterTs = performance.now();
+    sendUserEvent('page_view');
+  }
+
+  function stopTracking() {
+    flushDuration();
+    trackedUserId = null;
+    pageEnterTs = null;
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!trackedUserId) return;
+    var el = e.target.closest('a, button');
+    if (!el) return;
+    var label = (el.getAttribute('aria-label') || el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+    if (!label) return;
+    sendUserEvent('click', { label: label });
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flushDuration();
+    else if (trackedUserId) pageEnterTs = performance.now();
+  });
+  window.addEventListener('pagehide', flushDuration);
+
   // ── 네비 업데이트 ──
   function updateNav(user) {
     var el = document.getElementById('nav-auth');
@@ -1581,6 +1630,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
         openNicknameModal();
       } else {
         updateNav(user);
+        startTracking(user);
       }
     }
   });
@@ -1650,6 +1700,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     } else {
       closeLoginModal();
       updateNav(res.data.user);
+      startTracking(res.data.user);
       btn.disabled = false; btn.textContent = '로그인';
     }
   };
@@ -1678,6 +1729,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     } else {
       closeLoginModal();
       updateNav(res.data.user);
+      startTracking(res.data.user);
       btn.disabled = false; btn.textContent = '회원가입';
       showWelcomeModal();
       notifyOwnerOfSignup(nickname || email.split('@')[0]);
@@ -1704,6 +1756,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
     } else {
       document.getElementById('nicknameModal').classList.remove('open');
       updateNav(res.data.user);
+      startTracking(res.data.user);
       showWelcomeModal();
       notifyOwnerOfSignup(nick);
     }
@@ -1753,6 +1806,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
 
   // ── 로그아웃 ──
   window.handleLogout = async function () {
+    stopTracking();
     await sb.auth.signOut();
     updateNav(null);
   };

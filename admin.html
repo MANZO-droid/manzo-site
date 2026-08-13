@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원 관리 · 만조 Investment</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --bg: #F7F5F0; --bg-card: #FFFFFF; --bg-hero: #EEE9DF;
+    --text-primary: #1C1C2E; --text-secondary: #5A5A72; --text-muted: #9494A8;
+    --accent: #4A6FA5; --accent-hover: #3A5A90; --accent-light: #EBF0F9;
+    --border: #E5E0D8; --danger: #C0392B; --danger-light: #FBEAE8;
+    --font: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+  .sub { color: var(--text-muted); font-size: 13px; margin: 0 0 28px; }
+  .gate, .loading, .error { max-width: 420px; margin: 80px auto; text-align: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 28px; }
+  .gate a, .error a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .toolbar input[type="search"] { flex: 1; min-width: 200px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 20px; font-family: var(--font); font-size: 14px; outline: none; background: #fff; }
+  .toolbar input[type="search"]:focus { border-color: var(--accent); }
+  .toolbar select { padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 20px; font-family: var(--font); font-size: 13px; background: #fff; color: var(--text-secondary); }
+  .count-badge { font-size: 12.5px; color: var(--text-muted); background: var(--accent-light); padding: 4px 12px; border-radius: 12px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  thead th { text-align: left; font-size: 12px; color: var(--text-muted); font-weight: 700; padding: 12px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; cursor: pointer; user-select: none; }
+  thead th:hover { color: var(--accent); }
+  thead th.sorted { color: var(--accent); }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--accent-light); }
+  .nickname { font-weight: 700; }
+  .email { color: var(--text-secondary); font-size: 12.5px; }
+  .provider-tag { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 8px; background: var(--bg-hero); color: var(--text-secondary); margin-left: 6px; }
+  .stat-num { font-variant-numeric: tabular-nums; }
+  .muted { color: var(--text-muted); }
+  .del-btn { background: none; border: 1.5px solid var(--danger); color: var(--danger); border-radius: 14px; padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
+  .del-btn:hover { background: var(--danger); color: #fff; }
+  .del-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="loading" id="loading">확인 중입니다...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const app = document.getElementById('app');
+  let allUsers = [];
+  let sortKey = 'createdAt';
+  let sortDir = 'desc';
+
+  function showGate() {
+    app.innerHTML =
+      '<div class="gate">' +
+      '<h1 style="margin-bottom:10px">🔒 관리자 전용</h1>' +
+      '<p class="sub" style="margin-bottom:20px">회장님 계정으로 로그인해야 볼 수 있는 페이지입니다.</p>' +
+      '<a href="/">메인 페이지에서 로그인하러 가기 →</a>' +
+      '</div>';
+  }
+
+  function showError(msg) {
+    app.innerHTML =
+      '<div class="error">' +
+      '<h1 style="margin-bottom:10px">불러오지 못했습니다</h1>' +
+      '<p class="sub">' + msg + '</p>' +
+      '<a href="javascript:location.reload()">다시 시도</a>' +
+      '</div>';
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '<span class="muted">-</span>';
+    const d = new Date(iso);
+    return d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0')
+      + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  function fmtDuration(ms) {
+    if (!ms) return '<span class="muted">0분</span>';
+    const totalMin = Math.round(ms / 60000);
+    if (totalMin < 60) return totalMin + '분';
+    const h = Math.floor(totalMin / 60), m = totalMin % 60;
+    return h + '시간 ' + m + '분';
+  }
+
+  async function loadUsers() {
+    const session = (await sb.auth.getSession()).data.session;
+    if (!session) { showGate(); return; }
+
+    const res = await fetch('/api/admin-users', {
+      headers: { Authorization: 'Bearer ' + session.access_token },
+    });
+    if (res.status === 403) { showGate(); return; }
+    if (!res.ok) { showError('회원 목록을 불러오는 중 오류가 발생했습니다 (' + res.status + ').'); return; }
+
+    const data = await res.json();
+    allUsers = data.users || [];
+    renderApp();
+  }
+
+  function renderApp() {
+    app.innerHTML =
+      '<h1>회원 관리</h1>' +
+      '<p class="sub">가입한 회원 목록과 사이트 안 활동을 확인하고, 필요하면 강제 탈퇴시킬 수 있습니다.</p>' +
+      '<div class="toolbar">' +
+      '  <input type="search" id="search" placeholder="이메일 또는 닉네임 검색">' +
+      '  <span class="count-badge" id="count-badge"></span>' +
+      '</div>' +
+      '<div id="table-wrap"></div>';
+    document.getElementById('search').addEventListener('input', renderTable);
+    renderTable();
+  }
+
+  function sortedFiltered() {
+    const q = (document.getElementById('search').value || '').trim().toLowerCase();
+    let list = allUsers.filter(u =>
+      !q || (u.email || '').toLowerCase().includes(q) || (u.nickname || '').toLowerCase().includes(q)
+    );
+    list.sort((a, b) => {
+      let av, bv;
+      if (sortKey === 'createdAt') { av = a.createdAt || ''; bv = b.createdAt || ''; }
+      else if (sortKey === 'lastSignInAt') { av = a.lastSignInAt || ''; bv = b.lastSignInAt || ''; }
+      else if (sortKey === 'duration') { av = a.stats.totalDurationMs; bv = b.stats.totalDurationMs; }
+      else if (sortKey === 'clicks') { av = a.stats.clickCount; bv = b.stats.clickCount; }
+      else { av = a.email; bv = b.email; }
+      if (av < bv) return sortDir === 'asc' ? -1 : 1;
+      if (av > bv) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+    return list;
+  }
+
+  function thLabel(key, label) {
+    const active = sortKey === key;
+    const arrow = active ? (sortDir === 'asc' ? ' ▲' : ' ▼') : '';
+    return '<th class="' + (active ? 'sorted' : '') + '" onclick="window.__adminSort(\'' + key + '\')">' + label + arrow + '</th>';
+  }
+
+  window.__adminSort = function (key) {
+    if (sortKey === key) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+    else { sortKey = key; sortDir = 'desc'; }
+    renderTable();
+  };
+
+  window.__adminDelete = async function (id, label) {
+    if (!confirm(label + ' 님을 정말 강제 탈퇴시킬까요? 되돌릴 수 없습니다.')) return;
+    const session = (await sb.auth.getSession()).data.session;
+    const res = await fetch('/api/admin-users?id=' + encodeURIComponent(id), {
+      method: 'DELETE',
+      headers: { Authorization: 'Bearer ' + session.access_token },
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      alert('탈퇴 처리에 실패했습니다: ' + (err.error || res.status));
+      return;
+    }
+    allUsers = allUsers.filter(u => u.id !== id);
+    renderTable();
+  };
+
+  function renderTable() {
+    const list = sortedFiltered();
+    document.getElementById('count-badge').textContent = '전체 ' + allUsers.length + '명 중 ' + list.length + '명 표시';
+
+    if (!list.length) {
+      document.getElementById('table-wrap').innerHTML = '<div class="empty">표시할 회원이 없습니다.</div>';
+      return;
+    }
+
+    const rows = list.map(u => {
+      const name = u.nickname || u.email.split('@')[0];
+      return '<tr>' +
+        '<td><div class="nickname">' + name + '<span class="provider-tag">' + (u.provider === 'google' ? '구글' : '이메일') + '</span></div><div class="email">' + u.email + '</div></td>' +
+        '<td>' + fmtDate(u.createdAt) + '</td>' +
+        '<td>' + fmtDate(u.lastSignInAt) + '</td>' +
+        '<td class="stat-num">' + fmtDuration(u.stats.totalDurationMs) + '</td>' +
+        '<td class="stat-num">' + u.stats.clickCount + '회</td>' +
+        '<td><button class="del-btn" onclick="window.__adminDelete(\'' + u.id + '\', \'' + name.replace(/'/g, "\\'") + '\')">탈퇴</button></td>' +
+        '</tr>';
+    }).join('');
+
+    document.getElementById('table-wrap').innerHTML =
+      '<table><thead><tr>' +
+      thLabel('email', '회원') +
+      thLabel('createdAt', '가입일') +
+      thLabel('lastSignInAt', '최근 로그인') +
+      thLabel('duration', '총 체류시간') +
+      thLabel('clicks', '클릭 수') +
+      '<th>관리</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  loadUsers();
+})();
+</script>
+</body>
+</html>
