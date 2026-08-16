@@ -16,6 +16,8 @@
   * { box-sizing: border-box; }
   body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text-primary); line-height: 1.6; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-block; font-size: 13px; color: var(--text-muted); text-decoration: none; margin-bottom: 14px; }
+  .back-link:hover { color: var(--accent); }
   h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
   .sub { color: var(--text-muted); font-size: 13px; margin: 0 0 28px; }
   .gate, .loading, .error { max-width: 420px; margin: 80px auto; text-align: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 28px; }
@@ -75,6 +77,7 @@
       '<h1 style="margin-bottom:10px">불러오지 못했습니다</h1>' +
       '<p class="sub">' + msg + '</p>' +
       '<a href="javascript:location.reload()">다시 시도</a>' +
+      '&nbsp;·&nbsp;<a href="/">메인으로</a>' +
       '</div>';
   }
 
@@ -110,6 +113,7 @@
 
   function renderApp() {
     app.innerHTML =
+      '<a href="/" class="back-link">← 메인 페이지로</a>' +
       '<h1>회원 관리</h1>' +
       '<p class="sub">가입한 회원 목록과 사이트 안 활동을 확인하고, 필요하면 강제 탈퇴시킬 수 있습니다.</p>' +
       '<div class="toolbar">' +
