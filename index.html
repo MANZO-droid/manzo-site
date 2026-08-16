@@ -303,10 +303,18 @@ section { padding: 72px 0; }
 /* 닉네임 설정 모달 */
 .modal-subtitle { font-size:13px; color:#5A5A72; text-align:center; margin-bottom:20px; margin-top:-16px; }
 /* 로그인 후 네비 */
-.nav-user { display:flex; align-items:center; gap:10px; }
-.nav-user-name { font-size:13px; font-weight:600; color:#4A6FA5; }
-.nav-user-logout { font-size:12px; color:#9494A8; cursor:pointer; background:none; border:none; font-family:var(--font); text-decoration:underline; }
-.nav-user-logout:hover { color:#1C1C2E; }
+.nav-user { display:flex; align-items:center; gap:10px; position:relative; }
+.nav-user-name { font-size:13px; font-weight:600; color:#4A6FA5; background:none; border:none; cursor:pointer; font-family:var(--font); display:flex; align-items:center; gap:4px; padding:4px 2px; }
+.nav-user-name:hover { color:#3A5A90; }
+.nav-user-caret { font-size:10px; transition:transform .15s; }
+.nav-user-caret.open { transform:rotate(180deg); }
+.nav-user-menu { display:none; position:absolute; top:calc(100% + 8px); right:0; min-width:160px; background:#fff; border:1px solid #E5E0D8; border-radius:12px; box-shadow:0 8px 24px rgba(28,28,46,.12); overflow:hidden; z-index:200; }
+.nav-user-menu.open { display:block; }
+.nav-user-menu-item { display:block; width:100%; text-align:left; padding:10px 16px; font-size:13px; color:#1C1C2E; background:none; border:none; cursor:pointer; font-family:var(--font); text-decoration:none; box-sizing:border-box; }
+.nav-user-menu-item:hover { background:#EBF0F9; }
+.nav-user-menu-divider { height:1px; background:#E5E0D8; margin:2px 0; }
+.nav-user-menu-item.danger { color:#9494A8; }
+.nav-user-menu-item.danger:hover { color:#1C1C2E; }
   </style>
 </head>
 <body>
@@ -1604,20 +1612,50 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   window.addEventListener('pagehide', flushDuration);
 
   // ── 네비 업데이트 ──
+  // 관리자 페이지 링크는 이 이메일로 로그인했을 때만 노출한다(순전히 화면
+  // 표시용 - 실제 접근 통제는 api/admin-users.js가 서버에서 ADMIN_EMAIL과
+  // 대조해 다시 확인하므로, 여기서 다른 이메일로 조작해도 API가 403으로 막는다).
+  var ADMIN_EMAIL_CLIENT = 'hahaa127@gmail.com';
+
   function updateNav(user) {
     var el = document.getElementById('nav-auth');
     if (!el) return;
     if (user) {
       var nick = (user.user_metadata && user.user_metadata.nickname) || user.email.split('@')[0];
+      var isAdmin = (user.email || '').toLowerCase() === ADMIN_EMAIL_CLIENT.toLowerCase();
+      var adminItem = isAdmin
+        ? '<a href="/admin.html" class="nav-user-menu-item">⚙️ 관리자 페이지</a><div class="nav-user-menu-divider"></div>'
+        : '';
       el.innerHTML =
         '<div class="nav-user">' +
-        '<span class="nav-user-name">👤 ' + nick + '님</span>' +
-        '<button class="nav-user-logout" onclick="handleLogout()">로그아웃</button>' +
+        '<button type="button" class="nav-user-name" onclick="toggleUserMenu(event)">👤 ' + nick + '님 <span class="nav-user-caret" id="nav-user-caret">▾</span></button>' +
+        '<div class="nav-user-menu" id="nav-user-menu">' +
+        adminItem +
+        '<button type="button" class="nav-user-menu-item danger" onclick="handleLogout()">로그아웃</button>' +
+        '</div>' +
         '</div>';
     } else {
       el.innerHTML = '<button onclick="openLoginModal()" class="nav-cta" style="background:#2563eb;border:none;cursor:pointer;font-family:var(--font);">로그인</button>';
     }
   }
+
+  window.toggleUserMenu = function (e) {
+    if (e) e.stopPropagation();
+    var menu = document.getElementById('nav-user-menu');
+    var caret = document.getElementById('nav-user-caret');
+    if (!menu) return;
+    menu.classList.toggle('open');
+    if (caret) caret.classList.toggle('open');
+  };
+  document.addEventListener('click', function (e) {
+    var menu = document.getElementById('nav-user-menu');
+    if (!menu || !menu.classList.contains('open')) return;
+    if (!menu.contains(e.target) && e.target.id !== 'nav-user-caret' && !e.target.closest('.nav-user-name')) {
+      menu.classList.remove('open');
+      var caret = document.getElementById('nav-user-caret');
+      if (caret) caret.classList.remove('open');
+    }
+  });
 
   // ── 페이지 로드 시 로그인 상태 확인 ──
   sb.auth.getSession().then(function (res) {
