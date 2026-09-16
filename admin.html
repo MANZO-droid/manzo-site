@@ -43,6 +43,31 @@
   .del-btn:hover { background: var(--danger); color: #fff; }
   .del-btn:disabled { opacity: .5; cursor: not-allowed; }
   .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+
+  .section-h2 { font-size: 16px; font-weight: 800; margin: 0 0 14px; }
+  .status-section { margin-bottom: 36px; }
+  .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 18px; }
+  .status-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .status-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .status-card-title { font-size: 14px; font-weight: 700; }
+  .status-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+  .status-badge.ok { background: #E4F5EA; color: #1E7A46; }
+  .status-badge.warn { background: #FFF3DE; color: #B4740E; }
+  .status-badge.error { background: var(--danger-light); color: var(--danger); }
+  .status-badge.na { background: var(--bg-hero); color: var(--text-muted); }
+  .status-flow { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; word-break: keep-all; }
+  .status-flow b { color: var(--text-secondary); font-weight: 600; }
+  .status-meta { font-size: 12.5px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 3px; }
+  .status-issues { margin: 8px 0 0; padding: 0; list-style: none; font-size: 11.5px; color: var(--danger); }
+  .status-issues li { margin-top: 3px; }
+  .status-checked-at { font-size: 11.5px; color: var(--text-muted); margin: -8px 0 16px; }
+  .heatmap-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+  .heatmap-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .heatmap-row:last-child { margin-bottom: 0; }
+  .heatmap-label { width: 120px; flex-shrink: 0; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); }
+  .heatmap-cells { display: flex; gap: 6px; }
+  .heatmap-cell { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; background: var(--bg-hero); color: var(--text-muted); }
+  .heatmap-cell.filled { background: #E4F5EA; color: #1E7A46; }
 </style>
 </head>
 <body>
@@ -59,6 +84,7 @@
 
   const app = document.getElementById('app');
   let allUsers = [];
+  let statusData = null;
   let sortKey = 'createdAt';
   let sortDir = 'desc';
 
@@ -96,18 +122,23 @@
     return h + '시간 ' + m + '분';
   }
 
-  async function loadUsers() {
+  async function loadDashboard() {
     const session = (await sb.auth.getSession()).data.session;
     if (!session) { showGate(); return; }
 
-    const res = await fetch('/api/admin-users', {
-      headers: { Authorization: 'Bearer ' + session.access_token },
-    });
-    if (res.status === 403) { showGate(); return; }
-    if (!res.ok) { showError('회원 목록을 불러오는 중 오류가 발생했습니다 (' + res.status + ').'); return; }
+    const authHeader = { Authorization: 'Bearer ' + session.access_token };
+    const [usersRes, statusRes] = await Promise.all([
+      fetch('/api/admin-users', { headers: authHeader }),
+      fetch('/api/admin-status', { headers: authHeader }),
+    ]);
+    if (usersRes.status === 403) { showGate(); return; }
+    if (!usersRes.ok) { showError('회원 목록을 불러오는 중 오류가 발생했습니다 (' + usersRes.status + ').'); return; }
 
-    const data = await res.json();
+    const data = await usersRes.json();
     allUsers = data.users || [];
+    // 현황 대시보드는 회원 목록보다 덜 치명적이라, 실패해도 페이지 전체를 막지 않고
+    // 그 섹션에만 오류를 표시한다(회원 관리 자체는 계속 쓸 수 있어야 하므로).
+    statusData = statusRes.ok ? await statusRes.json() : { error: '현황을 불러오지 못했습니다 (' + statusRes.status + ').' };
     renderApp();
   }
 
@@ -116,13 +147,97 @@
       '<a href="/" class="back-link">← 메인 페이지로</a>' +
       '<h1>회원 관리</h1>' +
       '<p class="sub">가입한 회원 목록과 사이트 안 활동을 확인하고, 필요하면 강제 탈퇴시킬 수 있습니다.</p>' +
+      '<div class="status-section" id="status-section"></div>' +
+      '<h2 class="section-h2">회원 목록</h2>' +
       '<div class="toolbar">' +
       '  <input type="search" id="search" placeholder="이메일 또는 닉네임 검색">' +
       '  <span class="count-badge" id="count-badge"></span>' +
       '</div>' +
       '<div id="table-wrap"></div>';
     document.getElementById('search').addEventListener('input', renderTable);
+    renderStatus();
     renderTable();
+  }
+
+  // ── 자동화 현황 대시보드 ──────────────────────────────────────────────────
+  const STATUS_LABEL = { ok: '🟢 정상', warn: '🟡 지연', error: '🔴 확인 필요', na: '— 실시간' };
+  const WEEKDAY_KR = ['일', '월', '화', '수', '목', '금', '토'];
+
+  function fmtShortDate(iso) {
+    if (!iso) return '<span class="muted">데이터 없음</span>';
+    return iso.slice(5).replace('-', '/');
+  }
+
+  function fmtDaysAgo(days) {
+    if (days === null || days === undefined) return '';
+    if (days === 0) return '(오늘)';
+    if (days < 0) return '(예정)';
+    return '(' + days + '일 전)';
+  }
+
+  function renderStatus() {
+    const el = document.getElementById('status-section');
+    if (!el) return;
+
+    if (!statusData) {
+      el.innerHTML = '<p class="sub">현황을 불러오는 중입니다...</p>';
+      return;
+    }
+    if (statusData.error) {
+      el.innerHTML = '<p class="sub" style="color:var(--danger)">' + statusData.error + '</p>';
+      return;
+    }
+
+    const cards = statusData.pipelines.map(p => {
+      const issuesHtml = p.issues && p.issues.length
+        ? '<ul class="status-issues">' + p.issues.map(i => '<li>⚠ ' + i + '</li>').join('') + '</ul>'
+        : '';
+      const metaHtml = p.status === 'na'
+        ? '<div class="status-meta"><span>저장하지 않고 매번 새로 불러옵니다</span></div>'
+        : '<div class="status-meta">' +
+          '<span>최신: ' + fmtShortDate(p.latestDate) + ' ' + fmtDaysAgo(p.daysSinceLatest) + '</span>' +
+          (p.expectedRowCount ? '<span>건수: ' + (p.rowCount == null ? '-' : p.rowCount) + ' / ' + p.expectedRowCount + '</span>' : '') +
+          (p.lastUpdatedAt ? '<span>DB 반영: ' + fmtDate(p.lastUpdatedAt) + '</span>' : '') +
+          '</div>';
+
+      return '<div class="status-card">' +
+        '<div class="status-card-head">' +
+        '<span class="status-card-title">' + p.label + '</span>' +
+        '<span class="status-badge ' + p.status + '">' + STATUS_LABEL[p.status] + '</span>' +
+        '</div>' +
+        '<div class="status-flow"><b>출처</b> ' + p.source + ' → <b>주기</b> ' + p.schedule + ' → <b>저장</b> ' + p.table + '</div>' +
+        metaHtml +
+        issuesHtml +
+        '</div>';
+    }).join('');
+
+    // 최근 7일 히트맵 (오늘 포함, 과거→오늘 순)
+    const today = statusData.today;
+    const days = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(today + 'T00:00:00Z');
+      d.setUTCDate(d.getUTCDate() - i);
+      days.push(d.toISOString().slice(0, 10));
+    }
+    const heatRows = [
+      ['상승률 Top10', statusData.recent7Days.gainers],
+      ['거래대금 Top10', statusData.recent7Days.volume],
+      ['마켓 스코프', statusData.recent7Days.marketScope],
+    ].map(([label, dateList]) => {
+      const set = new Set(dateList);
+      const cells = days.map(d => {
+        const wd = WEEKDAY_KR[new Date(d + 'T00:00:00Z').getUTCDay()];
+        const filled = set.has(d);
+        return '<span class="heatmap-cell' + (filled ? ' filled' : '') + '" title="' + d + (filled ? ' 수신됨' : ' 없음') + '">' + wd + '</span>';
+      }).join('');
+      return '<div class="heatmap-row"><span class="heatmap-label">' + label + '</span><div class="heatmap-cells">' + cells + '</div></div>';
+    }).join('');
+
+    el.innerHTML =
+      '<h2 class="section-h2">자동화 현황</h2>' +
+      '<p class="status-checked-at">확인 시각: ' + fmtDate(statusData.checkedAt) + ' · 상태는 최근 3일 이내를 기준으로 판단합니다(주말·휴장일은 정상적으로 비어있을 수 있습니다)</p>' +
+      '<div class="status-grid">' + cards + '</div>' +
+      '<div class="heatmap-wrap"><div class="status-card-title" style="margin-bottom:12px">최근 7일 수신 현황</div>' + heatRows + '</div>';
   }
 
   function sortedFiltered() {
@@ -204,7 +319,7 @@
       '</tr></thead><tbody>' + rows + '</tbody></table>';
   }
 
-  loadUsers();
+  loadDashboard();
 })();
 </script>
 </body>
