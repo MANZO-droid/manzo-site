@@ -326,6 +326,7 @@ section { padding: 72px 0; }
     <ul class="nav-links">
       <li><a href="#articles" class="active">분석 글</a></li>
       <li><a href="archive.html">뉴스레터</a></li>
+      <li><a href="#screener-picks">스크리너 Top10</a></li>
       <li><a href="#market-scope">마켓 스코프</a></li>
       <li><a href="#news-headlines">최신 경제 헤드라인</a></li>
       <li><a href="#author">필자 소개</a></li>
@@ -376,6 +377,21 @@ section { padding: 72px 0; }
     </div>
     <div class="articles-grid" id="articles-grid">
       <div class="sa-loading">데이터를 불러오는 중입니다...</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENER PICKS (개인 스터디용 — 주식투자 자동화 ①번 모듈 주간 Top10) -->
+<section id="screener-picks" style="background: var(--bg-hero);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Weekly Screener</div>
+      <h2 class="section-title">이번 주 스크리닝 Top10</h2>
+      <p class="section-subtitle">매주 토요일 차트·재무 점수 기준으로 자동 선정되는 관심 종목입니다. (개인 스터디용 — 매수 추천이 아닙니다)</p>
+      <p id="scr-date-badge" style="display:inline-block;margin:8px 0 0;padding:5px 14px;font-size:13px;font-weight:700;color:#fff;background:var(--accent);border-radius:16px;"></p>
+    </div>
+    <div id="scr-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:20px;">
+      <div style="color:var(--text-muted);font-size:14px;">데이터를 불러오는 중입니다...</div>
     </div>
   </div>
 </section>
@@ -1987,5 +2003,49 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+<script>
+// ── 스크리너 Top10 (개인 스터디용, api/screener-picks.js) ──
+(function () {
+  function fmtScore(v) {
+    if (v === null || v === undefined) return '-';
+    return (Math.round(Number(v) * 1000) / 10) + '%';
+  }
+  function renderScreenerPicks(data) {
+    const grid = document.getElementById('scr-grid');
+    const badge = document.getElementById('scr-date-badge');
+    if (!data || !data.latestDate) {
+      grid.innerHTML = '<div style="color:var(--text-muted);font-size:14px;">아직 발행된 회차가 없습니다.</div>';
+      badge.textContent = '';
+      return;
+    }
+    const picks = (data.dates[data.latestDate] && data.dates[data.latestDate].picks) || [];
+    badge.textContent = data.latestDate + ' 기준';
+    grid.innerHTML = picks.map(function (p) {
+      return '' +
+        '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
+            '<span style="font-size:12px;font-weight:700;color:#fff;background:var(--gold);padding:3px 10px;border-radius:12px;">' + p.rank + '위</span>' +
+            '<span style="font-size:12px;color:var(--text-muted);">' + (p.marketType || '') + '</span>' +
+          '</div>' +
+          '<h3 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">' + p.name + ' <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(' + p.ticker + ')</span></h3>' +
+          '<p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">' + (p.sector || '') + '</p>' +
+          '<div style="display:flex;gap:14px;font-size:12.5px;color:var(--text-secondary);">' +
+            '<span>차트 ' + fmtScore(p.chartScore) + '</span>' +
+            '<span>재무 ' + fmtScore(p.financialScore) + '</span>' +
+            '<span style="color:var(--accent);font-weight:700;">종합 ' + fmtScore(p.finalScore) + '</span>' +
+          '</div>' +
+        '</div>';
+    }).join('') || '<div style="color:var(--text-muted);font-size:14px;">이번 회차는 조건에 맞는 종목이 없습니다.</div>';
+  }
+
+  fetch('/api/screener-picks?t=' + Date.now())
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(renderScreenerPicks)
+    .catch(function () {
+      const grid = document.getElementById('scr-grid');
+      if (grid) grid.innerHTML = '<div style="color:var(--text-muted);font-size:14px;">데이터를 불러오지 못했습니다.</div>';
+    });
+})();
+</script>
 </body>
 </html>
