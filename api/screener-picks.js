@@ -18,6 +18,11 @@ function toCard(r) {
     chartScore: r.chart_score,
     financialScore: r.financial_score,
     finalScore: r.final_score,
+    selectionReason: r.selection_reason || '',
+    chartAnalysis: r.chart_analysis || '',
+    financialSummary: r.financial_summary || '',
+    sectorSummary: r.sector_summary || '',
+    newsItems: r.news_items || [],
   };
 }
 

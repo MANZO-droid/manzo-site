@@ -226,6 +226,9 @@ section { padding: 72px 0; }
 .sa-analysis-block { display: flex; gap: 12px; padding: 14px 16px; border-radius: 10px; margin-bottom: 10px; }
 .sa-rise-block { background: rgba(192,57,43,0.06); border-left: 3px solid #C0392B; }
 .sa-chart-block { background: rgba(36,112,179,0.06); border-left: 3px solid #2470B3; }
+.sa-select-block { background: rgba(74,111,165,0.08); border-left: 3px solid #4A6FA5; }
+.sa-fin-block { background: rgba(30,122,70,0.06); border-left: 3px solid #1E7A46; }
+.sa-sector-block { background: rgba(181,145,76,0.10); border-left: 3px solid #B5914C; }
 .sa-analysis-icon { font-size: 18px; flex-shrink: 0; padding-top: 2px; }
 .sa-analysis-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
 .sa-analysis-text { font-size: 13px; line-height: 1.75; color: var(--text-primary); margin: 0; }
@@ -2010,6 +2013,11 @@ if ('serviceWorker' in navigator) {
     if (v === null || v === undefined) return '-';
     return (Math.round(Number(v) * 1000) / 10) + '%';
   }
+  function fmtWon(v) {
+    if (v === null || v === undefined || v === '') return '-';
+    const n = Number(v);
+    return isNaN(n) ? '-' : n.toLocaleString('ko-KR') + '원';
+  }
   function renderScreenerPicks(data) {
     const grid = document.getElementById('scr-grid');
     const badge = document.getElementById('scr-date-badge');
@@ -2019,10 +2027,11 @@ if ('serviceWorker' in navigator) {
       return;
     }
     const picks = (data.dates[data.latestDate] && data.dates[data.latestDate].picks) || [];
+    window._scrPicks = picks;
     badge.textContent = data.latestDate + ' 기준';
-    grid.innerHTML = picks.map(function (p) {
+    grid.innerHTML = picks.map(function (p, idx) {
       return '' +
-        '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);">' +
+        '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);cursor:pointer;" onclick="openSCRModal(' + idx + ')">' +
           '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
             '<span style="font-size:12px;font-weight:700;color:#fff;background:var(--gold);padding:3px 10px;border-radius:12px;">' + p.rank + '위</span>' +
             '<span style="font-size:12px;color:var(--text-muted);">' + (p.marketType || '') + '</span>' +
@@ -2034,9 +2043,45 @@ if ('serviceWorker' in navigator) {
             '<span>재무 ' + fmtScore(p.financialScore) + '</span>' +
             '<span style="color:var(--accent);font-weight:700;">종합 ' + fmtScore(p.finalScore) + '</span>' +
           '</div>' +
+          '<div style="margin-top:10px;font-size:11.5px;color:var(--accent);font-weight:600;">자세히 보기 →</div>' +
         '</div>';
     }).join('') || '<div style="color:var(--text-muted);font-size:14px;">이번 회차는 조건에 맞는 종목이 없습니다.</div>';
   }
+
+  function openSCRModal(idx) {
+    const p = (window._scrPicks || [])[idx];
+    if (!p) return;
+    const selectHtml = p.selectionReason ? '<div class="sa-analysis-block sa-select-block">' +
+      '<div class="sa-analysis-icon">🎯</div>' +
+      '<div><div class="sa-analysis-label">선정 이유</div><p class="sa-analysis-text">' + p.selectionReason + '</p></div>' +
+      '</div>' : '';
+    const chartAnalHtml = p.chartAnalysis ? '<div class="sa-analysis-block sa-chart-block">' +
+      '<div class="sa-analysis-icon">📊</div>' +
+      '<div><div class="sa-analysis-label">차트 분석</div><p class="sa-analysis-text">' + p.chartAnalysis + '</p></div>' +
+      '</div>' : '';
+    const finHtml = p.financialSummary ? '<div class="sa-analysis-block sa-fin-block">' +
+      '<div class="sa-analysis-icon">💰</div>' +
+      '<div><div class="sa-analysis-label">재무 요약</div><p class="sa-analysis-text">' + p.financialSummary + '</p></div>' +
+      '</div>' : '';
+    const sectorHtml = p.sectorSummary ? '<div class="sa-analysis-block sa-sector-block">' +
+      '<div class="sa-analysis-icon">🏭</div>' +
+      '<div><div class="sa-analysis-label">업종 동향</div><p class="sa-analysis-text">' + p.sectorSummary + '</p></div>' +
+      '</div>' : '';
+    const newsHtml = (p.newsItems && p.newsItems.length) ? '<h4 class="sa-section-title">최근 뉴스</h4><ul class="sa-news-list">' +
+      p.newsItems.map(function (n) { return '<li>' + n.title + '</li>'; }).join('') +
+      '</ul>' : '';
+    document.getElementById('sa-modal-content').innerHTML =
+      '<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">' +
+        '<h2 style="font-size:22px;font-weight:800">' + p.name + ' <span style="font-size:14px;color:var(--text-muted)">' + p.ticker + '</span></h2>' +
+        '<span style="font-size:12px;font-weight:700;color:#fff;background:var(--gold);padding:3px 10px;border-radius:12px;">' + p.rank + '위</span>' +
+      '</div>' +
+      '<div style="font-size:12px;color:var(--text-muted);margin:4px 0 16px">' +
+        (p.marketType || '') + (p.sector ? ' | ' + p.sector : '') + ' | 기준가 ' + fmtWon(p.basePrice) +
+      '</div>' +
+      selectHtml + chartAnalHtml + finHtml + sectorHtml + newsHtml;
+    document.getElementById('sa-modal').style.display = 'block';
+  }
+  window.openSCRModal = openSCRModal;
 
   fetch('/api/screener-picks?t=' + Date.now())
     .then(function (r) { return r.ok ? r.json() : null; })
