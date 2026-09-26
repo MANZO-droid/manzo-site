@@ -229,6 +229,8 @@ section { padding: 72px 0; }
 .sa-select-block { background: rgba(74,111,165,0.08); border-left: 3px solid #4A6FA5; }
 .sa-fin-block { background: rgba(30,122,70,0.06); border-left: 3px solid #1E7A46; }
 .sa-sector-block { background: rgba(181,145,76,0.10); border-left: 3px solid #B5914C; }
+.sa-business-block { background: rgba(90,90,114,0.07); border-left: 3px solid #5A5A72; }
+.sa-material-block { background: rgba(199,84,42,0.08); border-left: 3px solid #C7542A; }
 .sa-analysis-icon { font-size: 18px; flex-shrink: 0; padding-top: 2px; }
 .sa-analysis-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
 .sa-analysis-text { font-size: 13px; line-height: 1.75; color: var(--text-primary); margin: 0; }
@@ -2048,9 +2050,20 @@ if ('serviceWorker' in navigator) {
     }).join('') || '<div style="color:var(--text-muted);font-size:14px;">이번 회차는 조건에 맞는 종목이 없습니다.</div>';
   }
 
+  function fmtEok(v) {
+    if (v === null || v === undefined || v === '') return '-';
+    const n = Number(v);
+    if (isNaN(n)) return '-';
+    return (n / 1e8).toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + '억';
+  }
+
   function openSCRModal(idx) {
     const p = (window._scrPicks || [])[idx];
     if (!p) return;
+    const businessHtml = p.businessSummary ? '<div class="sa-analysis-block sa-business-block">' +
+      '<div class="sa-analysis-icon">🏢</div>' +
+      '<div><div class="sa-analysis-label">사업 개요</div><p class="sa-analysis-text">' + p.businessSummary + '</p></div>' +
+      '</div>' : '';
     const selectHtml = p.selectionReason ? '<div class="sa-analysis-block sa-select-block">' +
       '<div class="sa-analysis-icon">🎯</div>' +
       '<div><div class="sa-analysis-label">선정 이유</div><p class="sa-analysis-text">' + p.selectionReason + '</p></div>' +
@@ -2063,12 +2076,36 @@ if ('serviceWorker' in navigator) {
       '<div class="sa-analysis-icon">💰</div>' +
       '<div><div class="sa-analysis-label">재무 요약</div><p class="sa-analysis-text">' + p.financialSummary + '</p></div>' +
       '</div>' : '';
+    const fin = p.financials || {};
+    const finItems = [
+      { label: '기간', val: fin.period || '-' },
+      { label: '매출액', val: fmtEok(fin.revenue) },
+      { label: '영업이익', val: fmtEok(fin.operatingProfit) },
+      { label: '영업이익률', val: fin.operatingMargin != null ? fin.operatingMargin + '%' : '-' },
+      { label: '매출 증가율(YoY)', val: fin.revenueGrowth != null ? fin.revenueGrowth + '%' : '-' },
+      { label: '영업이익 증가율(YoY)', val: fin.opProfitGrowth != null ? fin.opProfitGrowth + '%' : '-' },
+      { label: '부채비율', val: fin.debtRatio != null ? fin.debtRatio + '%' : '-' },
+      { label: '유보율', val: fin.reserveRatio != null ? fin.reserveRatio + '%' : '-' },
+    ];
+    const finGridHtml = fin.period ? '<div class="sa-modal-fin">' +
+      finItems.map(function (f) {
+        return '<div class="sa-modal-fin-item"><div class="sa-modal-fin-label">' + f.label + '</div><div class="sa-modal-fin-val">' + f.val + '</div></div>';
+      }).join('') + '</div>' : '';
+    const materialHtml = p.materialAnalysis ? '<div class="sa-analysis-block sa-material-block">' +
+      '<div class="sa-analysis-icon">🔥</div>' +
+      '<div><div class="sa-analysis-label">재료 분석</div><p class="sa-analysis-text">' + p.materialAnalysis + '</p></div>' +
+      '</div>' : '';
     const sectorHtml = p.sectorSummary ? '<div class="sa-analysis-block sa-sector-block">' +
       '<div class="sa-analysis-icon">🏭</div>' +
       '<div><div class="sa-analysis-label">업종 동향</div><p class="sa-analysis-text">' + p.sectorSummary + '</p></div>' +
       '</div>' : '';
-    const newsHtml = (p.newsItems && p.newsItems.length) ? '<h4 class="sa-section-title">최근 뉴스</h4><ul class="sa-news-list">' +
-      p.newsItems.map(function (n) { return '<li>' + n.title + '</li>'; }).join('') +
+    const newsHtml = (p.newsItems && p.newsItems.length) ? '<h4 class="sa-section-title">최근 뉴스 (종목·업종)</h4><ul class="sa-news-list">' +
+      p.newsItems.map(function (n) {
+        const tag = '<span style="color:var(--text-muted);font-size:11px;margin-right:6px">[' + (n.scope || '') + ']</span>';
+        const dateTxt = n.pubDate ? '<span style="color:#aaa;font-size:11px;margin-left:6px">' + n.pubDate.slice(0, 10) + '</span>' : '';
+        const body = n.url ? '<a href="' + n.url + '" target="_blank" rel="noopener">' + n.title + '</a>' : '<span>' + n.title + '</span>';
+        return '<li>' + tag + body + dateTxt + '</li>';
+      }).join('') +
       '</ul>' : '';
     document.getElementById('sa-modal-content').innerHTML =
       '<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">' +
@@ -2078,7 +2115,7 @@ if ('serviceWorker' in navigator) {
       '<div style="font-size:12px;color:var(--text-muted);margin:4px 0 16px">' +
         (p.marketType || '') + (p.sector ? ' | ' + p.sector : '') + ' | 기준가 ' + fmtWon(p.basePrice) +
       '</div>' +
-      selectHtml + chartAnalHtml + finHtml + sectorHtml + newsHtml;
+      businessHtml + selectHtml + chartAnalHtml + finHtml + finGridHtml + materialHtml + sectorHtml + newsHtml;
     document.getElementById('sa-modal').style.display = 'block';
   }
   window.openSCRModal = openSCRModal;
