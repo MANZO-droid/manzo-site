@@ -26,6 +26,8 @@ function toCard(r) {
     materialAnalysis: r.material_analysis || '',
     sectorSummary: r.sector_summary || '',
     newsItems: r.news_items || [],
+    ohlcv: r.ohlcv || [],
+    technicals: r.ma_lines ? { maLines: r.ma_lines } : null,
   };
 }
 
