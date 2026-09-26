@@ -33,6 +33,10 @@ function toGainerCard(r) {
     close: r.close,
     changePct: r.change_pct,
     tradeAmount: r.trade_amount,
+    // 2026-09-26: 모달이 s.w52High/s.w52Low를 읽는데 API가 안 내려줘 항상 "-"로 뜨던 것
+    // 수정(DB technicals에는 전 행 값이 있음 - 전수 조사로 확인).
+    w52High: r.technicals ? r.technicals.w52High ?? null : null,
+    w52Low: r.technicals ? r.technicals.w52Low ?? null : null,
     ohlcv: r.ohlcv || [],
     technicals: r.technicals || null,
     financials: r.financials || null,
