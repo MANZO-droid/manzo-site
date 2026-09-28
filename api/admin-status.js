@@ -2,9 +2,12 @@
 // 정확성(실시간 조회)을 한 번에 반환한다. GET /api/admin-status
 //
 // admin-users.js와 동일하게 호출자의 로그인 토큰을 ADMIN_EMAIL과 대조해 검증한 뒤에만
-// SUPABASE_SERVICE_ROLE_KEY로 세 표(daily_gainers/volume_stocks/market_scope_reports)를
-// 조회한다. "메일 발송 시각"은 다루지 않는다 — 구독 이메일이 실제로 저장/발송되는
-// 코드가 아직 없어서 보여줄 데이터 자체가 없다(2026-09-16 확인).
+// SUPABASE_SERVICE_ROLE_KEY로 표(daily_gainers/volume_stocks/market_scope_reports/
+// repair_log)를 조회한다. "메일 발송 시각"은 다루지 않는다 — 구독 이메일이 실제로
+// 저장/발송되는 코드가 아직 없어서 보여줄 데이터 자체가 없다(2026-09-16 확인).
+//
+// repair_log: 리서치자동화 저장소의 scripts/repair_issues.py가 매일 남기는 자동
+// 수리 기록. 이 저장소는 다른 표와 동일하게 읽기만 한다(2026-09-29 추가).
 
 const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
@@ -69,10 +72,13 @@ module.exports = async (req, res) => {
     const sevenDaysAgo = new Date(new Date(today + 'T00:00:00Z').getTime() - 6 * 86400000)
       .toISOString().slice(0, 10);
 
-    const [gainersAll, volumeAll, scopeAll] = await Promise.all([
+    const [gainersAll, volumeAll, scopeAll, repairLogAll] = await Promise.all([
       sbSelect(serviceKey, 'daily_gainers', 'select=trade_date,report_type,rise_reason,chart_analysis,updated_at&report_type=eq.daily&order=trade_date.desc&limit=200'),
       sbSelect(serviceKey, 'volume_stocks', 'select=trade_date,updated_at&order=trade_date.desc&limit=200'),
       sbSelect(serviceKey, 'market_scope_reports', 'select=report_date,items,updated_at&order=report_date.desc&limit=30'),
+      // repair_issues.py(리서치자동화)가 남기는 자동 수리 기록 - 이 저장소는
+      // 읽기만 한다(다른 표들과 동일한 원칙).
+      sbSelect(serviceKey, 'repair_log', 'select=checked_at,pipeline,trade_date,issue,action,success&order=checked_at.desc&limit=20'),
     ]);
 
     // ── 상승률 Top10 (daily_gainers, report_type=daily) ──
@@ -169,7 +175,16 @@ module.exports = async (req, res) => {
       marketScope: scopeAll.map((r) => r.report_date).filter((d) => d >= sevenDaysAgo),
     };
 
-    res.json({ checkedAt: new Date().toISOString(), today, pipelines, recent7Days });
+    const repairLog = repairLogAll.map((r) => ({
+      checkedAt: r.checked_at,
+      pipeline: r.pipeline,
+      tradeDate: r.trade_date,
+      issue: r.issue,
+      action: r.action,
+      success: r.success,
+    }));
+
+    res.json({ checkedAt: new Date().toISOString(), today, pipelines, recent7Days, repairLog });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
