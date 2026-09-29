@@ -1,3 +1,6 @@
 {
-  "regions": ["icn1"]
+  "regions": ["icn1"],
+  "crons": [
+    { "path": "/api/cron-trigger-gainers", "schedule": "5 7 * * 1-6" }
+  ]
 }
