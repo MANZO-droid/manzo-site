@@ -3,11 +3,16 @@
 //
 // admin-users.js와 동일하게 호출자의 로그인 토큰을 ADMIN_EMAIL과 대조해 검증한 뒤에만
 // SUPABASE_SERVICE_ROLE_KEY로 표(daily_gainers/volume_stocks/market_scope_reports/
-// repair_log)를 조회한다. "메일 발송 시각"은 다루지 않는다 — 구독 이메일이 실제로
-// 저장/발송되는 코드가 아직 없어서 보여줄 데이터 자체가 없다(2026-09-16 확인).
+// repair_log/screener_picks)를 조회한다. "메일 발송 시각"은 다루지 않는다 —
+// 구독 이메일이 실제로 저장/발송되는 코드가 아직 없어서 보여줄 데이터 자체가
+// 없다(2026-09-16 확인).
 //
 // repair_log: 리서치자동화 저장소의 scripts/repair_issues.py가 매일 남기는 자동
 // 수리 기록. 이 저장소는 다른 표와 동일하게 읽기만 한다(2026-09-29 추가).
+//
+// screener_picks: "종목추천-자동화" 프로젝트(별도 세션에서 매주 토요일 직접
+// Supabase에 upsert, GitHub Actions 아님)가 만드는 개인 스터디용 Top10.
+// 다른 파이프라인과 달리 주 1회만 갱신되므로 freshnessStatusWeekly로 별도 판단.
 
 const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
@@ -55,6 +60,15 @@ function freshnessStatus(daysSinceLatest) {
   return 'error';
 }
 
+// 스크리너 Top10은 매주 토요일 1회만 생성되므로 위 일간 기준(3일)을 그대로 쓰면
+// 평일 내내 "지연"으로 오인된다. 1주기(7일) + 여유분을 기준으로 판단한다.
+function freshnessStatusWeekly(daysSinceLatest) {
+  if (daysSinceLatest === null) return 'error';
+  if (daysSinceLatest <= 8) return 'ok';
+  if (daysSinceLatest <= 12) return 'warn';
+  return 'error';
+}
+
 module.exports = async (req, res) => {
   const admin = await verifyAdmin(req);
   if (!admin) {
@@ -72,13 +86,16 @@ module.exports = async (req, res) => {
     const sevenDaysAgo = new Date(new Date(today + 'T00:00:00Z').getTime() - 6 * 86400000)
       .toISOString().slice(0, 10);
 
-    const [gainersAll, volumeAll, scopeAll, repairLogAll] = await Promise.all([
+    const [gainersAll, volumeAll, scopeAll, repairLogAll, screenerAll] = await Promise.all([
       sbSelect(serviceKey, 'daily_gainers', 'select=trade_date,report_type,rise_reason,chart_analysis,updated_at&report_type=eq.daily&order=trade_date.desc&limit=200'),
       sbSelect(serviceKey, 'volume_stocks', 'select=trade_date,updated_at&order=trade_date.desc&limit=200'),
       sbSelect(serviceKey, 'market_scope_reports', 'select=report_date,items,updated_at&order=report_date.desc&limit=30'),
       // repair_issues.py(리서치자동화)가 남기는 자동 수리 기록 - 이 저장소는
       // 읽기만 한다(다른 표들과 동일한 원칙).
       sbSelect(serviceKey, 'repair_log', 'select=checked_at,pipeline,trade_date,issue,action,success&order=checked_at.desc&limit=20'),
+      // 스크리너 Top10(개인 스터디용) - 별도 세션("종목추천-자동화" 프로젝트)에서
+      // 매주 토요일 직접 upsert. GitHub Actions가 아니라 수신 여부만 확인 가능.
+      sbSelect(serviceKey, 'screener_picks', 'select=run_date,rank,selection_reason,chart_analysis,updated_at&order=run_date.desc,rank.asc&limit=100'),
     ]);
 
     // ── 상승률 Top10 (daily_gainers, report_type=daily) ──
@@ -97,6 +114,13 @@ module.exports = async (req, res) => {
     const scopeLatest = scopeAll[0] || null;
     const scopeItemCount = scopeLatest && Array.isArray(scopeLatest.items) ? scopeLatest.items.length : 0;
     const scopeDays = scopeLatest ? daysBetween(today, scopeLatest.report_date) : null;
+
+    // ── 스크리너 Top10 (screener_picks, 매주 토요일 1회) ──
+    const screenerLatestDate = screenerAll[0] ? screenerAll[0].run_date : null;
+    const screenerLatestRows = screenerAll.filter((r) => r.run_date === screenerLatestDate);
+    const screenerEmptyReason = screenerLatestRows.filter((r) => !r.selection_reason).length;
+    const screenerEmptyChart = screenerLatestRows.filter((r) => !r.chart_analysis).length;
+    const screenerDays = screenerLatestDate ? daysBetween(today, screenerLatestDate) : null;
 
     const pipelines = [
       {
@@ -153,6 +177,25 @@ module.exports = async (req, res) => {
         status: freshnessStatus(scopeDays),
       },
       {
+        id: 'screenerPicks',
+        label: '이번 주 스크리닝 Top10',
+        source: '별도 세션 직접 분석 (종목추천-자동화 프로젝트, GitHub Actions 아님)',
+        script: '(자동화 스크립트 없음 — 개인 스터디용, 매주 토요일 수동/에이전트 실행)',
+        schedule: '매주 토요일 1회',
+        table: 'screener_picks',
+        latestDate: screenerLatestDate,
+        daysSinceLatest: screenerDays,
+        rowCount: screenerLatestRows.length,
+        expectedRowCount: 10,
+        issues: [
+          screenerLatestRows.length !== 10 && screenerLatestDate ? `종목 ${screenerLatestRows.length}/10건만 있음` : null,
+          screenerEmptyReason > 0 ? `선정 이유 비어있는 종목 ${screenerEmptyReason}건` : null,
+          screenerEmptyChart > 0 ? `차트 분석 비어있는 종목 ${screenerEmptyChart}건` : null,
+        ].filter(Boolean),
+        lastUpdatedAt: screenerLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), screenerLatestRows[0]?.updated_at || null),
+        status: freshnessStatusWeekly(screenerDays),
+      },
+      {
         id: 'news',
         label: '최신 경제 헤드라인',
         source: 'RSS 6개사(국내) + 네이버 뉴스 검색(해외)',
@@ -173,6 +216,7 @@ module.exports = async (req, res) => {
       gainers: Array.from(new Set(gainersAll.map((r) => r.trade_date))).filter((d) => d >= sevenDaysAgo),
       volume: Array.from(new Set(volumeAll.map((r) => r.trade_date))).filter((d) => d >= sevenDaysAgo),
       marketScope: scopeAll.map((r) => r.report_date).filter((d) => d >= sevenDaysAgo),
+      screenerPicks: Array.from(new Set(screenerAll.map((r) => r.run_date))).filter((d) => d >= sevenDaysAgo),
     };
 
     const repairLog = repairLogAll.map((r) => ({
