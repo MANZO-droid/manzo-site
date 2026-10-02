@@ -245,7 +245,7 @@
 
     el.innerHTML =
       '<h2 class="section-h2">자동화 현황</h2>' +
-      '<p class="status-checked-at">확인 시각: ' + fmtDate(statusData.checkedAt) + ' · 일간 파이프라인은 최근 3일, 스크리닝 Top10(주 1회)은 최근 12일 이내를 기준으로 판단합니다(주말·휴장일은 정상적으로 비어있을 수 있습니다)</p>' +
+      '<p class="status-checked-at">확인 시각: ' + fmtDate(statusData.checkedAt) + ' · 일간 파이프라인은 최근 3일, 스크리닝 Top10(주 1회)은 휴장일을 뺀 영업일 5일 이내를 정상으로 판단합니다(주말·휴장일은 정상적으로 비어있을 수 있습니다)</p>' +
       '<div class="status-grid">' + cards + '</div>' +
       '<div class="heatmap-wrap"><div class="status-card-title" style="margin-bottom:12px">최근 7일 수신 현황</div>' + heatRows + '</div>' +
       renderRepairLog(statusData.repairLog);

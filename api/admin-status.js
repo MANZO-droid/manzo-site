@@ -60,12 +60,37 @@ function freshnessStatus(daysSinceLatest) {
   return 'error';
 }
 
-// 스크리너 Top10은 매주 토요일 1회만 생성되므로 위 일간 기준(3일)을 그대로 쓰면
-// 평일 내내 "지연"으로 오인된다. 1주기(7일) + 여유분을 기준으로 판단한다.
-function freshnessStatusWeekly(daysSinceLatest) {
-  if (daysSinceLatest === null) return 'error';
-  if (daysSinceLatest <= 8) return 'ok';
-  if (daysSinceLatest <= 12) return 'warn';
+// KRX 휴장일. 리서치자동화 저장소의 krx-holidays-2026.json과 같은 목록이다(두 저장소가
+// 따로 있어 복사해 둠). 2027년이 되면 이 목록도 같이 갱신해야 한다 — 목록에 없는 해의
+// 공휴일은 평일로 세어져 "지연"이 실제보다 일찍 뜰 수 있다.
+const KRX_HOLIDAYS = new Set([
+  '2026-01-01', '2026-02-16', '2026-02-17', '2026-02-18', '2026-03-02', '2026-05-01',
+  '2026-05-05', '2026-05-25', '2026-06-03', '2026-06-06', '2026-07-17', '2026-08-15',
+  '2026-08-17', '2026-09-24', '2026-09-25', '2026-09-26', '2026-10-03', '2026-10-05',
+  '2026-10-09', '2026-12-25', '2026-12-31',
+]);
+
+// from 다음 날부터 to까지(to 포함) 중 거래일(평일이면서 휴장일이 아닌 날)의 수.
+function tradingDaysBetween(to, from) {
+  let count = 0;
+  const end = new Date(to + 'T00:00:00Z');
+  for (let d = new Date(from + 'T00:00:00Z'); ; ) {
+    d.setUTCDate(d.getUTCDate() + 1);
+    if (d > end) break;
+    const dow = d.getUTCDay();
+    if (dow !== 0 && dow !== 6 && !KRX_HOLIDAYS.has(d.toISOString().slice(0, 10))) count++;
+  }
+  return count;
+}
+
+// 스크리너 Top10은 매주 토요일 1회만 생성되고, 데이터 기준일은 직전 금요일이다. 달력 일수로
+// 판단하면 연휴가 낀 주에 기준일이 며칠 더 뒤처져 오경보가 나므로(2026-10-02 추석 연휴),
+// 거래일 수로 센다. 정상 주기에서는 다음 토요일 실행 직전까지 5거래일이 쌓이므로 5일 이하는
+// 정상, 여유분 3일(8거래일)까지는 지연으로 본다.
+function freshnessStatusWeekly(tradingDaysSinceLatest) {
+  if (tradingDaysSinceLatest === null) return 'error';
+  if (tradingDaysSinceLatest <= 5) return 'ok';
+  if (tradingDaysSinceLatest <= 8) return 'warn';
   return 'error';
 }
 
@@ -193,7 +218,7 @@ module.exports = async (req, res) => {
           screenerEmptyChart > 0 ? `차트 분석 비어있는 종목 ${screenerEmptyChart}건` : null,
         ].filter(Boolean),
         lastUpdatedAt: screenerLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), screenerLatestRows[0]?.updated_at || null),
-        status: freshnessStatusWeekly(screenerDays),
+        status: freshnessStatusWeekly(screenerLatestDate ? tradingDaysBetween(today, screenerLatestDate) : null),
       },
       {
         id: 'news',
