@@ -42,6 +42,9 @@
   .del-btn { background: none; border: 1.5px solid var(--danger); color: var(--danger); border-radius: 14px; padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
   .del-btn:hover { background: var(--danger); color: #fff; }
   .del-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .act-btn { background: none; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
+  .act-btn:hover { background: var(--accent); color: #fff; }
+  .act-btn:disabled { opacity: .5; cursor: not-allowed; }
   .empty { text-align: center; padding: 40px; color: var(--text-muted); }
 
   .section-h2 { font-size: 16px; font-weight: 800; margin: 0 0 14px; }
@@ -145,7 +148,13 @@
     // 현황 대시보드/포지션 현황은 회원 목록보다 덜 치명적이라, 실패해도 페이지 전체를 막지 않고
     // 그 섹션에만 오류를 표시한다(회원 관리 자체는 계속 쓸 수 있어야 하므로).
     statusData = statusRes.ok ? await statusRes.json() : { error: '현황을 불러오지 못했습니다 (' + statusRes.status + ').' };
-    positionsData = positionsRes.ok ? (await positionsRes.json()).positions || [] : [];
+    if (positionsRes.ok) {
+      const h = await positionsRes.json();
+      positionsData = h.positions || [];
+      requestsData = h.requests || [];
+    } else {
+      positionsData = [];
+    }
     renderApp();
   }
 
@@ -282,10 +291,11 @@
       '<div class="status-card-title" style="margin-bottom:12px">최근 자동 수리 로그</div>' + rows + '</div>';
   }
 
-  // ── 보유 포지션 현황 (읽기 전용, stock_screener.trend_positions) ────────────
+  // ── 보유 포지션 현황 (stock_screener.trend_positions 조회 + 등록 요청 접수) ───
   // PC의 positions.py가 관리하는 진짜 추세추종 포지션 원장을 그대로 보여준다.
-  // 새 포지션 등록/청산은 PC의 enter_position.py/daily_check.py가 담당한다(시세
-  // 데이터로 align_days/rs120 등을 계산해야 하므로 사이트에서 직접 입력하지 않는다).
+  // 이 표 자체는 읽기 전용이다. 새 포지션은 아래 "등록 요청"으로 접수함에 넣으면
+  // PC가 정식 등록한다(시세 데이터로 align_days/rs120 등을 계산해야 하므로 사이트가
+  // 원장에 직접 쓰지 않는다).
   function fmtPct(x) {
     if (x === null || x === undefined) return '<span class="muted">-</span>';
     const pct = (x * 100).toFixed(1) + '%';
@@ -323,10 +333,36 @@
       '</tr>';
   }
 
+  // 섹션 뼈대와 입력 폼은 한 번만 그린다. 이후 갱신(폴링·접수·취소)은 updatePositionData()가
+  // 표와 접수 내역만 다시 그려서, 입력 중인 폼이 지워지지 않는다.
   function renderPositions() {
     const el = document.getElementById('positions-section');
     if (!el) return;
+    el.innerHTML =
+      '<h2 class="section-h2">보유 포지션 현황</h2>' +
+      '<p class="sub" style="margin-top:-20px">stock_screener(PC)의 추세추종 포지션 원장을 그대로 보여줍니다 — 아래에서 보유 종목을 등록 요청하면 PC가 5분 이내에 원장에 정식 등록하고, 청산은 PC의 daily_check.py가 처리합니다.</p>' +
+      '<div id="pos-data"></div>' + holdingFormHtml() + '<div id="req-data"></div>';
+    bindHoldingForm();
+    lastPositionsSig = null;
+    updatePositionData();
+  }
 
+  let lastPositionsSig = null;
+
+  function updatePositionData() {
+    const posEl = document.getElementById('pos-data');
+    const reqEl = document.getElementById('req-data');
+    if (!posEl || !reqEl) return;
+    const sig = JSON.stringify([positionsData, requestsData]);
+    if (sig !== lastPositionsSig) {  // 바뀐 게 없으면 다시 그리지 않는다(펼쳐 둔 '청산 완료' 목록 유지)
+      lastPositionsSig = sig;
+      renderPositionData(posEl);
+      reqEl.innerHTML = requestsHtml();
+    }
+    scheduleRequestPoll();
+  }
+
+  function renderPositionData(el) {
     const open = positionsData.filter(p => p.status === 'open');
     const closed = positionsData.filter(p => p.status !== 'open');
 
@@ -341,10 +377,141 @@
         closed.map(closedPositionRow).join('') + '</tbody></table></details>'
       : '';
 
-    el.innerHTML =
-      '<h2 class="section-h2">보유 포지션 현황</h2>' +
-      '<p class="sub" style="margin-top:-20px">stock_screener(PC)의 추세추종 포지션 원장을 그대로 보여줍니다 — 새 포지션 등록·청산은 PC에서 daily_check.py가 처리합니다(읽기 전용).</p>' +
-      openHtml + closedHtml;
+    el.innerHTML = openHtml + closedHtml;
+  }
+
+  // ── 보유 종목 등록 요청 (접수함: stock_screener.position_requests) ────────────
+  // 원장에 직접 쓰지 않는다. 접수된 요청은 PC의 TrendPositionIntake 작업(5분마다)이
+  // 원장(positions.csv)에 정식 등록하고 결과를 status/message로 돌려준다. 원본이 PC에
+  // 있어야 손절·청산 감시가 정상 작동하기 때문이다(2026-10-02).
+  const REQ_STATUS = {
+    pending: ['대기', 'warn'], processing: ['처리 중', 'warn'], done: ['등록됨', 'ok'],
+    error: ['실패', 'error'], cancelled: ['취소', 'na'],
+  };
+  let requestsData = [];
+  let reqPollTimer = null;
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function holdingFormHtml() {
+    const inp = 'padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--font);font-size:13.5px;background:#fff;width:100%';
+    const lab = 'display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--text-secondary)';
+    return '<div class="heatmap-wrap" style="margin-top:18px">' +
+      '<div class="status-card-title" style="margin-bottom:4px">보유 종목 등록 요청</div>' +
+      '<p class="sub" style="margin:0 0 12px">PC가 5분 이내에 정식 등록합니다. 손절선(-7%)은 아래 매수가 기준이므로 실제 체결가(평균 매수가)를 넣어주세요.</p>' +
+      '<form id="holding-form" autocomplete="off" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">' +
+      '<label style="' + lab + '">종목코드 *<input name="stockCode" inputmode="numeric" maxlength="6" placeholder="예: 005930" required style="' + inp + '"></label>' +
+      '<label style="' + lab + '">매수가(원) *<input name="entryPrice" inputmode="decimal" placeholder="예: 62000" required style="' + inp + '"></label>' +
+      '<label style="' + lab + '">수량(선택)<input name="quantity" inputmode="decimal" placeholder="예: 100" style="' + inp + '"></label>' +
+      '<label style="' + lab + '">최초 매수일(선택)<input name="entryDate" type="date" style="' + inp + '"></label>' +
+      '<label style="' + lab + '">구분<select name="mode" style="' + inp + '"><option value="import">이미 보유 중(편입)</option><option value="new">방금 새로 매수</option></select></label>' +
+      '<label style="' + lab + '">메모(선택)<input name="note" maxlength="200" placeholder="예: 분할 1차" style="' + inp + '"></label>' +
+      '<button type="submit" id="holding-submit" class="act-btn">등록 요청</button>' +
+      '</form>' +
+      '<div id="holding-msg" style="font-size:12.5px;margin-top:10px;min-height:18px"></div>' +
+      '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ "최초 매수일"은 처음 산 날짜를 적으세요(물타기한 날짜 X). 비워두면 최근 시세일로 잡힙니다. 최대 보유기간(60거래일)은 등록일부터 셉니다.</p>' +
+      '</div>';
+  }
+
+  function requestRow(r) {
+    const [label, cls] = REQ_STATUS[r.status] || [r.status, 'na'];
+    const cancel = r.status === 'pending'
+      ? ' <button type="button" class="del-btn" data-cancel="' + r.id + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
+    const detail = (r.mode === 'new' ? '신규 매수' : '기존 보유') + ' · ' + Number(r.entry_price).toLocaleString('ko-KR') + '원' +
+      (r.quantity != null ? ' · ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '') +
+      (r.entry_date ? ' · ' + r.entry_date : '');
+    return '<div class="heatmap-row" style="align-items:flex-start">' +
+      '<span class="heatmap-label" style="width:150px">' + fmtDate(r.created_at) + '</span>' +
+      '<div style="flex:1;font-size:12.5px;color:var(--text-secondary)">' +
+      (r.stock_name
+        ? '<b>' + escapeHtml(r.stock_name) + '</b> <span class="muted">' + escapeHtml(r.stock_code) + '</span>'
+        : '<b>' + escapeHtml(r.stock_code) + '</b>') + ' · ' + escapeHtml(detail) +
+      (r.message ? '<div class="muted" style="font-size:11.5px;margin-top:2px">' + escapeHtml(r.message) + '</div>' : '') +
+      '</div><span class="status-badge ' + cls + '">' + label + '</span>' + cancel + '</div>';
+  }
+
+  function requestsHtml() {
+    if (!requestsData.length) return '';
+    return '<div class="heatmap-wrap" style="margin-top:14px">' +
+      '<div class="status-card-title" style="margin-bottom:12px">등록 요청 내역</div>' +
+      '<div id="requests-list">' + requestsData.map(requestRow).join('') + '</div></div>';
+  }
+
+  async function authHeaders() {
+    const session = (await sb.auth.getSession()).data.session;
+    if (!session) throw new Error('로그인이 만료됐습니다. 새로고침해 주세요.');
+    return { Authorization: 'Bearer ' + session.access_token };
+  }
+
+  async function reloadHoldings() {
+    const res = await fetch('/api/holdings', { headers: await authHeaders() });
+    if (!res.ok) throw new Error('불러오지 못했습니다 (' + res.status + ')');
+    const data = await res.json();
+    positionsData = data.positions || [];
+    requestsData = data.requests || [];
+  }
+
+  // 대기/처리 중인 요청이 있는 동안만 20초마다 상태를 다시 확인한다(등록 완료되면 목록도 갱신).
+  function scheduleRequestPoll() {
+    clearTimeout(reqPollTimer);
+    if (!requestsData.some(r => r.status === 'pending' || r.status === 'processing')) return;
+    reqPollTimer = setTimeout(async () => {
+      try { await reloadHoldings(); } catch (e) { /* 다음 주기에 다시 */ }
+      updatePositionData();  // 안에서 다음 폴링을 다시 예약한다
+    }, 20000);
+  }
+
+  function bindHoldingForm() {
+    const form = document.getElementById('holding-form');
+    if (!form) return;
+    const msg = document.getElementById('holding-msg');
+    const say = (text, ok) => { msg.style.color = ok ? '#1E7A46' : 'var(--danger)'; msg.textContent = text; };
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const btn = document.getElementById('holding-submit');
+      const fd = Object.fromEntries(new FormData(form).entries());
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/holdings', {
+          method: 'POST',
+          headers: { ...(await authHeaders()), 'Content-Type': 'application/json' },
+          body: JSON.stringify(fd),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || ('접수 실패 (' + res.status + ')'));
+        await reloadHoldings();
+        form.reset();
+        say('접수됐습니다. PC가 5분 이내에 원장에 등록합니다.', true);
+        updatePositionData();
+      } catch (e) {
+        say(e.message, false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    // 취소 버튼은 접수 내역이 다시 그려질 때마다 새로 생기므로, 고정 컨테이너에서 위임 처리한다.
+    document.getElementById('positions-section').addEventListener('click', async (ev) => {
+      const b = ev.target.closest('[data-cancel]');
+      if (!b) return;
+      b.disabled = true;
+      try {
+        const res = await fetch('/api/holdings?id=' + encodeURIComponent(b.dataset.cancel), {
+          method: 'DELETE', headers: await authHeaders(),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || ('취소 실패 (' + res.status + ')'));
+        await reloadHoldings();
+        say('요청을 취소했습니다.', true);
+        updatePositionData();
+      } catch (e) {
+        say(e.message, false);
+        b.disabled = false;
+      }
+    });
   }
 
   function sortedFiltered() {

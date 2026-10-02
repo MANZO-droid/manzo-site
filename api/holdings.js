@@ -1,6 +1,14 @@
-// [관리자 전용] 실제 매매 포지션 원장 조회 — GET만 지원한다 (읽기 전용).
-// GET /api/holdings → { positions: [...] }
+// [관리자 전용] 실제 매매 포지션 원장 조회 + 보유 종목 등록 "접수".
+// GET    /api/holdings          → { positions: [...], requests: [...최근 접수 내역] }
+// POST   /api/holdings          → 등록 요청 접수 (stock_screener.position_requests에 pending으로 저장)
+// DELETE /api/holdings?id=N     → 아직 pending인 요청만 취소
 //
+// POST는 원장(trend_positions)에 직접 쓰지 않는다. 원장의 원본은 PC의 positions.csv라서,
+// 사이트가 사본에만 쓰면 손절·청산 감시가 안 되는 종목이 생긴다(2026-10-02 결정). 접수함에
+// 쌓인 요청은 PC의 TrendPositionIntake 작업(5분마다, process_position_requests.py)이
+// 정식 등록하고 결과를 status/message로 돌려놓는다.
+//
+// 아래는 원래의 읽기 전용 설명이다.
 // stock_screener(PC) 쪽 positions.py가 관리하는 진짜 추세추종 포지션 원장을 그대로
 // 보여준다. 원본은 PC의 history/positions.csv이고, 이 표(stock_screener.trend_positions)는
 // 그 사본이다 — enter_position.py/daily_check.py가 시세 데이터로 align_days/rs120 등을
@@ -31,14 +39,57 @@ async function verifyAdmin(req) {
   return user;
 }
 
+const MAX_PENDING = 20;
+
+function sbHeaders(serviceKey, extra) {
+  return {
+    apikey: serviceKey,
+    Authorization: `Bearer ${serviceKey}`,
+    'Accept-Profile': 'stock_screener',
+    'Content-Profile': 'stock_screener',
+    ...extra,
+  };
+}
+
+function todayKst() {
+  return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
+// 입력값 검증. 통과하면 { row }, 실패하면 { error }를 돌려준다.
+function validateRequest(body) {
+  const b = body && typeof body === 'object' ? body : {};
+  const code = String(b.stockCode || '').trim();
+  if (!/^\d{6}$/.test(code)) return { error: '종목코드는 숫자 6자리여야 합니다.' };
+
+  const price = Number(String(b.entryPrice ?? '').replace(/,/g, ''));
+  if (!Number.isFinite(price) || price <= 0 || price >= 1e9) return { error: '매수가를 올바른 숫자로 입력하세요.' };
+
+  let quantity = null;
+  const qRaw = String(b.quantity ?? '').replace(/,/g, '').trim();
+  if (qRaw !== '') {
+    quantity = Number(qRaw);
+    if (!Number.isFinite(quantity) || quantity <= 0 || quantity >= 1e9) return { error: '수량을 올바른 숫자로 입력하세요.' };
+  }
+
+  let entryDate = null;
+  const dRaw = String(b.entryDate ?? '').trim();
+  if (dRaw !== '') {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dRaw) || Number.isNaN(Date.parse(dRaw + 'T00:00:00Z'))) {
+      return { error: '매수일은 YYYY-MM-DD 형식이어야 합니다.' };
+    }
+    if (dRaw > todayKst()) return { error: '매수일이 오늘보다 미래입니다.' };
+    entryDate = dRaw;
+  }
+
+  const mode = b.mode === 'new' ? 'new' : 'import';
+  const note = String(b.note ?? '').trim().slice(0, 200) || null;
+  return { row: { stock_code: code, entry_price: price, quantity, entry_date: entryDate, mode, note } };
+}
+
 module.exports = async (req, res) => {
   const admin = await verifyAdmin(req);
   if (!admin) {
     res.status(403).json({ error: '관리자 권한이 없습니다.' });
-    return;
-  }
-  if (req.method !== 'GET') {
-    res.status(405).json({ error: '읽기 전용 API입니다.' });
     return;
   }
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -48,18 +99,66 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const r = await fetch(
-      `${SUPABASE_URL}/rest/v1/trend_positions?select=*&order=status.asc,entry_date.desc&limit=200`,
-      {
-        headers: {
-          apikey: serviceKey,
-          Authorization: `Bearer ${serviceKey}`,
-          'Accept-Profile': 'stock_screener',
-        },
-      },
-    );
-    if (!r.ok) throw new Error(`조회 실패 ${r.status}: ${await r.text()}`);
-    res.json({ positions: await r.json() });
+    if (req.method === 'GET') {
+      const [pos, reqs] = await Promise.all([
+        fetch(`${SUPABASE_URL}/rest/v1/trend_positions?select=*&order=status.asc,entry_date.desc&limit=200`,
+          { headers: sbHeaders(serviceKey) }),
+        fetch(`${SUPABASE_URL}/rest/v1/position_requests?select=*&order=created_at.desc&limit=20`,
+          { headers: sbHeaders(serviceKey) }),
+      ]);
+      if (!pos.ok) throw new Error(`조회 실패 ${pos.status}: ${await pos.text()}`);
+      // 접수 내역 조회가 실패해도 포지션 목록은 계속 보여준다.
+      const requests = reqs.ok ? await reqs.json() : [];
+      res.json({ positions: await pos.json(), requests });
+      return;
+    }
+
+    if (req.method === 'POST') {
+      const { row, error } = validateRequest(req.body);
+      if (error) { res.status(400).json({ error }); return; }
+
+      const pend = await fetch(
+        `${SUPABASE_URL}/rest/v1/position_requests?select=id,stock_code&status=in.(pending,processing)`,
+        { headers: sbHeaders(serviceKey) });
+      if (!pend.ok) throw new Error(`접수 내역 조회 실패 ${pend.status}: ${await pend.text()}`);
+      const pending = await pend.json();
+      if (pending.length >= MAX_PENDING) { res.status(429).json({ error: '대기 중인 요청이 너무 많습니다.' }); return; }
+      if (pending.some((p) => p.stock_code === row.stock_code)) {
+        res.status(409).json({ error: '같은 종목의 요청이 이미 처리 대기 중입니다.' });
+        return;
+      }
+
+      const ins = await fetch(`${SUPABASE_URL}/rest/v1/position_requests`, {
+        method: 'POST',
+        headers: sbHeaders(serviceKey, { 'Content-Type': 'application/json', Prefer: 'return=representation' }),
+        body: JSON.stringify(row),
+      });
+      if (!ins.ok) throw new Error(`접수 실패 ${ins.status}: ${await ins.text()}`);
+      const [saved] = await ins.json();
+      res.status(201).json({ request: saved });
+      return;
+    }
+
+    if (req.method === 'DELETE') {
+      const id = Number(req.query && req.query.id);
+      if (!Number.isInteger(id) || id <= 0) { res.status(400).json({ error: 'id가 올바르지 않습니다.' }); return; }
+      // pending일 때만 취소된다 — PC가 이미 가져간(processing) 요청은 되돌릴 수 없다.
+      const del = await fetch(
+        `${SUPABASE_URL}/rest/v1/position_requests?id=eq.${id}&status=eq.pending`,
+        {
+          method: 'PATCH',
+          headers: sbHeaders(serviceKey, { 'Content-Type': 'application/json', Prefer: 'return=representation' }),
+          body: JSON.stringify({ status: 'cancelled', message: '사용자가 취소함' }),
+        });
+      if (!del.ok) throw new Error(`취소 실패 ${del.status}: ${await del.text()}`);
+      const changed = await del.json();
+      if (!changed.length) { res.status(409).json({ error: '이미 처리가 시작됐거나 끝난 요청이라 취소할 수 없습니다.' }); return; }
+      res.json({ request: changed[0] });
+      return;
+    }
+
+    res.setHeader('Allow', 'GET, POST, DELETE');
+    res.status(405).json({ error: '지원하지 않는 요청 방식입니다.' });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
