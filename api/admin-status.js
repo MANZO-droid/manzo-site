@@ -51,12 +51,14 @@ function daysBetween(a, b) {
   return Math.round(ms / 86400000);
 }
 
-// daysSinceLatest만으로 상태를 매기면 주말·휴장일을 오류로 오인하므로,
-// "느슨한" 기준(최대 3일)을 쓰고 화면에 그 취지를 같이 안내한다.
-function freshnessStatus(daysSinceLatest) {
-  if (daysSinceLatest === null) return 'error';
-  if (daysSinceLatest <= 1) return 'ok';
-  if (daysSinceLatest <= 3) return 'warn';
+// 일간 파이프라인(상승률·거래대금·마켓 스코프)은 거래일마다 갱신되므로 달력 일수가 아니라
+// 거래일 수로 센다(2026-10-02 변경). 달력 일수로 세면 월요일 아침이나 연휴 직후에 파이프라인이
+// 정상인데도 "지연"이 떴다. 0~1거래일(오늘 수집 전이거나 수집 완료)은 정상, 2~3거래일은 지연
+// (한두 번 빠짐), 그 이상은 확인 필요.
+function freshnessStatus(tradingDaysSinceLatest) {
+  if (tradingDaysSinceLatest === null) return 'error';
+  if (tradingDaysSinceLatest <= 1) return 'ok';
+  if (tradingDaysSinceLatest <= 3) return 'warn';
   return 'error';
 }
 
@@ -110,6 +112,7 @@ module.exports = async (req, res) => {
     const today = todayKst();
     const sevenDaysAgo = new Date(new Date(today + 'T00:00:00Z').getTime() - 6 * 86400000)
       .toISOString().slice(0, 10);
+    const tradingDaysSince = (latestDate) => (latestDate ? tradingDaysBetween(today, latestDate) : null);
 
     const [gainersAll, volumeAll, scopeAll, repairLogAll, screenerAll] = await Promise.all([
       sbSelect(serviceKey, 'daily_gainers', 'select=trade_date,report_type,rise_reason,chart_analysis,updated_at&report_type=eq.daily&order=trade_date.desc&limit=200'),
@@ -165,7 +168,7 @@ module.exports = async (req, res) => {
           gainersEmptyChart > 0 ? `차트 분석 비어있는 종목 ${gainersEmptyChart}건` : null,
         ].filter(Boolean),
         lastUpdatedAt: gainersLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), gainersLatestRows[0]?.updated_at || null),
-        status: freshnessStatus(gainersDays),
+        status: freshnessStatus(tradingDaysSince(gainersLatestDate)),
       },
       {
         id: 'volume',
@@ -182,7 +185,7 @@ module.exports = async (req, res) => {
           volumeLatestRows.length !== 10 && volumeLatestDate ? `종목 ${volumeLatestRows.length}/10건만 있음` : null,
         ].filter(Boolean),
         lastUpdatedAt: volumeLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), volumeLatestRows[0]?.updated_at || null),
-        status: freshnessStatus(volumeDays),
+        status: freshnessStatus(tradingDaysSince(volumeLatestDate)),
       },
       {
         id: 'marketScope',
@@ -199,7 +202,7 @@ module.exports = async (req, res) => {
           scopeLatest && scopeItemCount !== 15 ? `종목/이슈 ${scopeItemCount}/15건만 있음` : null,
         ].filter(Boolean),
         lastUpdatedAt: scopeLatest ? scopeLatest.updated_at : null,
-        status: freshnessStatus(scopeDays),
+        status: freshnessStatus(tradingDaysSince(scopeLatest ? scopeLatest.report_date : null)),
       },
       {
         id: 'screenerPicks',
