@@ -1,6 +1,8 @@
 // [관리자 전용] 실제 매매 포지션 원장 조회 + 보유 종목 등록 "접수".
 // GET    /api/holdings          → { positions: [...], requests: [...최근 접수 내역] }
-// POST   /api/holdings          → 등록 요청 접수 (stock_screener.position_requests에 pending으로 저장)
+// POST   /api/holdings          → 등록 요청 접수 (stock_screener.position_requests에 pending으로 저장).
+//                                 { items: [...최대 10종목] } 또는 한 종목 객체. 전부 통과해야 저장된다.
+//                                 mode: import(이미 보유 중) / new(방금 매수) / watch(관찰 전용, 자동 청산 안 함)
 // DELETE /api/holdings?id=N     → 아직 pending인 요청만 취소
 //
 // POST는 원장(trend_positions)에 직접 쓰지 않는다. 원장의 원본은 PC의 positions.csv라서,
@@ -40,6 +42,7 @@ async function verifyAdmin(req) {
 }
 
 const MAX_PENDING = 20;
+const MAX_BATCH = 10;  // 한 번에 접수할 수 있는 종목 수(폼의 최대 행 수와 같다)
 
 function sbHeaders(serviceKey, extra) {
   return {
@@ -81,7 +84,8 @@ function validateRequest(body) {
     entryDate = dRaw;
   }
 
-  const mode = b.mode === 'new' ? 'new' : 'import';
+  // import=이미 보유 중 편입, new=방금 새로 매수, watch=관찰 전용(손절 등으로 자동 청산 안 함)
+  const mode = b.mode === 'new' || b.mode === 'watch' ? b.mode : 'import';
   const note = String(b.note ?? '').trim().slice(0, 200) || null;
   return { row: { stock_code: code, entry_price: price, quantity, entry_date: entryDate, mode, note } };
 }
@@ -114,28 +118,43 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'POST') {
-      const { row, error } = validateRequest(req.body);
-      if (error) { res.status(400).json({ error }); return; }
+      // 본문은 { items: [...] }(여러 종목) 또는 종목 하나의 객체. 하나라도 잘못되면 전부 접수하지 않는다.
+      const body = req.body && typeof req.body === 'object' ? req.body : {};
+      const items = Array.isArray(body.items) ? body.items : [body];
+      if (items.length === 0) { res.status(400).json({ error: '등록할 종목이 없습니다.' }); return; }
+      if (items.length > MAX_BATCH) { res.status(400).json({ error: `한 번에 최대 ${MAX_BATCH}종목까지 접수할 수 있습니다.` }); return; }
+
+      const rows = [];
+      for (let i = 0; i < items.length; i++) {
+        const { row, error } = validateRequest(items[i]);
+        // row는 보낸 목록 기준 위치(0부터) - 화면이 자기 행 번호로 바꿔 보여준다.
+        if (error) { res.status(400).json({ error: (items.length > 1 ? `${i + 1}행: ` : '') + error, row: i }); return; }
+        const dupAt = rows.findIndex((r) => r.stock_code === row.stock_code);
+        if (dupAt >= 0) { res.status(400).json({ error: `${i + 1}행: ${dupAt + 1}번째 종목과 종목코드가 같습니다.`, row: i }); return; }
+        rows.push(row);
+      }
 
       const pend = await fetch(
         `${SUPABASE_URL}/rest/v1/position_requests?select=id,stock_code&status=in.(pending,processing)`,
         { headers: sbHeaders(serviceKey) });
       if (!pend.ok) throw new Error(`접수 내역 조회 실패 ${pend.status}: ${await pend.text()}`);
       const pending = await pend.json();
-      if (pending.length >= MAX_PENDING) { res.status(429).json({ error: '대기 중인 요청이 너무 많습니다.' }); return; }
-      if (pending.some((p) => p.stock_code === row.stock_code)) {
-        res.status(409).json({ error: '같은 종목의 요청이 이미 처리 대기 중입니다.' });
+      if (pending.length + rows.length > MAX_PENDING) { res.status(429).json({ error: '대기 중인 요청이 너무 많습니다.' }); return; }
+      const clash = rows.findIndex((r) => pending.some((p) => p.stock_code === r.stock_code));
+      if (clash >= 0) {
+        res.status(409).json({ error: (rows.length > 1 ? `${clash + 1}행: ` : '') + '같은 종목의 요청이 이미 처리 대기 중입니다.', row: clash });
         return;
       }
 
+      // 한 번의 요청으로 넣어서 전부 들어가거나 전부 안 들어가게 한다.
       const ins = await fetch(`${SUPABASE_URL}/rest/v1/position_requests`, {
         method: 'POST',
         headers: sbHeaders(serviceKey, { 'Content-Type': 'application/json', Prefer: 'return=representation' }),
-        body: JSON.stringify(row),
+        body: JSON.stringify(rows),
       });
       if (!ins.ok) throw new Error(`접수 실패 ${ins.status}: ${await ins.text()}`);
-      const [saved] = await ins.json();
-      res.status(201).json({ request: saved });
+      const saved = await ins.json();
+      res.status(201).json({ requests: saved, request: saved[0] });
       return;
     }
 

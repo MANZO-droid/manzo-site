@@ -45,6 +45,19 @@
   .act-btn { background: none; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
   .act-btn:hover { background: var(--accent); color: #fff; }
   .act-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .hold-grid-head, .hold-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.3fr) minmax(0, 1.7fr) minmax(0, 1.4fr); gap: 8px; }
+  .hold-grid-head { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .hold-row { margin-bottom: 8px; }
+  .hold-row input, .hold-row select { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13.5px; background: #fff; width: 100%; min-width: 0; }
+  .hold-row input:focus, .hold-row select:focus { outline: none; border-color: var(--accent); }
+  .hold-row.err input, .hold-row.err select { border-color: var(--danger); background: var(--danger-light); }
+  @media (max-width: 900px) {
+    .hold-grid-head { display: none; }
+    .hold-row { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 10px; border: 1px dashed var(--border); border-radius: 12px; }
+  }
+  @media (max-width: 560px) {
+    .hold-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   .empty { text-align: center; padding: 40px; color: var(--text-muted); }
 
   .section-h2 { font-size: 16px; font-weight: 800; margin: 0 0 14px; }
@@ -364,20 +377,29 @@
 
   function renderPositionData(el) {
     const open = positionsData.filter(p => p.status === 'open');
-    const closed = positionsData.filter(p => p.status !== 'open');
+    const watch = positionsData.filter(p => p.status === 'watch');
+    const closed = positionsData.filter(p => p.status === 'closed');
+    const head = '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th>최근확인</th><th>메모</th></tr></thead><tbody>';
 
     const openHtml = open.length
-      ? '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th>최근확인</th><th>메모</th></tr></thead><tbody>' +
-        open.map(openPositionRow).join('') + '</tbody></table>'
-      : '<div class="empty">현재 보유(진행) 중인 포지션이 없습니다.</div>';
+      ? head + open.map(openPositionRow).join('') + '</tbody></table>'
+      : '<div class="empty">' + (watch.length ? '손절·청산 규칙이 적용되는 보유 종목은 없습니다.' : '현재 보유(진행) 중인 포지션이 없습니다.') + '</div>';
+
+    // 관찰 전용: 현재가·손익은 매일 갱신하지만 손절 등으로 자동 청산하지 않는다. 매도 여부는 직접 판단.
+    const watchHtml = watch.length
+      ? '<div class="status-card-title" style="margin:18px 0 4px">관찰 중 ' + watch.length + '종목 <span class="status-badge na" style="margin-left:6px">자동 청산 안 함</span></div>' +
+        '<p class="sub" style="margin:0 0 10px;font-size:12px">현재가·평가손익은 매일 갱신되지만, 손절선(-7%)에 닿아도 장부에서 청산 처리하지 않습니다. 언제 팔지는 직접 판단하세요.</p>' +
+        head + watch.map(openPositionRow).join('') + '</tbody></table>'
+      : '';
 
     const closedHtml = closed.length
       ? '<details style="margin-top:14px"><summary style="cursor:pointer;font-size:13px;color:var(--text-muted)">청산 완료 ' + closed.length + '건 보기</summary>' +
+        '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ 장부(원장) 기준 기록입니다. 규칙상 청산 신호가 나면 장부에서만 청산 처리되므로, 실제 매도 여부와 다를 수 있습니다.</p>' +
         '<table style="margin-top:10px"><thead><tr><th>종목</th><th>진입~청산일</th><th>진입가→청산가</th><th>손익률</th><th>청산사유</th><th>메모</th></tr></thead><tbody>' +
         closed.map(closedPositionRow).join('') + '</tbody></table></details>'
       : '';
 
-    el.innerHTML = openHtml + closedHtml;
+    el.innerHTML = openHtml + watchHtml + closedHtml;
   }
 
   // ── 보유 종목 등록 요청 (접수함: stock_screener.position_requests) ────────────
@@ -395,23 +417,40 @@
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // 입력 행: 처음엔 3행이 보이고 "행 추가"로 최대 10행까지 늘린다. 엑셀·메모에서 여러 줄을 복사해
+  // 종목코드 칸에 붙여넣으면 줄마다 한 행씩 채워진다(import_holdings.py의 입력 형식과 같음).
+  const HOLD_START_ROWS = 3;
+  const HOLD_MAX_ROWS = 10;
+  const HOLD_MODES = [['import', '이미 보유 중(편입)'], ['watch', '관찰 전용(자동 청산 안 함)'], ['new', '방금 새로 매수']];
+
+  function holdingRowHtml() {
+    return '<div class="hold-row" data-row>' +
+      '<input data-f="stockCode" inputmode="numeric" maxlength="6" placeholder="종목코드" aria-label="종목코드">' +
+      '<input data-f="entryPrice" inputmode="decimal" placeholder="매수가(원)" aria-label="매수가">' +
+      '<input data-f="quantity" inputmode="decimal" placeholder="수량(선택)" aria-label="수량">' +
+      '<input data-f="entryDate" type="date" aria-label="최초 매수일(선택)" title="최초 매수일(선택)">' +
+      '<select data-f="mode" aria-label="구분">' + HOLD_MODES.map(m => '<option value="' + m[0] + '">' + m[1] + '</option>').join('') + '</select>' +
+      '<input data-f="note" maxlength="200" placeholder="메모(선택)" aria-label="메모">' +
+      '</div>';
+  }
+
   function holdingFormHtml() {
-    const inp = 'padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--font);font-size:13.5px;background:#fff;width:100%';
-    const lab = 'display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--text-secondary)';
     return '<div class="heatmap-wrap" style="margin-top:18px">' +
       '<div class="status-card-title" style="margin-bottom:4px">보유 종목 등록 요청</div>' +
-      '<p class="sub" style="margin:0 0 12px">PC가 5분 이내에 정식 등록합니다. 손절선(-7%)은 아래 매수가 기준이므로 실제 체결가(평균 매수가)를 넣어주세요.</p>' +
-      '<form id="holding-form" autocomplete="off" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end">' +
-      '<label style="' + lab + '">종목코드 *<input name="stockCode" inputmode="numeric" maxlength="6" placeholder="예: 005930" required style="' + inp + '"></label>' +
-      '<label style="' + lab + '">매수가(원) *<input name="entryPrice" inputmode="decimal" placeholder="예: 62000" required style="' + inp + '"></label>' +
-      '<label style="' + lab + '">수량(선택)<input name="quantity" inputmode="decimal" placeholder="예: 100" style="' + inp + '"></label>' +
-      '<label style="' + lab + '">최초 매수일(선택)<input name="entryDate" type="date" style="' + inp + '"></label>' +
-      '<label style="' + lab + '">구분<select name="mode" style="' + inp + '"><option value="import">이미 보유 중(편입)</option><option value="new">방금 새로 매수</option></select></label>' +
-      '<label style="' + lab + '">메모(선택)<input name="note" maxlength="200" placeholder="예: 분할 1차" style="' + inp + '"></label>' +
-      '<button type="submit" id="holding-submit" class="act-btn">등록 요청</button>' +
-      '</form>' +
+      '<p class="sub" style="margin:0 0 12px">PC가 5분 이내에 정식 등록합니다. 매수가는 실제 체결가(평균 매수가)를 넣어주세요. 종목코드·매수가는 필수입니다.</p>' +
+      '<form id="holding-form" autocomplete="off">' +
+      '<div class="hold-grid-head"><span>종목코드 *</span><span>매수가(원) *</span><span>수량</span><span>최초 매수일</span><span>구분</span><span>메모</span></div>' +
+      '<div id="hold-rows">' + Array.from({ length: HOLD_START_ROWS }, holdingRowHtml).join('') + '</div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px">' +
+      '<button type="button" id="hold-add" class="act-btn" style="padding:7px 14px">+ 행 추가</button>' +
+      '<button type="button" id="hold-clear" class="act-btn" style="padding:7px 14px">비우기</button>' +
+      '<span id="hold-count" class="muted" style="font-size:12px"></span>' +
+      '<button type="submit" id="holding-submit" class="act-btn" style="margin-left:auto">등록 요청</button>' +
+      '</div></form>' +
       '<div id="holding-msg" style="font-size:12.5px;margin-top:10px;min-height:18px"></div>' +
-      '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ "최초 매수일"은 처음 산 날짜를 적으세요(물타기한 날짜 X). 비워두면 최근 시세일로 잡힙니다. 최대 보유기간(60거래일)은 등록일부터 셉니다.</p>' +
+      '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ 엑셀·메모에서 여러 줄을 복사해 종목코드 칸에 붙여넣으면 한 번에 채워집니다(종목코드 매수가 수량 매수일 메모 순서, 칸은 탭 또는 공백으로 구분).<br>' +
+      '※ "최초 매수일"은 처음 산 날짜를 적으세요(물타기한 날짜 X). 비워두면 최근 시세일로 잡히고, 최대 보유기간(60거래일)은 등록일부터 셉니다.<br>' +
+      '※ <b>관찰 전용</b>은 현재가·손익만 매일 갱신하고 손절선(-7%)에 닿아도 자동 청산하지 않습니다. 이미 손절선 아래인 종목을 지켜볼 때 고르세요(나머지 구분은 손절선 아래면 다음 점검에서 바로 청산 처리됩니다).</p>' +
       '</div>';
   }
 
@@ -419,7 +458,7 @@
     const [label, cls] = REQ_STATUS[r.status] || [r.status, 'na'];
     const cancel = r.status === 'pending'
       ? ' <button type="button" class="del-btn" data-cancel="' + r.id + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
-    const detail = (r.mode === 'new' ? '신규 매수' : '기존 보유') + ' · ' + Number(r.entry_price).toLocaleString('ko-KR') + '원' +
+    const detail = (r.mode === 'new' ? '신규 매수' : r.mode === 'watch' ? '관찰 전용' : '기존 보유') + ' · ' + Number(r.entry_price).toLocaleString('ko-KR') + '원' +
       (r.quantity != null ? ' · ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '') +
       (r.entry_date ? ' · ' + r.entry_date : '');
     return '<div class="heatmap-row" style="align-items:flex-start">' +
@@ -469,22 +508,120 @@
     const msg = document.getElementById('holding-msg');
     const say = (text, ok) => { msg.style.color = ok ? '#1E7A46' : 'var(--danger)'; msg.textContent = text; };
 
+    const rowsEl = document.getElementById('hold-rows');
+    const addBtn = document.getElementById('hold-add');
+    const countEl = document.getElementById('hold-count');
+    const rowEls = () => Array.from(rowsEl.querySelectorAll('[data-row]'));
+    const field = (row, f) => row.querySelector('[data-f="' + f + '"]');
+    const rowValues = (row) => ({
+      stockCode: field(row, 'stockCode').value.trim(), entryPrice: field(row, 'entryPrice').value.trim(),
+      quantity: field(row, 'quantity').value.trim(), entryDate: field(row, 'entryDate').value.trim(),
+      mode: field(row, 'mode').value, note: field(row, 'note').value.trim(),
+    });
+    const isBlank = (v) => !v.stockCode && !v.entryPrice && !v.quantity && !v.entryDate && !v.note;
+
+    function refreshRowControls() {
+      const n = rowEls().length;
+      addBtn.disabled = n >= HOLD_MAX_ROWS;
+      countEl.textContent = n + '/' + HOLD_MAX_ROWS + '행';
+    }
+    function ensureRows(n) {
+      while (rowEls().length < Math.min(n, HOLD_MAX_ROWS)) rowsEl.insertAdjacentHTML('beforeend', holdingRowHtml());
+      refreshRowControls();
+    }
+    function resetRows() {
+      rowsEl.innerHTML = Array.from({ length: HOLD_START_ROWS }, holdingRowHtml).join('');
+      refreshRowControls();
+    }
+    function markRow(row, bad) { if (row) row.classList.toggle('err', !!bad); }
+    refreshRowControls();
+
+    addBtn.addEventListener('click', () => { ensureRows(rowEls().length + 1); });
+    document.getElementById('hold-clear').addEventListener('click', () => { resetRows(); say('', true); });
+    rowsEl.addEventListener('input', (ev) => markRow(ev.target.closest('[data-row]'), false));
+
+    // 엑셀·메모에서 복사한 여러 줄을 종목코드 칸에 붙여넣으면 줄마다 한 행씩 채운다.
+    const isDateTok = (t) => /^\d{4}[-./]?\d{2}[-./]?\d{2}$/.test(t);
+    const normDate = (t) => { const d = t.replace(/[-./]/g, ''); return d.slice(0, 4) + '-' + d.slice(4, 6) + '-' + d.slice(6, 8); };
+    function parsePasteLine(line) {
+      let code, price, qty = '', date = '', note = '';
+      if (line.includes('\t')) {           // 엑셀: 빈 칸도 자리를 지킨다
+        const c = line.split('\t').map(s => s.trim());
+        [code, price, qty = '', date = ''] = c;
+        note = c.slice(4).join(' ').trim();
+        if (isDateTok(qty) && !date) { date = qty; qty = ''; }
+      } else {                              // 공백 구분: import_holdings.py와 같은 규칙
+        const t = line.trim().split(/\s+/);
+        [code, price] = t;
+        let rest = t.slice(2);
+        if (rest.length && !isDateTok(rest[0]) && /^[\d,.]+$/.test(rest[0])) { qty = rest[0]; rest = rest.slice(1); }
+        if (rest.length && isDateTok(rest[0])) { date = rest[0]; rest = rest.slice(1); }
+        note = rest.join(' ');
+      }
+      code = String(code || '').replace(/\D/g, '');
+      if (!code) return null;
+      return {
+        stockCode: code.padStart(6, '0'), entryPrice: String(price || '').replace(/,/g, ''),
+        quantity: String(qty || '').replace(/,/g, ''), entryDate: isDateTok(date) ? normDate(date) : '', note,
+      };
+    }
+    rowsEl.addEventListener('paste', (ev) => {
+      const target = ev.target;
+      if (!target || target.dataset.f !== 'stockCode') return;
+      const text = (ev.clipboardData || window.clipboardData).getData('text');
+      if (!/[\r\n\t]/.test(text.trim())) return;   // 한 칸짜리 붙여넣기는 그대로 둔다
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+      const parsed = lines.map(parsePasteLine).filter(Boolean);
+      if (!parsed.length) return;
+      ev.preventDefault();
+      const start = rowEls().indexOf(target.closest('[data-row]'));
+      ensureRows(start + parsed.length);
+      const rows = rowEls();
+      const room = rows.length - start;
+      parsed.slice(0, room).forEach((p, k) => {
+        const r = rows[start + k];
+        ['stockCode', 'entryPrice', 'quantity', 'entryDate', 'note'].forEach(f => { field(r, f).value = p[f]; });
+        markRow(r, false);
+      });
+      if (parsed.length > room) say('붙여넣은 ' + parsed.length + '줄 중 ' + room + '줄만 들어갔습니다(최대 ' + HOLD_MAX_ROWS + '행).', false);
+      else say(parsed.length + '줄을 채웠습니다. 내용을 확인하고 "등록 요청"을 누르세요.', true);
+    });
+
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       const btn = document.getElementById('holding-submit');
-      const fd = Object.fromEntries(new FormData(form).entries());
+      const rows = rowEls();
+      rows.forEach(r => markRow(r, false));
+      const picked = [];  // { n: 화면의 행 번호, row: 요소, v: 값 }
+      rows.forEach((row, idx) => { const v = rowValues(row); if (!isBlank(v)) picked.push({ n: idx + 1, row, v }); });
+      if (!picked.length) { say('등록할 종목을 입력해 주세요.', false); return; }
+
+      // 서버가 같은 검사를 다시 하지만, 화면의 행 번호로 바로 알려주려고 먼저 확인한다.
+      for (const p of picked) {
+        const bad = !/^\d{6}$/.test(p.v.stockCode) ? '종목코드는 숫자 6자리여야 합니다.'
+          : !(Number(p.v.entryPrice.replace(/,/g, '')) > 0) ? '매수가를 올바른 숫자로 입력하세요.'
+          : (p.v.quantity !== '' && !(Number(p.v.quantity.replace(/,/g, '')) > 0)) ? '수량을 올바른 숫자로 입력하세요.' : '';
+        if (bad) { markRow(p.row, true); say(p.n + '행: ' + bad, false); return; }
+      }
+
       btn.disabled = true;
       try {
         const res = await fetch('/api/holdings', {
           method: 'POST',
           headers: { ...(await authHeaders()), 'Content-Type': 'application/json' },
-          body: JSON.stringify(fd),
+          body: JSON.stringify({ items: picked.map(p => p.v) }),
         });
         const out = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(out.error || ('접수 실패 (' + res.status + ')'));
+        if (!res.ok) {
+          // 서버가 알려주는 행(row)은 보낸 목록 기준이라 화면의 행 번호로 바꿔 보여준다.
+          const hit = Number.isInteger(out.row) ? picked[out.row] : null;
+          if (hit) markRow(hit.row, true);
+          const msgText = String(out.error || ('접수 실패 (' + res.status + ')')).replace(/^\d+행:\s*/, '');
+          throw new Error((hit ? hit.n + '행: ' : '') + msgText);
+        }
         await reloadHoldings();
-        form.reset();
-        say('접수됐습니다. PC가 5분 이내에 원장에 등록합니다.', true);
+        resetRows();
+        say(picked.length + '건 접수됐습니다. PC가 5분 이내에 원장에 등록합니다.', true);
         updatePositionData();
       } catch (e) {
         say(e.message, false);
