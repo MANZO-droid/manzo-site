@@ -330,6 +330,7 @@
       '<td class="stat-num">' + fmtPrice(p.last_price) + '</td>' +
       '<td class="stat-num">' + fmtPct(unreal) + '</td>' +
       '<td class="stat-num">' + (p.align_days != null ? p.align_days + '일' : '-') + '</td>' +
+      '<td class="stat-num">' + (p.ma_gap_pct != null ? fmtPct(Number(p.ma_gap_pct) / 100) : '<span class="muted">-</span>') + '</td>' +
       '<td class="muted">' + (p.last_checked || '-') + '</td>' +
       '<td>' + (p.note || '<span class="muted">-</span>') + '</td>' +
       '</tr>';
@@ -379,7 +380,7 @@
     const open = positionsData.filter(p => p.status === 'open');
     const watch = positionsData.filter(p => p.status === 'watch');
     const closed = positionsData.filter(p => p.status === 'closed');
-    const head = '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th>최근확인</th><th>메모</th></tr></thead><tbody>';
+    const head = '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지. 마이너스면 20일선 아래입니다.">20일선 대비</th><th>최근확인</th><th>메모</th></tr></thead><tbody>';
 
     const openHtml = open.length
       ? head + open.map(openPositionRow).join('') + '</tbody></table>'
