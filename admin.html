@@ -59,6 +59,7 @@
     .hold-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -4px; padding: 0 4px; }
 
   .section-h2 { font-size: 16px; font-weight: 800; margin: 0 0 14px; }
   .status-section { margin-bottom: 36px; }
@@ -383,21 +384,21 @@
     const head = '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지. 마이너스면 20일선 아래입니다.">20일선 대비</th><th>최근확인</th><th>메모</th></tr></thead><tbody>';
 
     const openHtml = open.length
-      ? head + open.map(openPositionRow).join('') + '</tbody></table>'
+      ? '<div class="tbl-scroll">' + head + open.map(openPositionRow).join('') + '</tbody></table></div>'
       : '<div class="empty">' + (watch.length ? '손절·청산 규칙이 적용되는 보유 종목은 없습니다.' : '현재 보유(진행) 중인 포지션이 없습니다.') + '</div>';
 
     // 관찰 전용: 현재가·손익은 매일 갱신하지만 손절 등으로 자동 청산하지 않는다. 매도 여부는 직접 판단.
     const watchHtml = watch.length
       ? '<div class="status-card-title" style="margin:18px 0 4px">관찰 중 ' + watch.length + '종목 <span class="status-badge na" style="margin-left:6px">자동 청산 안 함</span></div>' +
         '<p class="sub" style="margin:0 0 10px;font-size:12px">현재가·평가손익은 매일 갱신되지만, 손절선(-7%)에 닿아도 장부에서 청산 처리하지 않습니다. 언제 팔지는 직접 판단하세요.</p>' +
-        head + watch.map(openPositionRow).join('') + '</tbody></table>'
+        '<div class="tbl-scroll">' + head + watch.map(openPositionRow).join('') + '</tbody></table></div>'
       : '';
 
     const closedHtml = closed.length
       ? '<details style="margin-top:14px"><summary style="cursor:pointer;font-size:13px;color:var(--text-muted)">청산 완료 ' + closed.length + '건 보기</summary>' +
         '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ 장부(원장) 기준 기록입니다. 규칙상 청산 신호가 나면 장부에서만 청산 처리되므로, 실제 매도 여부와 다를 수 있습니다.</p>' +
-        '<table style="margin-top:10px"><thead><tr><th>종목</th><th>진입~청산일</th><th>진입가→청산가</th><th>손익률</th><th>청산사유</th><th>메모</th></tr></thead><tbody>' +
-        closed.map(closedPositionRow).join('') + '</tbody></table></details>'
+        '<div class="tbl-scroll"><table style="margin-top:10px"><thead><tr><th>종목</th><th>진입~청산일</th><th>진입가→청산가</th><th>손익률</th><th>청산사유</th><th>메모</th></tr></thead><tbody>' +
+        closed.map(closedPositionRow).join('') + '</tbody></table></div></details>'
       : '';
 
     el.innerHTML = openHtml + watchHtml + closedHtml;
@@ -721,14 +722,14 @@
     }).join('');
 
     document.getElementById('table-wrap').innerHTML =
-      '<table><thead><tr>' +
+      '<div class="tbl-scroll"><table><thead><tr>' +
       thLabel('email', '회원') +
       thLabel('createdAt', '가입일') +
       thLabel('lastSignInAt', '최근 로그인') +
       thLabel('duration', '총 체류시간') +
       thLabel('clicks', '클릭 수') +
       '<th>관리</th>' +
-      '</tr></thead><tbody>' + rows + '</tbody></table>';
+      '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   }
 
   loadDashboard();
