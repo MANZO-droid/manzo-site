@@ -126,17 +126,26 @@ module.exports = async (req, res) => {
       sbSelect(serviceKey, 'screener_picks', 'select=run_date,rank,selection_reason,chart_analysis,updated_at&order=run_date.desc,rank.asc&limit=100'),
     ]);
 
+    // 장 마감(15:30 KST) 전에 저장된 행은 전날 시세를 당일로 잘못 적은 것일 수 있다
+    // (2026-10-06 사건: 예약 실행이 자정을 넘겨 들어와 10/02 종가를 10/06으로 저장).
+    const savedBeforeClose = (updatedAt, tradeDate) =>
+      Boolean(updatedAt && tradeDate) && new Date(updatedAt) < new Date(tradeDate + 'T15:30:00+09:00');
+
     // ── 상승률 Top10 (daily_gainers, report_type=daily) ──
     const gainersLatestDate = gainersAll[0] ? gainersAll[0].trade_date : null;
     const gainersLatestRows = gainersAll.filter((r) => r.trade_date === gainersLatestDate);
     const gainersEmptyRise = gainersLatestRows.filter((r) => !r.rise_reason).length;
     const gainersEmptyChart = gainersLatestRows.filter((r) => !r.chart_analysis).length;
     const gainersDays = gainersLatestDate ? daysBetween(today, gainersLatestDate) : null;
+    const gainersUpdatedAt = gainersLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), gainersLatestRows[0]?.updated_at || null);
+    const gainersEarly = savedBeforeClose(gainersUpdatedAt, gainersLatestDate);
 
     // ── 거래대금 Top10 (volume_stocks) ──
     const volumeLatestDate = volumeAll[0] ? volumeAll[0].trade_date : null;
     const volumeLatestRows = volumeAll.filter((r) => r.trade_date === volumeLatestDate);
     const volumeDays = volumeLatestDate ? daysBetween(today, volumeLatestDate) : null;
+    const volumeUpdatedAt = volumeLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), volumeLatestRows[0]?.updated_at || null);
+    const volumeEarly = savedBeforeClose(volumeUpdatedAt, volumeLatestDate);
 
     // ── 마켓 스코프 (market_scope_reports) ──
     const scopeLatest = scopeAll[0] || null;
@@ -166,8 +175,9 @@ module.exports = async (req, res) => {
           gainersLatestRows.length !== 10 && gainersLatestDate ? `종목 ${gainersLatestRows.length}/10건만 있음` : null,
           gainersEmptyRise > 0 ? `상승 이유 비어있는 종목 ${gainersEmptyRise}건` : null,
           gainersEmptyChart > 0 ? `차트 분석 비어있는 종목 ${gainersEmptyChart}건` : null,
+          gainersEarly ? '장 마감(15:30) 전에 저장됨 - 전날 시세일 수 있어 확인 필요' : null,
         ].filter(Boolean),
-        lastUpdatedAt: gainersLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), gainersLatestRows[0]?.updated_at || null),
+        lastUpdatedAt: gainersUpdatedAt,
         status: freshnessStatus(tradingDaysSince(gainersLatestDate)),
       },
       {
@@ -183,8 +193,9 @@ module.exports = async (req, res) => {
         expectedRowCount: 10,
         issues: [
           volumeLatestRows.length !== 10 && volumeLatestDate ? `종목 ${volumeLatestRows.length}/10건만 있음` : null,
+          volumeEarly ? '장 마감(15:30) 전에 저장됨 - 전날 시세일 수 있어 확인 필요' : null,
         ].filter(Boolean),
-        lastUpdatedAt: volumeLatestRows.reduce((max, r) => (r.updated_at > max ? r.updated_at : max), volumeLatestRows[0]?.updated_at || null),
+        lastUpdatedAt: volumeUpdatedAt,
         status: freshnessStatus(tradingDaysSince(volumeLatestDate)),
       },
       {
