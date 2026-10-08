@@ -94,7 +94,7 @@ function validateRequest(body) {
 const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(s + 'T00:00:00Z'));
 
 async function loadLedger(serviceKey) {
-  const r = await fetch(`${SUPABASE_URL}/rest/v1/trend_positions?select=stock_code,stock_name,entry_date,status&limit=500`,
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/trend_positions?select=stock_code,stock_name,entry_date,status,quantity,remaining_qty&limit=500`,
     { headers: sbHeaders(serviceKey) });
   if (!r.ok) throw new Error(`원장 조회 실패 ${r.status}: ${await r.text()}`);
   return r.json();
@@ -139,7 +139,20 @@ async function buildActionRows(action, body, serviceKey) {
       if (dRaw > todayKst()) return { error: '매도일이 오늘보다 미래입니다.' };
       exitDate = dRaw;
     }
-    return { rows: [{ stock_code: code, action: 'sell', exit_price: price, exit_date: exitDate }] };
+    // 수량(선택): 비우면 전량 매도, 남은 수량보다 적으면 분할 매도(일부만 판 것)로 기록된다.
+    let quantity = null;
+    const qRaw = String(body.quantity ?? '').replace(/,/g, '').trim();
+    if (qRaw !== '') {
+      quantity = Number(qRaw);
+      if (!Number.isFinite(quantity) || quantity <= 0 || quantity >= 1e9) return { error: '매도 수량을 올바른 숫자로 입력하세요.' };
+      const total = Number(cur.quantity);
+      if (!Number.isFinite(total) || total <= 0) {
+        return { status: 409, error: '원장에 수량이 등록돼 있지 않아 일부 매도를 기록할 수 없습니다(수량을 비우고 전량 매도로 기록하세요).' };
+      }
+      const remaining = cur.remaining_qty == null ? total : Number(cur.remaining_qty);
+      if (quantity > remaining + 1e-9) return { error: `남은 수량(${remaining.toLocaleString('ko-KR')}주)보다 많이 팔 수 없습니다.` };
+    }
+    return { rows: [{ stock_code: code, action: 'sell', exit_price: price, exit_date: exitDate, quantity }] };
   }
 
   // set_status: 보유(open) ↔ 관찰(watch)

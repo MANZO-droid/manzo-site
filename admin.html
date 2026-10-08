@@ -365,7 +365,10 @@
       '<td><b>' + (p.stock_name || '-') + '</b><div class="email">' + p.stock_code + (p.market_type ? ' · ' + p.market_type : '') + '</div></td>' +
       '<td class="muted">' + (p.entry_date || '-') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.entry_price) + '</td>' +
-      '<td class="stat-num">' + (p.remaining_qty != null ? Number(p.remaining_qty).toLocaleString('ko-KR') : '-') + '</td>' +
+      '<td class="stat-num">' + (p.remaining_qty != null ? Number(p.remaining_qty).toLocaleString('ko-KR') : '-') +
+        // 일부를 이미 판 종목은 원래 수량과 분할 매도 기록(마우스를 올리면 날짜·가격)을 작게 보여준다.
+        (p.scale_out_log ? '<div class="muted" style="font-size:11px;font-weight:400" title="' + escapeHtml(p.scale_out_log) + '">' +
+          (p.quantity != null ? Number(p.quantity).toLocaleString('ko-KR') + '주 중 · ' : '') + '분할 매도 있음</div>' : '') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.last_price) + '</td>' +
       '<td class="stat-num">' + fmtPct(unreal) + '</td>' +
       '<td class="stat-num">' + (p.align_days != null ? p.align_days + '일' : '-') + '</td>' +
@@ -520,7 +523,8 @@
       ? ' <button type="button" class="del-btn" data-cancel="' + r.id + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
     const won = (n) => Number(n).toLocaleString('ko-KR') + '원';
     const detail = act === 'sell'
-      ? '청산(전량 매도) · 매도가 ' + won(r.exit_price) + (r.exit_date ? ' · ' + r.exit_date : '')
+      ? (r.quantity != null ? '매도 기록 ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '청산(전량 매도)') +
+        ' · 매도가 ' + won(r.exit_price) + (r.exit_date ? ' · ' + r.exit_date : '')
       : act === 'set_status' ? (r.target_status === 'watch' ? '관찰로 전환' : '보유로 전환')
       : act === 'delete' ? '원장에서 삭제 · 진입일 ' + r.entry_date
       : (r.mode === 'new' ? '신규 매수' : r.mode === 'watch' ? '관찰 전용' : '기존 보유') + ' · ' + won(r.entry_price) +
@@ -586,18 +590,41 @@
     if (refresh) updatePositionData();      // 열려 있는 동안 미뤄 둔 갱신을 반영한다
   }
 
+  // 청산 입력창 아래쪽 안내 문구: 수익률 미리보기 + 전량/일부 매도 구분 + 남는 수량.
+  function sellPreviewText(entry, remaining, price, qty) {
+    const parts = [];
+    if (price > 0) {
+      const r = (price / Number(entry) - 1) * 100;
+      parts.push('매수가 ' + wonFmt(entry) + ' 대비 ' + (r >= 0 ? '+' : '') + r.toFixed(1) + '%');
+    } else {
+      parts.push('매수가 ' + wonFmt(entry) + ' 대비 손익이 기록됩니다');
+    }
+    if (remaining) {
+      if (qty > 0 && qty < remaining) parts.push(qty.toLocaleString('ko-KR') + '주 매도 → 남는 수량 ' + (remaining - qty).toLocaleString('ko-KR') + '주(분할 매도)');
+      else if (qty > remaining) parts.push('남은 수량(' + remaining.toLocaleString('ko-KR') + '주)보다 많습니다');
+      else parts.push('남은 ' + remaining.toLocaleString('ko-KR') + '주 · 수량을 비우거나 전부 적으면 전량 매도');
+    }
+    return parts.join(' · ');
+  }
+
   function openSellPanel(tr, p) {
     const panel = document.createElement('tr');
     panel.className = 'sell-panel';
     panel.dataset.code = p.stock_code;
     panel.dataset.entry = p.entry_price;
+    // 원장에 수량이 있어야 일부 매도(분할 매도)를 기록할 수 있다. 없으면 전량 매도만 가능하다.
+    const total = p.quantity != null ? Number(p.quantity) : null;
+    const remaining = total ? (p.remaining_qty != null ? Number(p.remaining_qty) : total) : null;
+    panel.dataset.remaining = remaining || '';
     panel.innerHTML = '<td colspan="' + tr.children.length + '"><div class="sell-box">' +
-      '<span><b>' + escapeHtml(p.stock_name) + '</b> 청산(전량 매도) — 실제로 판 가격을 입력하세요</span>' +
+      '<span><b>' + escapeHtml(p.stock_name) + '</b> 매도 기록 — 판 가격과 수량을 입력하세요</span>' +
       '<input data-sell-price inputmode="decimal" placeholder="매도가(원) *" aria-label="매도가">' +
+      '<input data-sell-qty inputmode="decimal" style="width:150px" aria-label="매도 수량"' +
+        (remaining ? ' placeholder="수량(주) - 비우면 전량"' : ' placeholder="수량 정보 없음(전량만)" disabled') + '>' +
       '<input data-sell-date type="date" title="매도일(비우면 오늘)" aria-label="매도일">' +
-      '<button type="button" class="act-btn" data-sell-submit style="padding:7px 14px">청산 요청</button>' +
+      '<button type="button" class="act-btn" data-sell-submit style="padding:7px 14px">매도 기록</button>' +
       '<button type="button" class="del-btn" data-sell-cancel style="padding:6px 12px">취소</button>' +
-      '<span class="muted" data-sell-preview style="font-size:12px">매수가 ' + wonFmt(p.entry_price) + ' 대비 손익이 기록됩니다.</span>' +
+      '<span class="muted" data-sell-preview style="font-size:12px">' + sellPreviewText(p.entry_price, remaining, NaN, NaN) + '</span>' +
       '</div></td>';
     tr.after(panel);
     panel.querySelector('[data-sell-price]').focus();
@@ -609,17 +636,29 @@
     const price = Number(panel.querySelector('[data-sell-price]').value.replace(/,/g, ''));
     if (!(price > 0)) { posSay('매도가를 올바른 숫자로 입력하세요.', false); return; }
     const date = panel.querySelector('[data-sell-date]').value;
+    const qtyRaw = panel.querySelector('[data-sell-qty]').value.replace(/,/g, '').trim();
+    const remaining = Number(panel.dataset.remaining) || null;
+    let qty = null;
+    if (qtyRaw !== '') {
+      qty = Number(qtyRaw);
+      if (!(qty > 0)) { posSay('매도 수량을 올바른 숫자로 입력하세요.', false); return; }
+      if (remaining && qty > remaining) { posSay('남은 수량(' + remaining.toLocaleString('ko-KR') + '주)보다 많이 팔 수 없습니다.', false); return; }
+    }
+    const partial = qty !== null && remaining && qty < remaining;   // 남은 수량보다 적게 판 경우만 분할 매도
     const ret = p ? (price / Number(p.entry_price) - 1) * 100 : null;
-    if (!confirm((p ? p.stock_name : code) + ' 청산을 기록합니다.\n\n매도가 ' + wonFmt(price) + (date ? ' · 매도일 ' + date : ' · 매도일 오늘') +
+    if (!confirm((p ? p.stock_name : code) + (partial ? ' 일부 매도를 기록합니다.' : ' 청산(전량 매도)을 기록합니다.') +
+        '\n\n매도가 ' + wonFmt(price) + (partial ? ' · ' + qty.toLocaleString('ko-KR') + '주' : '') + (date ? ' · 매도일 ' + date : ' · 매도일 오늘') +
         (ret !== null ? '\n매수가 대비 ' + (ret >= 0 ? '+' : '') + ret.toFixed(1) + '%' : '') +
-        '\n\n※ 전량 매도로 기록되며, 되돌리려면 PC 명령이 필요합니다. 계속할까요?')) return;
+        (partial ? '\n남는 수량 ' + (remaining - qty).toLocaleString('ko-KR') + '주는 계속 ' + (p && p.status === 'watch' ? '관찰' : '보유') + '합니다.'
+                 : '\n\n※ 남은 수량 전부를 판 것으로 기록되며, 되돌리려면 PC 명령이 필요합니다.') +
+        '\n\n계속할까요?')) return;
     const btn = panel.querySelector('[data-sell-submit]');
     btn.disabled = true;
     try {
-      await postAction({ action: 'sell', stockCode: code, exitPrice: price, exitDate: date });
+      await postAction({ action: 'sell', stockCode: code, exitPrice: price, exitDate: date, quantity: qty === null ? '' : qty });
       panel.remove();
       await reloadHoldings();
-      posSay((p ? p.stock_name : code) + ' 청산 요청을 접수했습니다. PC가 5분 이내에 반영합니다.', true);
+      posSay((p ? p.stock_name : code) + (partial ? ' 일부 매도(' + qty.toLocaleString('ko-KR') + '주)' : ' 청산') + ' 요청을 접수했습니다. PC가 5분 이내에 반영합니다.', true);
       updatePositionData();
     } catch (e) {
       posSay(e.message, false);
@@ -696,15 +735,12 @@
       else if (t.closest('[data-sell-submit]')) submitSell(t.closest('.sell-panel'));
       else if (t.closest('[data-sell-cancel]')) closeSellPanel(t.closest('.sell-panel'));
     });
-    root.addEventListener('input', (ev) => {   // 매도가를 입력하는 동안 예상 수익률을 보여준다
-      if (!ev.target.matches('[data-sell-price]')) return;
+    root.addEventListener('input', (ev) => {   // 매도가·수량을 입력하는 동안 예상 수익률과 남는 수량을 보여준다
+      if (!ev.target.matches('[data-sell-price], [data-sell-qty]')) return;
       const panel = ev.target.closest('.sell-panel');
-      const price = Number(ev.target.value.replace(/,/g, ''));
-      const entry = Number(panel.dataset.entry);
-      const el = panel.querySelector('[data-sell-preview]');
-      el.textContent = price > 0
-        ? '매수가 ' + wonFmt(entry) + ' 대비 ' + ((price / entry - 1) * 100 >= 0 ? '+' : '') + ((price / entry - 1) * 100).toFixed(1) + '%'
-        : '매수가 ' + wonFmt(entry) + ' 대비 손익이 기록됩니다.';
+      const num = (sel) => Number(panel.querySelector(sel).value.replace(/,/g, ''));
+      panel.querySelector('[data-sell-preview]').textContent =
+        sellPreviewText(Number(panel.dataset.entry), Number(panel.dataset.remaining) || null, num('[data-sell-price]'), num('[data-sell-qty]'));
     });
   }
 
