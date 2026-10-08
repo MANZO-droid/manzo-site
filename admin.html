@@ -60,6 +60,14 @@
   }
   .empty { text-align: center; padding: 40px; color: var(--text-muted); }
   .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -4px; padding: 0 4px; }
+  .chk { width: 34px; text-align: center; padding-left: 8px !important; padding-right: 4px !important; }
+  .chk input { width: 16px; height: 16px; cursor: pointer; vertical-align: middle; }
+  .st-select { padding: 6px 8px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 12.5px; background: #fff; cursor: pointer; }
+  .st-select:focus { outline: none; border-color: var(--accent); }
+  .pos-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 4px 0 10px; font-size: 12.5px; }
+  .sell-panel td { background: #FFF8EC; }
+  .sell-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 2px; font-size: 13px; }
+  .sell-box input { padding: 7px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13px; width: 140px; min-width: 0; background: #fff; }
 
   .section-h2 { font-size: 16px; font-weight: 800; margin: 0 0 14px; }
   .status-section { margin-bottom: 36px; }
@@ -321,9 +329,39 @@
     return Number(n).toLocaleString('ko-KR') + '원';
   }
 
-  function openPositionRow(p) {
+  // ── 표 행: 선택(삭제용 체크박스) + 상태(보유/관찰/청산 드롭다운) ──────────────
+  // 원장에 직접 쓰지 않는다. 상태 변경·청산·삭제도 등록처럼 접수함에 요청으로 쌓이고 PC가 5분 이내에
+  // 반영한다(원장 원본이 PC에 있어야 손절·청산 감시가 어긋나지 않기 때문).
+  const selectedKeys = new Set();   // 삭제 대상으로 체크한 행: '종목코드|진입일'
+  const keyOf = (p) => p.stock_code + '|' + p.entry_date;
+  const STATUS_OPTS = [['open', '보유'], ['watch', '관찰'], ['sell', '청산']];
+
+  // 아직 PC가 처리하지 않은 청산·상태 변경·삭제 요청이 있는 종목은 잠가서 요청이 겹치지 않게 한다.
+  function pendingByCode() {
+    const m = {};
+    requestsData.forEach(r => {
+      if ((r.status === 'pending' || r.status === 'processing') && r.action && r.action !== 'register') m[r.stock_code] = r;
+    });
+    return m;
+  }
+  const pendLabel = (r) => r.action === 'sell' ? '청산 대기' : r.action === 'delete' ? '삭제 대기' : '전환 대기';
+
+  function checkCell(p, pend) {
+    const k = keyOf(p);
+    return '<td class="chk"><input type="checkbox" data-sel="' + escapeHtml(k) + '"' + (selectedKeys.has(k) ? ' checked' : '') +
+      (pend ? ' disabled' : '') + ' aria-label="삭제할 종목으로 선택"></td>';
+  }
+
+  function statusCell(p, pend) {
+    if (pend) return '<td><span class="status-badge warn">' + pendLabel(pend) + '</span></td>';
+    return '<td><select class="st-select" data-status-select data-code="' + p.stock_code + '" data-current="' + p.status + '" aria-label="상태 변경">' +
+      STATUS_OPTS.map(o => '<option value="' + o[0] + '"' + (o[0] === p.status ? ' selected' : '') + '>' + o[1] + '</option>').join('') +
+      '</select></td>';
+  }
+
+  function openPositionRow(p, pend) {
     const unreal = (p.last_price && p.entry_price) ? (p.last_price - p.entry_price) / p.entry_price : null;
-    return '<tr>' +
+    return '<tr data-key="' + escapeHtml(keyOf(p)) + '">' + checkCell(p, pend) +
       '<td><b>' + (p.stock_name || '-') + '</b><div class="email">' + p.stock_code + (p.market_type ? ' · ' + p.market_type : '') + '</div></td>' +
       '<td class="muted">' + (p.entry_date || '-') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.entry_price) + '</td>' +
@@ -334,11 +372,12 @@
       '<td class="stat-num">' + (p.ma_gap_pct != null ? fmtPct(Number(p.ma_gap_pct) / 100) : '<span class="muted">-</span>') + '</td>' +
       '<td class="muted">' + (p.last_checked || '-') + '</td>' +
       '<td>' + (p.note || '<span class="muted">-</span>') + '</td>' +
+      statusCell(p, pend) +
       '</tr>';
   }
 
-  function closedPositionRow(p) {
-    return '<tr>' +
+  function closedPositionRow(p, pend) {
+    return '<tr data-key="' + escapeHtml(keyOf(p)) + '">' + checkCell(p, pend) +
       '<td><b>' + (p.stock_name || '-') + '</b><div class="email">' + p.stock_code + (p.market_type ? ' · ' + p.market_type : '') + '</div></td>' +
       '<td class="muted">' + (p.entry_date || '-') + ' ~ ' + (p.exit_date || '-') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.entry_price) + ' → ' + fmtPrice(p.exit_price) + '</td>' +
@@ -355,9 +394,10 @@
     if (!el) return;
     el.innerHTML =
       '<h2 class="section-h2">보유 포지션 현황</h2>' +
-      '<p class="sub" style="margin-top:-20px">stock_screener(PC)의 추세추종 포지션 원장을 그대로 보여줍니다 — 아래에서 보유 종목을 등록 요청하면 PC가 5분 이내에 원장에 정식 등록하고, 청산은 PC의 daily_check.py가 처리합니다.</p>' +
+      '<p class="sub" style="margin-top:-20px">stock_screener(PC)의 추세추종 포지션 원장을 그대로 보여줍니다 — 등록·상태 변경(보유/관찰/청산)·삭제는 요청으로 접수되고 PC가 5분 이내에 원장에 반영합니다. 실제로 판 종목은 상태를 \'청산\'으로 바꾸고 매도가를 입력하세요.</p>' +
       '<div id="pos-data"></div>' + holdingFormHtml() + '<div id="req-data"></div>';
     bindHoldingForm();
+    bindPositionActions();
     lastPositionsSig = null;
     updatePositionData();
   }
@@ -370,6 +410,8 @@
     if (!posEl || !reqEl) return;
     const sig = JSON.stringify([positionsData, requestsData]);
     if (sig !== lastPositionsSig) {  // 바뀐 게 없으면 다시 그리지 않는다(펼쳐 둔 '청산 완료' 목록 유지)
+      // 청산 입력창이 열려 있는 동안에는 다시 그리지 않는다(입력 중인 매도가가 지워지지 않게) - 닫을 때 다시 갱신한다.
+      if (document.querySelector('.sell-panel')) { scheduleRequestPoll(); return; }
       lastPositionsSig = sig;
       renderPositionData(posEl);
       reqEl.innerHTML = requestsHtml();
@@ -381,27 +423,41 @@
     const open = positionsData.filter(p => p.status === 'open');
     const watch = positionsData.filter(p => p.status === 'watch');
     const closed = positionsData.filter(p => p.status === 'closed');
-    const head = '<table><thead><tr><th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지. 마이너스면 20일선 아래입니다.">20일선 대비</th><th>최근확인</th><th>메모</th></tr></thead><tbody>';
+    const pend = pendingByCode();
+    // 더 이상 원장에 없는 행(삭제·정리됨)은 선택 목록에서 뺀다.
+    const live = new Set(positionsData.map(keyOf));
+    selectedKeys.forEach(k => { if (!live.has(k)) selectedKeys.delete(k); });
+
+    const selAll = '<th class="chk"><input type="checkbox" data-sel-all aria-label="이 표 전체 선택"></th>';
+    const head = '<table><thead><tr>' + selAll + '<th>종목</th><th>진입일</th><th>진입가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th><th>정배열</th><th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지. 마이너스면 20일선 아래입니다.">20일선 대비</th><th>최근확인</th><th>메모</th><th title="보유: 손절·청산 규칙 적용 / 관찰: 자동 청산 안 함 / 청산: 직접 매도했을 때 선택(매도가 입력)">상태</th></tr></thead><tbody>';
+
+    const toolbar = positionsData.length
+      ? '<div class="pos-toolbar"><span id="sel-count" class="muted">선택 0개</span>' +
+        '<button type="button" id="sel-delete" class="del-btn" disabled>선택 삭제</button>' +
+        '<span id="pos-msg" style="font-size:12.5px"></span></div>'
+      : '';
 
     const openHtml = open.length
-      ? '<div class="tbl-scroll">' + head + open.map(openPositionRow).join('') + '</tbody></table></div>'
+      ? '<div class="tbl-scroll">' + head + open.map(p => openPositionRow(p, pend[p.stock_code])).join('') + '</tbody></table></div>'
       : '<div class="empty">' + (watch.length ? '손절·청산 규칙이 적용되는 보유 종목은 없습니다.' : '현재 보유(진행) 중인 포지션이 없습니다.') + '</div>';
 
     // 관찰 전용: 현재가·손익은 매일 갱신하지만 손절 등으로 자동 청산하지 않는다. 매도 여부는 직접 판단.
     const watchHtml = watch.length
       ? '<div class="status-card-title" style="margin:18px 0 4px">관찰 중 ' + watch.length + '종목 <span class="status-badge na" style="margin-left:6px">자동 청산 안 함</span></div>' +
         '<p class="sub" style="margin:0 0 10px;font-size:12px">현재가·평가손익은 매일 갱신되지만, 손절선(-7%)에 닿아도 장부에서 청산 처리하지 않습니다. 언제 팔지는 직접 판단하세요.</p>' +
-        '<div class="tbl-scroll">' + head + watch.map(openPositionRow).join('') + '</tbody></table></div>'
+        '<div class="tbl-scroll">' + head + watch.map(p => openPositionRow(p, pend[p.stock_code])).join('') + '</tbody></table></div>'
       : '';
 
     const closedHtml = closed.length
       ? '<details style="margin-top:14px"><summary style="cursor:pointer;font-size:13px;color:var(--text-muted)">청산 완료 ' + closed.length + '건 보기</summary>' +
         '<p class="sub" style="margin:8px 0 0;font-size:11.5px">※ 장부(원장) 기준 기록입니다. 규칙상 청산 신호가 나면 장부에서만 청산 처리되므로, 실제 매도 여부와 다를 수 있습니다.</p>' +
-        '<div class="tbl-scroll"><table style="margin-top:10px"><thead><tr><th>종목</th><th>진입~청산일</th><th>진입가→청산가</th><th>손익률</th><th>청산사유</th><th>메모</th></tr></thead><tbody>' +
-        closed.map(closedPositionRow).join('') + '</tbody></table></div></details>'
+        '<div class="tbl-scroll"><table style="margin-top:10px"><thead><tr>' + selAll + '<th>종목</th><th>진입~청산일</th><th>진입가→청산가</th><th>손익률</th><th>청산사유</th><th>메모</th></tr></thead><tbody>' +
+        closed.map(p => closedPositionRow(p, pend[p.stock_code])).join('') + '</tbody></table></div></details>'
       : '';
 
-    el.innerHTML = openHtml + watchHtml + closedHtml;
+    el.innerHTML = toolbar + openHtml + watchHtml + closedHtml;
+    refreshSelectionUi();
+    if (lastPosMsg) posSay(lastPosMsg.text, lastPosMsg.ok);
   }
 
   // ── 보유 종목 등록 요청 (접수함: stock_screener.position_requests) ────────────
@@ -457,12 +513,19 @@
   }
 
   function requestRow(r) {
-    const [label, cls] = REQ_STATUS[r.status] || [r.status, 'na'];
+    const act = r.action || 'register';
+    let [label, cls] = REQ_STATUS[r.status] || [r.status, 'na'];
+    if (act !== 'register' && r.status === 'done') label = '처리됨';
     const cancel = r.status === 'pending'
       ? ' <button type="button" class="del-btn" data-cancel="' + r.id + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
-    const detail = (r.mode === 'new' ? '신규 매수' : r.mode === 'watch' ? '관찰 전용' : '기존 보유') + ' · ' + Number(r.entry_price).toLocaleString('ko-KR') + '원' +
-      (r.quantity != null ? ' · ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '') +
-      (r.entry_date ? ' · ' + r.entry_date : '');
+    const won = (n) => Number(n).toLocaleString('ko-KR') + '원';
+    const detail = act === 'sell'
+      ? '청산(전량 매도) · 매도가 ' + won(r.exit_price) + (r.exit_date ? ' · ' + r.exit_date : '')
+      : act === 'set_status' ? (r.target_status === 'watch' ? '관찰로 전환' : '보유로 전환')
+      : act === 'delete' ? '원장에서 삭제 · 진입일 ' + r.entry_date
+      : (r.mode === 'new' ? '신규 매수' : r.mode === 'watch' ? '관찰 전용' : '기존 보유') + ' · ' + won(r.entry_price) +
+        (r.quantity != null ? ' · ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '') +
+        (r.entry_date ? ' · ' + r.entry_date : '');
     return '<div class="heatmap-row" style="align-items:flex-start">' +
       '<span class="heatmap-label" style="width:150px">' + fmtDate(r.created_at) + '</span>' +
       '<div style="flex:1;font-size:12.5px;color:var(--text-secondary)">' +
@@ -476,8 +539,173 @@
   function requestsHtml() {
     if (!requestsData.length) return '';
     return '<div class="heatmap-wrap" style="margin-top:14px">' +
-      '<div class="status-card-title" style="margin-bottom:12px">등록 요청 내역</div>' +
+      '<div class="status-card-title" style="margin-bottom:12px">요청 내역</div>' +
       '<div id="requests-list">' + requestsData.map(requestRow).join('') + '</div></div>';
+  }
+
+  // ── 표 조작: 체크박스로 선택·삭제, 상태 드롭다운(보유/관찰/청산), 청산 입력창 ──────────
+  let lastPosMsg = null;
+  const wonFmt = (n) => Number(n).toLocaleString('ko-KR') + '원';
+  const activePos = (code) => positionsData.find(p => p.stock_code === code && (p.status === 'open' || p.status === 'watch'));
+
+  function posSay(text, ok) {
+    lastPosMsg = text ? { text, ok } : null;
+    const el = document.getElementById('pos-msg');
+    if (el) { el.style.color = ok ? '#1E7A46' : 'var(--danger)'; el.textContent = text || ''; }
+  }
+
+  function refreshSelectionUi() {
+    const n = selectedKeys.size;
+    const c = document.getElementById('sel-count');
+    if (c) c.textContent = '선택 ' + n + '개';
+    const b = document.getElementById('sel-delete');
+    if (b) b.disabled = n === 0;
+    document.querySelectorAll('[data-sel-all]').forEach(all => {
+      const boxes = Array.from(all.closest('table').querySelectorAll('[data-sel]:not(:disabled)'));
+      all.checked = boxes.length > 0 && boxes.every(x => x.checked);
+      all.indeterminate = boxes.some(x => x.checked) && !all.checked;
+    });
+  }
+
+  async function postAction(body) {
+    const res = await fetch('/api/holdings', {
+      method: 'POST', headers: { ...(await authHeaders()), 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(out.error || ('요청 실패 (' + res.status + ')'));
+    return out;
+  }
+
+  function closeSellPanel(panel, refresh = true) {
+    if (!panel) return;
+    const code = panel.dataset.code;
+    panel.remove();
+    const sel = document.querySelector('[data-status-select][data-code="' + code + '"]');
+    const p = activePos(code);
+    if (sel && p) sel.value = p.status;     // 입력을 취소했으니 드롭다운을 원래 상태로 되돌린다
+    if (refresh) updatePositionData();      // 열려 있는 동안 미뤄 둔 갱신을 반영한다
+  }
+
+  function openSellPanel(tr, p) {
+    const panel = document.createElement('tr');
+    panel.className = 'sell-panel';
+    panel.dataset.code = p.stock_code;
+    panel.dataset.entry = p.entry_price;
+    panel.innerHTML = '<td colspan="' + tr.children.length + '"><div class="sell-box">' +
+      '<span><b>' + escapeHtml(p.stock_name) + '</b> 청산(전량 매도) — 실제로 판 가격을 입력하세요</span>' +
+      '<input data-sell-price inputmode="decimal" placeholder="매도가(원) *" aria-label="매도가">' +
+      '<input data-sell-date type="date" title="매도일(비우면 오늘)" aria-label="매도일">' +
+      '<button type="button" class="act-btn" data-sell-submit style="padding:7px 14px">청산 요청</button>' +
+      '<button type="button" class="del-btn" data-sell-cancel style="padding:6px 12px">취소</button>' +
+      '<span class="muted" data-sell-preview style="font-size:12px">매수가 ' + wonFmt(p.entry_price) + ' 대비 손익이 기록됩니다.</span>' +
+      '</div></td>';
+    tr.after(panel);
+    panel.querySelector('[data-sell-price]').focus();
+  }
+
+  async function submitSell(panel) {
+    const code = panel.dataset.code;
+    const p = activePos(code);
+    const price = Number(panel.querySelector('[data-sell-price]').value.replace(/,/g, ''));
+    if (!(price > 0)) { posSay('매도가를 올바른 숫자로 입력하세요.', false); return; }
+    const date = panel.querySelector('[data-sell-date]').value;
+    const ret = p ? (price / Number(p.entry_price) - 1) * 100 : null;
+    if (!confirm((p ? p.stock_name : code) + ' 청산을 기록합니다.\n\n매도가 ' + wonFmt(price) + (date ? ' · 매도일 ' + date : ' · 매도일 오늘') +
+        (ret !== null ? '\n매수가 대비 ' + (ret >= 0 ? '+' : '') + ret.toFixed(1) + '%' : '') +
+        '\n\n※ 전량 매도로 기록되며, 되돌리려면 PC 명령이 필요합니다. 계속할까요?')) return;
+    const btn = panel.querySelector('[data-sell-submit]');
+    btn.disabled = true;
+    try {
+      await postAction({ action: 'sell', stockCode: code, exitPrice: price, exitDate: date });
+      panel.remove();
+      await reloadHoldings();
+      posSay((p ? p.stock_name : code) + ' 청산 요청을 접수했습니다. PC가 5분 이내에 반영합니다.', true);
+      updatePositionData();
+    } catch (e) {
+      posSay(e.message, false);
+      btn.disabled = false;
+    }
+  }
+
+  async function handleStatusChange(sel) {
+    const code = sel.dataset.code, current = sel.dataset.current, v = sel.value;
+    const p = activePos(code);
+    document.querySelectorAll('.sell-panel').forEach(pn => closeSellPanel(pn, false));  // 다른 행의 열린 입력창은 닫는다
+    if (!p || v === current) { sel.value = current; return; }
+    if (v === 'sell') { openSellPanel(sel.closest('tr'), p); return; }
+
+    const msg = v === 'watch'
+      ? p.stock_name + '을(를) \'관찰\'로 바꿉니다.\n손절선(-7%)에 닿아도 장부에서 자동 청산하지 않습니다. 계속할까요?'
+      : p.stock_name + '을(를) \'보유\'로 바꿉니다.\n손절·청산 규칙이 다시 적용됩니다. 현재가가 이미 손절선(-7%) 아래면 다음 점검에서 바로 청산 처리됩니다. 계속할까요?';
+    if (!confirm(msg)) { sel.value = current; return; }
+    sel.disabled = true;
+    try {
+      await postAction({ action: 'set_status', stockCode: code, targetStatus: v });
+      await reloadHoldings();
+      posSay(p.stock_name + ' 상태 변경을 접수했습니다. PC가 5분 이내에 반영합니다.', true);
+      updatePositionData();
+    } catch (e) {
+      posSay(e.message, false);
+      sel.value = current;
+      sel.disabled = false;
+    }
+  }
+
+  async function deleteSelected() {
+    const rows = Array.from(selectedKeys).map(k => positionsData.find(p => keyOf(p) === k)).filter(Boolean);
+    if (!rows.length) return;
+    const label = (p) => p.status === 'open' ? '보유' : p.status === 'watch' ? '관찰' : '청산 완료';
+    if (!confirm(rows.length + '개 항목을 원장에서 삭제합니다.\n\n' +
+        rows.map(p => '· ' + p.stock_name + ' (' + label(p) + ', 진입일 ' + p.entry_date + ')').join('\n') +
+        '\n\n※ 삭제는 \'매도 기록\'이 아니라 장부에서 지우는 것입니다(보유·관찰 종목이면 이후 감시도 사라집니다).' +
+        '\n※ 실행 전에 PC에서 원장 백업이 만들어집니다. 계속할까요?')) return;
+    const btn = document.getElementById('sel-delete');
+    if (btn) btn.disabled = true;
+    try {
+      await postAction({ action: 'delete', items: rows.map(p => ({ stockCode: p.stock_code, entryDate: p.entry_date })) });
+      rows.forEach(p => selectedKeys.delete(keyOf(p)));
+      await reloadHoldings();
+      posSay(rows.length + '건 삭제 요청을 접수했습니다. PC가 5분 이내에 처리합니다.', true);
+      updatePositionData();
+    } catch (e) {
+      posSay(e.message, false);
+      refreshSelectionUi();
+    }
+  }
+
+  function bindPositionActions() {
+    const root = document.getElementById('positions-section');
+    root.addEventListener('change', (ev) => {
+      const t = ev.target;
+      if (t.matches('[data-sel]')) {
+        if (t.checked) selectedKeys.add(t.dataset.sel); else selectedKeys.delete(t.dataset.sel);
+        refreshSelectionUi();
+      } else if (t.matches('[data-sel-all]')) {
+        t.closest('table').querySelectorAll('[data-sel]:not(:disabled)').forEach(b => {
+          b.checked = t.checked;
+          if (t.checked) selectedKeys.add(b.dataset.sel); else selectedKeys.delete(b.dataset.sel);
+        });
+        refreshSelectionUi();
+      } else if (t.matches('[data-status-select]')) {
+        handleStatusChange(t);
+      }
+    });
+    root.addEventListener('click', (ev) => {
+      const t = ev.target;
+      if (t.closest('#sel-delete')) deleteSelected();
+      else if (t.closest('[data-sell-submit]')) submitSell(t.closest('.sell-panel'));
+      else if (t.closest('[data-sell-cancel]')) closeSellPanel(t.closest('.sell-panel'));
+    });
+    root.addEventListener('input', (ev) => {   // 매도가를 입력하는 동안 예상 수익률을 보여준다
+      if (!ev.target.matches('[data-sell-price]')) return;
+      const panel = ev.target.closest('.sell-panel');
+      const price = Number(ev.target.value.replace(/,/g, ''));
+      const entry = Number(panel.dataset.entry);
+      const el = panel.querySelector('[data-sell-preview]');
+      el.textContent = price > 0
+        ? '매수가 ' + wonFmt(entry) + ' 대비 ' + ((price / entry - 1) * 100 >= 0 ? '+' : '') + ((price / entry - 1) * 100).toFixed(1) + '%'
+        : '매수가 ' + wonFmt(entry) + ' 대비 손익이 기록됩니다.';
+    });
   }
 
   async function authHeaders() {

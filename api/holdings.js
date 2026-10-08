@@ -41,8 +41,9 @@ async function verifyAdmin(req) {
   return user;
 }
 
-const MAX_PENDING = 20;
-const MAX_BATCH = 10;  // 한 번에 접수할 수 있는 종목 수(폼의 최대 행 수와 같다)
+const MAX_PENDING = 30;
+const MAX_BATCH = 10;   // 한 번에 접수할 수 있는 종목 수(폼의 최대 행 수와 같다)
+const MAX_DELETE = 20;  // 한 번에 삭제 요청할 수 있는 항목 수
 
 function sbHeaders(serviceKey, extra) {
   return {
@@ -90,6 +91,64 @@ function validateRequest(body) {
   return { row: { stock_code: code, entry_price: price, quantity, entry_date: entryDate, mode, note } };
 }
 
+const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(s + 'T00:00:00Z'));
+
+async function loadLedger(serviceKey) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/trend_positions?select=stock_code,stock_name,entry_date,status&limit=500`,
+    { headers: sbHeaders(serviceKey) });
+  if (!r.ok) throw new Error(`원장 조회 실패 ${r.status}: ${await r.text()}`);
+  return r.json();
+}
+
+// 청산(sell)·상태 전환(set_status)·삭제(delete) 요청을 접수함 행으로 바꾼다. 원장 사본에 실제로 있는
+// 종목인지도 미리 확인해서, 없는 종목은 접수 단계에서 바로 알려준다. 성공하면 { rows }, 실패하면
+// { error, status?, row? }를 돌려준다(row는 delete 항목의 위치).
+async function buildActionRows(action, body, serviceKey) {
+  const ledger = await loadLedger(serviceKey);
+
+  if (action === 'delete') {
+    const items = Array.isArray(body.items) ? body.items : [];
+    if (!items.length) return { error: '삭제할 항목이 없습니다.' };
+    if (items.length > MAX_DELETE) return { error: `한 번에 최대 ${MAX_DELETE}개까지 삭제할 수 있습니다.` };
+    const rows = [];
+    for (let i = 0; i < items.length; i++) {
+      const c = String((items[i] || {}).stockCode || '').trim();
+      const d = String((items[i] || {}).entryDate || '').trim();
+      if (!/^\d{6}$/.test(c) || !isDate(d)) return { error: `${i + 1}번째 항목의 종목코드·진입일이 올바르지 않습니다.`, row: i };
+      if (rows.some((r) => r.stock_code === c && r.entry_date === d)) return { error: `${i + 1}번째 항목이 중복됐습니다.`, row: i };
+      if (!ledger.some((p) => p.stock_code === c && p.entry_date === d)) {
+        return { status: 409, error: `${i + 1}번째 항목을 원장에서 찾을 수 없습니다(이미 삭제됐을 수 있습니다).`, row: i };
+      }
+      rows.push({ stock_code: c, action: 'delete', entry_date: d });
+    }
+    return { rows };
+  }
+
+  const code = String(body.stockCode || '').trim();
+  if (!/^\d{6}$/.test(code)) return { error: '종목코드는 숫자 6자리여야 합니다.' };
+  const cur = ledger.find((p) => p.stock_code === code && (p.status === 'open' || p.status === 'watch'));
+  if (!cur) return { status: 409, error: '보유 또는 관찰 중인 종목이 아닙니다(이미 청산됐거나 삭제됐을 수 있습니다).' };
+
+  if (action === 'sell') {
+    const price = Number(String(body.exitPrice ?? '').replace(/,/g, ''));
+    if (!Number.isFinite(price) || price <= 0 || price >= 1e9) return { error: '매도가를 올바른 숫자로 입력하세요.' };
+    let exitDate = null;
+    const dRaw = String(body.exitDate ?? '').trim();
+    if (dRaw !== '') {
+      if (!isDate(dRaw)) return { error: '매도일은 YYYY-MM-DD 형식이어야 합니다.' };
+      if (dRaw > todayKst()) return { error: '매도일이 오늘보다 미래입니다.' };
+      exitDate = dRaw;
+    }
+    return { rows: [{ stock_code: code, action: 'sell', exit_price: price, exit_date: exitDate }] };
+  }
+
+  // set_status: 보유(open) ↔ 관찰(watch)
+  const target = body.targetStatus;
+  if (target !== 'open' && target !== 'watch') return { error: '바꿀 상태는 보유 또는 관찰이어야 합니다.' };
+  if (cur.status === target) return { status: 409, error: '이미 그 상태입니다.' };
+  return { rows: [{ stock_code: code, action: 'set_status', target_status: target }] };
+}
+
 module.exports = async (req, res) => {
   const admin = await verifyAdmin(req);
   if (!admin) {
@@ -118,20 +177,32 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'POST') {
-      // 본문은 { items: [...] }(여러 종목) 또는 종목 하나의 객체. 하나라도 잘못되면 전부 접수하지 않는다.
+      // 요청 종류(action): register(기본, 보유 종목 등록) / sell(청산) / set_status(보유↔관찰) / delete(원장에서 삭제).
+      // 등록 본문은 { items: [...] }(여러 종목) 또는 종목 하나의 객체. 하나라도 잘못되면 전부 접수하지 않는다.
       const body = req.body && typeof req.body === 'object' ? req.body : {};
-      const items = Array.isArray(body.items) ? body.items : [body];
-      if (items.length === 0) { res.status(400).json({ error: '등록할 종목이 없습니다.' }); return; }
-      if (items.length > MAX_BATCH) { res.status(400).json({ error: `한 번에 최대 ${MAX_BATCH}종목까지 접수할 수 있습니다.` }); return; }
+      const action = body.action || 'register';
+      let rows = [];
 
-      const rows = [];
-      for (let i = 0; i < items.length; i++) {
-        const { row, error } = validateRequest(items[i]);
-        // row는 보낸 목록 기준 위치(0부터) - 화면이 자기 행 번호로 바꿔 보여준다.
-        if (error) { res.status(400).json({ error: (items.length > 1 ? `${i + 1}행: ` : '') + error, row: i }); return; }
-        const dupAt = rows.findIndex((r) => r.stock_code === row.stock_code);
-        if (dupAt >= 0) { res.status(400).json({ error: `${i + 1}행: ${dupAt + 1}번째 종목과 종목코드가 같습니다.`, row: i }); return; }
-        rows.push(row);
+      if (action === 'register') {
+        const items = Array.isArray(body.items) ? body.items : [body];
+        if (items.length === 0) { res.status(400).json({ error: '등록할 종목이 없습니다.' }); return; }
+        if (items.length > MAX_BATCH) { res.status(400).json({ error: `한 번에 최대 ${MAX_BATCH}종목까지 접수할 수 있습니다.` }); return; }
+
+        for (let i = 0; i < items.length; i++) {
+          const { row, error } = validateRequest(items[i]);
+          // row는 보낸 목록 기준 위치(0부터) - 화면이 자기 행 번호로 바꿔 보여준다.
+          if (error) { res.status(400).json({ error: (items.length > 1 ? `${i + 1}행: ` : '') + error, row: i }); return; }
+          const dupAt = rows.findIndex((r) => r.stock_code === row.stock_code);
+          if (dupAt >= 0) { res.status(400).json({ error: `${i + 1}행: ${dupAt + 1}번째 종목과 종목코드가 같습니다.`, row: i }); return; }
+          rows.push(row);
+        }
+      } else if (action === 'sell' || action === 'set_status' || action === 'delete') {
+        const out = await buildActionRows(action, body, serviceKey);
+        if (out.error) { res.status(out.status || 400).json({ error: out.error, row: out.row }); return; }
+        rows = out.rows;
+      } else {
+        res.status(400).json({ error: '알 수 없는 요청 종류입니다.' });
+        return;
       }
 
       const pend = await fetch(
