@@ -131,7 +131,7 @@
     app.innerHTML =
       '<div class="error">' +
       '<h1 style="margin-bottom:10px">불러오지 못했습니다</h1>' +
-      '<p class="sub">' + msg + '</p>' +
+      '<p class="sub">' + escapeHtml(msg) + '</p>' +
       '<a href="javascript:location.reload()">다시 시도</a>' +
       '&nbsp;·&nbsp;<a href="/">메인으로</a>' +
       '</div>';
@@ -194,6 +194,11 @@
       '</div>' +
       '<div id="table-wrap"></div>';
     document.getElementById('search').addEventListener('input', renderTable);
+    // 탈퇴 버튼: 인라인 onclick 문자열 대신 data 속성 + 이벤트 위임(닉네임에 어떤 문자가 와도 안전)
+    document.getElementById('table-wrap').addEventListener('click', (ev) => {
+      const b = ev.target.closest('[data-del-id]');
+      if (b) window.__adminDelete(b.dataset.delId, b.dataset.delName);
+    });
     renderStatus();
     renderPositions();
     renderTable();
@@ -205,7 +210,7 @@
 
   function fmtShortDate(iso) {
     if (!iso) return '<span class="muted">데이터 없음</span>';
-    return iso.slice(5).replace('-', '/');
+    return escapeHtml(iso.slice(5).replace('-', '/'));
   }
 
   function fmtDaysAgo(days) {
@@ -224,28 +229,28 @@
       return;
     }
     if (statusData.error) {
-      el.innerHTML = '<p class="sub" style="color:var(--danger)">' + statusData.error + '</p>';
+      el.innerHTML = '<p class="sub" style="color:var(--danger)">' + escapeHtml(statusData.error) + '</p>';
       return;
     }
 
     const cards = statusData.pipelines.map(p => {
       const issuesHtml = p.issues && p.issues.length
-        ? '<ul class="status-issues">' + p.issues.map(i => '<li>⚠ ' + i + '</li>').join('') + '</ul>'
+        ? '<ul class="status-issues">' + p.issues.map(i => '<li>⚠ ' + escapeHtml(i) + '</li>').join('') + '</ul>'
         : '';
       const metaHtml = p.status === 'na'
         ? '<div class="status-meta"><span>저장하지 않고 매번 새로 불러옵니다</span></div>'
         : '<div class="status-meta">' +
           '<span>최신: ' + fmtShortDate(p.latestDate) + ' ' + fmtDaysAgo(p.daysSinceLatest) + '</span>' +
-          (p.expectedRowCount ? '<span>건수: ' + (p.rowCount == null ? '-' : p.rowCount) + ' / ' + p.expectedRowCount + '</span>' : '') +
+          (p.expectedRowCount ? '<span>건수: ' + (p.rowCount == null ? '-' : escapeHtml(p.rowCount)) + ' / ' + escapeHtml(p.expectedRowCount) + '</span>' : '') +
           (p.lastUpdatedAt ? '<span>DB 반영: ' + fmtDate(p.lastUpdatedAt) + '</span>' : '') +
           '</div>';
 
       return '<div class="status-card">' +
         '<div class="status-card-head">' +
-        '<span class="status-card-title">' + p.label + '</span>' +
-        '<span class="status-badge ' + p.status + '">' + STATUS_LABEL[p.status] + '</span>' +
+        '<span class="status-card-title">' + escapeHtml(p.label) + '</span>' +
+        '<span class="status-badge ' + escapeHtml(p.status) + '">' + escapeHtml(STATUS_LABEL[p.status]) + '</span>' +
         '</div>' +
-        '<div class="status-flow"><b>출처</b> ' + p.source + ' → <b>주기</b> ' + p.schedule + ' → <b>저장</b> ' + p.table + '</div>' +
+        '<div class="status-flow"><b>출처</b> ' + escapeHtml(p.source) + ' → <b>주기</b> ' + escapeHtml(p.schedule) + ' → <b>저장</b> ' + escapeHtml(p.table) + '</div>' +
         metaHtml +
         issuesHtml +
         '</div>';
@@ -305,8 +310,8 @@
       return '<div class="heatmap-row" style="align-items:flex-start">' +
         '<span class="heatmap-label" style="width:150px">' + fmtDate(r.checkedAt) + '</span>' +
         '<div style="flex:1;font-size:12.5px;color:var(--text-secondary)">' +
-        (r.tradeDate ? r.tradeDate + ' · ' : '') + r.issue +
-        '<div class="muted" style="font-size:11px;margin-top:2px">' + (REPAIR_ACTION_LABEL[r.action] || r.action) + '</div>' +
+        (r.tradeDate ? escapeHtml(r.tradeDate) + ' · ' : '') + escapeHtml(r.issue) +
+        '<div class="muted" style="font-size:11px;margin-top:2px">' + escapeHtml(REPAIR_ACTION_LABEL[r.action] || r.action) + '</div>' +
         '</div>' + badge + '</div>';
     }).join('');
     return '<div class="heatmap-wrap" style="margin-top:14px">' +
@@ -354,7 +359,7 @@
 
   function statusCell(p, pend) {
     if (pend) return '<td><span class="status-badge warn">' + pendLabel(pend) + '</span></td>';
-    return '<td><select class="st-select" data-status-select data-code="' + p.stock_code + '" data-current="' + p.status + '" aria-label="상태 변경">' +
+    return '<td><select class="st-select" data-status-select data-code="' + escapeHtml(p.stock_code) + '" data-current="' + escapeHtml(p.status) + '" aria-label="상태 변경">' +
       STATUS_OPTS.map(o => '<option value="' + o[0] + '"' + (o[0] === p.status ? ' selected' : '') + '>' + o[1] + '</option>').join('') +
       '</select></td>';
   }
@@ -362,8 +367,8 @@
   function openPositionRow(p, pend) {
     const unreal = (p.last_price && p.entry_price) ? (p.last_price - p.entry_price) / p.entry_price : null;
     return '<tr data-key="' + escapeHtml(keyOf(p)) + '">' + checkCell(p, pend) +
-      '<td><b>' + (p.stock_name || '-') + '</b><div class="email">' + p.stock_code + (p.market_type ? ' · ' + p.market_type : '') + '</div></td>' +
-      '<td class="muted">' + (p.entry_date || '-') + '</td>' +
+      '<td><b>' + (escapeHtml(p.stock_name) || '-') + '</b><div class="email">' + escapeHtml(p.stock_code) + (p.market_type ? ' · ' + escapeHtml(p.market_type) : '') + '</div></td>' +
+      '<td class="muted">' + (escapeHtml(p.entry_date) || '-') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.entry_price) + '</td>' +
       '<td class="stat-num">' + (p.remaining_qty != null ? Number(p.remaining_qty).toLocaleString('ko-KR') : '-') +
         // 일부를 이미 판 종목은 원래 수량과 분할 매도 기록(마우스를 올리면 날짜·가격)을 작게 보여준다.
@@ -371,22 +376,22 @@
           (p.quantity != null ? Number(p.quantity).toLocaleString('ko-KR') + '주 중 · ' : '') + '분할 매도 있음</div>' : '') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.last_price) + '</td>' +
       '<td class="stat-num">' + fmtPct(unreal) + '</td>' +
-      '<td class="stat-num">' + (p.align_days != null ? p.align_days + '일' : '-') + '</td>' +
+      '<td class="stat-num">' + (p.align_days != null ? escapeHtml(p.align_days) + '일' : '-') + '</td>' +
       '<td class="stat-num">' + (p.ma_gap_pct != null ? fmtPct(Number(p.ma_gap_pct) / 100) : '<span class="muted">-</span>') + '</td>' +
-      '<td class="muted">' + (p.last_checked || '-') + '</td>' +
-      '<td>' + (p.note || '<span class="muted">-</span>') + '</td>' +
+      '<td class="muted">' + (escapeHtml(p.last_checked) || '-') + '</td>' +
+      '<td>' + (escapeHtml(p.note) || '<span class="muted">-</span>') + '</td>' +
       statusCell(p, pend) +
       '</tr>';
   }
 
   function closedPositionRow(p, pend) {
     return '<tr data-key="' + escapeHtml(keyOf(p)) + '">' + checkCell(p, pend) +
-      '<td><b>' + (p.stock_name || '-') + '</b><div class="email">' + p.stock_code + (p.market_type ? ' · ' + p.market_type : '') + '</div></td>' +
-      '<td class="muted">' + (p.entry_date || '-') + ' ~ ' + (p.exit_date || '-') + '</td>' +
+      '<td><b>' + (escapeHtml(p.stock_name) || '-') + '</b><div class="email">' + escapeHtml(p.stock_code) + (p.market_type ? ' · ' + escapeHtml(p.market_type) : '') + '</div></td>' +
+      '<td class="muted">' + (escapeHtml(p.entry_date) || '-') + ' ~ ' + (escapeHtml(p.exit_date) || '-') + '</td>' +
       '<td class="stat-num">' + fmtPrice(p.entry_price) + ' → ' + fmtPrice(p.exit_price) + '</td>' +
       '<td class="stat-num">' + fmtPct(p.ret) + '</td>' +
-      '<td class="muted">' + (p.exit_reason || '-') + '</td>' +
-      '<td>' + (p.note || '<span class="muted">-</span>') + '</td>' +
+      '<td class="muted">' + (escapeHtml(p.exit_reason) || '-') + '</td>' +
+      '<td>' + (escapeHtml(p.note) || '<span class="muted">-</span>') + '</td>' +
       '</tr>';
   }
 
@@ -520,7 +525,7 @@
     let [label, cls] = REQ_STATUS[r.status] || [r.status, 'na'];
     if (act !== 'register' && r.status === 'done') label = '처리됨';
     const cancel = r.status === 'pending'
-      ? ' <button type="button" class="del-btn" data-cancel="' + r.id + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
+      ? ' <button type="button" class="del-btn" data-cancel="' + escapeHtml(r.id) + '" style="padding:2px 9px;font-size:11px">취소</button>' : '';
     const won = (n) => Number(n).toLocaleString('ko-KR') + '원';
     const detail = act === 'sell'
       ? (r.quantity != null ? '매도 기록 ' + Number(r.quantity).toLocaleString('ko-KR') + '주' : '청산(전량 매도)') +
@@ -537,7 +542,7 @@
         ? '<b>' + escapeHtml(r.stock_name) + '</b> <span class="muted">' + escapeHtml(r.stock_code) + '</span>'
         : '<b>' + escapeHtml(r.stock_code) + '</b>') + ' · ' + escapeHtml(detail) +
       (r.message ? '<div class="muted" style="font-size:11.5px;margin-top:2px">' + escapeHtml(r.message) + '</div>' : '') +
-      '</div><span class="status-badge ' + cls + '">' + label + '</span>' + cancel + '</div>';
+      '</div><span class="status-badge ' + escapeHtml(cls) + '">' + escapeHtml(label) + '</span>' + cancel + '</div>';
   }
 
   function requestsHtml() {
@@ -976,12 +981,12 @@
     const rows = list.map(u => {
       const name = u.nickname || u.email.split('@')[0];
       return '<tr>' +
-        '<td><div class="nickname">' + name + '<span class="provider-tag">' + (u.provider === 'google' ? '구글' : '이메일') + '</span></div><div class="email">' + u.email + '</div></td>' +
+        '<td><div class="nickname">' + escapeHtml(name) + '<span class="provider-tag">' + (u.provider === 'google' ? '구글' : '이메일') + '</span></div><div class="email">' + escapeHtml(u.email) + '</div></td>' +
         '<td>' + fmtDate(u.createdAt) + '</td>' +
         '<td>' + fmtDate(u.lastSignInAt) + '</td>' +
         '<td class="stat-num">' + fmtDuration(u.stats.totalDurationMs) + '</td>' +
-        '<td class="stat-num">' + u.stats.clickCount + '회</td>' +
-        '<td><button class="del-btn" onclick="window.__adminDelete(\'' + u.id + '\', \'' + name.replace(/'/g, "\\'") + '\')">탈퇴</button></td>' +
+        '<td class="stat-num">' + escapeHtml(u.stats.clickCount) + '회</td>' +
+        '<td><button class="del-btn" data-del-id="' + escapeHtml(u.id) + '" data-del-name="' + escapeHtml(name) + '">탈퇴</button></td>' +
         '</tr>';
     }).join('');
 
