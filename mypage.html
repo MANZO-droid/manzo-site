@@ -383,7 +383,7 @@
       '<li>이동평균 배열: ' + esc(pos.alignment || '데이터 부족') + '</li>' +
       '<li>5일선 대비 ' + f(pos.vs.ma5) + ' · 20일선 대비 ' + f(pos.vs.ma20) + '</li>' +
       '<li>60일선 대비 ' + f(pos.vs.ma60) + ' · 120일선 대비 ' + f(pos.vs.ma120) + '</li>' +
-      '<li>52주 고점 대비 ' + f(pos.vs.high52) + ' · 52주 저점 대비 ' + f(pos.vs.low52) + '</li>' +
+      '<li>52주 고점 대비(종가 기준) ' + f(pos.vs.high52) + ' · 52주 저점 대비(종가 기준) ' + f(pos.vs.low52) + '</li>' +
       '</ul></div>' +
       '<div class="detail-news"><h4>관련 뉴스</h4>' +
       (news.length ? '<ul>' + news.map((n) => '<li><a href="' + esc(safeUrl(n.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a> <span class="note">' + esc(n.source || '') + (n.date ? ' · ' + esc(n.date) : '') + '</span></li>').join('') + '</ul>' : '<p class="note">표시할 뉴스가 없습니다.</p>') +

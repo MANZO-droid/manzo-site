@@ -25,9 +25,14 @@ begin;
     end loop;
     -- 한 명이 다른 종목(000660)도 청산: 이 종목은 1건뿐이라 집계에서 숨겨져야 한다
     perform set_config('request.jwt.claims', '{"sub":"aaaaaaaa-0000-0000-0000-000000000001","role":"authenticated"}', true);
+    -- 통계 표 종목명은 회원 입력이 아니라 member_prices 의 이름이어야 한다: 회원이 이상한 이름을 넣고 청산해도 시세표 이름으로 기록된다
+    insert into public.member_prices (stock_code, stock_name, trade_date) values ('000660', 'SK하이닉스', '2026-10-05')
+      on conflict (stock_code) do update set stock_name = excluded.stock_name;
     insert into public.member_holdings (user_id, stock_code, stock_name, status, avg_price, initial_qty, remaining_qty, entry_date)
-    values ('aaaaaaaa-0000-0000-0000-000000000001', '000660', 'SK하이닉스', 'open', 100000, 1, 1, '2026-09-01') returning id into hid;
+    values ('aaaaaaaa-0000-0000-0000-000000000001', '000660', '임의로지은이름', 'open', 100000, 1, 1, '2026-09-01') returning id into hid;
     perform public.member_sell(hid, null, 90000, '2026-10-06');
+    if (select stock_name from public.member_trade_stats where stock_code='000660') is distinct from 'SK하이닉스' then
+      raise exception 'FAIL: 통계 종목명이 회원 입력값을 따름: %', (select stock_name from public.member_trade_stats where stock_code='000660'); end if;
 
     -- 익명성: 통계 표의 열은 허용 목록과 정확히 일치해야 한다(허용 목록 방식)
     if array(select column_name::text from information_schema.columns

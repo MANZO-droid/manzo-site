@@ -1,5 +1,5 @@
-// [관리자 전용] 회원 매매 익명 통계. member_holdings / member_holding_sales / user_id 는 읽지 않는다.
-// 집계 함수(service_role 전용)의 결과만 돌려준다. 최소 표본은 서버에서 3 미만으로 내릴 수 없다.
+// [관리자 전용] 회원 매매 익명 통계. 이 API 는 member_holdings / member_holding_sales / user_id 를 직접 읽지 않고,
+// 최소 표본 규칙이 적용된 집계 함수(service_role 전용) 결과만 돌려준다. 최소 표본은 서버에서 3 미만으로 내릴 수 없다.
 const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
 

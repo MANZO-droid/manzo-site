@@ -23,7 +23,10 @@ begin
   closed := coalesce(new.closed_on, current_date);
   insert into public.member_trade_stats
     (stock_code, stock_name, entry_month, exit_month, hold_days, entry_price, exit_price, return_pct, sell_count)
-  values (new.stock_code, new.stock_name, to_char(new.entry_date, 'YYYY-MM'), to_char(closed, 'YYYY-MM'),
+  -- 종목명은 회원 입력값이 아니라 시세표(member_prices) 이름을 쓴다(없을 때만 입력값으로 대체)
+  values (new.stock_code,
+          coalesce((select p.stock_name from public.member_prices p where p.stock_code = new.stock_code), new.stock_name),
+          to_char(new.entry_date, 'YYYY-MM'), to_char(closed, 'YYYY-MM'),
           greatest(closed - new.entry_date, 0), new.avg_price, w / q, (w / q / new.avg_price - 1) * 100, c);
   return new;
 end $$;

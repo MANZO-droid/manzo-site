@@ -246,7 +246,7 @@
     }
     const s = data.summary, o = s.overall;
     let html = head +
-      '<p class="status-flow">회원 개인·종목과 연결되지 않은 익명 집계입니다. 표본이 3건(보유는 3명) 미만인 항목은 표시하지 않습니다. ' +
+      '<p class="status-flow">회원 개인과 연결되지 않은 익명 집계입니다. 표본이 3건(보유는 3명) 미만인 항목은 표시하지 않습니다. ' +
       '표본 수는 거래 건수이며 서로 다른 회원 수가 아닙니다. 회원이 직접 입력한 자기신고 자료이므로 참고용으로만 쓰십시오.' +
       (data.accessCount != null ? ' (기록장 사용 허용 회원 ' + escapeHtml(msNum(data.accessCount, '명', 0)) + ')' : '') + '</p>';
     if (!o) {
