@@ -29,11 +29,11 @@ begin;
     values ('aaaaaaaa-0000-0000-0000-000000000001', '000660', 'SK하이닉스', 'open', 100000, 1, 1, '2026-09-01') returning id into hid;
     perform public.member_sell(hid, null, 90000, '2026-10-06');
 
-    -- 익명성: 통계 표에는 회원·보유를 가리키는 열이 없다
-    if exists (select 1 from information_schema.columns
-                where table_schema='public' and table_name='member_trade_stats'
-                  and column_name in ('user_id','holding_id','quantity','initial_qty','sold_on','closed_on','entry_date','created_at')) then
-      raise exception 'FAIL: 통계 표에 식별 가능한 열이 있음';
+    -- 익명성: 통계 표의 열은 허용 목록과 정확히 일치해야 한다(허용 목록 방식)
+    if array(select column_name::text from information_schema.columns
+              where table_schema='public' and table_name='member_trade_stats' order by column_name::text collate "C")
+       is distinct from array['entry_month','entry_price','exit_month','exit_price','hold_days','id','return_pct','sell_count','stock_code','stock_name'] then
+      raise exception 'FAIL: 통계 표 열이 허용 목록과 다름';
     end if;
 
     s := public.member_stats_summary(3);
@@ -41,6 +41,11 @@ begin;
       raise exception 'FAIL: 3건 종목이 집계에서 빠짐'; end if;
     if exists (select 1 from jsonb_array_elements(s->'by_stock') e where e->>'stock_code'='000660') then
       raise exception 'FAIL: 1건 종목이 노출됨'; end if;
+    -- 최소 표본 하한: NULL/0/-1 을 줘도 3 미만으로 내려갈 수 없다
+    if (public.member_stats_summary(null)->>'min_n')::int <> 3
+       or (public.member_stats_summary(0)->>'min_n')::int <> 3
+       or (public.member_stats_summary(-1)->>'min_n')::int <> 3 then
+      raise exception 'FAIL: min_n 하한이 3이 아님'; end if;
     -- 최소 표본(100)보다 적으면 전체 값도 숨긴다
     s := public.member_stats_summary(100);
     if (s->'overall') is not null and (s->'overall') <> 'null'::jsonb then
@@ -61,8 +66,49 @@ begin;
       raise exception 'FAIL: 보유 집계가 비어 있어야 함'; end if;
   end $$;
 
+  select set_config('test.n_stats', (select count(*) from public.member_trade_stats)::text, true);
+
   -- 일반 로그인 회원은 통계 표·집계 함수에 접근할 수 없다
   set local role authenticated;
+  do $$
+  declare c text; hid uuid; hid_open uuid; n int; cols text[] := array[
+    'avg_price = 1', 'remaining_qty = 1', 'stock_code = ''111111''', 'entry_date = ''2020-01-01''',
+    'closed_on = ''2020-01-01''', 'initial_qty = 99', 'stock_name = ''x''', 'user_id = ''bbbbbbbb-0000-0000-0000-000000000002'''];
+  begin
+    select id into hid from public.member_holdings where stock_code='005930' and status='closed' limit 1;
+    select id into hid_open from public.member_holdings where stock_code='035720' and status='open' limit 1;
+    if hid is null or hid_open is null then raise exception 'FAIL: 테스트 준비 행 없음'; end if;
+    -- (a) 허용되지 않은 열은 직접 UPDATE 할 수 없다
+    foreach c in array cols loop
+      begin
+        execute format('update public.member_holdings set %s where id = %L', c, hid);
+        raise exception 'FAIL: 직접 UPDATE 가 통과됨: %', c;
+      exception when insufficient_privilege then null; end;
+    end loop;
+    -- (b) 청산된 행을 직접 되살릴 수 없다 (check 제약 위반)
+    begin
+      update public.member_holdings set status = 'open' where id = hid;
+      raise exception 'FAIL: 청산 행을 open 으로 되돌림';
+    exception when check_violation then null; end;
+    begin
+      update public.member_holdings set status = 'watch' where id = hid;
+      raise exception 'FAIL: 청산 행을 watch 로 되돌림';
+    exception when check_violation then null; end;
+    -- 보유 중인 행을 직접 closed 로 바꿀 수도 없다 (member_sell 경유만 가능)
+    begin
+      update public.member_holdings set status = 'closed' where id = hid_open;
+      raise exception 'FAIL: 보유 행을 직접 closed 로 바꿈';
+    exception when check_violation then null; end;
+    -- (d) 정상 UPDATE: open -> watch -> open, memo 수정은 성공
+    update public.member_holdings set status = 'watch' where id = hid_open;
+    get diagnostics n = row_count; if n <> 1 then raise exception 'FAIL: open->watch 실패'; end if;
+    update public.member_holdings set status = 'open' where id = hid_open;
+    get diagnostics n = row_count; if n <> 1 then raise exception 'FAIL: watch->open 실패'; end if;
+    update public.member_holdings set memo = '메모' where id = hid_open;
+    get diagnostics n = row_count; if n <> 1 then raise exception 'FAIL: memo 수정 실패'; end if;
+    if (select memo from public.member_holdings where id = hid_open) is distinct from '메모' then
+      raise exception 'FAIL: memo 반영 안 됨'; end if;
+  end $$;
   do $$
   begin
     begin perform count(*) from public.member_trade_stats;
@@ -78,4 +124,30 @@ begin;
       raise exception 'FAIL: 회원이 코드 목록 함수를 실행함';
     exception when insufficient_privilege then null; end;
   end $$;
+
+  reset role;
+  do $$
+  begin
+    -- (c) 위조 시도 이후에도 통계 행 수는 그대로
+    if (select count(*) from public.member_trade_stats) <> current_setting('test.n_stats')::int then
+      raise exception 'FAIL: 위조 시도 후 통계 행 수가 변함'; end if;
+  end $$;
+
+  -- (g) service_role 은 집계 함수·코드 함수를 호출할 수 있다
+  set local role service_role;
+  do $$
+  declare s jsonb; o jsonb; codes text[];
+  begin
+    s := public.member_stats_summary(3);
+    o := public.member_open_aggregate(3);
+    codes := public.member_held_codes();
+    if jsonb_typeof(s) <> 'object' or not (s ? 'by_stock' and s ? 'overall' and s ? 'min_n') then
+      raise exception 'FAIL: service_role 요약 형태 이상'; end if;
+    if (s->>'total_trades')::int <> 4 then raise exception 'FAIL: service_role 요약 건수 %', s->>'total_trades'; end if;
+    if not exists (select 1 from jsonb_array_elements(s->'by_stock') e where e->>'stock_code'='005930' and (e->>'n')::int = 3) then
+      raise exception 'FAIL: service_role 종목 집계 이상'; end if;
+    if jsonb_typeof(o) <> 'array' then raise exception 'FAIL: service_role 보유 집계 형태 이상'; end if;
+    if array_position(codes, '035720') is null then raise exception 'FAIL: service_role 코드 목록 이상'; end if;
+  end $$;
+  reset role;
 rollback;

@@ -95,3 +95,9 @@ revoke all on function public.member_held_codes() from public, anon, authenticat
 grant execute on function public.member_stats_summary(int) to service_role;
 grant execute on function public.member_open_aggregate(int) to service_role;
 grant execute on function public.member_held_codes() to service_role;
+
+-- 보안 보강(검수 1라운드): 회원이 보유 행을 직접 고쳐 통계 행을 위조/대량 생성하지 못하게 UPDATE 를 컬럼 단위로 제한한다.
+-- 회원은 status(open<->watch 전환)와 memo 만 직접 바꿀 수 있다. 수량·가격·종목·날짜·청산 처리는 member_sell(security definer)만 한다.
+-- check((status='closed')=(remaining_qty=0)) 때문에 closed 로 직접 바꾸거나 청산 행을 되살리는 UPDATE 는 실패한다.
+revoke update on public.member_holdings from authenticated;
+grant update (status, memo) on public.member_holdings to authenticated;
