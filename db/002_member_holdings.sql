@@ -129,3 +129,9 @@ create policy "prices read" on public.member_prices for select to authenticated
 revoke execute on function public.member_has_holdings_access() from anon;
 revoke execute on function public.member_sell(uuid, numeric, numeric, date) from anon;
 alter function public.member_holdings_cap() set search_path = public;
+
+-- 권한 보강 2: Supabase 기본 부여(전 권한)를 회수한다. anon은 4개 표 접근 불가, authenticated는 필요한 최소 권한만. service_role은 건드리지 않는다.
+revoke all on public.member_feature_access, public.member_holdings, public.member_holding_sales, public.member_prices from anon;
+revoke all on public.member_feature_access, public.member_holdings, public.member_holding_sales, public.member_prices from authenticated;
+grant select, insert, update, delete on public.member_holdings to authenticated;
+grant select on public.member_feature_access, public.member_holding_sales, public.member_prices to authenticated;
