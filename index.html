@@ -1658,12 +1658,31 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
         '<button type="button" class="nav-user-name" onclick="toggleUserMenu(event)">👤 ' + nick + '님 <span class="nav-user-caret" id="nav-user-caret">▾</span></button>' +
         '<div class="nav-user-menu" id="nav-user-menu">' +
         adminItem +
+        '<a href="/mypage.html" class="nav-user-menu-item" id="nav-mypage" style="display:none;">📒 My page</a>' +
         '<button type="button" class="nav-user-menu-item danger" onclick="handleLogout()">로그아웃</button>' +
         '</div>' +
         '</div>';
     } else {
       el.innerHTML = '<button onclick="openLoginModal()" class="nav-cta" style="background:#2563eb;border:none;cursor:pointer;font-family:var(--font);">로그인</button>';
     }
+    refreshMyPageLink(user);
+  }
+
+  // My page 링크는 허용된 회원(member_feature_access.holdings_enabled)에게만 보여 준다.
+  // 링크 노출은 편의일 뿐이고, 실제 접근 통제(보안)는 DB의 RLS가 담당한다.
+  // 비로그인·미허용·조회 실패는 조용히 숨긴다. 호출 번호로 오래된 응답이 최신 상태를 덮어쓰지 못하게 한다.
+  var myPageSeq = 0;
+  async function refreshMyPageLink(user) {
+    var seq = ++myPageSeq;
+    var el = document.getElementById('nav-mypage');
+    if (!el) return;
+    el.style.display = 'none';
+    if (!user) return;
+    try {
+      var r = await sb.from('member_feature_access').select('holdings_enabled').eq('user_id', user.id).maybeSingle();
+      if (seq !== myPageSeq) return;
+      if (r && r.data && r.data.holdings_enabled) el.style.display = '';
+    } catch (e) {}
   }
 
   window.toggleUserMenu = function (e) {
