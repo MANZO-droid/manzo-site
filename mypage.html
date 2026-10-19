@@ -156,9 +156,9 @@
   const signCls = (n) => (n === null || n === undefined ? '' : n >= 0 ? 'ret-pos' : 'ret-neg');
 
   const HOLD_START_ROWS = 3, HOLD_MAX_ROWS = 10, MAX_PER_MEMBER = 50;
-  const STATUS_LABEL = { open: '보유', watch: '관찰', closed: '청산' };
+  const STATUS_LABEL = { open: '보유', watch: '관찰', closed: '청산(매도 기록)' };
 
-  const state = { holdings: [], sales: [], prices: {}, selected: new Set(), sellFor: null, busy: false };
+  const state = { holdings: [], sales: [], prices: {}, priceError: false, selected: new Set(), sellFor: null, busy: false };
 
   function show(which) {   // 'login' | 'denied' | 'app' | 'error'
     $('view-loading').hidden = true;
@@ -200,10 +200,11 @@
     if (h.error || s.error) return showError((h.error || s.error).message);
     state.holdings = h.data || []; state.sales = s.data || [];
     const codes = [...new Set(state.holdings.map((x) => x.stock_code))];
-    state.prices = {};
+    state.prices = {}; state.priceError = false;
     if (codes.length) {
       const p = await sb.from('member_prices').select('stock_code, close, ma20, trade_date').in('stock_code', codes);
-      if (!p.error) (p.data || []).forEach((r) => { state.prices[r.stock_code] = r; });
+      if (p.error) state.priceError = true;
+      else (p.data || []).forEach((r) => { state.prices[r.stock_code] = r; });
     }
     render();
   }
@@ -223,7 +224,7 @@
   function openRow(h) {
     const c = calc(h), s = c.s, price = state.prices[h.stock_code];
     const priceCell = !price || price.close == null
-      ? '<span class="badge na">시세 대기</span>'
+      ? (state.priceError ? '<span class="badge">시세 오류</span>' : '<span class="badge na">시세 대기</span>')
       : won(Number(price.close)) + (s.priceStale ? '<span class="badge">시세 지연</span>' : '');
     const plCell = s.unrealized === null ? '-'
       : '<span class="' + signCls(s.unrealized) + '">' + won(s.unrealized) + ' (' + pct(s.unrealizedPct) + ')</span>';
@@ -240,6 +241,7 @@
     if (state.sellFor === h.id) {
       html += '<tr class="sell-panel" data-sell-row="' + esc(h.id) + '"><td colspan="8"><div class="sell-box">' +
         '<b>' + esc(h.stock_name) + ' 청산 기록</b>' +
+        '<span class="muted small" style="flex-basis:100%">이미 매도하신 사실을 기록합니다. 이 화면에서 주문은 나가지 않습니다.</span>' +
         '<input type="text" inputmode="decimal" data-sell="price" placeholder="매도가(원) *" aria-label="매도가">' +
         '<input type="text" inputmode="decimal" data-sell="qty" placeholder="수량(비우면 전량)" aria-label="매도 수량">' +
         '<input type="date" data-sell="date" value="' + kstToday() + '" aria-label="매도일">' +
@@ -285,21 +287,24 @@
     // 요약: 보유·관찰 종목의 합계 + 모든 매도 기록의 실현손익
     const rows = state.holdings.map((h) => calc(h).s);
     const t = HoldingsCalc.totals(rows);
-    let pricedInvested = 0, noPrice = 0, latest = '';
+    let pricedInvested = 0, noPrice = 0, nPriced = 0, nStale = 0, latest = '';
     state.holdings.forEach((h, i) => {
       if (h.status === 'closed') return;
-      if (rows[i].marketValue !== null) pricedInvested += rows[i].invested; else noPrice++;
+      if (rows[i].marketValue !== null) { pricedInvested += rows[i].invested; nPriced++; if (rows[i].priceStale) nStale++; } else noPrice++;
       const p = state.prices[h.stock_code];
       if (p && p.trade_date && p.trade_date > latest) latest = p.trade_date;
     });
     const unrPct = pricedInvested ? (t.unrealized / pricedInvested) * 100 : null;
+    const exclude = noPrice ? (state.priceError ? '시세 오류 ' : '시세 대기 ') + noPrice + '종목 제외' : '';
     const card = (label, value, sub, cls) => '<div class="summary-card"><div class="summary-label">' + label + '</div><div class="summary-value ' + (cls || '') + '">' + value + '</div>' + (sub ? '<div class="summary-sub">' + sub + '</div>' : '') + '</div>';
     $('summary').innerHTML = '<div class="summary-grid">' +
-      card('투자금', won(t.invested), '보유·관찰 종목 기준') +
-      card('평가금액', won(t.marketValue), noPrice ? '시세 대기 ' + noPrice + '종목 제외' : '') +
-      card('평가손익', won(t.unrealized), unrPct === null ? '' : pct(unrPct), signCls(t.unrealized)) +
+      card('투자금', won(t.invested), '시세 반영 종목 ' + won(pricedInvested) + ' / 전체 ' + won(t.invested)) +
+      card('평가금액', nPriced ? won(t.marketValue) : '-', '시세 반영 종목 기준' + (exclude ? ' · ' + exclude : '')) +
+      card('평가손익', nPriced ? won(t.unrealized) : '-', nPriced ? pct(unrPct) + ' (시세 반영 종목 투자금 기준)' + (exclude ? ' · ' + exclude : '') : exclude, nPriced ? signCls(t.unrealized) : '') +
       card('실현손익', won(t.realized), '매도 기록 합계', signCls(t.realized)) +
-      '</div><p class="price-date">시세 기준일: ' + (latest ? esc(latest) + ' (종가)' : '-') + '</p>';
+      '</div><p class="price-date">시세 기준일: ' + (latest ? esc(latest) + ' (종가)' : '-') +
+      (nStale ? ' · 시세 지연 ' + nStale + '종목(기준일이 5일 넘게 지남)' : '') + '</p>' +
+      (state.priceError ? '<p class="msg-err small" style="margin:-12px 0 16px">시세를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>' : '');
 
     let html = '<div class="section-h2" style="margin-top:6px">보유 ' + open.length + '종목</div>' +
       (open.length ? openTable(open) : '<div class="empty">보유 중인 종목이 없습니다. 아래에서 등록해 주세요.</div>');
@@ -378,6 +383,7 @@
     if (t.matches('select[data-status]')) {
       const id = t.dataset.status, h = state.holdings.find((x) => x.id === id);
       if (!h) return;
+      if (state.busy) { posSay('처리 중입니다. 잠시 후 다시 시도하세요.', false); render(); return; }
       if (t.value === 'closed') { state.sellFor = id; render(); return; }
       if (t.value === h.status) return;
       run(() => setStatus(id, t.value), h.stock_name + ' 상태를 ' + STATUS_LABEL[t.value] + '(으)로 바꿨습니다.');
@@ -407,6 +413,7 @@
         if (!(Number(qty) > 0)) return posSay('매도 수량을 올바른 숫자로 입력하세요.', false);
         if (Number(qty) > Number(h.remaining_qty)) return posSay('남은 수량(' + Number(h.remaining_qty).toLocaleString('ko-KR') + '주)보다 많이 기록할 수 없습니다.', false);
       }
+      if (state.busy) return posSay('처리 중입니다. 잠시 후 다시 시도하세요.', false);
       const partial = qty !== '' && Number(qty) < Number(h.remaining_qty);
       state.sellFor = null;
       run(() => sell(id, qty, price, date), h.stock_name + (partial ? ' 일부 매도(' + Number(qty).toLocaleString('ko-KR') + '주)를 기록했습니다.' : ' 청산을 기록했습니다.'));
