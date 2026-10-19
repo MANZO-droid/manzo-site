@@ -60,6 +60,19 @@
   .sell-panel td { background: #FFF8EC; }
   .sell-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 2px; font-size: 13px; }
   .sell-box input { padding: 7px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13px; width: 140px; min-width: 0; background: #fff; }
+  tbody tr[data-id]:has(.st-select) { cursor: pointer; }
+  .detail-row td { background: #FAF8F3; }
+  .detail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 6px 2px; color: var(--text-primary); }
+  .detail > div { min-width: 0; }
+  .detail h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; }
+  .detail ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .detail li { margin-bottom: 4px; overflow-wrap: anywhere; }
+  .detail a { color: var(--accent); }
+  .detail .note { font-size: 12px; color: var(--text-muted); }
+  .detail-chart { color: var(--accent); }
+  .detail-chart svg { display: block; max-width: 100%; height: auto; }
+  .detail-chart .note { color: var(--text-muted); }
+  @media (max-width: 700px) { .detail { grid-template-columns: minmax(0, 1fr); width: calc(100vw - 68px); } }
   .form-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
   .form-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
   .hold-grid-head, .hold-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.3fr) minmax(0, 1.7fr); gap: 8px; }
@@ -202,7 +215,7 @@
     const codes = [...new Set(state.holdings.map((x) => x.stock_code))];
     state.prices = {}; state.priceError = false;
     if (codes.length) {
-      const p = await sb.from('member_prices').select('stock_code, close, ma20, trade_date').in('stock_code', codes);
+      const p = await sb.from('member_prices').select('stock_code, close, ma5, ma20, ma60, ma120, high_52w, low_52w, trade_date').in('stock_code', codes);
       if (p.error) state.priceError = true;
       else (p.data || []).forEach((r) => { state.prices[r.stock_code] = r; });
     }
@@ -331,6 +344,53 @@
     });
   }
 
+  // ── 행 펼침: 차트 위치 사실 수치 + 종목 뉴스 ─────────────
+  const safeUrl = (u) => (/^https?:\/\//i.test(String(u == null ? '' : u)) ? String(u) : '#');
+  function sparkSvg(closes, avgPrice) {
+    const pts0 = (Array.isArray(closes) ? closes : []).map((x) => Number(x && x.c)).filter((v) => Number.isFinite(v));
+    if (pts0.length < 2) return '<p class="note">차트 데이터를 준비 중입니다.</p>';
+    const W = 320, H = 110, P = 6;
+    const hasAvg = Number.isFinite(avgPrice);
+    const vals = hasAvg ? pts0.concat([avgPrice]) : pts0;
+    const lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    const x = (i) => P + (i * (W - 2 * P)) / (pts0.length - 1);
+    const y = (v) => H - P - ((v - lo) * (H - 2 * P)) / ((hi - lo) || 1);
+    const line = pts0.map((v, i) => x(i).toFixed(1) + ',' + y(v).toFixed(1)).join(' ');
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="최근 60거래일 종가 추이">' +
+      '<polyline points="' + line + '" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+      (hasAvg ? '<line x1="' + P + '" x2="' + (W - P) + '" y1="' + y(avgPrice).toFixed(1) + '" y2="' + y(avgPrice).toFixed(1) + '" stroke="currentColor" stroke-dasharray="4 3" opacity=".6"/>' : '') + '</svg>';
+  }
+  async function toggleDetail(h, rowEl) {
+    const next = rowEl.nextElementSibling;
+    if (next && next.classList.contains('detail-row')) { next.remove(); return; }
+    const tr = document.createElement('tr');
+    tr.className = 'detail-row';
+    tr.innerHTML = '<td colspan="8"><span class="muted small">불러오는 중…</span></td>';
+    rowEl.after(tr);
+    let d = null, failed = false;
+    try {
+      const r = await sb.from('member_stock_detail').select('closes, news, updated_at').eq('stock_code', h.stock_code).maybeSingle();
+      if (r.error) failed = true; else d = r.data;
+    } catch (e) { failed = true; }
+    if (!tr.isConnected) return;                 // 기다리는 사이 접었거나 표가 다시 그려짐
+    if (failed) { tr.innerHTML = '<td colspan="8"><span class="msg-err small">상세 정보를 불러오지 못했습니다.</span></td>'; return; }
+    const pos = HoldingsCalc.chartPosition(state.prices[h.stock_code]);
+    const f = (v) => (v === null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
+    const news = d && Array.isArray(d.news) ? d.news.filter((n) => n && n.title) : [];
+    tr.innerHTML = '<td colspan="8"><div class="detail">' +
+      '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>' +
+      '<div class="detail-pos"><h4>차트 위치 (사실 수치)</h4><ul>' +
+      '<li>이동평균 배열: ' + esc(pos.alignment || '데이터 부족') + '</li>' +
+      '<li>5일선 대비 ' + f(pos.vs.ma5) + ' · 20일선 대비 ' + f(pos.vs.ma20) + '</li>' +
+      '<li>60일선 대비 ' + f(pos.vs.ma60) + ' · 120일선 대비 ' + f(pos.vs.ma120) + '</li>' +
+      '<li>52주 고점 대비 ' + f(pos.vs.high52) + ' · 52주 저점 대비 ' + f(pos.vs.low52) + '</li>' +
+      '</ul></div>' +
+      '<div class="detail-news"><h4>관련 뉴스</h4>' +
+      (news.length ? '<ul>' + news.map((n) => '<li><a href="' + esc(safeUrl(n.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a> <span class="note">' + esc(n.source || '') + (n.date ? ' · ' + esc(n.date) : '') + '</span></li>').join('') + '</ul>' : '<p class="note">표시할 뉴스가 없습니다.</p>') +
+      '<p class="note">뉴스 목록은 종목 기준으로 모든 회원에게 동일하게 제공되며, 내용에 대한 평가나 투자 의견이 아닙니다.</p></div>' +
+      '</div></td>';
+  }
+
   // ── 쓰기 ──────────────────────────────────────────────────
   async function addHoldings(rows) {            // rows: [{code, avg, qty, date, memo}]
     const codes = [...new Set(rows.map((r) => r.code))];
@@ -399,6 +459,14 @@
     }
   });
   tables.addEventListener('click', (ev) => {
+    if (!ev.target.closest('select, input, button, a')) {
+      const row = ev.target.closest('tr[data-id]');
+      if (row && row.querySelector('select[data-status]')) {
+        const h = state.holdings.find((x) => x.id === row.dataset.id);
+        if (h) toggleDetail(h, row);
+      }
+      return;
+    }
     const b = ev.target.closest('button');
     if (!b) return;
     if (b.dataset.sellCancel) { state.sellFor = null; render(); return; }

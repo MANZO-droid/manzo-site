@@ -52,3 +52,26 @@ test('totals: null은 제외하고 합산', () => {
   ]);
   assert.deepEqual(t, { invested: 150, marketValue: 120, unrealized: 20, realized: 2 });
 });
+
+const { chartPosition } = require('../lib/holdings-calc.js');
+
+test('차트 위치: 정배열과 이동평균·52주 대비', () => {
+  const c = chartPosition({ close: 110, ma5: 108, ma20: 100, ma60: 90, ma120: 80, high_52w: 120, low_52w: 50 });
+  assert.equal(c.alignment, '정배열');
+  assert.equal(c.vs.ma20, 10);
+  assert.ok(Math.abs(c.vs.high52 - (-8.3333)) < 0.001);
+  assert.equal(c.vs.low52, 120);
+});
+
+test('차트 위치: 역배열과 혼조', () => {
+  assert.equal(chartPosition({ close: 70, ma5: 72, ma20: 80, ma60: 90 }).alignment, '역배열');
+  assert.equal(chartPosition({ close: 100, ma5: 95, ma20: 100, ma60: 90 }).alignment, '혼조');
+});
+
+test('차트 위치: 값이 없으면 null (추측하지 않는다)', () => {
+  const c = chartPosition({ close: 100, ma5: 99, ma20: 98, ma60: null, ma120: null, high_52w: null, low_52w: null });
+  assert.equal(c.alignment, null);
+  assert.equal(c.vs.ma60, null);
+  assert.equal(c.vs.high52, null);
+  assert.equal(chartPosition(null).alignment, null);
+});
