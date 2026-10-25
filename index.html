@@ -1497,20 +1497,40 @@ const NEWSLETTERS = [
       <label>이메일</label>
       <input type="email" id="login-email" placeholder="example@email.com" />
     </div>
-    <div class="modal-input-group">
+    <p class="modal-subtitle" id="login-reset-hint" style="display:none;">가입할 때 쓴 이메일이 아이디예요.<br>이메일을 입력하면 비밀번호를 다시 정하는 메일을 보내드려요.<br>구글로 가입하셨다면 비밀번호 없이 구글 로그인을 이용하세요.</p>
+    <div class="modal-input-group" id="login-pw-group">
       <label>비밀번호</label>
       <input type="password" id="login-pw" placeholder="비밀번호 입력" />
     </div>
     <p class="modal-error" id="login-error" style="display:none;"></p>
+    <p class="modal-subtitle" id="login-info" style="display:none;color:#1E7A46;"></p>
     <button class="modal-btn modal-btn-primary" id="login-btn" onclick="handleAuthSubmit()">로그인</button>
-    <div class="modal-divider">또는</div>
-    <button class="modal-btn modal-btn-google" onclick="handleGoogleLogin()">
+    <div class="modal-divider" id="login-divider">또는</div>
+    <button class="modal-btn modal-btn-google" id="login-google-btn" onclick="handleGoogleLogin()">
       <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
       구글 계정으로 로그인
     </button>
     <div class="modal-footer" id="login-modal-footer">
       계정이 없으신가요? <a href="#" onclick="switchAuthMode('signup'); return false;">회원가입</a>
     </div>
+  </div>
+</div>
+
+<!-- ── 새 비밀번호 설정 모달 (재설정 메일의 링크로 돌아왔을 때) ── -->
+<div class="modal-overlay" id="resetPwModal">
+  <div class="modal-box">
+    <p class="modal-title">새 비밀번호 설정</p>
+    <p class="modal-subtitle">앞으로 사용할 새 비밀번호를 입력해주세요.</p>
+    <div class="modal-input-group">
+      <label>새 비밀번호</label>
+      <input type="password" id="reset-pw" placeholder="6자 이상" autocomplete="new-password" />
+    </div>
+    <div class="modal-input-group">
+      <label>새 비밀번호 확인</label>
+      <input type="password" id="reset-pw2" placeholder="한 번 더 입력" autocomplete="new-password" />
+    </div>
+    <p class="modal-error" id="reset-error" style="display:none;"></p>
+    <button class="modal-btn modal-btn-primary" id="reset-save-btn" onclick="handleSetNewPassword()">비밀번호 변경</button>
   </div>
 </div>
 
@@ -1588,6 +1608,8 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   // 푸시 발송 서명용 공개키. 이름 그대로 "공개"키라 브라우저에 노출돼도 안전함 (비밀키는 서버 환경변수에만 있음)
   const VAPID_PUBLIC_KEY = 'BAgvcxMt5U0bB7Jv96ge_LKv5tvdc3UhN_J6PH9k3fLRM-c05Anzhj3d8J4p5ToZsMykUQIKrKdqZST41nPDyrg';
   var authMode = 'login';
+  // 비밀번호 재설정 메일의 링크로 돌아왔는지(주소 뒤에 type=recovery가 붙어서 옴)
+  var isRecoveryLink = /type=recovery/.test(window.location.hash);
 
   // ── 회원 행동 기록 (2026-08-09) ──────────────────────────────────────────
   // 로그인한 회원에 한해서만 페이지뷰·클릭·체류시간을 user_events 표에 남긴다
@@ -1687,7 +1709,7 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   // ── 페이지 로드 시 로그인 상태 확인 ──
   sb.auth.getSession().then(function (res) {
     var session = res.data.session;
-    if (session) {
+    if (session && !isRecoveryLink) {   // 재설정 링크로 온 경우는 새 비밀번호를 정한 뒤에 로그인 처리한다
       var user = session.user;
       var nick = user.user_metadata && user.user_metadata.nickname;
       if (!nick) {
@@ -1697,6 +1719,15 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
         updateNav(user);
         startTracking(user);
       }
+    }
+  });
+
+  // 재설정 메일 링크로 돌아오면 Supabase가 PASSWORD_RECOVERY 신호를 보낸다 → 새 비밀번호 입력창을 연다
+  sb.auth.onAuthStateChange(function (event) {
+    if (event === 'PASSWORD_RECOVERY') {
+      isRecoveryLink = true;
+      document.getElementById('loginModal').classList.remove('open');
+      document.getElementById('resetPwModal').classList.add('open');
     }
   });
 
@@ -1721,25 +1752,96 @@ document.getElementById('articleModal').addEventListener('click', function(e) {
   window.switchAuthMode = function (mode) {
     authMode = mode;
     document.getElementById('login-error').style.display = 'none';
+    document.getElementById('login-info').style.display = 'none';
     var nickGroup = document.getElementById('signup-nickname-group');
     var title = document.getElementById('login-modal-title');
     var btn = document.getElementById('login-btn');
     var footer = document.getElementById('login-modal-footer');
+    var isReset = mode === 'reset';
+    // 비밀번호 찾기 화면에서는 비밀번호 칸·구글 버튼을 숨기고 안내 문구를 보여준다
+    document.getElementById('login-pw-group').style.display = isReset ? 'none' : '';
+    document.getElementById('login-divider').style.display = isReset ? 'none' : '';
+    document.getElementById('login-google-btn').style.display = isReset ? 'none' : '';
+    document.getElementById('login-reset-hint').style.display = isReset ? '' : 'none';
+    btn.disabled = false;
     if (mode === 'signup') {
       nickGroup.style.display = '';
       title.textContent = '회원가입';
       btn.textContent = '회원가입';
       footer.innerHTML = '이미 계정이 있으신가요? <a href="#" onclick="switchAuthMode(\'login\'); return false;">로그인</a>';
+    } else if (isReset) {
+      nickGroup.style.display = 'none';
+      title.textContent = '아이디·비밀번호 찾기';
+      btn.textContent = '재설정 메일 받기';
+      footer.innerHTML = '<a href="#" onclick="switchAuthMode(\'login\'); return false;">← 로그인으로 돌아가기</a>';
     } else {
       nickGroup.style.display = 'none';
       title.textContent = '로그인';
       btn.textContent = '로그인';
-      footer.innerHTML = '계정이 없으신가요? <a href="#" onclick="switchAuthMode(\'signup\'); return false;">회원가입</a>';
+      footer.innerHTML = '계정이 없으신가요? <a href="#" onclick="switchAuthMode(\'signup\'); return false;">회원가입</a>' +
+        '<br><a href="#" onclick="switchAuthMode(\'reset\'); return false;">아이디·비밀번호를 잊으셨나요?</a>';
     }
   };
 
   window.handleAuthSubmit = function () {
-    return authMode === 'signup' ? handleSignup() : handleLogin();
+    if (authMode === 'signup') return handleSignup();
+    if (authMode === 'reset') return handleResetRequest();
+    return handleLogin();
+  };
+
+  // ── 비밀번호 재설정 메일 요청 ──
+  // 가입 여부는 알려주지 않는다(남의 이메일이 가입돼 있는지 알아내는 데 악용되지 않도록 항상 같은 안내).
+  window.handleResetRequest = async function () {
+    var email = document.getElementById('login-email').value.trim();
+    var errEl = document.getElementById('login-error');
+    var infoEl = document.getElementById('login-info');
+    var btn = document.getElementById('login-btn');
+    infoEl.style.display = 'none';
+    if (!email) { showError(errEl, '가입할 때 쓴 이메일을 입력해주세요.'); return; }
+    errEl.style.display = 'none';
+
+    btn.disabled = true; btn.textContent = '보내는 중...';
+    var res = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + window.location.pathname
+    });
+    btn.disabled = false; btn.textContent = '재설정 메일 받기';
+
+    if (res.error) {
+      var tooMany = res.error.status === 429 || /rate|seconds|too many/i.test(res.error.message || '');
+      showError(errEl, tooMany ? '요청이 너무 잦아요. 잠시 후 다시 시도해주세요.' : '메일을 보내지 못했어요. 잠시 후 다시 시도해주세요.');
+      return;
+    }
+    infoEl.textContent = '입력하신 이메일로 가입된 계정이 있으면 재설정 메일을 보냈어요. 메일함(스팸함 포함)을 확인해주세요.';
+    infoEl.style.display = 'block';
+  };
+
+  // ── 새 비밀번호 저장 (재설정 메일 링크로 돌아온 뒤) ──
+  window.handleSetNewPassword = async function () {
+    var pw = document.getElementById('reset-pw').value;
+    var pw2 = document.getElementById('reset-pw2').value;
+    var errEl = document.getElementById('reset-error');
+    var btn = document.getElementById('reset-save-btn');
+    if (pw.length < 6) { showError(errEl, '비밀번호는 6자 이상이어야 해요.'); return; }
+    if (pw !== pw2) { showError(errEl, '두 비밀번호가 서로 달라요.'); return; }
+    errEl.style.display = 'none';
+
+    btn.disabled = true; btn.textContent = '저장 중...';
+    var res = await sb.auth.updateUser({ password: pw });
+    btn.disabled = false; btn.textContent = '비밀번호 변경';
+    if (res.error) {
+      showError(errEl, '변경에 실패했어요. 메일 링크가 만료됐다면 비밀번호 찾기를 다시 해주세요.');
+      return;
+    }
+    document.getElementById('resetPwModal').classList.remove('open');
+    document.getElementById('reset-pw').value = '';
+    document.getElementById('reset-pw2').value = '';
+    isRecoveryLink = false;
+    history.replaceState(null, '', window.location.pathname + window.location.search);   // 주소창의 인증 정보 지우기
+    var user = res.data.user;
+    if (user && !(user.user_metadata && user.user_metadata.nickname)) { openNicknameModal(); return; }
+    updateNav(user);
+    startTracking(user);
+    alert('비밀번호가 변경됐어요. 새 비밀번호로 로그인된 상태입니다.');
   };
 
   // 모달 바깥 클릭 시 닫기
