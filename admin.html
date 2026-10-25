@@ -113,6 +113,7 @@
 
   const app = document.getElementById('app');
   let allUsers = [];
+  let accessSet = new Set();   // '보유 기록장' 사용이 허용된 회원 id 모음
   let statusData = null;
   let positionsData = [];
   let sortKey = 'createdAt';
@@ -157,16 +158,19 @@
     if (!session) { showGate(); return; }
 
     const authHeader = { Authorization: 'Bearer ' + session.access_token };
-    const [usersRes, statusRes, positionsRes] = await Promise.all([
+    const [usersRes, statusRes, positionsRes, accessRes] = await Promise.all([
       fetch('/api/admin-users', { headers: authHeader }),
       fetch('/api/admin-status', { headers: authHeader }),
       fetch('/api/holdings', { headers: authHeader }),
+      fetch('/api/admin-member-access', { headers: authHeader }),
     ]);
     if (usersRes.status === 403) { showGate(); return; }
     if (!usersRes.ok) { showError('회원 목록을 불러오는 중 오류가 발생했습니다 (' + usersRes.status + ').'); return; }
 
     const data = await usersRes.json();
     allUsers = data.users || [];
+    // 기록장 허용 목록은 못 불러와도 회원 관리 자체는 막지 않는다(그 경우 체크박스는 모두 해제로 보임).
+    accessSet = new Set(accessRes.ok ? ((await accessRes.json()).enabled || []) : []);
     // 현황 대시보드/포지션 현황은 회원 목록보다 덜 치명적이라, 실패해도 페이지 전체를 막지 않고
     // 그 섹션에만 오류를 표시한다(회원 관리 자체는 계속 쓸 수 있어야 하므로).
     statusData = statusRes.ok ? await statusRes.json() : { error: '현황을 불러오지 못했습니다 (' + statusRes.status + ').' };
@@ -187,6 +191,7 @@
       '<p class="sub">가입한 회원 목록과 사이트 안 활동을 확인하고, 필요하면 강제 탈퇴시킬 수 있습니다.</p>' +
       '<div class="status-section" id="status-section"></div>' +
       '<div class="positions-section" id="positions-section"></div>' +
+      '<div class="status-section" id="member-stats-section"></div>' +
       '<h2 class="section-h2">회원 목록</h2>' +
       '<div class="toolbar">' +
       '  <input type="search" id="search" placeholder="이메일 또는 닉네임 검색">' +
@@ -202,6 +207,83 @@
     renderStatus();
     renderPositions();
     renderTable();
+    loadMemberStats();
+  }
+
+  // ── 회원 매매 통계(익명) ──────────────────────────────────────────────────
+  // 서버가 돌려주는 집계 숫자만 그린다. 회원 이름·이메일·ID는 이 응답에도 화면에도 없다.
+  function msNum(v, suffix, digits) {
+    if (v == null || v === '' || isNaN(Number(v))) return '-';
+    return Number(v).toLocaleString('ko-KR', { maximumFractionDigits: digits == null ? 2 : digits }) + (suffix || '');
+  }
+
+  function msCard(title, value) {
+    return '<div class="status-card"><div class="status-card-title">' + escapeHtml(title) + '</div>' +
+      '<div class="stat-num" style="font-size:20px;font-weight:800;margin-top:6px">' + escapeHtml(value) + '</div></div>';
+  }
+
+  function msTable(headers, rows) {
+    return '<div class="tbl-scroll"><table><thead><tr>' +
+      headers.map(h => '<th style="cursor:default">' + escapeHtml(h) + '</th>').join('') +
+      '</tr></thead><tbody>' + rows.join('') + '</tbody></table></div>';
+  }
+
+  function msBucketTable(title, list) {
+    const rows = (list || []).map(b => '<tr><td>' + escapeHtml(b.bucket) + '</td><td class="stat-num">' + escapeHtml(msNum(b.n, '건', 0)) + '</td></tr>');
+    return '<div style="flex:1;min-width:220px"><div class="status-card-title" style="margin-bottom:6px">' + escapeHtml(title) + '</div>' +
+      (rows.length ? msTable(['구간', '건수'], rows) : '<div class="muted" style="font-size:12.5px">표시할 데이터가 없습니다.</div>') + '</div>';
+  }
+
+  async function loadMemberStats() {
+    const box = document.getElementById('member-stats-section');
+    if (!box) return;
+    const head = '<h2 class="section-h2">회원 매매 통계(익명)</h2>';
+    box.innerHTML = head + '<div class="muted" style="font-size:13px">불러오는 중입니다...</div>';
+    let data = null;
+    try {
+      const session = (await sb.auth.getSession()).data.session;
+      const r = await fetch('/api/admin-member-stats', { headers: { Authorization: 'Bearer ' + session.access_token } });
+      if (r.ok) data = await r.json();
+    } catch (e) { data = null; }
+    if (!data || !data.summary) {
+      box.innerHTML = head + '<div class="empty" style="padding:20px">통계를 불러오지 못했습니다</div>';
+      return;
+    }
+    const s = data.summary, o = s.overall;
+    let html = head +
+      '<p class="status-flow">회원 개인과 연결되지 않은 익명 집계입니다. 표본이 3건(보유는 3명) 미만인 항목은 표시하지 않습니다. ' +
+      '표본 수는 거래 건수이며 서로 다른 회원 수가 아닙니다. 회원이 직접 입력한 자기신고 자료이므로 참고용으로만 쓰십시오.' +
+      (data.accessCount != null ? ' (기록장 사용 허용 회원 ' + escapeHtml(msNum(data.accessCount, '명', 0)) + ')' : '') + '</p>';
+    if (!o) {
+      html += '<div class="empty" style="padding:20px">아직 집계에 필요한 표본이 부족합니다(현재 ' + escapeHtml(msNum(s.total_trades, '', 0)) + '건)</div>';
+    } else {
+      html += '<div class="status-grid">' +
+        msCard('청산 건수', msNum(o.n, '건', 0)) +
+        msCard('평균 보유일', msNum(o.avg_hold_days, '일', 1)) +
+        msCard('중앙 보유일', msNum(o.median_hold_days, '일', 1)) +
+        msCard('평균 수익률', msNum(o.avg_return_pct, '%', 2)) +
+        msCard('중앙 수익률', msNum(o.median_return_pct, '%', 2)) +
+        msCard('승률', msNum(o.win_rate_pct, '%', 1)) + '</div>';
+      html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px">' +
+        msBucketTable('보유 기간 분포', s.hold_buckets) + msBucketTable('수익률 분포', s.return_buckets) + '</div>';
+    }
+    const stocks = (s.by_stock || []).map(x => '<tr><td><b>' + escapeHtml(x.stock_name || x.stock_code) + '</b> <span class="muted">' + escapeHtml(x.stock_code) + '</span></td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.n, '건', 0)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_entry_price, '원', 0)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_exit_price, '원', 0)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_hold_days, '일', 1)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_return_pct, '%', 2)) + '</td></tr>');
+    if (o) html += '<div class="status-card-title" style="margin:6px 0">종목별 청산 통계</div>' +
+      (stocks.length ? msTable(['종목', '건수', '평균 매수가', '평균 매도가', '평균 보유일', '평균 수익률'], stocks)
+        : '<div class="muted" style="font-size:12.5px">표시할 종목이 없습니다.</div>');
+    const opens = (data.open || []).map(x => '<tr><td><b>' + escapeHtml(x.stock_name || x.stock_code) + '</b> <span class="muted">' + escapeHtml(x.stock_code) + '</span></td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.holders, '명', 0)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_cost, '원', 0)) + '</td>' +
+      '<td class="stat-num">' + escapeHtml(msNum(x.avg_hold_days, '일', 0)) + '</td></tr>');
+    if (o || opens.length) html += '<div class="status-card-title" style="margin:18px 0 6px">현재 보유 집계</div>' +
+      (opens.length ? msTable(['종목', '보유 회원 수', '평균 매수가', '평균 보유일'], opens)
+        : '<div class="muted" style="font-size:12.5px">3명 이상이 보유한 종목이 아직 없습니다.</div>');
+    box.innerHTML = html;
   }
 
   // ── 자동화 현황 대시보드 ──────────────────────────────────────────────────
@@ -969,6 +1051,26 @@
     renderTable();
   };
 
+  // 기록장 허용 체크박스: 바꾸면 바로 서버에 저장하고, 실패하면 체크를 원래대로 되돌린다.
+  document.addEventListener('change', async (e) => {
+    const el = e.target.closest ? e.target.closest('.member-access') : null;
+    if (!el) return;
+    el.disabled = true;
+    let ok = false;
+    try {
+      const session = (await sb.auth.getSession()).data.session;
+      const r = await fetch('/api/admin-member-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.access_token },
+        body: JSON.stringify({ userId: el.dataset.uid, enabled: el.checked }),
+      });
+      ok = r.ok;
+    } catch (err) { ok = false; }
+    if (ok) { if (el.checked) accessSet.add(el.dataset.uid); else accessSet.delete(el.dataset.uid); }
+    else { el.checked = !el.checked; alert('저장하지 못했습니다. 다시 시도해 주세요.'); }
+    el.disabled = false;
+  });
+
   function renderTable() {
     const list = sortedFiltered();
     document.getElementById('count-badge').textContent = '전체 ' + allUsers.length + '명 중 ' + list.length + '명 표시';
@@ -986,6 +1088,8 @@
         '<td>' + fmtDate(u.lastSignInAt) + '</td>' +
         '<td class="stat-num">' + fmtDuration(u.stats.totalDurationMs) + '</td>' +
         '<td class="stat-num">' + escapeHtml(u.stats.clickCount) + '회</td>' +
+        '<td><label><input type="checkbox" class="member-access" data-uid="' + escapeHtml(u.id) + '"' +
+          (accessSet.has(u.id) ? ' checked' : '') + '> 기록장</label></td>' +
         '<td><button class="del-btn" data-del-id="' + escapeHtml(u.id) + '" data-del-name="' + escapeHtml(name) + '">탈퇴</button></td>' +
         '</tr>';
     }).join('');
@@ -997,6 +1101,7 @@
       thLabel('lastSignInAt', '최근 로그인') +
       thLabel('duration', '총 체류시간') +
       thLabel('clicks', '클릭 수') +
+      '<th title="체크하면 이 회원의 My page에서 보유 기록장을 쓸 수 있습니다">기록장 허용</th>' +
       '<th>관리</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   }
