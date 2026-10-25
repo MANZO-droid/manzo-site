@@ -114,6 +114,7 @@
   const app = document.getElementById('app');
   let allUsers = [];
   let accessSet = new Set();   // '보유 기록장' 사용이 허용된 회원 id 모음
+  let reportSet = new Set();   // '종목 리포트' 요청이 허용된 회원 id 모음(기록장 허용 회원 중에서만)
   let statusData = null;
   let positionsData = [];
   let sortKey = 'createdAt';
@@ -170,7 +171,9 @@
     const data = await usersRes.json();
     allUsers = data.users || [];
     // 기록장 허용 목록은 못 불러와도 회원 관리 자체는 막지 않는다(그 경우 체크박스는 모두 해제로 보임).
-    accessSet = new Set(accessRes.ok ? ((await accessRes.json()).enabled || []) : []);
+    const accessJson = accessRes.ok ? await accessRes.json() : {};
+    accessSet = new Set(accessJson.enabled || []);
+    reportSet = new Set(accessJson.reportEnabled || []);
     // 현황 대시보드/포지션 현황은 회원 목록보다 덜 치명적이라, 실패해도 페이지 전체를 막지 않고
     // 그 섹션에만 오류를 표시한다(회원 관리 자체는 계속 쓸 수 있어야 하므로).
     statusData = statusRes.ok ? await statusRes.json() : { error: '현황을 불러오지 못했습니다 (' + statusRes.status + ').' };
@@ -1051,24 +1054,34 @@
     renderTable();
   };
 
-  // 기록장 허용 체크박스: 바꾸면 바로 서버에 저장하고, 실패하면 체크를 원래대로 되돌린다.
+  // 기록장 허용·리포트 허용 체크박스: 바꾸면 바로 서버에 저장하고, 실패하면 체크를 원래대로 되돌린다.
+  // 리포트는 기록장이 허용된 회원에게만 켤 수 있고, 기록장을 끄면 리포트도 함께 꺼진다(서버 API 규칙과 같음).
   document.addEventListener('change', async (e) => {
-    const el = e.target.closest ? e.target.closest('.member-access') : null;
+    const el = e.target.closest ? e.target.closest('.member-access, .member-report') : null;
     if (!el) return;
+    const feature = el.classList.contains('member-report') ? 'reports' : 'holdings';
     el.disabled = true;
-    let ok = false;
+    let ok = false, serverMsg = '';
     try {
       const session = (await sb.auth.getSession()).data.session;
       const r = await fetch('/api/admin-member-access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.access_token },
-        body: JSON.stringify({ userId: el.dataset.uid, enabled: el.checked }),
+        body: JSON.stringify({ userId: el.dataset.uid, enabled: el.checked, feature: feature }),
       });
       ok = r.ok;
+      if (!ok) serverMsg = ((await r.json().catch(() => ({}))).error) || '';
     } catch (err) { ok = false; }
-    if (ok) { if (el.checked) accessSet.add(el.dataset.uid); else accessSet.delete(el.dataset.uid); }
-    else { el.checked = !el.checked; alert('저장하지 못했습니다. 다시 시도해 주세요.'); }
-    el.disabled = false;
+    if (ok) {
+      const set = feature === 'reports' ? reportSet : accessSet;
+      if (el.checked) set.add(el.dataset.uid); else set.delete(el.dataset.uid);
+      if (feature === 'holdings' && !el.checked) reportSet.delete(el.dataset.uid);
+      renderTable();   // 기록장 상태에 따라 리포트 칸의 사용 가능 여부가 바뀌므로 다시 그린다
+    } else {
+      el.checked = !el.checked;
+      el.disabled = false;
+      alert(serverMsg || '저장하지 못했습니다. 다시 시도해 주세요.');
+    }
   });
 
   function renderTable() {
@@ -1090,6 +1103,9 @@
         '<td class="stat-num">' + escapeHtml(u.stats.clickCount) + '회</td>' +
         '<td><label><input type="checkbox" class="member-access" data-uid="' + escapeHtml(u.id) + '"' +
           (accessSet.has(u.id) ? ' checked' : '') + '> 기록장</label></td>' +
+        '<td><label><input type="checkbox" class="member-report" data-uid="' + escapeHtml(u.id) + '"' +
+          (reportSet.has(u.id) ? ' checked' : '') +
+          (accessSet.has(u.id) ? '' : ' disabled title="먼저 기록장을 허용하세요"') + '> 리포트</label></td>' +
         '<td><button class="del-btn" data-del-id="' + escapeHtml(u.id) + '" data-del-name="' + escapeHtml(name) + '">탈퇴</button></td>' +
         '</tr>';
     }).join('');
@@ -1102,6 +1118,7 @@
       thLabel('duration', '총 체류시간') +
       thLabel('clicks', '클릭 수') +
       '<th title="체크하면 이 회원의 My page에서 보유 기록장을 쓸 수 있습니다">기록장 허용</th>' +
+      '<th title="체크하면 이 회원이 My page에서 종목 리포트를 요청할 수 있습니다(기록장 허용이 먼저 필요)">리포트 허용</th>' +
       '<th>관리</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   }
