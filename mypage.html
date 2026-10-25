@@ -138,6 +138,7 @@
       <button type="button" id="sel-delete" class="del-btn" disabled>선택 삭제</button>
       <span id="pos-msg" style="font-size:12.5px"></span>
     </div>
+    <p id="report-note" class="muted small" hidden style="margin:0 0 10px">종목 옆 [리포트 받기]를 누르면 그 종목의 공개 정보(시세·차트 위치·뉴스 제목)를 정리해 가입 이메일로 보내 드립니다. 하루 3건까지 요청할 수 있으며, 투자 권유·자문이 아닙니다.</p>
     <div id="tables"></div>
 
     <div class="form-wrap" style="margin-top:24px">
@@ -179,7 +180,12 @@
   const HOLD_START_ROWS = 3, HOLD_MAX_ROWS = 10, MAX_PER_MEMBER = 50;
   const STATUS_LABEL = { open: '보유', watch: '관찰', closed: '청산(매도 기록)' };
 
-  const state = { holdings: [], sales: [], prices: {}, priceError: false, selected: new Set(), sellFor: null, busy: false };
+  // 리포트 요청(관리자가 "리포트 허용"한 회원에게만 버튼이 보인다)
+  // REPORT_MAIL_READY: 메일 발송 기능(P3~P4)이 붙기 전에는 false. 그 사이에는 확인 창에서 "요청만 접수된다"고 솔직히 알린다.
+  const REPORT_LIMIT = 3, REPORT_MAIL_READY = false;
+  const state = { holdings: [], sales: [], prices: {}, priceError: false, selected: new Set(), sellFor: null, busy: false,
+                  reportAccess: false, reports: [], userEmail: '', reportSig: '' };
+  const colCount = () => (state.reportAccess ? 9 : 8);
 
   function show(which) {   // 'login' | 'denied' | 'app' | 'error'
     $('view-loading').hidden = true;
@@ -202,9 +208,12 @@
       const { data } = await sb.auth.getSession();
       if (!data.session) return show('login');
       const { data: acc, error } = await sb.from('member_feature_access')
-        .select('holdings_enabled').eq('user_id', data.session.user.id).maybeSingle();
+        .select('holdings_enabled, reports_enabled').eq('user_id', data.session.user.id).maybeSingle();
       if (error) return showError(error.message);
       if (!acc || !acc.holdings_enabled) return show('denied');
+      state.reportAccess = !!acc.reports_enabled;          // 화면 표시용. 실제 차단은 DB 함수가 한다.
+      state.userEmail = data.session.user.email || '';
+      $('report-note').hidden = !state.reportAccess;
       renderForm();
       show('app');
       await loadAll();
@@ -220,6 +229,7 @@
     ]);
     if (h.error || s.error) return showError((h.error || s.error).message);
     state.holdings = h.data || []; state.sales = s.data || [];
+    await loadReports();
     const codes = [...new Set(state.holdings.map((x) => x.stock_code))];
     state.prices = {}; state.priceError = false;
     if (codes.length) {
@@ -228,6 +238,78 @@
       else (p.data || []).forEach((r) => { state.prices[r.stock_code] = r; });
     }
     render();
+  }
+
+  // ── 리포트 요청 상태 ──────────────────────────────────────
+  // 최근 3일 요청만 읽는다(표시용). 한도 계산(오늘 3건)은 DB 함수가 최종 판단하고, 화면의 "남은 횟수"는 안내용이다.
+  const kstDate = (iso) => new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString().slice(0, 10);
+  const kstHm = (iso) => new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString().slice(11, 16);
+  async function loadReports() {
+    if (!state.reportAccess) { state.reports = []; return; }
+    const since = new Date(Date.now() - 3 * 86400e3).toISOString();
+    const r = await sb.from('member_report_requests')
+      .select('id, stock_code, status, requested_at, processed_at').gte('requested_at', since).order('requested_at', { ascending: false });
+    if (r.error) { state.reports = []; posSay('리포트 요청 상태를 불러오지 못했습니다.', false); return; }
+    state.reports = r.data || [];
+    state.reportSig = JSON.stringify(state.reports.map((x) => [x.id, x.status]));
+    scheduleReportPoll();
+  }
+  const reportsUsedToday = () => state.reports.filter((x) =>
+    ['pending', 'processing', 'sent'].includes(x.status) && kstDate(x.requested_at) === kstToday()).length;
+  const reportsRemaining = () => Math.max(REPORT_LIMIT - reportsUsedToday(), 0);
+  const latestReport = (code) => state.reports.find((x) => x.stock_code === code);   // 최신순 정렬이라 첫 번째가 최신
+
+  // 대기·처리 중인 요청이 있는 동안만 20초마다 상태를 확인한다. 바뀐 게 없으면 표를 다시 그리지 않는다(펼쳐 둔 상세 유지).
+  let reportPollTimer = null;
+  function scheduleReportPoll() {
+    clearTimeout(reportPollTimer);
+    if (!state.reports.some((x) => x.status === 'pending' || x.status === 'processing')) return;
+    reportPollTimer = setTimeout(async () => {
+      if (state.busy || state.sellFor) { scheduleReportPoll(); return; }
+      const before = state.reportSig;
+      try { await loadReports(); } catch (e) { /* 다음 주기에 다시 */ }
+      if (state.reportSig !== before) render();
+    }, 20000);
+  }
+  const maskEmail = (e) => { const [a, d] = String(e || '').split('@'); return a && d ? a[0] + '***@' + d : '가입 이메일'; };
+
+  function reportCell(h) {
+    const last = latestReport(h.stock_code);
+    const active = last && (last.status === 'pending' || last.status === 'processing');
+    let badge = '';
+    if (last && last.status === 'pending') badge = '<span class="badge na">대기 중</span>';
+    else if (last && last.status === 'processing') badge = '<span class="badge na">생성 중</span>';
+    else if (last && last.status === 'sent') badge = '<span class="badge na">발송됨 ' + esc(kstHm(last.processed_at || last.requested_at)) + '</span>';
+    else if (last && last.status === 'error') badge = '<span class="badge">실패</span>';
+    const noLeft = !active && reportsRemaining() <= 0;
+    const label = last && last.status === 'error' ? '다시 요청' : '리포트 받기';
+    return '<td>' + (active ? badge : badge + (badge ? ' ' : '') +
+      '<button type="button" class="act-btn" data-report="' + esc(h.stock_code) + '" style="padding:4px 11px;font-size:12px"' +
+      (noLeft ? ' disabled title="오늘 요청 가능 횟수(' + REPORT_LIMIT + '건)를 모두 사용했습니다"' : '') + '>' + label + '</button>') + '</td>';
+  }
+
+  async function requestReport(code) {
+    const h = state.holdings.find((x) => x.stock_code === code && x.status !== 'closed');
+    if (!h || state.busy) return;
+    if (!confirm(h.stock_name + '(' + code + ') 리포트를 ' + maskEmail(state.userEmail) + ' 로 보낼까요?\n오늘 남은 횟수 ' + reportsRemaining() + '/' + REPORT_LIMIT +
+        '\n\n※ 리포트는 공개된 정보(시세·차트 위치·뉴스 제목)를 정리한 것이며 투자 권유·자문이 아닙니다.' +
+        (REPORT_MAIL_READY ? '' : '\n※ 지금은 시험 단계입니다. 요청만 접수되고 메일은 아직 발송되지 않습니다.'))) return;
+    state.busy = true; refreshSelectionUi();
+    try {
+      const r = await sb.rpc('member_request_report', { p_stock_code: code });
+      if (r.error) throw new Error('요청하지 못했습니다. 잠시 후 다시 시도해 주세요.');
+      const d = r.data || {};
+      if (!d.ok) {
+        const why = { limit: '오늘 요청 가능 횟수(' + REPORT_LIMIT + '건)를 모두 사용했습니다. 내일 다시 요청할 수 있어요.',
+                      no_access: '리포트 이용 대상이 아닙니다.', not_held: '보유·관찰 중인 종목만 요청할 수 있습니다.', bad_code: '종목코드를 확인해 주세요.' };
+        throw new Error(why[d.reason] || '요청하지 못했습니다.');
+      }
+      posSay(d.duplicate ? h.stock_name + ' 요청이 이미 접수되어 있습니다.' : h.stock_name + ' 리포트 요청을 접수했습니다. 오늘 남은 횟수 ' + d.remaining + '/' + REPORT_LIMIT, true);
+    } catch (e) {
+      posSay(e.message || '요청하지 못했습니다.', false);
+    }
+    try { await loadAll(); } catch (e) { posSay(e.message || '다시 읽지 못했습니다.', false); }
+    state.busy = false; refreshSelectionUi();
   }
 
   // ── 표 렌더 ───────────────────────────────────────────────
@@ -258,9 +340,10 @@
       '<td>' + priceCell + '</td>' +
       '<td>' + plCell + '</td>' +
       '<td>' + (s.maGapPct === null ? '-' : '<span class="' + signCls(s.maGapPct) + '">' + pct(s.maGapPct) + '</span>') + '</td>' +
-      '<td>' + statusSelect(h) + '</td></tr>';
+      '<td>' + statusSelect(h) + '</td>' +
+      (state.reportAccess ? reportCell(h) : '') + '</tr>';
     if (state.sellFor === h.id) {
-      html += '<tr class="sell-panel" data-sell-row="' + esc(h.id) + '"><td colspan="8"><div class="sell-box">' +
+      html += '<tr class="sell-panel" data-sell-row="' + esc(h.id) + '"><td colspan="' + colCount() + '"><div class="sell-box">' +
         '<b>' + esc(h.stock_name) + ' 청산 기록</b>' +
         '<span class="muted small" style="flex-basis:100%">이미 매도하신 사실을 기록합니다. 이 화면에서 주문은 나가지 않습니다.</span>' +
         '<input type="text" inputmode="decimal" data-sell="price" placeholder="매도가(원) *" aria-label="매도가">' +
@@ -278,6 +361,7 @@
       '<th class="chk"><input type="checkbox" data-sel-all aria-label="이 표 전체 선택"></th>' +
       '<th>종목</th><th>평균단가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th>' +
       '<th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지">20일선 대비</th><th>상태</th>' +
+      (state.reportAccess ? '<th title="종목 공개 정보를 정리한 리포트를 메일로 받습니다">리포트</th>' : '') +
       '</tr></thead><tbody>' + list.map(openRow).join('') + '</tbody></table></div>';
   }
 
@@ -373,7 +457,7 @@
     if (next && next.classList.contains('detail-row')) { next.remove(); return; }
     const tr = document.createElement('tr');
     tr.className = 'detail-row';
-    tr.innerHTML = '<td colspan="8"><span class="muted small">불러오는 중…</span></td>';
+    tr.innerHTML = '<td colspan="' + colCount() + '"><span class="muted small">불러오는 중…</span></td>';
     rowEl.after(tr);
     let d = null, failed = false;
     try {
@@ -381,11 +465,11 @@
       if (r.error) failed = true; else d = r.data;
     } catch (e) { failed = true; }
     if (!tr.isConnected) return;                 // 기다리는 사이 접었거나 표가 다시 그려짐
-    if (failed) { tr.innerHTML = '<td colspan="8"><span class="msg-err small">상세 정보를 불러오지 못했습니다.</span></td>'; return; }
+    if (failed) { tr.innerHTML = '<td colspan="' + colCount() + '"><span class="msg-err small">상세 정보를 불러오지 못했습니다.</span></td>'; return; }
     const pos = HoldingsCalc.chartPosition(state.prices[h.stock_code]);
     const f = (v) => (v === null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
     const news = d && Array.isArray(d.news) ? d.news.filter((n) => n && n.title) : [];
-    tr.innerHTML = '<td colspan="8"><div class="detail">' +
+    tr.innerHTML = '<td colspan="' + colCount() + '"><div class="detail">' +
       '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>' +
       '<div class="detail-pos"><h4>차트 위치 (사실 수치)</h4><ul>' +
       '<li>이동평균 배열: ' + esc(pos.alignment || '데이터 부족') + '</li>' +
@@ -477,6 +561,7 @@
     }
     const b = ev.target.closest('button');
     if (!b) return;
+    if (b.dataset.report) { requestReport(b.dataset.report); return; }
     if (b.dataset.sellCancel) { state.sellFor = null; render(); return; }
     if (b.dataset.sellGo) {
       const id = b.dataset.sellGo, h = state.holdings.find((x) => x.id === id);
