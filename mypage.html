@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My page · 만조 Investment</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --bg: #F7F5F0; --bg-card: #FFFFFF; --bg-hero: #EEE9DF;
+    --text-primary: #1C1C2E; --text-secondary: #5A5A72; --text-muted: #9494A8;
+    --accent: #4A6FA5; --accent-hover: #3A5A90; --accent-light: #EBF0F9;
+    --border: #E5E0D8; --danger: #C0392B; --danger-light: #FBEAE8;
+    --font: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+  .back-link { display: inline-block; font-size: 13px; color: var(--text-muted); text-decoration: none; margin-bottom: 14px; }
+  .back-link:hover { color: var(--accent); }
+  h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+  .sub { color: var(--text-muted); font-size: 13px; margin: 0 0 20px; }
+  .gate, .loading, .error { max-width: 420px; margin: 60px auto; text-align: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 28px; }
+  .gate a, .error a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .disclaimer { font-size: 12.5px; color: var(--text-secondary); background: var(--bg-hero); border-radius: 10px; padding: 10px 14px; margin: 0 0 18px; word-break: keep-all; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.05); min-width: 0; }
+  .summary-label { font-size: 12px; color: var(--text-muted); font-weight: 700; }
+  .summary-value { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; word-break: keep-all; }
+  .summary-sub { font-size: 12px; color: var(--text-secondary); }
+  .price-date { font-size: 12px; color: var(--text-muted); margin: 0 0 20px; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  thead th { text-align: left; font-size: 12px; color: var(--text-muted); font-weight: 700; padding: 12px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: middle; font-variant-numeric: tabular-nums; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr[data-id]:hover { background: var(--accent-light); }
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -4px; padding: 0 4px; }
+  .muted { color: var(--text-muted); }
+  .small { font-size: 12px; }
+  .stock-name { font-weight: 700; }
+  .memo-line { font-size: 11.5px; color: var(--text-muted); max-width: 220px; overflow-wrap: anywhere; }
+  .badge { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 8px; background: #FFF3DE; color: #B4740E; margin-left: 4px; white-space: nowrap; }
+  .badge.na { background: var(--bg-hero); color: var(--text-muted); }
+  .ret-pos { color: #1E7A46; font-weight: 700; }
+  .ret-neg { color: var(--danger); font-weight: 700; }
+  .empty { text-align: center; padding: 30px; color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; }
+  .section-h2 { font-size: 16px; font-weight: 800; margin: 24px 0 10px; }
+  .chk { width: 34px; text-align: center; padding-left: 8px !important; padding-right: 4px !important; }
+  .chk input { width: 16px; height: 16px; cursor: pointer; vertical-align: middle; }
+  .st-select { padding: 6px 8px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 12.5px; background: #fff; cursor: pointer; }
+  .st-select:focus { outline: none; border-color: var(--accent); }
+  .pos-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 4px 0 10px; font-size: 12.5px; }
+  .del-btn { background: none; border: 1.5px solid var(--danger); color: var(--danger); border-radius: 14px; padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
+  .del-btn:hover { background: var(--danger); color: #fff; }
+  .del-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .act-btn { background: none; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
+  .act-btn:hover { background: var(--accent); color: #fff; }
+  .act-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .sell-panel td { background: #FFF8EC; }
+  .sell-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 2px; font-size: 13px; }
+  .sell-box input { padding: 7px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13px; width: 140px; min-width: 0; background: #fff; }
+  tbody tr[data-id]:has(.st-select) { cursor: pointer; }
+  .detail-row td { background: #FAF8F3; }
+  .detail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 6px 2px; color: var(--text-primary); }
+  .detail > div { min-width: 0; }
+  .detail h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; }
+  .detail ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .detail li { margin-bottom: 4px; overflow-wrap: anywhere; }
+  .detail a { color: var(--accent); }
+  .detail .note { font-size: 12px; color: var(--text-muted); }
+  .detail-chart { color: var(--accent); }
+  .detail-chart svg { display: block; max-width: 100%; height: auto; }
+  .detail-chart .note { color: var(--text-muted); }
+  @media (max-width: 700px) { .detail { grid-template-columns: minmax(0, 1fr); width: calc(100vw - 68px); } }
+  .form-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+  .form-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .hold-grid-head, .hold-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.3fr) minmax(0, 1.7fr); gap: 8px; }
+  .hold-grid-head { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .hold-row { margin-bottom: 8px; }
+  .hold-row input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13.5px; background: #fff; width: 100%; min-width: 0; }
+  .hold-row input:focus { outline: none; border-color: var(--accent); }
+  .hold-row.err input { border-color: var(--danger); background: var(--danger-light); }
+  @media (max-width: 900px) {
+    .hold-grid-head { display: none; }
+    .hold-row { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 10px; border: 1px dashed var(--border); border-radius: 12px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 20px 16px 60px; }
+    .hold-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .msg-ok { color: #1E7A46; }
+  .msg-err { color: var(--danger); }
+  .footer-links { margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; }
+  .footer-links a, .footer-links button { color: var(--accent); background: none; border: none; padding: 0; font: inherit; cursor: pointer; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="/">← 메인으로</a>
+  <h1>My page · 보유 종목 기록장</h1>
+
+  <div class="loading" id="view-loading">확인 중입니다...</div>
+
+  <div class="gate" id="view-login" hidden>
+    <p><b>로그인이 필요합니다</b></p>
+    <p class="muted small">메인 페이지에서 로그인한 뒤 다시 열어 주세요.</p>
+    <p><a href="/">메인으로 가서 로그인</a></p>
+  </div>
+
+  <div class="gate" id="view-denied" hidden>
+    <p><b>아직 이용 대상이 아닙니다</b></p>
+    <p class="muted small">이 기능은 일부 회원에게 먼저 열려 있습니다. 열리면 이 화면에서 바로 이용하실 수 있습니다.</p>
+    <p><a href="/">메인으로</a></p>
+  </div>
+
+  <div class="error" id="view-error" hidden>
+    <p><b>화면을 불러오지 못했습니다</b></p>
+    <p class="muted small" id="error-detail"></p>
+    <p><a href="">다시 시도</a></p>
+  </div>
+
+  <div id="view-app" hidden>
+    <p class="disclaimer">본 기록장은 회원님이 직접 입력한 내용을 계산해 보여줄 뿐이며, 투자 권유·자문이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</p>
+
+    <div id="summary"></div>
+
+    <div class="pos-toolbar">
+      <span id="sel-count" class="muted">선택 0개</span>
+      <button type="button" id="sel-delete" class="del-btn" disabled>선택 삭제</button>
+      <span id="pos-msg" style="font-size:12.5px"></span>
+    </div>
+    <div id="tables"></div>
+
+    <div class="form-wrap" style="margin-top:24px">
+      <div class="form-title">보유 종목 등록</div>
+      <p class="sub" style="margin:0 0 12px">종목코드 6자리, 평균 매수가, 수량은 필수입니다. 종목명은 코드로 자동 입력됩니다. 한 번에 최대 10종목까지 등록할 수 있습니다.</p>
+      <form id="holding-form" autocomplete="off">
+        <div class="hold-grid-head"><span>종목코드 *</span><span>평균 매수가(원) *</span><span>수량 *</span><span>매수일</span><span>메모</span></div>
+        <div id="hold-rows"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px">
+          <button type="button" id="hold-add" class="act-btn" style="padding:7px 14px">+ 행 추가</button>
+          <button type="button" id="hold-clear" class="act-btn" style="padding:7px 14px">비우기</button>
+          <button type="submit" id="holding-submit" class="act-btn" style="margin-left:auto">등록</button>
+        </div>
+      </form>
+      <div id="holding-msg" style="font-size:12.5px;margin-top:10px;min-height:18px"></div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/">메인으로</a>
+      <button type="button" id="logout">로그아웃</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/lib/holdings-calc.js"></script>
+<script>
+(function () {
+  const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const won = (n) => (n === null || n === undefined ? '-' : Math.round(n).toLocaleString('ko-KR') + '원');
+  const pct = (n) => (n === null || n === undefined ? '-' : (n >= 0 ? '+' : '') + n.toFixed(1) + '%');
+  const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const signCls = (n) => (n === null || n === undefined ? '' : n >= 0 ? 'ret-pos' : 'ret-neg');
+
+  const HOLD_START_ROWS = 3, HOLD_MAX_ROWS = 10, MAX_PER_MEMBER = 50;
+  const STATUS_LABEL = { open: '보유', watch: '관찰', closed: '청산(매도 기록)' };
+
+  const state = { holdings: [], sales: [], prices: {}, priceError: false, selected: new Set(), sellFor: null, busy: false };
+
+  function show(which) {   // 'login' | 'denied' | 'app' | 'error'
+    $('view-loading').hidden = true;
+    ['login', 'denied', 'app', 'error'].forEach((k) => { $('view-' + k).hidden = k !== which; });
+  }
+  function showError(detail) {
+    $('error-detail').textContent = detail || '';
+    show('error');
+  }
+
+  function say(id, text, ok) {
+    const el = $(id);
+    el.className = ok ? 'msg-ok' : 'msg-err';
+    el.textContent = text || '';
+  }
+  const posSay = (t, ok) => say('pos-msg', t, ok);
+
+  async function init() {
+    try {
+      const { data } = await sb.auth.getSession();
+      if (!data.session) return show('login');
+      const { data: acc, error } = await sb.from('member_feature_access')
+        .select('holdings_enabled').eq('user_id', data.session.user.id).maybeSingle();
+      if (error) return showError(error.message);
+      if (!acc || !acc.holdings_enabled) return show('denied');
+      renderForm();
+      show('app');
+      await loadAll();
+    } catch (e) {
+      showError(e && e.message);
+    }
+  }
+
+  async function loadAll() {
+    const [h, s] = await Promise.all([
+      sb.from('member_holdings').select('*').order('entry_date', { ascending: false }),
+      sb.from('member_holding_sales').select('holding_id, qty, price, sold_on'),
+    ]);
+    if (h.error || s.error) return showError((h.error || s.error).message);
+    state.holdings = h.data || []; state.sales = s.data || [];
+    const codes = [...new Set(state.holdings.map((x) => x.stock_code))];
+    state.prices = {}; state.priceError = false;
+    if (codes.length) {
+      const p = await sb.from('member_prices').select('stock_code, close, ma5, ma20, ma60, ma120, high_52w, low_52w, trade_date').in('stock_code', codes);
+      if (p.error) state.priceError = true;
+      else (p.data || []).forEach((r) => { state.prices[r.stock_code] = r; });
+    }
+    render();
+  }
+
+  // ── 표 렌더 ───────────────────────────────────────────────
+  function calc(h) {
+    const sales = state.sales.filter((x) => x.holding_id === h.id);
+    return { sales: sales, s: HoldingsCalc.summarize(h, sales, state.prices[h.stock_code], kstToday()) };
+  }
+
+  function statusSelect(h) {
+    return '<select class="st-select" data-status="' + esc(h.id) + '" aria-label="상태">' +
+      ['open', 'watch', 'closed'].map((k) => '<option value="' + k + '"' + (h.status === k ? ' selected' : '') + '>' + STATUS_LABEL[k] + '</option>').join('') +
+      '</select>';
+  }
+
+  function openRow(h) {
+    const c = calc(h), s = c.s, price = state.prices[h.stock_code];
+    const priceCell = !price || price.close == null
+      ? (state.priceError ? '<span class="badge">시세 오류</span>' : '<span class="badge na">시세 대기</span>')
+      : won(Number(price.close)) + (s.priceStale ? '<span class="badge">시세 지연</span>' : '');
+    const plCell = s.unrealized === null ? '-'
+      : '<span class="' + signCls(s.unrealized) + '">' + won(s.unrealized) + ' (' + pct(s.unrealizedPct) + ')</span>';
+    let html = '<tr data-id="' + esc(h.id) + '">' +
+      '<td class="chk"><input type="checkbox" data-sel="' + esc(h.id) + '"' + (state.selected.has(h.id) ? ' checked' : '') + ' aria-label="선택"></td>' +
+      '<td><span class="stock-name">' + esc(h.stock_name) + '</span> <span class="muted small">' + esc(h.stock_code) + '</span>' +
+        (h.memo ? '<div class="memo-line">' + esc(h.memo) + '</div>' : '') + '</td>' +
+      '<td>' + won(Number(h.avg_price)) + '</td>' +
+      '<td>' + Number(h.remaining_qty).toLocaleString('ko-KR') + '주</td>' +
+      '<td>' + priceCell + '</td>' +
+      '<td>' + plCell + '</td>' +
+      '<td>' + (s.maGapPct === null ? '-' : '<span class="' + signCls(s.maGapPct) + '">' + pct(s.maGapPct) + '</span>') + '</td>' +
+      '<td>' + statusSelect(h) + '</td></tr>';
+    if (state.sellFor === h.id) {
+      html += '<tr class="sell-panel" data-sell-row="' + esc(h.id) + '"><td colspan="8"><div class="sell-box">' +
+        '<b>' + esc(h.stock_name) + ' 청산 기록</b>' +
+        '<span class="muted small" style="flex-basis:100%">이미 매도하신 사실을 기록합니다. 이 화면에서 주문은 나가지 않습니다.</span>' +
+        '<input type="text" inputmode="decimal" data-sell="price" placeholder="매도가(원) *" aria-label="매도가">' +
+        '<input type="text" inputmode="decimal" data-sell="qty" placeholder="수량(비우면 전량)" aria-label="매도 수량">' +
+        '<input type="date" data-sell="date" value="' + kstToday() + '" aria-label="매도일">' +
+        '<button type="button" class="act-btn" data-sell-go="' + esc(h.id) + '" style="padding:7px 14px">기록</button>' +
+        '<button type="button" class="act-btn" data-sell-cancel="1" style="padding:7px 14px">취소</button>' +
+        '</div></td></tr>';
+    }
+    return html;
+  }
+
+  function openTable(list) {
+    return '<div class="tbl-scroll"><table><thead><tr>' +
+      '<th class="chk"><input type="checkbox" data-sel-all aria-label="이 표 전체 선택"></th>' +
+      '<th>종목</th><th>평균단가</th><th>잔여수량</th><th>현재가</th><th>평가손익</th>' +
+      '<th title="현재가가 20일 이동평균선보다 몇 % 위(+)·아래(-)에 있는지">20일선 대비</th><th>상태</th>' +
+      '</tr></thead><tbody>' + list.map(openRow).join('') + '</tbody></table></div>';
+  }
+
+  function closedRow(h) {
+    const c = calc(h);
+    const real = c.s.realized;
+    const lastSale = c.sales.map((x) => x.sold_on).sort().pop();
+    return '<tr data-id="' + esc(h.id) + '">' +
+      '<td class="chk"><input type="checkbox" data-sel="' + esc(h.id) + '"' + (state.selected.has(h.id) ? ' checked' : '') + ' aria-label="선택"></td>' +
+      '<td><span class="stock-name">' + esc(h.stock_name) + '</span> <span class="muted small">' + esc(h.stock_code) + '</span>' +
+        (h.memo ? '<div class="memo-line">' + esc(h.memo) + '</div>' : '') + '</td>' +
+      '<td>' + won(Number(h.avg_price)) + '</td>' +
+      '<td>' + esc(h.entry_date || '-') + ' ~ ' + esc(h.closed_on || lastSale || '-') + '</td>' +
+      '<td>' + (real === null ? '-' : '<span class="' + signCls(real) + '">' + won(real) + ' (' + pct(c.s.realizedPct) + ')</span>') + '</td>' +
+      '</tr>';
+  }
+
+  function render() {
+    const wasOpen = !!($('closed-details') && $('closed-details').open);
+    const open = state.holdings.filter((h) => h.status === 'open');
+    const watch = state.holdings.filter((h) => h.status === 'watch');
+    const closed = state.holdings.filter((h) => h.status === 'closed');
+
+    const live = new Set(state.holdings.map((h) => h.id));
+    state.selected.forEach((id) => { if (!live.has(id)) state.selected.delete(id); });
+    if (state.sellFor && !state.holdings.some((h) => h.id === state.sellFor && h.status !== 'closed')) state.sellFor = null;
+
+    // 요약: 보유·관찰 종목의 합계 + 모든 매도 기록의 실현손익
+    const rows = state.holdings.map((h) => calc(h).s);
+    const t = HoldingsCalc.totals(rows);
+    let pricedInvested = 0, noPrice = 0, nPriced = 0, nStale = 0, latest = '';
+    state.holdings.forEach((h, i) => {
+      if (h.status === 'closed') return;
+      if (rows[i].marketValue !== null) { pricedInvested += rows[i].invested; nPriced++; if (rows[i].priceStale) nStale++; } else noPrice++;
+      const p = state.prices[h.stock_code];
+      if (p && p.trade_date && p.trade_date > latest) latest = p.trade_date;
+    });
+    const unrPct = pricedInvested ? (t.unrealized / pricedInvested) * 100 : null;
+    const exclude = noPrice ? (state.priceError ? '시세 오류 ' : '시세 대기 ') + noPrice + '종목 제외' : '';
+    const card = (label, value, sub, cls) => '<div class="summary-card"><div class="summary-label">' + label + '</div><div class="summary-value ' + (cls || '') + '">' + value + '</div>' + (sub ? '<div class="summary-sub">' + sub + '</div>' : '') + '</div>';
+    $('summary').innerHTML = '<div class="summary-grid">' +
+      card('투자금', won(t.invested), '시세 반영 종목 ' + won(pricedInvested) + ' / 전체 ' + won(t.invested)) +
+      card('평가금액', nPriced ? won(t.marketValue) : '-', '시세 반영 종목 기준' + (exclude ? ' · ' + exclude : '')) +
+      card('평가손익', nPriced ? won(t.unrealized) : '-', nPriced ? pct(unrPct) + ' (시세 반영 종목 투자금 기준)' + (exclude ? ' · ' + exclude : '') : exclude, nPriced ? signCls(t.unrealized) : '') +
+      card('실현손익', won(t.realized), '매도 기록 합계', signCls(t.realized)) +
+      '</div><p class="price-date">시세 기준일: ' + (latest ? esc(latest) + ' (종가)' : '-') +
+      (nStale ? ' · 시세 지연 ' + nStale + '종목(기준일이 5일 넘게 지남)' : '') + '</p>' +
+      (state.priceError ? '<p class="msg-err small" style="margin:-12px 0 16px">시세를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>' : '');
+
+    let html = '<div class="section-h2" style="margin-top:6px">보유 ' + open.length + '종목</div>' +
+      (open.length ? openTable(open) : '<div class="empty">보유 중인 종목이 없습니다. 아래에서 등록해 주세요.</div>');
+    if (watch.length) html += '<div class="section-h2">관찰 ' + watch.length + '종목</div>' + openTable(watch);
+    if (closed.length) {
+      html += '<details id="closed-details" style="margin-top:20px"' + (wasOpen ? ' open' : '') + '><summary style="cursor:pointer;font-size:13px;color:var(--text-muted)">청산 완료 ' + closed.length + '건 보기</summary>' +
+        '<div class="tbl-scroll"><table style="margin-top:10px"><thead><tr>' +
+        '<th class="chk"><input type="checkbox" data-sel-all aria-label="이 표 전체 선택"></th>' +
+        '<th>종목</th><th>평균단가</th><th>매수일~청산일</th><th>실현손익</th></tr></thead><tbody>' +
+        closed.map(closedRow).join('') + '</tbody></table></div></details>';
+    }
+    $('tables').innerHTML = html;
+    refreshSelectionUi();
+  }
+
+  function refreshSelectionUi() {
+    const n = state.selected.size;
+    $('sel-count').textContent = '선택 ' + n + '개';
+    $('sel-delete').disabled = n === 0 || state.busy;
+    document.querySelectorAll('#tables table').forEach((tb) => {
+      const boxes = tb.querySelectorAll('input[data-sel]');
+      const all = tb.querySelector('input[data-sel-all]');
+      if (all) all.checked = boxes.length > 0 && Array.from(boxes).every((b) => b.checked);
+    });
+  }
+
+  // ── 행 펼침: 차트 위치 사실 수치 + 종목 뉴스 ─────────────
+  const safeUrl = (u) => (/^https?:\/\//i.test(String(u == null ? '' : u)) ? String(u) : '#');
+  function sparkSvg(closes, avgPrice) {
+    const pts0 = (Array.isArray(closes) ? closes : []).map((x) => Number(x && x.c)).filter((v) => Number.isFinite(v));
+    if (pts0.length < 2) return '<p class="note">차트 데이터를 준비 중입니다.</p>';
+    const W = 320, H = 110, P = 6;
+    const hasAvg = Number.isFinite(avgPrice);
+    const vals = hasAvg ? pts0.concat([avgPrice]) : pts0;
+    const lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    const x = (i) => P + (i * (W - 2 * P)) / (pts0.length - 1);
+    const y = (v) => H - P - ((v - lo) * (H - 2 * P)) / ((hi - lo) || 1);
+    const line = pts0.map((v, i) => x(i).toFixed(1) + ',' + y(v).toFixed(1)).join(' ');
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="최근 60거래일 종가 추이">' +
+      '<polyline points="' + line + '" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+      (hasAvg ? '<line x1="' + P + '" x2="' + (W - P) + '" y1="' + y(avgPrice).toFixed(1) + '" y2="' + y(avgPrice).toFixed(1) + '" stroke="currentColor" stroke-dasharray="4 3" opacity=".6"/>' : '') + '</svg>';
+  }
+  async function toggleDetail(h, rowEl) {
+    const next = rowEl.nextElementSibling;
+    if (next && next.classList.contains('detail-row')) { next.remove(); return; }
+    const tr = document.createElement('tr');
+    tr.className = 'detail-row';
+    tr.innerHTML = '<td colspan="8"><span class="muted small">불러오는 중…</span></td>';
+    rowEl.after(tr);
+    let d = null, failed = false;
+    try {
+      const r = await sb.from('member_stock_detail').select('closes, news, updated_at').eq('stock_code', h.stock_code).maybeSingle();
+      if (r.error) failed = true; else d = r.data;
+    } catch (e) { failed = true; }
+    if (!tr.isConnected) return;                 // 기다리는 사이 접었거나 표가 다시 그려짐
+    if (failed) { tr.innerHTML = '<td colspan="8"><span class="msg-err small">상세 정보를 불러오지 못했습니다.</span></td>'; return; }
+    const pos = HoldingsCalc.chartPosition(state.prices[h.stock_code]);
+    const f = (v) => (v === null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
+    const news = d && Array.isArray(d.news) ? d.news.filter((n) => n && n.title) : [];
+    tr.innerHTML = '<td colspan="8"><div class="detail">' +
+      '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>' +
+      '<div class="detail-pos"><h4>차트 위치 (사실 수치)</h4><ul>' +
+      '<li>이동평균 배열: ' + esc(pos.alignment || '데이터 부족') + '</li>' +
+      '<li>5일선 대비 ' + f(pos.vs.ma5) + ' · 20일선 대비 ' + f(pos.vs.ma20) + '</li>' +
+      '<li>60일선 대비 ' + f(pos.vs.ma60) + ' · 120일선 대비 ' + f(pos.vs.ma120) + '</li>' +
+      '<li>52주 고점 대비(종가 기준) ' + f(pos.vs.high52) + ' · 52주 저점 대비(종가 기준) ' + f(pos.vs.low52) + '</li>' +
+      '</ul></div>' +
+      '<div class="detail-news"><h4>관련 뉴스</h4>' +
+      (news.length ? '<ul>' + news.map((n) => '<li><a href="' + esc(safeUrl(n.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a> <span class="note">' + esc(n.source || '') + (n.date ? ' · ' + esc(n.date) : '') + '</span></li>').join('') + '</ul>' : '<p class="note">표시할 뉴스가 없습니다.</p>') +
+      '<p class="note">뉴스 목록은 종목 기준으로 모든 회원에게 동일하게 제공되며, 내용에 대한 평가나 투자 의견이 아닙니다.</p></div>' +
+      '</div></td>';
+  }
+
+  // ── 쓰기 ──────────────────────────────────────────────────
+  async function addHoldings(rows) {            // rows: [{code, avg, qty, date, memo}]
+    const codes = [...new Set(rows.map((r) => r.code))];
+    const p = await sb.from('member_prices').select('stock_code, stock_name').in('stock_code', codes);
+    if (p.error) throw new Error('종목 정보를 불러오지 못했습니다');
+    const names = Object.fromEntries((p.data || []).map((r) => [r.stock_code, r.stock_name]));
+    const missing = codes.filter((c) => !names[c]);
+    if (missing.length) throw new Error('종목코드를 확인할 수 없습니다(' + missing.join(', ') + '). 시세 수집 후 다시 시도하세요.');
+    const { data: s } = await sb.auth.getSession();
+    if (!s.session) throw new Error('로그인이 만료되었습니다. 메인에서 다시 로그인해 주세요.');
+    const payload = rows.map((r) => ({
+      user_id: s.session.user.id, stock_code: r.code, stock_name: names[r.code], status: 'open',
+      avg_price: r.avg, initial_qty: r.qty, remaining_qty: r.qty,
+      entry_date: r.date || kstToday(), memo: r.memo || null,
+    }));
+    const ins = await sb.from('member_holdings').insert(payload);
+    if (ins.error) throw new Error(ins.error.message);
+  }
+  async function setStatus(id, status) {           // 'open' <-> 'watch' (status 컬럼만 보낸다)
+    const r = await sb.from('member_holdings').update({ status: status }).eq('id', id).in('status', ['open', 'watch']);
+    if (r.error) throw new Error(r.error.message);
+  }
+  async function sell(id, qty, price, date) {      // qty 비우면 전량
+    const r = await sb.rpc('member_sell', { p_holding: id, p_qty: qty === '' ? null : Number(qty), p_price: Number(price), p_date: date || kstToday() });
+    if (r.error) throw new Error(r.error.message);
+  }
+  async function deleteMany(ids) {                 // 기록에서 지움(매도 기록이 아님)
+    const r = await sb.from('member_holdings').delete().in('id', ids);
+    if (r.error) throw new Error(r.error.message);
+  }
+
+  // 쓰기 공통: 실패 원인을 화면에 보여 주고, 성공하면 다시 읽어 갱신한다.
+  async function run(fn, okText) {
+    if (state.busy) return;
+    state.busy = true; refreshSelectionUi();
+    try {
+      await fn();
+      posSay(okText, true);
+    } catch (e) {
+      posSay(e.message || '처리하지 못했습니다.', false);
+    }
+    try { await loadAll(); } catch (e) { posSay(e.message || '다시 읽지 못했습니다.', false); }
+    state.busy = false; refreshSelectionUi();
+  }
+
+  // ── 표 이벤트(위임) ───────────────────────────────────────
+  const tables = $('tables');
+  tables.addEventListener('change', (ev) => {
+    const t = ev.target;
+    if (t.matches('select[data-status]')) {
+      const id = t.dataset.status, h = state.holdings.find((x) => x.id === id);
+      if (!h) return;
+      if (state.busy) { posSay('처리 중입니다. 잠시 후 다시 시도하세요.', false); render(); return; }
+      if (t.value === 'closed') { state.sellFor = id; render(); return; }
+      if (t.value === h.status) return;
+      run(() => setStatus(id, t.value), h.stock_name + ' 상태를 ' + STATUS_LABEL[t.value] + '(으)로 바꿨습니다.');
+    } else if (t.matches('input[data-sel]')) {
+      if (t.checked) state.selected.add(t.dataset.sel); else state.selected.delete(t.dataset.sel);
+      refreshSelectionUi();
+    } else if (t.matches('input[data-sel-all]')) {
+      t.closest('table').querySelectorAll('input[data-sel]').forEach((b) => {
+        b.checked = t.checked;
+        if (t.checked) state.selected.add(b.dataset.sel); else state.selected.delete(b.dataset.sel);
+      });
+      refreshSelectionUi();
+    }
+  });
+  tables.addEventListener('click', (ev) => {
+    if (!ev.target.closest('select, input, button, a')) {
+      const row = ev.target.closest('tr[data-id]');
+      if (row && row.querySelector('select[data-status]')) {
+        const h = state.holdings.find((x) => x.id === row.dataset.id);
+        if (h) toggleDetail(h, row);
+      }
+      return;
+    }
+    const b = ev.target.closest('button');
+    if (!b) return;
+    if (b.dataset.sellCancel) { state.sellFor = null; render(); return; }
+    if (b.dataset.sellGo) {
+      const id = b.dataset.sellGo, h = state.holdings.find((x) => x.id === id);
+      const box = b.closest('.sell-box');
+      const price = box.querySelector('[data-sell="price"]').value.replace(/,/g, '').trim();
+      const qty = box.querySelector('[data-sell="qty"]').value.replace(/,/g, '').trim();
+      const date = box.querySelector('[data-sell="date"]').value;
+      if (!(Number(price) > 0)) return posSay('매도가를 올바른 숫자로 입력하세요.', false);
+      if (qty !== '') {
+        if (!(Number(qty) > 0)) return posSay('매도 수량을 올바른 숫자로 입력하세요.', false);
+        if (Number(qty) > Number(h.remaining_qty)) return posSay('남은 수량(' + Number(h.remaining_qty).toLocaleString('ko-KR') + '주)보다 많이 기록할 수 없습니다.', false);
+      }
+      if (state.busy) return posSay('처리 중입니다. 잠시 후 다시 시도하세요.', false);
+      const partial = qty !== '' && Number(qty) < Number(h.remaining_qty);
+      state.sellFor = null;
+      run(() => sell(id, qty, price, date), h.stock_name + (partial ? ' 일부 매도(' + Number(qty).toLocaleString('ko-KR') + '주)를 기록했습니다.' : ' 청산을 기록했습니다.'));
+    }
+  });
+
+  $('sel-delete').addEventListener('click', () => {
+    const ids = Array.from(state.selected);
+    if (!ids.length) return;
+    if (!confirm('선택한 ' + ids.length + '개 기록을 지웁니다. 되돌릴 수 없습니다.')) return;
+    state.selected.clear();
+    run(() => deleteMany(ids), ids.length + '개 기록을 지웠습니다.');
+  });
+
+  $('logout').addEventListener('click', async () => {
+    try { await sb.auth.signOut(); } catch (e) { /* 무시: 어쨌든 메인으로 이동 */ }
+    location.href = '/';
+  });
+
+  // ── 등록 폼(한 번만 그린다) ───────────────────────────────
+  function holdingRowHtml() {
+    return '<div class="hold-row" data-row>' +
+      '<input data-f="code" inputmode="numeric" maxlength="6" placeholder="종목코드" aria-label="종목코드">' +
+      '<input data-f="avg" inputmode="decimal" placeholder="평균 매수가(원)" aria-label="평균 매수가">' +
+      '<input data-f="qty" inputmode="decimal" placeholder="수량" aria-label="수량">' +
+      '<input data-f="date" type="date" aria-label="매수일(선택)" title="매수일(선택, 비우면 오늘)">' +
+      '<input data-f="memo" maxlength="200" placeholder="메모(선택)" aria-label="메모">' +
+      '</div>';
+  }
+  function renderForm() {
+    $('hold-rows').innerHTML = Array.from({ length: HOLD_START_ROWS }, holdingRowHtml).join('');
+  }
+  const rowEls = () => Array.from(document.querySelectorAll('#hold-rows [data-row]'));
+  const val = (row, f) => row.querySelector('[data-f="' + f + '"]').value.trim();
+
+  $('hold-add').addEventListener('click', () => {
+    if (rowEls().length >= HOLD_MAX_ROWS) return say('holding-msg', '한 번에 최대 ' + HOLD_MAX_ROWS + '종목까지 등록할 수 있습니다.', false);
+    $('hold-rows').insertAdjacentHTML('beforeend', holdingRowHtml());
+  });
+  $('hold-clear').addEventListener('click', () => { renderForm(); say('holding-msg', ''); });
+
+  $('holding-form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (state.busy) return;
+    const rows = [];
+    let bad = 0;
+    rowEls().forEach((row) => {
+      row.classList.remove('err');
+      const code = val(row, 'code'), avgS = val(row, 'avg').replace(/,/g, ''), qtyS = val(row, 'qty').replace(/,/g, '');
+      const memo = val(row, 'memo'), date = val(row, 'date');
+      if (!code && !avgS && !qtyS && !memo) return;          // 빈 행은 건너뜀
+      const avg = Number(avgS), qty = Number(qtyS);
+      if (!/^\d{6}$/.test(code) || !(avgS !== '' && Number.isFinite(avg) && avg > 0) || !(qtyS !== '' && Number.isFinite(qty) && qty > 0)) {
+        row.classList.add('err'); bad++; return;
+      }
+      rows.push({ code: code, avg: avg, qty: qty, date: date, memo: memo });
+    });
+    if (bad) return say('holding-msg', '붉게 표시된 ' + bad + '개 행을 확인해 주세요. 종목코드는 숫자 6자리, 매수가·수량은 0보다 커야 합니다. 하나라도 틀리면 저장하지 않습니다.', false);
+    if (!rows.length) return say('holding-msg', '등록할 종목을 입력해 주세요.', false);
+    if (rows.length > HOLD_MAX_ROWS) return say('holding-msg', '한 번에 최대 ' + HOLD_MAX_ROWS + '종목까지 등록할 수 있습니다.', false);
+    if (state.holdings.length + rows.length > MAX_PER_MEMBER) return say('holding-msg', '기록은 최대 ' + MAX_PER_MEMBER + '개까지 둘 수 있습니다. 현재 ' + state.holdings.length + '개입니다. 청산 완료된 기록을 지운 뒤 다시 시도해 주세요.', false);
+
+    state.busy = true;
+    const btn = $('holding-submit'); btn.disabled = true;
+    say('holding-msg', '등록 중입니다...', true);
+    try {
+      await addHoldings(rows);
+      renderForm();
+      say('holding-msg', rows.length + '종목을 등록했습니다.', true);
+    } catch (e) {
+      say('holding-msg', e.message || '등록하지 못했습니다.', false);
+    }
+    try { await loadAll(); } catch (e) { say('holding-msg', e.message || '다시 읽지 못했습니다.', false); }
+    state.busy = false; btn.disabled = false; refreshSelectionUi();
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>
