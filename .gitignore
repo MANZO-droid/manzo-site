@@ -6,3 +6,4 @@ node_modules
 !.env.example
 MANZO/
 docs_cache/
+memory/
