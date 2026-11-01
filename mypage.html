@@ -156,12 +156,23 @@
         </div>
       </form>
       <div id="holding-msg" style="font-size:12.5px;margin-top:10px;min-height:18px"></div>
+      <p class="muted small" style="margin:6px 0 0">회원님이 My page에 등록한 종목 정보는 <b>관리자 화면에 표시되지 않으며, 관리자는 이를 열람하지 않습니다.</b> 알람 리포트는 시스템이 자동으로 만들어 보내 드립니다.</p>
     </div>
 
     <div class="footer-links">
       <a href="/">메인으로</a>
       <button type="button" id="logout">로그아웃</button>
     </div>
+  </div>
+
+  <div class="form-wrap" id="consent-box" hidden style="margin-top:24px">
+    <div class="form-title">메일 수신 설정</div>
+    <label style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.6;cursor:pointer;margin:8px 0 0">
+      <input type="checkbox" id="consent-check" style="margin-top:4px;flex:none">
+      <span>(선택) 만조리서치가 보내는 <b>스터디 종목 리포트</b>와, My page에 등록한 종목이 있으면 <b>그 종목의 알람 리포트</b>를 가입 이메일로 받는 데 동의합니다. 거래일 장 마감 후 하루 1통이며, 이 체크를 해제하면 바로 중단됩니다. 투자 권유·자문이 아닙니다.</span>
+    </label>
+    <div id="consent-msg" style="font-size:12.5px;margin-top:8px;min-height:18px"></div>
+    <p class="muted small" id="consent-privacy" style="margin:4px 0 0">회원님이 My page에 등록한 종목 정보는 <b>관리자 화면에 표시되지 않으며, 관리자는 이를 열람하지 않습니다.</b> 알람 리포트는 시스템이 자동으로 만들어 보내 드립니다.</p>
   </div>
 </div>
 
@@ -186,12 +197,17 @@
   // REPORT_MAIL_READY: 메일 발송 기능(P3~P4)이 붙기 전에는 false. 그 사이에는 확인 창에서 "요청만 접수된다"고 솔직히 알린다.
   const REPORT_LIMIT = 3, REPORT_MAIL_READY = false;
   const state = { holdings: [], sales: [], prices: {}, priceError: false, selected: new Set(), sellFor: null, busy: false,
-                  reportAccess: false, reports: [], userEmail: '', reportSig: '' };
+                  reportAccess: false, reports: [], userEmail: '', reportSig: '', consentReady: false };
+  // 메일 수신 동의 문구 버전. 화면의 문구를 바꾸면 이 값과 DB 함수 member_set_mail_consent 의 v_current 를 함께 올린다.
+  const CONSENT_VERSION = 'v1';
   const colCount = () => (state.reportAccess ? 9 : 8);
 
   function show(which) {   // 'login' | 'denied' | 'app' | 'error'
     $('view-loading').hidden = true;
     ['login', 'denied', 'app', 'error'].forEach((k) => { $('view-' + k).hidden = k !== which; });
+    // 메일 수신 동의는 기록장 권한과 무관하게 로그인한 모든 회원이 할 수 있다(denied 화면에도 보인다)
+    $('consent-box').hidden = !(state.consentReady && (which === 'denied' || which === 'app'));
+    $('consent-privacy').hidden = which === 'app';   // 기록장 화면에는 종목 등록 칸 아래에 같은 안내가 이미 있다
   }
   function showError(detail) {
     $('error-detail').textContent = detail || '';
@@ -205,10 +221,46 @@
   }
   const posSay = (t, ok) => say('pos-msg', t, ok);
 
+  // ── 메일 수신 동의 ────────────────────────────────────────
+  // 체크 즉시 DB 함수로 저장한다. 실패하면 체크를 원래대로 되돌리고 이유를 알린다(저장되지 않은 동의를 보여 주지 않기 위해).
+  const consentSay = (t, ok) => say('consent-msg', t, ok);
+  const consentWhen = (iso) => { const d = new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString(); return d.slice(0, 4) + '년 ' + Number(d.slice(5, 7)) + '월 ' + Number(d.slice(8, 10)) + '일'; };
+  async function loadConsent(userId) {
+    const r = await sb.from('member_mail_consent').select('digest_consent, consented_at, withdrawn_at').eq('user_id', userId).maybeSingle();
+    if (r.error) throw new Error(r.error.message);
+    const on = !!(r.data && r.data.digest_consent);
+    $('consent-check').checked = on;
+    if (on) consentSay(consentWhen(r.data.consented_at) + ' 동의됨', true);
+    else if (r.data && r.data.withdrawn_at) consentSay(consentWhen(r.data.withdrawn_at) + ' 해제됨', true);
+    else consentSay('', true);
+    state.consentReady = true;
+  }
+  async function onConsentChange() {
+    const box = $('consent-check'), want = box.checked;
+    box.disabled = true; consentSay('저장 중입니다...', true);
+    try {
+      const { data, error } = await sb.rpc('member_set_mail_consent', { p_agree: want, p_version: CONSENT_VERSION });
+      if (error || !data || !data.ok) {
+        box.checked = !want;
+        consentSay(data && data.reason === 'stale_version' ? '화면이 오래되었습니다. 새로고침한 뒤 다시 시도해 주세요.'
+                                                          : '저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.', false);
+      } else {
+        consentSay(want ? consentWhen(new Date().toISOString()) + ' 동의됨' : consentWhen(new Date().toISOString()) + ' 해제됨', true);
+      }
+    } catch (e) {
+      box.checked = !want;
+      consentSay('저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.', false);
+    } finally {
+      box.disabled = false;
+    }
+  }
+  $('consent-check').addEventListener('change', onConsentChange);
+
   async function init() {
     try {
       const { data } = await sb.auth.getSession();
       if (!data.session) return show('login');
+      try { await loadConsent(data.session.user.id); } catch (e) { state.consentReady = false; }   // 동의 블록을 못 읽어도 기록장은 계속 쓸 수 있다
       const { data: acc, error } = await sb.from('member_feature_access')
         .select('holdings_enabled, reports_enabled').eq('user_id', data.session.user.id).maybeSingle();
       if (error) return showError(error.message);
