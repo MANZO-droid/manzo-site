@@ -70,6 +70,7 @@
   .detail a { color: var(--accent); }
   .detail .note { font-size: 12px; color: var(--text-muted); }
   .detail-chart { color: var(--accent); }
+  .detail-chart.wide { grid-column: 1 / -1; }
   .detail-chart svg { display: block; max-width: 100%; height: auto; }
   .detail-chart .note { color: var(--text-muted); }
   @media (max-width: 700px) { .detail { grid-template-columns: minmax(0, 1fr); width: calc(100vw - 68px); } }
@@ -438,6 +439,74 @@
 
   // ── 행 펼침: 차트 위치 사실 수치 + 종목 뉴스 ─────────────
   const safeUrl = (u) => (/^https?:\/\//i.test(String(u == null ? '' : u)) ? String(u) : '#');
+  // 봉차트 + 이동평균선: index.html의 makeRealCandleSVG와 같은 모양·색(공유 JS 없이 파일마다 복사하는 사이트 방식).
+  // 데이터 값은 모두 Number()로 바꿔 SVG에 넣고, 날짜 글자만 esc를 거친다.
+  const MA_LINE_STYLE = [
+    { key: 'ma5',   color: '#E67E22', label: '5일'   },
+    { key: 'ma20',  color: '#8E44AD', label: '20일'  },
+    { key: 'ma60',  color: '#27AE60', label: '60일'  },
+    { key: 'ma120', color: '#555566', label: '120일' },
+  ];
+  function candleSvg(ohlcv, maLines, title) {
+    const num = (v) => { const x = Number(v); return Number.isFinite(x) ? x : 0; };
+    const data = (Array.isArray(ohlcv) ? ohlcv : []).filter((c) => c && Number.isFinite(Number(c.close))).slice(-60);
+    const n = data.length;
+    if (n < 2) return '';
+    const w = 640, h = 280;
+    const lines = {};
+    MA_LINE_STYLE.forEach((m) => {
+      const arr = maLines && Array.isArray(maLines[m.key]) ? maLines[m.key].slice(-n) : null;
+      // 앞쪽이 모자라면 null로 채워 x축을 ohlcv와 맞춘다
+      lines[m.key] = arr ? Array(n - arr.length).fill(null).concat(arr.map((v) => (v == null || !Number.isFinite(Number(v)) ? null : Number(v)))) : null;
+    });
+    const pL = 56, pR = 16, pT = 24, pB = 26, cw = w - pL - pR, ch = h - pT - pB;
+    const slot = cw / n, bW = Math.max(1, slot * 0.65);
+    let yMin = Math.min.apply(null, data.map((c) => num(c.low)));
+    let yMax = Math.max.apply(null, data.map((c) => num(c.high)));
+    MA_LINE_STYLE.forEach((m) => { (lines[m.key] || []).forEach((v) => { if (v != null) { yMin = Math.min(yMin, v); yMax = Math.max(yMax, v); } }); });
+    yMin *= 0.997; yMax *= 1.003;
+    const py = (v) => pT + ch - ((v - yMin) / ((yMax - yMin) || 1)) * ch;
+    const cx = (i) => pL + (i + 0.5) * slot;
+    const candles = data.map((c, i) => {
+      const o = num(c.open), hi = num(c.high), lo = num(c.low), cl = num(c.close);
+      const color = cl >= o ? '#C0392B' : '#2470B3', x = cx(i).toFixed(1);
+      const bTop = py(Math.max(o, cl)), bBot = py(Math.min(o, cl)), bH = Math.max(1, bBot - bTop);
+      return '<line x1="' + x + '" y1="' + py(hi).toFixed(1) + '" x2="' + x + '" y2="' + py(lo).toFixed(1) + '" stroke="' + color + '" stroke-width="0.8"/>' +
+        '<rect x="' + (cx(i) - bW / 2).toFixed(1) + '" y="' + bTop.toFixed(1) + '" width="' + bW.toFixed(1) + '" height="' + bH.toFixed(1) + '" fill="' + color + '"/>';
+    }).join('');
+    const grid = [0, 0.25, 0.5, 0.75, 1].map((f) => {
+      const val = yMin + (yMax - yMin) * f, y = py(val);
+      return '<line x1="' + pL + '" y1="' + y.toFixed(1) + '" x2="' + (w - pR) + '" y2="' + y.toFixed(1) + '" stroke="#ddd8ce" stroke-width="0.8"/>' +
+        '<text x="' + (pL - 4) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end" font-size="9" fill="#9494A8">' + (val >= 10000 ? (val / 10000).toFixed(0) + '만' : (val / 1000).toFixed(0) + 'K') + '</text>';
+    }).join('');
+    const step = Math.ceil(n / 5);
+    const xlbls = Array.from({ length: 6 }, (_, i) => {
+      const idx = Math.min(i * step, n - 1);
+      return '<text x="' + cx(idx).toFixed(1) + '" y="' + (h - 5) + '" text-anchor="middle" font-size="9" fill="#9494A8">' + esc(String(data[idx].date || '').slice(5)) + '</text>';
+    }).join('');
+    // 이동평균선: 값이 없는 구간(null)은 억지로 잇지 않고 끊는다
+    const maSvg = MA_LINE_STYLE.map((m) => {
+      const arr = lines[m.key];
+      if (!arr) return '';
+      const segs = []; let cur = [];
+      arr.forEach((v, i) => {
+        if (v == null) { if (cur.length > 1) segs.push(cur); cur = []; return; }
+        cur.push(cx(i).toFixed(1) + ',' + py(v).toFixed(1));
+      });
+      if (cur.length > 1) segs.push(cur);
+      return segs.map((seg) => '<polyline points="' + seg.join(' ') + '" fill="none" stroke="' + m.color + '" stroke-width="1.1"/>').join('');
+    }).join('');
+    // 범례(오른쪽 위): index.html과 같은 위치·간격
+    const legendItems = MA_LINE_STYLE.filter((m) => lines[m.key]);
+    const legend = legendItems.map((m, i) => {
+      const lx = w - pR - (legendItems.length - i) * 46;
+      return '<line x1="' + lx + '" y1="' + (pT - 9) + '" x2="' + (lx + 10) + '" y2="' + (pT - 9) + '" stroke="' + m.color + '" stroke-width="1.5"/>' +
+        '<text x="' + (lx + 13) + '" y="' + (pT - 6) + '" font-size="8" fill="#5A5A72">' + esc(m.label) + '</text>';
+    }).join('');
+    const lbl = title ? '<text x="' + pL + '" y="' + (pT - 6) + '" font-size="10" fill="#5A5A72" font-weight="600">' + esc(title) + '</text>' : '';
+    return '<svg class="candle" viewBox="0 0 ' + w + ' ' + h + '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + esc(title || '') + ' 최근 ' + n + '거래일 봉차트와 이동평균선">' +
+      '<rect width="' + w + '" height="' + h + '" fill="#EEE9DF"/>' + grid + candles + maSvg + xlbls + lbl + legend + '</svg>';
+  }
   function sparkSvg(closes, avgPrice) {
     const pts0 = (Array.isArray(closes) ? closes : []).map((x) => Number(x && x.c)).filter((v) => Number.isFinite(v));
     if (pts0.length < 2) return '<p class="note">차트 데이터를 준비 중입니다.</p>';
@@ -461,16 +530,18 @@
     rowEl.after(tr);
     let d = null, failed = false;
     try {
-      const r = await sb.from('member_stock_detail').select('closes, news, updated_at').eq('stock_code', h.stock_code).maybeSingle();
+      const r = await sb.from('member_stock_detail').select('closes, news, ohlcv, ma_lines, updated_at').eq('stock_code', h.stock_code).maybeSingle();
       if (r.error) failed = true; else d = r.data;
     } catch (e) { failed = true; }
     if (!tr.isConnected) return;                 // 기다리는 사이 접었거나 표가 다시 그려짐
     if (failed) { tr.innerHTML = '<td colspan="' + colCount() + '"><span class="msg-err small">상세 정보를 불러오지 못했습니다.</span></td>'; return; }
     const pos = HoldingsCalc.chartPosition(state.prices[h.stock_code]);
     const f = (v) => (v === null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
+    const candle = d ? candleSvg(d.ohlcv, d.ma_lines, h.stock_name + ' 일봉') : '';
     const news = d && Array.isArray(d.news) ? d.news.filter((n) => n && n.title) : [];
     tr.innerHTML = '<td colspan="' + colCount() + '"><div class="detail">' +
-      '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>' +
+      (candle ? '<div class="detail-chart wide">' + candle + '<div class="note">빨강: 종가가 시가 이상 · 파랑: 종가가 시가 미만 · 색 선: 이동평균선(5·20·60·120일)</div></div>'
+        : '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>') +
       '<div class="detail-pos"><h4>차트 위치 (사실 수치)</h4><ul>' +
       '<li>이동평균 배열: ' + esc(pos.alignment || '데이터 부족') + '</li>' +
       '<li>5일선 대비 ' + f(pos.vs.ma5) + ' · 20일선 대비 ' + f(pos.vs.ma20) + '</li>' +
@@ -478,7 +549,7 @@
       '<li>52주 고점 대비(종가 기준) ' + f(pos.vs.high52) + ' · 52주 저점 대비(종가 기준) ' + f(pos.vs.low52) + '</li>' +
       '</ul></div>' +
       '<div class="detail-news"><h4>관련 뉴스</h4>' +
-      (news.length ? '<ul>' + news.map((n) => '<li><a href="' + esc(safeUrl(n.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a> <span class="note">' + esc(n.source || '') + (n.date ? ' · ' + esc(n.date) : '') + '</span></li>').join('') + '</ul>' : '<p class="note">표시할 뉴스가 없습니다.</p>') +
+      (news.length ? '<ul>' + news.map((n) => '<li><a href="' + esc(safeUrl(n.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a> <span class="note">' + esc(n.source || '') + (n.date ? ' · ' + esc(n.date) : '') + '</span></li>').join('') + '</ul>' : '<p class="note">' + (d ? '최근 14일 안에 수집된 관련 기사가 없습니다.' : '아직 이 종목의 상세 정보가 준비되지 않았습니다. 평일 저녁 점검 뒤 채워집니다.') + '</p>') +
       '<p class="note">뉴스 목록은 종목 기준으로 모든 회원에게 동일하게 제공되며, 내용에 대한 평가나 투자 의견이 아닙니다.</p></div>' +
       '</div></td>';
   }
