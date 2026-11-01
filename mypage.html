@@ -63,6 +63,7 @@
   tbody tr[data-id]:has(.st-select) { cursor: pointer; }
   .detail-row td { background: #FAF8F3; }
   .detail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 6px 2px; color: var(--text-primary); }
+  .detail.detail-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; }   /* 봉차트가 가로 전체를 쓸 때 아래 두 칸(차트 위치·뉴스)도 같은 폭으로 반반 */
   .detail > div { min-width: 0; }
   .detail h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; }
   .detail ul { margin: 0; padding-left: 18px; font-size: 13px; }
@@ -73,7 +74,7 @@
   .detail-chart.wide { grid-column: 1 / -1; }
   .detail-chart svg { display: block; max-width: 100%; height: auto; }
   .detail-chart .note { color: var(--text-muted); }
-  @media (max-width: 700px) { .detail { grid-template-columns: minmax(0, 1fr); width: calc(100vw - 68px); } }
+  @media (max-width: 700px) { .detail, .detail.detail-2 { grid-template-columns: minmax(0, 1fr); width: calc(100vw - 68px); } }
   .form-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
   .form-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
   .hold-grid-head, .hold-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.3fr) minmax(0, 1.7fr); gap: 8px; }
@@ -539,7 +540,7 @@
     const f = (v) => (v === null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%');
     const candle = d ? candleSvg(d.ohlcv, d.ma_lines, h.stock_name + ' 일봉') : '';
     const news = d && Array.isArray(d.news) ? d.news.filter((n) => n && n.title) : [];
-    tr.innerHTML = '<td colspan="' + colCount() + '"><div class="detail">' +
+    tr.innerHTML = '<td colspan="' + colCount() + '"><div class="detail' + (candle ? ' detail-2' : '') + '">' +
       (candle ? '<div class="detail-chart wide">' + candle + '<div class="note">빨강: 종가가 시가 이상 · 파랑: 종가가 시가 미만 · 색 선: 이동평균선(5·20·60·120일)</div></div>'
         : '<div class="detail-chart">' + sparkSvg(d ? d.closes : [], Number(h.avg_price)) + '<div class="note">실선: 최근 60거래일 종가 · 점선: 내 평균단가</div></div>') +
       '<div class="detail-pos"><h4>차트 위치 (사실 수치)</h4><ul>' +
