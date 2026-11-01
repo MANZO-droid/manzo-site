@@ -31,10 +31,18 @@ module.exports = async function handler(req, res) {
     const r = await fetch(`${SUPABASE_URL}/rest/v1/member_feature_access?select=user_id,holdings_enabled,reports_enabled&or=(holdings_enabled.eq.true,reports_enabled.eq.true)`, { headers: H });
     if (!r.ok) return res.status(502).json({ error: '허용 목록을 불러오지 못했습니다' });
     const rows = await r.json();
+    // 메일 수신 동의 현황(읽기 전용). 동의는 회원 본인만 바꿀 수 있어서 이 API 에는 쓰기 경로를 두지 않는다.
+    // 동의 여부와 날짜만 돌려준다(보유 종목 등 다른 정보는 읽지 않는다). 못 읽으면 null → 화면이 "확인 불가"로 표시한다.
+    let mailConsent = null;
+    try {
+      const c = await fetch(`${SUPABASE_URL}/rest/v1/member_mail_consent?select=user_id,consented_at&digest_consent=eq.true`, { headers: H });
+      if (c.ok) mailConsent = (await c.json()).map((x) => ({ userId: x.user_id, at: x.consented_at }));
+    } catch (e) { mailConsent = null; }
     return res.status(200).json({
       enabled: rows.filter((x) => x.holdings_enabled).map((x) => x.user_id),
       // 리포트는 기록장과 둘 다 켜져 있을 때만 "허용"으로 본다(DB 함수 member_has_report_access 와 같은 규칙)
       reportEnabled: rows.filter((x) => x.holdings_enabled && x.reports_enabled).map((x) => x.user_id),
+      mailConsent,
     });
   }
   if (req.method === 'POST') {

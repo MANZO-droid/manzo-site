@@ -10,12 +10,18 @@ const handler = require('../api/admin-member-access.js');
 const UID = 'aaaaaaaa-0000-0000-0000-000000000001';
 
 // 가짜 DB 행과 호출 기록. 테스트마다 setup()으로 초기화한다.
-let rows, upserts, callerEmail;
+let rows, upserts, callerEmail, consentRows, consentFail, consentCalls;
 function setup(initialRows, email = 'admin@test.invalid') {
   rows = initialRows; upserts = []; callerEmail = email;
+  consentRows = []; consentFail = false; consentCalls = [];
   global.fetch = async (url, opts = {}) => {
     const u = String(url);
     if (u.includes('/auth/v1/user')) return { ok: true, json: async () => ({ email: callerEmail }) };
+    if (u.includes('/rest/v1/member_mail_consent')) {
+      consentCalls.push({ url: u, method: opts.method || 'GET' });
+      if (consentFail) return { ok: false, json: async () => ({}) };
+      return { ok: true, json: async () => consentRows };
+    }
     if (u.includes('/rest/v1/member_feature_access')) {
       if ((opts.method || 'GET') === 'POST') { upserts.push(JSON.parse(opts.body)[0]); return { ok: true, json: async () => ({}) }; }
       const m = u.match(/user_id=eq\.([0-9a-f-]+)/);
@@ -105,4 +111,31 @@ test('관리자가 아니면 403이고 DB에 아무것도 쓰지 않는다', asy
   assert.strictEqual(r.status, 403);
   assert.strictEqual(upserts.length, 0);
   assert.strictEqual((await call('GET')).status, 403);
+});
+
+test('GET: 메일 수신에 동의한 회원만 날짜와 함께 돌려준다(동의=true 행만 조회)', async () => {
+  setup([]);
+  consentRows = [{ user_id: 'u1', consented_at: '2026-11-01T17:24:44Z' }];
+  const r = await call('GET');
+  assert.strictEqual(r.status, 200);
+  assert.deepStrictEqual(r.body.mailConsent, [{ userId: 'u1', at: '2026-11-01T17:24:44Z' }]);
+  assert.strictEqual(consentCalls.length, 1);
+  assert.ok(consentCalls[0].url.includes('digest_consent=eq.true'), '동의한 행만 조회해야 함');
+  assert.ok(!/stock|holding|memo|avg_price/i.test(consentCalls[0].url.replace('member_feature_access', '')), '동의 조회에 보유 종목 정보가 섞이면 안 됨');
+});
+
+test('GET: 동의 목록을 못 읽어도 기존 허용 목록은 그대로 돌려주고 mailConsent 는 null', async () => {
+  setup([{ user_id: 'u1', holdings_enabled: true, reports_enabled: false }]);
+  consentFail = true;
+  const r = await call('GET');
+  assert.strictEqual(r.status, 200);
+  assert.deepStrictEqual(r.body.enabled, ['u1']);
+  assert.strictEqual(r.body.mailConsent, null);
+});
+
+test('POST: 어떤 요청으로도 메일 수신 동의 표를 쓰지 않는다(읽기 전용)', async () => {
+  setup([]);
+  await call('POST', { userId: UID, enabled: true, feature: 'mailConsent' });
+  await call('POST', { userId: UID, enabled: true, feature: 'holdings' });
+  assert.ok(consentCalls.every((c) => c.method === 'GET'), '동의 표에 GET 외 호출이 있음');
 });
