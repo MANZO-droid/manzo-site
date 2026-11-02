@@ -173,13 +173,12 @@
     </label>
     <div id="consent-msg" style="font-size:12.5px;margin-top:8px;min-height:18px"></div>
     <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-      <label for="alert-pct" style="font-size:13.5px;font-weight:700">알람선 (입력하신 평균 매수가 대비 하락률)</label>
+      <label for="alert-pct" style="font-size:13.5px;font-weight:700">알람선 (입력하신 평균 매수가 대비)</label>
       <div style="display:flex;gap:8px;align-items:center;margin-top:6px;font-size:13.5px">
         <select id="alert-pct" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--font);font-size:13px;background:#fff"></select>
-        <span>하락</span>
         <span id="alert-msg" style="font-size:12.5px;margin-left:6px"></span>
       </div>
-      <p class="muted small" style="margin:8px 0 0">평균 매수가는 회원님이 입력하신 값을 그대로 사용하며, 실제 매수 여부와 무관하게 "이 가격에 샀다면"을 가정한 시뮬레이션 용도로 써도 됩니다. 알람선(기본 3%, 1~10%에서 0.5% 단위로 조정)은 회원님이 직접 정하는 참고용 기준이며, 입력하신 평균 매수가에서 해당 비율만큼 내려간 가격에 닿았는지 알려 드릴 뿐 매도 시점을 알려 드리는 것이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</p>
+      <p class="muted small" style="margin:8px 0 0">평균 매수가는 회원님이 입력하신 값을 그대로 사용하며, 실제 매수 여부와 무관하게 "이 가격에 샀다면"을 가정한 시뮬레이션 용도로 써도 됩니다. 알람선(기본 −3%, −1%~−10% 중 정수로 선택)은 회원님이 직접 정하는 참고용 기준이며, 입력하신 평균 매수가에서 해당 비율만큼 내려간 가격에 닿았는지 알려 드릴 뿐 매도 시점을 알려 드리는 것이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</p>
     </div>
     <p class="muted small" id="consent-privacy" style="margin:4px 0 0">회원님이 My page에 등록한 종목 정보는 <b>관리자 화면에 표시되지 않으며, 관리자는 이를 열람하지 않습니다.</b> 알람 리포트는 시스템이 자동으로 만들어 보내 드립니다.</p>
   </div>
@@ -250,12 +249,12 @@
     $('alert-pct').value = String(state.alertPct);
     state.consentReady = true;
   }
-  // 알람선 선택값(1~10%, 0.5% 단위). DB 함수 member_set_alert_drop 의 허용 범위와 같다.
+  // 알람선 선택값(1~10 의 정수, 화면에는 −1% ~ −10% 로 표시). DB 함수 member_set_alert_drop 의 허용 범위와 같다.
   (function fillAlertOptions() {
     const sel = $('alert-pct');
-    for (let n = 1; n <= 10; n += 0.5) {
+    for (let n = 1; n <= 10; n += 1) {
       const o = document.createElement('option');
-      o.value = String(n); o.textContent = n + '%';
+      o.value = String(n); o.textContent = '−' + n + '%';
       sel.appendChild(o);
     }
     sel.value = String(ALERT_DEFAULT);
