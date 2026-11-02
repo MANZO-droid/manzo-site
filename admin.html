@@ -115,6 +115,8 @@
   let allUsers = [];
   let accessSet = new Set();   // '보유 기록장' 사용이 허용된 회원 id 모음
   let reportSet = new Set();   // '종목 리포트' 요청이 허용된 회원 id 모음(기록장 허용 회원 중에서만)
+  let consentMap = new Map();  // 메일 수신에 동의한 회원 id → 동의 시각(읽기 전용). null 이면 목록을 못 불러온 것
+  let consentKnown = false;
   let statusData = null;
   let positionsData = [];
   let sortKey = 'createdAt';
@@ -146,6 +148,14 @@
       + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
   }
 
+  // 메일 수신 동의 열(읽기 전용): 회원이 직접 체크했으면 "✓ 월 일", 아니면 "-", 목록을 못 불러왔으면 "확인 불가"
+  function consentCell(uid) {
+    if (!consentKnown) return '<span style="color:var(--text-muted)">확인 불가</span>';
+    const at = consentMap.get(uid);
+    if (!at) return '<span style="color:var(--text-muted)">-</span>';
+    const d = new Date(new Date(at).getTime() + 9 * 3600e3);   // 한국 시간 기준 날짜
+    return '✓ ' + (d.getUTCMonth() + 1) + '월 ' + d.getUTCDate() + '일';
+  }
   function fmtDuration(ms) {
     if (!ms) return '<span class="muted">0분</span>';
     const totalMin = Math.round(ms / 60000);
@@ -174,6 +184,8 @@
     const accessJson = accessRes.ok ? await accessRes.json() : {};
     accessSet = new Set(accessJson.enabled || []);
     reportSet = new Set(accessJson.reportEnabled || []);
+    consentKnown = Array.isArray(accessJson.mailConsent);
+    consentMap = new Map((consentKnown ? accessJson.mailConsent : []).map((c) => [c.userId, c.at]));
     // 현황 대시보드/포지션 현황은 회원 목록보다 덜 치명적이라, 실패해도 페이지 전체를 막지 않고
     // 그 섹션에만 오류를 표시한다(회원 관리 자체는 계속 쓸 수 있어야 하므로).
     statusData = statusRes.ok ? await statusRes.json() : { error: '현황을 불러오지 못했습니다 (' + statusRes.status + ').' };
@@ -1106,6 +1118,7 @@
         '<td><label><input type="checkbox" class="member-report" data-uid="' + escapeHtml(u.id) + '"' +
           (reportSet.has(u.id) ? ' checked' : '') +
           (accessSet.has(u.id) ? '' : ' disabled title="먼저 기록장을 허용하세요"') + '> 리포트</label></td>' +
+        '<td class="stat-num">' + consentCell(u.id) + '</td>' +
         '<td><button class="del-btn" data-del-id="' + escapeHtml(u.id) + '" data-del-name="' + escapeHtml(name) + '">탈퇴</button></td>' +
         '</tr>';
     }).join('');
@@ -1119,6 +1132,7 @@
       thLabel('clicks', '클릭 수') +
       '<th title="체크하면 이 회원의 My page에서 보유 기록장을 쓸 수 있습니다">기록장 허용</th>' +
       '<th title="체크하면 이 회원이 My page에서 종목 리포트를 요청할 수 있습니다(기록장 허용이 먼저 필요)">리포트 허용</th>' +
+      '<th title="회원이 My page에서 직접 체크한 경우에만 표시됩니다. 관리자는 바꿀 수 없습니다(읽기 전용)">메일 수신 동의</th>' +
       '<th>관리</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   }
