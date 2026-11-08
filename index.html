@@ -2242,7 +2242,7 @@ if ('serviceWorker' in navigator) {
         '<span style="font-size:12px;font-weight:700;color:#fff;background:var(--gold);padding:3px 10px;border-radius:12px;">' + p.rank + '위</span>' +
       '</div>' +
       '<div style="font-size:12px;color:var(--text-muted);margin:4px 0 16px">' +
-        (p.marketType || '') + (p.sector ? ' | ' + p.sector : '') + ' | 기준가 ' + fmtWon(p.basePrice) +
+        (p.marketType || '') + (p.sector ? ' | ' + p.sector : '') + ' | 직전 거래일 종가 ' + fmtWon(p.basePrice) +
       '</div>' +
       chartHtml + businessHtml + selectHtml + chartAnalHtml + finHtml + finGridHtml + materialHtml + sectorHtml + newsHtml;
     document.getElementById('sa-modal').style.display = 'block';
