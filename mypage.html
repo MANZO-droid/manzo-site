@@ -91,6 +91,11 @@
   .hold-row { margin-bottom: 8px; }
   .hold-row input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13.5px; background: #fff; width: 100%; min-width: 0; }
   .hold-row input:focus { outline: none; border-color: var(--accent); }
+  /* 날짜칸이 비어 있을 때 아이폰은 아무것도 안 보여주고 안드로이드만 화살표를 보여주던 차이를 없앤다 */
+  .date-wrap { position: relative; display: block; }
+  .date-wrap input[type="date"] { padding-right: 28px; }
+  .date-wrap input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0; }
+  .date-wrap::after { content: ''; position: absolute; right: 10px; top: 50%; width: 6px; height: 6px; margin-top: -5px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(45deg); pointer-events: none; }
   .hold-row.err input { border-color: var(--danger); background: var(--danger-light); }
   .stock-cell { position: relative; min-width: 0; }
   .stock-suggest { position: absolute; left: 0; top: calc(100% + 4px); z-index: 30; min-width: 100%; width: max-content; max-width: min(340px, 86vw); margin: 0; padding: 4px; list-style: none; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.12); max-height: 280px; overflow-y: auto; }
@@ -855,7 +860,7 @@
       '</div>' +
       '<input data-f="avg" inputmode="decimal" placeholder="평균 매수가(원)" aria-label="평균 매수가">' +
       '<input data-f="qty" inputmode="decimal" placeholder="수량" aria-label="수량">' +
-      '<input data-f="date" type="date" aria-label="매수일(선택)" title="매수일(선택, 비우면 오늘)">' +
+      '<span class="date-wrap"><input data-f="date" type="date" aria-label="매수일(선택)" title="매수일(선택, 비우면 오늘)"></span>' +
       '<input data-f="memo" maxlength="200" placeholder="메모(선택)" aria-label="메모">' +
       '</div>';
   }
