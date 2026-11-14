@@ -50,6 +50,15 @@
   .chk input { width: 16px; height: 16px; cursor: pointer; vertical-align: middle; }
   .st-select { padding: 6px 8px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 12.5px; background: #fff; cursor: pointer; }
   .st-select:focus { outline: none; border-color: var(--accent); }
+  /* 기종(안드로이드/아이폰)마다 다르게 보이는 OS 기본 select UI 대신, 둘 다 똑같이 보이는 자체 드롭다운 */
+  .fsel { position: relative; display: inline-block; }
+  .fsel select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; }
+  .fsel-btn { position: relative; padding: 6px 24px 6px 8px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 12.5px; background: #fff; color: var(--text-primary); cursor: pointer; text-align: left; white-space: nowrap; }
+  .fsel-btn:focus { outline: none; border-color: var(--accent); }
+  .fsel-btn::after { content: ''; position: absolute; right: 9px; top: 50%; width: 6px; height: 6px; margin-top: -4px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(45deg); }
+  .fsel-list { position: fixed; z-index: 500; margin: 0; padding: 4px; list-style: none; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.14); max-height: 240px; overflow-y: auto; }
+  .fsel-list li { padding: 8px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-size: 13.5px; }
+  .fsel-list li:hover, .fsel-list li.sel { background: var(--accent-light); }
   .pos-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 4px 0 10px; font-size: 12.5px; }
   .del-btn { background: none; border: 1.5px solid var(--danger); color: var(--danger); border-radius: 14px; padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background .15s, color .15s; }
   .del-btn:hover { background: var(--danger); color: #fff; }
@@ -60,7 +69,6 @@
   .sell-panel td { background: #FFF8EC; }
   .sell-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 2px; font-size: 13px; }
   .sell-box input { padding: 7px 10px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 13px; width: 140px; min-width: 0; background: #fff; }
-  #alert-pct { font-size: 13px; }
   tbody tr[data-id]:has(.st-select) { cursor: pointer; }
   .detail-row td { background: #FAF8F3; }
   .detail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 6px 2px; color: var(--text-primary); }
@@ -95,7 +103,7 @@
     .hold-grid-head { display: none; }
     .hold-row { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 10px; border: 1px dashed var(--border); border-radius: 12px; }
     .stock-cell { grid-column: 1 / -1; }
-    .hold-row input, .sell-box input, .st-select, #alert-pct { font-size: 16px; }
+    .hold-row input, .sell-box input, .fsel-btn, .fsel-list li { font-size: 16px; }
   }
   @media (max-width: 560px) {
     .wrap { padding: 20px 16px 60px; }
@@ -175,9 +183,13 @@
     </label>
     <div id="consent-msg" style="font-size:12.5px;margin-top:8px;min-height:18px"></div>
     <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-      <label for="alert-pct" style="font-size:13.5px;font-weight:700">알람선 (입력하신 평균 매수가 대비)</label>
+      <label for="alert-fsel-btn" style="font-size:13.5px;font-weight:700">알람선 (입력하신 평균 매수가 대비)</label>
       <div style="display:flex;gap:8px;align-items:center;margin-top:6px;font-size:13.5px">
-        <select id="alert-pct" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--font);background:#fff"></select>
+        <span class="fsel">
+          <button type="button" id="alert-fsel-btn" class="fsel-btn" aria-haspopup="listbox" aria-expanded="false"></button>
+          <ul class="fsel-list" id="alert-fsel-list" role="listbox" hidden></ul>
+          <select id="alert-pct" aria-hidden="true" tabindex="-1"></select>
+        </span>
         <span id="alert-msg" style="font-size:12.5px;margin-left:6px"></span>
       </div>
       <p class="muted small" style="margin:8px 0 0">평균 매수가는 회원님이 입력하신 값을 그대로 사용하며, 실제 매수 여부와 무관하게 "이 가격에 샀다면"을 가정한 시뮬레이션 용도로 써도 됩니다. 알람선(기본 −3%, −1%~−10% 중 정수로 선택)은 회원님이 직접 정하는 참고용 기준이며, 입력하신 평균 매수가에서 해당 비율만큼 내려간 가격에 닿았는지 알려 드릴 뿐 매도 시점을 알려 드리는 것이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</p>
@@ -199,6 +211,63 @@
   const pct = (n) => (n === null || n === undefined ? '-' : (n >= 0 ? '+' : '') + n.toFixed(1) + '%');
   const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
   const signCls = (n) => (n === null || n === undefined ? '' : n >= 0 ? 'ret-pos' : 'ret-neg');
+
+  // ── 커스텀 드롭다운(fsel): 기종(안드로이드/아이폰)마다 다른 OS 기본 select UI를 안 쓰고,
+  // 숨겨둔 실제 <select>는 상태 보관·저장 로직은 그대로 두고 버튼+목록만 자체 렌더링한다.
+  function syncFselLabel(selectEl) {
+    const fsel = selectEl.closest('.fsel');
+    if (!fsel) return;
+    const opt = selectEl.options[selectEl.selectedIndex];
+    const btn = fsel.querySelector('.fsel-btn');
+    if (btn && opt) btn.textContent = opt.textContent;
+    fsel.querySelectorAll('.fsel-list li').forEach((li) => {
+      const on = li.dataset.value === selectEl.value;
+      li.classList.toggle('sel', on);
+      li.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  }
+  function closeAllFsel() {
+    document.querySelectorAll('.fsel.open').forEach((f) => {
+      f.classList.remove('open');
+      const b = f.querySelector('.fsel-btn'); if (b) b.setAttribute('aria-expanded', 'false');
+      const l = f.querySelector('.fsel-list'); if (l) l.hidden = true;
+    });
+  }
+  function openFsel(fsel) {
+    const btn = fsel.querySelector('.fsel-btn'), list = fsel.querySelector('.fsel-list');
+    if (!btn || !list || btn.disabled) return;
+    const r = btn.getBoundingClientRect();
+    list.style.left = r.left + 'px';
+    list.style.top = (r.bottom + 4) + 'px';
+    list.style.minWidth = r.width + 'px';
+    list.hidden = false;
+    fsel.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  document.addEventListener('click', (ev) => {
+    const li = ev.target.closest('.fsel-list li');
+    if (li) {
+      const fsel = li.closest('.fsel'), sel = fsel && fsel.querySelector('select');
+      if (sel && sel.value !== li.dataset.value) {
+        sel.value = li.dataset.value;
+        syncFselLabel(sel);
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      closeAllFsel();
+      return;
+    }
+    const btn = ev.target.closest('.fsel-btn');
+    if (btn) {
+      const fsel = btn.closest('.fsel'), willOpen = !fsel.classList.contains('open');
+      closeAllFsel();
+      if (willOpen) openFsel(fsel);
+      return;
+    }
+    closeAllFsel();
+  });
+  document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') closeAllFsel(); });
+  window.addEventListener('scroll', closeAllFsel, true);
+  window.addEventListener('resize', closeAllFsel);
 
   const HOLD_START_ROWS = 3, HOLD_MAX_ROWS = 10, MAX_PER_MEMBER = 50;
   const STATUS_LABEL = { open: '보유', watch: '관찰', closed: '청산(매도 기록)' };
@@ -249,35 +318,40 @@
     if (pr.error) throw new Error(pr.error.message);
     state.alertPct = pr.data ? Number(pr.data.alert_drop_pct) : ALERT_DEFAULT;
     $('alert-pct').value = String(state.alertPct);
+    syncFselLabel($('alert-pct'));
     state.consentReady = true;
   }
   // 알람선 선택값(1~10 의 정수, 화면에는 −1% ~ −10% 로 표시). DB 함수 member_set_alert_drop 의 허용 범위와 같다.
   (function fillAlertOptions() {
-    const sel = $('alert-pct');
+    const sel = $('alert-pct'), list = $('alert-fsel-list');
     for (let n = 1; n <= 10; n += 1) {
       const o = document.createElement('option');
       o.value = String(n); o.textContent = '−' + n + '%';
       sel.appendChild(o);
+      const li = document.createElement('li');
+      li.setAttribute('role', 'option'); li.dataset.value = String(n); li.textContent = '−' + n + '%';
+      list.appendChild(li);
     }
     sel.value = String(ALERT_DEFAULT);
+    syncFselLabel(sel);
   })();
   async function onAlertChange() {
-    const sel = $('alert-pct'), want = Number(sel.value), before = state.alertPct;
-    sel.disabled = true; say('alert-msg', '저장 중...', true);
+    const sel = $('alert-pct'), btn = $('alert-fsel-btn'), want = Number(sel.value), before = state.alertPct;
+    sel.disabled = true; btn.disabled = true; say('alert-msg', '저장 중...', true);
     try {
       const { data, error } = await sb.rpc('member_set_alert_drop', { p_pct: want });
       if (error || !data || !data.ok) {
-        sel.value = String(before);
+        sel.value = String(before); syncFselLabel(sel);
         say('alert-msg', '저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.', false);
       } else {
         state.alertPct = want;
         say('alert-msg', '저장됨', true);
       }
     } catch (e) {
-      sel.value = String(before);
+      sel.value = String(before); syncFselLabel(sel);
       say('alert-msg', '저장하지 못했습니다. 잠시 뒤 다시 시도해 주세요.', false);
     } finally {
-      sel.disabled = false;
+      sel.disabled = false; btn.disabled = false;
     }
   }
   $('alert-pct').addEventListener('change', onAlertChange);
@@ -419,9 +493,16 @@
   }
 
   function statusSelect(h) {
-    return '<select class="st-select" data-status="' + esc(h.id) + '" aria-label="상태">' +
-      ['open', 'watch', 'closed'].map((k) => '<option value="' + k + '"' + (h.status === k ? ' selected' : '') + '>' + STATUS_LABEL[k] + '</option>').join('') +
-      '</select>';
+    const keys = ['open', 'watch', 'closed'];
+    return '<span class="fsel">' +
+      '<button type="button" class="fsel-btn" aria-haspopup="listbox" aria-expanded="false">' + esc(STATUS_LABEL[h.status] || h.status) + '</button>' +
+      '<ul class="fsel-list" role="listbox" hidden>' +
+        keys.map((k) => '<li role="option" data-value="' + k + '"' + (h.status === k ? ' class="sel" aria-selected="true"' : ' aria-selected="false"') + '>' + esc(STATUS_LABEL[k]) + '</li>').join('') +
+      '</ul>' +
+      '<select class="st-select" data-status="' + esc(h.id) + '" aria-hidden="true" tabindex="-1">' +
+        keys.map((k) => '<option value="' + k + '"' + (h.status === k ? ' selected' : '') + '>' + STATUS_LABEL[k] + '</option>').join('') +
+      '</select>' +
+    '</span>';
   }
 
   function openRow(h) {
@@ -721,7 +802,7 @@
     }
   });
   tables.addEventListener('click', (ev) => {
-    if (!ev.target.closest('select, input, button, a')) {
+    if (!ev.target.closest('select, input, button, a, .fsel-list')) {
       const row = ev.target.closest('tr[data-id]');
       if (row && row.querySelector('select[data-status]')) {
         const h = state.holdings.find((x) => x.id === row.dataset.id);
