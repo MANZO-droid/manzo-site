@@ -5,9 +5,32 @@
 // 2026-08-01: market-scope-data.json 하드코딩을 대체 — 날짜별로 한 행씩
 // upsert되는 market_scope_reports 테이블에서 최신 날짜를 current로,
 // 나머지를 history로 구성해 기존 프론트 코드가 기대하던 모양 그대로 응답한다.
+//
+// 2026-11-17: 응답 크기 축소 — 기사 원문(full_text)을 응답에서 뺀다.
+// full_text는 기사 모달(index.html openArticleModal)이 쓰지 않는 필드인데
+// 응답 전체의 약 76%(8.3MB/11MB)를 차지해 Vercel CDN 캐시 한도(10MB)를 넘기고
+// 있었다. DB(market_scope_reports)에는 그대로 남아 있으므로 다시 필요해지면
+// 여기서 필드를 추가하면 된다. 프론트가 실제로 쓰는 url/title/summary만 남긴다.
 
 const SUPABASE_URL = 'https://nxvpipgvcrfkujbvjjak.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54dnBpcGd2Y3Jma3VqYnZqamFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTA5NTAsImV4cCI6MjA5ODA4Njk1MH0.QXJs2t980WJ_tiXFsFFUWubftHb30r5IpoA1-09qBPk';
+
+// 기사 1건 → 프론트(기사 모달: 제목·요약·원문 링크)가 쓰는 필드만.
+function toArticle(a) {
+  return {
+    url: a.url,
+    title: a.title,
+    summary: a.summary,
+  };
+}
+
+// 종목/이슈 1건 → 기존 필드는 그대로 두고(프론트 표가 쓰는 값들),
+// 기사 배열만 가볍게 만든다.
+function toItem(it) {
+  return Object.assign({}, it, {
+    articles: (it.articles || []).map(toArticle),
+  });
+}
 
 function toReport(r) {
   return {
@@ -15,7 +38,7 @@ function toReport(r) {
     range_label: r.range_label,
     message_count: r.message_count,
     channel_count: r.channel_count,
-    items: r.items || [],
+    items: (r.items || []).map(toItem),
   };
 }
 
