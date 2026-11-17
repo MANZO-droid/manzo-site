@@ -120,6 +120,27 @@ test('UI가 쓰는 값은 그대로 남는다 (current 요약값·표 필드·�
   assert.equal(article.summary, row.items[0].articles[0].summary);
 });
 
+test('같은 날짜 upsert를 프론트가 알아챌 수 있게 updated_at을 그대로 보낸다', async () => {
+  const row = makeRow('2026-11-17');
+  row.updated_at = '2026-11-17T09:30:00+00:00';
+  const older = makeRow('2026-11-16');
+  older.updated_at = '2026-11-16T07:05:00+00:00';
+  stubFetch([row, older]);
+  const res = fakeRes();
+  await handler({}, res);
+
+  assert.equal(res.body.current.updated_at, '2026-11-17T09:30:00+00:00');
+  assert.equal(res.body.history[0].updated_at, '2026-11-16T07:05:00+00:00');
+});
+
+test('updated_at이 없는 행은 null로 보낸다 (프론트가 내용으로 대신 판단)', async () => {
+  stubFetch([makeRow('2026-11-17')]);
+  const res = fakeRes();
+  await handler({}, res);
+
+  assert.equal(res.body.current.updated_at, null);
+});
+
 test('기사 모음이 없는 항목도 빈 배열로 안전하게 처리한다', async () => {
   const row = makeRow('2026-11-16');
   delete row.items[0].articles;

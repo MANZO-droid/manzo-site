@@ -39,6 +39,10 @@ function toReport(r) {
     message_count: r.message_count,
     channel_count: r.channel_count,
     items: (r.items || []).map(toItem),
+    // 2026-11-17: 같은 날짜에 리포트가 다시 만들어지는(upsert) 경우를 프론트가
+    // 알아챌 수 있도록 표의 갱신시각을 함께 보낸다. index.html의 poll()이
+    // 기준일 + 이 값으로 버전을 비교한다. 값이 없으면 프론트는 응답 내용으로 대신한다.
+    updated_at: r.updated_at || null,
   };
 }
 
