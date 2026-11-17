@@ -33,7 +33,7 @@ function toCard(r) {
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+  res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
   try {
     // 최근 8회차(약 2개월)만 가져와 날짜 탭 구성
     const url = `${SUPABASE_URL}/rest/v1/screener_picks?select=*&order=run_date.desc,rank.asc&limit=80`;

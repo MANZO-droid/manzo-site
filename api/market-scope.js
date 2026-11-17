@@ -21,7 +21,7 @@ function toReport(r) {
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+  res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
   try {
     // 최근 30일치(오늘 + 히스토리)만 가져온다.
     const url = `${SUPABASE_URL}/rest/v1/market_scope_reports?select=*&order=report_date.desc&limit=30`;

@@ -1058,7 +1058,7 @@ const NEWSLETTERS = [
     if (window._saData && window._saData.dates && window._saData.dates[dateKey]) {
       return Promise.resolve(window._saData.dates[dateKey]);
     }
-    return fetch('/api/top-gainers?date=' + dateKey + '&t=' + Date.now())
+    return fetch('/api/top-gainers?date=' + dateKey)
       .then(r => r.json())
       .then(res => {
         const entry = res && res.dates && res.dates[dateKey];
@@ -1257,8 +1257,8 @@ const NEWSLETTERS = [
   // 2026-08-01: stock-analysis-data.json 하드코딩 폴백 제거 — 원천은 Supabase 하나뿐.
   function loadStockAnalysis() {
     Promise.all([
-      fetch('/api/top-gainers?t=' + Date.now()).then(r => r.json()),
-      fetch('/api/top-gainers?availableDates=1&t=' + Date.now()).then(r => r.json()).catch(() => null),
+      fetch('/api/top-gainers').then(r => r.json()),
+      fetch('/api/top-gainers?availableDates=1').then(r => r.json()).catch(() => null),
     ])
       .then(([data, avail]) => {
         data = (data && typeof data === 'object') ? data : { dates: {} };
@@ -1414,7 +1414,7 @@ const NEWSLETTERS = [
   }
 
   function fetchData() {
-    return fetch('/api/market-scope?v=' + Date.now())
+    return fetch('/api/market-scope')
       .then(function (res) {
         if (!res.ok) throw new Error('no data');
         return res.json();
@@ -2249,7 +2249,7 @@ if ('serviceWorker' in navigator) {
   }
   window.openSCRModal = openSCRModal;
 
-  fetch('/api/screener-picks?t=' + Date.now())
+  fetch('/api/screener-picks')
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(renderScreenerPicks)
     .catch(function () {
